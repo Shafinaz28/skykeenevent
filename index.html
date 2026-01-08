@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkyKeen Kids Creative Festival 2026</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -27,14 +25,8 @@
       --navbg: #0b5e97;
     }
 
-    * {
-      box-sizing: border-box
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
+    * { box-sizing: border-box }
+    html { scroll-behavior: smooth }
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -43,83 +35,30 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-
-    h1,
-    h2,
-    h3 {
-      font-family: 'Fredoka One', cursive;
-      margin: 0
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none
-    }
-
-    .container {
-      max-width: 1150px;
-      margin: 0 auto;
-      padding: 0 18px
-    }
+    h1,h2,h3 { font-family: 'Fredoka One', cursive; margin: 0 }
+    a { color: inherit; text-decoration: none }
+    .container { max-width: 1150px; margin: 0 auto; padding: 0 18px }
 
     /* ===== Animations ===== */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
+      from { opacity: 0; transform: translateY(14px) }
+      to { opacity: 1; transform: translateY(0) }
     }
-
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
-
     @keyframes floaty {
-
-      0%,
-      100% {
-        transform: translateY(0)
-      }
-
-      50% {
-        transform: translateY(-8px)
-      }
+      0%,100% { transform: translateY(0) }
+      50% { transform: translateY(-8px) }
     }
-
     @keyframes pop {
-      from {
-        transform: scale(.96);
-        opacity: 0
-      }
-
-      to {
-        transform: scale(1);
-        opacity: 1
-      }
+      from { transform: scale(.96); opacity: 0 }
+      to { transform: scale(1); opacity: 1 }
     }
-
-    .animUp {
-      animation: fadeUp .75s ease both
-    }
-
-    .floaty {
-      animation: floaty 3.2s ease-in-out infinite
-    }
-
-    .fade-in {
-      animation: fadeIn 0.4s ease-in-out;
-    }
+    .animUp { animation: fadeUp .75s ease both }
+    .floaty { animation: floaty 3.2s ease-in-out infinite }
+    .fade-in { animation: fadeIn 0.4s ease-in-out; }
 
     /* ===== NAVBAR ===== */
     .navbar {
@@ -130,34 +69,18 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, .12);
     }
-
     .navInner {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 12px 10px;
       gap: 12px;
-      position: relative; /* for mobile dropdown positioning */
+      position: relative;
     }
+    .brand { display: flex; align-items: center; gap: 10px; min-width: 160px; }
+    .brand img { width: auto; height: 100px; padding: 2px; }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 160px;
-    }
-
-    .brand img {
-      width: auto;
-      height: 100px;
-      padding: 2px;
-    }
-
-    .navBtns {
-      display: flex;
-      gap: 10px;
-    }
-
+    .navBtns { display: flex; gap: 10px; }
     .navBtn {
       background: rgba(255, 255, 255, 0.15);
       color: #fff;
@@ -172,44 +95,15 @@
       gap: 6px;
       white-space: nowrap;
     }
+    .navBtn:hover { background: #fff; color: var(--blue); }
+    .navBook { background: var(--yellow); color: #000; border: none; }
+    .navBook:hover { background: #ffca2c; }
 
-    .navBtn:hover {
-      background: #fff;
-      color: var(--blue);
-    }
-
-    .navBook {
-      background: var(--yellow);
-      color: #000;
-      border: none;
-    }
-
-    .navBook:hover {
-      background: #ffca2c;
-    }
-
-    /* Hamburger style */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 28px;
-      height: 3px;
-      background: #fff;
-      border-radius: 2px;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 28px; height: 3px; background: #fff; border-radius: 2px; }
 
     /* ===== HERO ===== */
-    .heroWrap {
-      background: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-
+    .heroWrap { background: #fff; position: relative; overflow: hidden; }
     .heroWrap::before {
       content: "";
       position: absolute;
@@ -221,44 +115,27 @@
         linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
       pointer-events: none;
     }
-
-    .hero {
-      position: relative;
-      padding: 44px 0 22px;
-    }
-
+    .hero { position: relative; padding: 44px 0 22px; }
     .heroGrid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 28px;
       align-items: center;
     }
-
     .heroTitle {
       font-size: 3.05rem;
       line-height: 1.06;
       margin-bottom: 10px;
       color: #4d078ad7;
     }
-
-    .heroTitle span {
-      color: var(--orange)
-    }
-
+    .heroTitle span { color: var(--orange) }
     .heroSub {
       color: var(--muted);
       font-weight: 700;
       max-width: 520px;
       margin-bottom: 18px;
     }
-
-    .badgeRow {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
+    .badgeRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
     .badge {
       padding: 10px 12px;
       border-radius: 999px;
@@ -267,35 +144,12 @@
       background: #fff;
       font-size: 0.9rem;
     }
+    .badge.blue { background: rgba(0, 129, 201, .10); color: var(--blue) }
+    .badge.orange { background: rgba(255, 107, 53, .12); color: var(--orange) }
+    .badge.purple { background: rgba(123, 44, 191, .10); color: var(--purple) }
+    .badge.yellow { background: rgba(255, 183, 3, .20); color: #6b4b00 }
 
-    .badge.blue {
-      background: rgba(0, 129, 201, .10);
-      color: var(--blue)
-    }
-
-    .badge.orange {
-      background: rgba(255, 107, 53, .12);
-      color: var(--orange)
-    }
-
-    .badge.purple {
-      background: rgba(123, 44, 191, .10);
-      color: var(--purple)
-    }
-
-    .badge.yellow {
-      background: rgba(255, 183, 3, .20);
-      color: #6b4b00
-    }
-
-    .heroVisual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 320px;
-    }
-
+    .heroVisual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 320px; }
     .kidBlob {
       position: absolute;
       inset: auto 0 0 0;
@@ -309,7 +163,6 @@
       transform: translateY(18px);
       filter: saturate(1.05);
     }
-
     .kidImg {
       position: relative;
       width: min(360px, 92%);
@@ -321,13 +174,7 @@
       background: #fff;
       z-index: 2;
     }
-
-    .kidImg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover
-    }
-
+    .kidImg img { width: 100%; height: 100%; object-fit: cover }
     .floatIcon {
       position: absolute;
       z-index: 3;
@@ -341,22 +188,9 @@
       box-shadow: 0 12px 26px rgba(0, 0, 0, .10);
       font-size: 26px;
     }
-
-    .fi1 {
-      left: 10%;
-      top: 18%
-    }
-
-    .fi2 {
-      right: 8%;
-      top: 22%
-    }
-
-    .fi3 {
-      left: 22%;
-      bottom: 6%
-    }
-
+    .fi1 { left: 10%; top: 18% }
+    .fi2 { right: 8%; top: 22% }
+    .fi3 { left: 22%; bottom: 6% }
     .wave {
       width: 100%;
       height: 90px;
@@ -367,39 +201,24 @@
     }
 
     /* ===== COUNTDOWN ===== */
-    .countdownSection {
-      position: relative;
-      padding: 80px 0;
-      overflow: hidden;
-    }
-
+    .countdownSection { position: relative; padding: 80px 0; overflow: hidden; }
     .countdownSection::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
+      top: 0; left: 0;
+      width: 100%; height: 120px;
       background: linear-gradient(135deg, #7b2cbf, #9d4edd);
       z-index: 0;
     }
-
     .countdownSection::after {
       content: "";
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 120px;
+      bottom: 0; left: 0;
+      width: 100%; height: 120px;
       background: linear-gradient(135deg, #ffb703, #ffd166);
       z-index: 0;
     }
-
-    .countdownSection .container {
-      position: relative;
-      z-index: 2;
-    }
-
+    .countdownSection .container { position: relative; z-index: 2; }
     .cdCard {
       background: #fff;
       border: 1px solid rgba(0, 0, 0, .06);
@@ -411,19 +230,8 @@
       gap: 18px;
       align-items: center;
     }
-
-    .cdText {
-      margin: 0;
-      font-weight: 900;
-      color: #2c2c2c
-    }
-
-    .cdGrid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-    }
-
+    .cdText { margin: 0; font-weight: 900; color: #2c2c2c }
+    .cdGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .cdBox {
       background: rgba(123, 44, 191, .07);
       border: 1px solid rgba(123, 44, 191, .12);
@@ -431,7 +239,6 @@
       padding: 12px 10px;
       text-align: center;
     }
-
     .cdNum {
       display: block;
       font-family: 'Fredoka One', cursive;
@@ -439,35 +246,12 @@
       color: var(--purple);
       line-height: 1;
     }
-
-    .cdLbl {
-      font-weight: 900;
-      color: var(--muted);
-      margin-top: 4px;
-      font-size: 0.8rem;
-    }
+    .cdLbl { font-weight: 900; color: var(--muted); margin-top: 4px; font-size: 0.8rem; }
 
     /* ===== TIMELINE TABS ===== */
-    .timelineSection {
-      padding: 60px 0;
-      background: #faf7ff;
-    }
-
-    .sectionTitle {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 30px;
-      color: #4a148c;
-    }
-
-    /* Tabs Container */
-    .batchTabs {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
+    .timelineSection { padding: 60px 0; background: #faf7ff; }
+    .sectionTitle { text-align: center; font-size: 2rem; margin-bottom: 30px; color: #4a148c; }
+    .batchTabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
     .tabBtn {
       border: 2px solid #ddd;
       background: #fff;
@@ -482,38 +266,13 @@
       flex: 1;
       max-width: 300px;
     }
+    .tabBtn:hover { transform: translateY(-3px); border-color: #ccc; }
+    .tabBtn.active { color: #fff; border-color: transparent; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+    .tabBtn.blue.active { background: #0081C9; }
+    .tabBtn.orange.active { background: #FF6B35; }
 
-    .tabBtn:hover {
-      transform: translateY(-3px);
-      border-color: #ccc;
-    }
-
-    /* Active State for Tabs */
-    .tabBtn.active {
-      color: #fff;
-      border-color: transparent;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    /* Specific Colors for Active Tabs */
-    .tabBtn.blue.active {
-      background: #0081C9;
-    }
-
-    .tabBtn.orange.active {
-      background: #FF6B35;
-    }
-
-    .batchContent {
-      display: none;
-      /* Hidden by default */
-    }
-
-    .batchContent.active {
-      display: block;
-      /* Visible when active */
-    }
-
+    .batchContent { display: none; }
+    .batchContent.active { display: block; }
 
     #about {
       background-image: url("image/bg.jpg");
@@ -522,46 +281,22 @@
       background-repeat: no-repeat;
     }
 
-    /* Card Styles */
-    .batchCard,
-    .breakCard {
+    .batchCard, .breakCard {
       background: #fff;
       border-radius: 18px;
       padding: 22px;
       margin-bottom: 25px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-
-      /* Add these 2 lines to center ALL cards */
       max-width: 750px;
       margin-left: auto;
       margin-right: auto;
     }
+    .batchCard.blue { border-left: 6px solid #0081C9; }
+    .batchCard.orange { border-left: 6px solid #FF6B35; }
+    .batchCard h3 { margin: 0 0 8px; font-size: 1.5rem; }
+    .batchInfo { font-weight: 600; margin-bottom: 15px; color: #555; }
 
-    .batchCard.blue {
-      border-left: 6px solid #0081C9;
-    }
-
-    .batchCard.orange {
-      border-left: 6px solid #FF6B35;
-    }
-
-    .batchCard h3 {
-      margin: 0 0 8px;
-      font-size: 1.5rem;
-    }
-
-    .batchInfo {
-      font-weight: 600;
-      margin-bottom: 15px;
-      color: #555;
-    }
-
-    .timeGrid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
+    .timeGrid { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .timeGrid div {
       background: #f5f5f5;
       padding: 10px 14px;
@@ -571,7 +306,6 @@
       align-items: center;
       gap: 12px;
     }
-
     .timeGrid span {
       color: #6a1b9a;
       min-width: 100px;
@@ -582,50 +316,18 @@
       font-size: 0.9rem;
     }
 
-    .notes {
-      margin-top: 15px;
-      padding-left: 18px;
-      color: #444;
-      font-weight: 600;
-    }
-
-    .notes li {
-      margin-bottom: 5px;
-    }
+    .notes { margin-top: 15px; padding-left: 18px; color: #444; font-weight: 600; }
+    .notes li { margin-bottom: 5px; }
 
     .breakCard {
       text-align: center;
       background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
       border: 1px dashed #66bb6a;
     }
-
-    .breakCard h3 {
-      color: #2e7d32;
-    }
-
-    .breakCard ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .breakCard li {
-      font-weight: 700;
-      background: #fff;
-      padding: 6px 12px;
-      border-radius: 50px;
-      color: #1b5e20;
-    }
+    .breakCard h3 { color: #2e7d32; }
 
     /* ===== SECTIONS ===== */
-    .section {
-      padding: 42px 0;
-    }
-
+    .section { padding: 42px 0; }
     .sectionHead {
       display: flex;
       justify-content: space-between;
@@ -634,23 +336,9 @@
       flex-wrap: wrap;
       margin-bottom: 18px;
     }
+    .sectionHead h2 { font-size: 2rem; color: var(--purple); }
 
-    .sectionHead h2 {
-      font-size: 2rem;
-      color: var(--purple);
-    }
-
-    .miniNote {
-      font-weight: 800;
-      color: var(--muted);
-    }
-
-    .grid2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -659,52 +347,12 @@
       padding: 22px;
       transition: .2s ease;
     }
+    .card:hover { transform: translateY(-2px) }
 
-    .card:hover {
-      transform: translateY(-2px)
-    }
+    .bullet { margin: 0; padding-left: 18px; font-weight: 750; color: #3f3f3f; }
+    .bullet li { margin: 8px 0 }
 
-    .bullet {
-      margin: 0;
-      padding-left: 18px;
-      font-weight: 750;
-      color: #3f3f3f;
-    }
-
-    .bullet li {
-      margin: 8px 0
-    }
-
-    .tRows {
-      margin-top: 10px
-    }
-
-    .tRow {
-      display: flex;
-      gap: 14px;
-      justify-content: space-between;
-      padding: 12px 0;
-      border-bottom: 1px dashed #eee;
-      align-items: flex-start;
-    }
-
-    .tTime {
-      min-width: 150px;
-      font-weight: 1000;
-      color: var(--purple);
-    }
-
-    .tAct {
-      font-weight: 800;
-      color: #333
-    }
-
-    .tNote {
-      font-weight: 700;
-      color: var(--muted);
-      margin-top: 10px
-    }
-
+    .tNote { font-weight: 700; color: var(--muted); margin-top: 10px }
     .titleChip {
       display: inline-flex;
       align-items: center;
@@ -715,13 +363,7 @@
       background: rgba(0, 0, 0, .04);
       margin-bottom: 10px;
     }
-
-    .ctaRow {
-      display: flex;
-      justify-content: center;
-      margin-top: 18px;
-    }
-
+    .ctaRow { display: flex; justify-content: center; margin-top: 18px; }
     .btnBook {
       background: var(--orange);
       color: #fff;
@@ -734,10 +376,7 @@
       box-shadow: 0 12px 26px rgba(255, 107, 53, .22);
       transition: .2s ease;
     }
-
-    .btnBook:hover {
-      transform: translateY(-1px)
-    }
+    .btnBook:hover { transform: translateY(-1px) }
 
     /* ===== WhatsApp ===== */
     .whatsapp {
@@ -754,11 +393,7 @@
       box-shadow: 0 14px 30px rgba(37, 211, 102, .35);
       z-index: 2000;
     }
-
-    .whatsapp img {
-      width: 34px;
-      height: 34px
-    }
+    .whatsapp img { width: 34px; height: 34px }
 
     /* ===== Modal form ===== */
     .modal {
@@ -771,7 +406,6 @@
       align-items: center;
       padding: 18px;
     }
-
     .modalCard {
       width: 100%;
       max-width: 560px;
@@ -784,13 +418,7 @@
       position: relative;
       animation: pop .18s ease both;
     }
-
-    .modalCard h3 {
-      color: var(--purple);
-      font-size: 1.65rem;
-      margin-bottom: 6px
-    }
-
+    .modalCard h3 { color: var(--purple); font-size: 1.65rem; margin-bottom: 6px }
     .xClose {
       position: absolute;
       top: 10px;
@@ -809,18 +437,9 @@
       line-height: 1;
       font-size: 16px;
     }
+    .xClose:hover { transform: scale(1.03); background: rgba(255, 107, 53, .08) }
 
-    .xClose:hover {
-      transform: scale(1.03);
-      background: rgba(255, 107, 53, .08)
-    }
-
-    /* ✅ FORM FONTS + MOBILE FRIENDLY INPUTS (added, not removing anything) */
-    input, select, textarea, button {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px; /* prevents iOS zoom on focus */
-    }
-
+    input, select, textarea, button { font-family: 'Quicksand', sans-serif; font-size: 16px; }
     .field {
       width: 100%;
       padding: 12px 14px;
@@ -829,22 +448,16 @@
       font-weight: 800;
       font-size: 1rem;
       margin: 10px 0;
-      font-family: 'Quicksand', sans-serif;
       outline: none;
       transition: .15s ease;
       appearance: none;
       -webkit-appearance: none;
     }
-
     .field:focus {
       border-color: rgba(123, 44, 191, .45);
       box-shadow: 0 0 0 4px rgba(123, 44, 191, .08)
     }
-
-    /* better textarea resize */
     textarea.field { resize: vertical; }
-
-    /* stronger select arrow on mobile */
     select.field {
       background-image:
         linear-gradient(45deg, transparent 50%, rgba(0,0,0,.55) 50%),
@@ -858,40 +471,13 @@
       background-repeat: no-repeat;
       padding-right: 38px;
     }
-
-    .two {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .status {
-      font-weight: 900;
-      margin-top: 10px;
-    }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .status { font-weight: 900; margin-top: 10px; }
 
     /* ===== Footer ===== */
-    footer {
-      margin-top: 30px;
-      background: #0e0e0e;
-      color: #eee;
-      padding: 34px 0;
-    }
-
-    .footerTop {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 14px;
-      justify-content: center;
-    }
-
-    .footerTop img {
-      width: auto;
-      height: 100px;
-      padding: 2px;
-    }
-
+    footer { margin-top: 30px; background: #0e0e0e; color: #eee; padding: 34px 0; }
+    .footerTop { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; justify-content: center; }
+    .footerTop img { width: auto; height: 100px; padding: 2px; }
     .copy {
       border-top: 1px solid rgba(255, 255, 255, .12);
       margin-top: 18px;
@@ -901,19 +487,7 @@
       text-align: center;
     }
 
-    /* ===== Extra sections helpers ===== */
-    .cards3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .softLine {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .08), transparent);
-      margin: 18px 0;
-    }
-
+    .softLine { height: 1px; background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .08), transparent); margin: 18px 0; }
     .noteBox {
       padding: 14px 16px;
       border-radius: 18px;
@@ -923,72 +497,28 @@
       color: #2a2a2a;
     }
 
-    .priceTag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255, 107, 53, .10);
-      border: 1px solid rgba(255, 107, 53, .18);
-      color: #7a2a10;
-      font-weight: 1000;
-    }
+    .contactGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .mapBox { width: 100%; height: 220px; border-radius: 12px; overflow: hidden; border: 1px solid #ffffff20; }
+    .mapBox iframe { width: 100%; height: 100%; border: 0; }
 
-    .contactGrid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .mapBox {
-      width: 100%;
-      height: 220px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #ffffff20;
-    }
-
-    .mapBox iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .contactForm {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* ✅ Make contact form font consistent + better mobile tap targets */
-    .contactForm input,
-    .contactForm textarea {
+    .contactForm { display: flex; flex-direction: column; gap: 10px; }
+    .contactForm input, .contactForm textarea {
       padding: 12px 12px;
       border-radius: 10px;
       border: 1px solid #ffffff20;
       background: #111;
       color: #fff;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 16px; /* iOS zoom fix */
+      font-size: 16px;
       font-weight: 600;
       outline: none;
       transition: .15s ease;
     }
-
     .contactForm textarea { resize: vertical; }
-
-    .contactForm input:focus,
-    .contactForm textarea:focus {
+    .contactForm input:focus, .contactForm textarea:focus {
       border-color: rgba(255, 183, 3, .55);
       box-shadow: 0 0 0 4px rgba(255, 183, 3, .12);
     }
-
-    .contactForm input::placeholder,
-    .contactForm textarea::placeholder {
-      color: #aaa;
-    }
-
+    .contactForm input::placeholder, .contactForm textarea::placeholder { color: #aaa; }
     .btnPrimary {
       background: #ff7a00;
       color: #fff;
@@ -998,98 +528,34 @@
       cursor: pointer;
       font-weight: 700;
       transition: 0.3s;
-      font-family: 'Fredoka One', cursive; /* keep festival vibe */
+      font-family: 'Fredoka One', cursive;
       letter-spacing: .2px;
     }
+    .btnPrimary:hover { opacity: 0.9; }
 
-    .btnPrimary:hover {
-      opacity: 0.9;
-    }
-
-    /* ✅ Better long-text wrapping on small screens (added) */
-    .cdText, .tNote, .batchInfo, .bullet li, .timeGrid div {
-      word-break: break-word;
-      overflow-wrap: anywhere;
-    }
+    .cdText, .tNote, .batchInfo, .bullet li, .timeGrid div { word-break: break-word; overflow-wrap: anywhere; }
 
     /* Mobile Responsive */
     @media(max-width: 900px) {
-      .heroTitle {
-        font-size: 2.45rem
-      }
+      .heroTitle { font-size: 2.45rem }
+      .heroGrid { grid-template-columns: 1fr; text-align: center; }
+      .heroSub { margin-left: auto; margin-right: auto; }
+      .badgeRow { justify-content: center; }
 
-      .heroGrid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+      .cdCard { grid-template-columns: 1fr; text-align: center; }
+      .grid2, .two { grid-template-columns: 1fr; }
+      .timeGrid span { min-width: 80px; font-size: 0.8rem; }
 
-      .heroSub {
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .batchTabs { flex-direction: column; align-items: stretch; }
+      .tabBtn { max-width: 100%; }
 
-      .badgeRow {
-        justify-content: center;
-      }
+      .contactGrid { grid-template-columns: 1fr; }
+      .mapBox { height: 200px; margin-bottom: 20px; }
 
-      .cdCard {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
+      .modalCard { max-width: 520px; width: 100%; padding: 20px 16px 16px; border-radius: 26px; }
+      .btnBook { width: 100%; padding: 14px 22px; font-size: 1.1rem; }
 
-      .grid2,
-      .two {
-        grid-template-columns: 1fr;
-      }
-
-      .cards3 {
-        grid-template-columns: 1fr;
-      }
-
-      .timeGrid span {
-        min-width: 80px;
-        font-size: 0.8rem;
-      }
-
-      .batchTabs {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .tabBtn {
-        max-width: 100%;
-      }
-
-      .contactGrid {
-        grid-template-columns: 1fr;
-      }
-
-      .mapBox {
-        height: 200px;
-        margin-bottom: 20px;
-      }
-
-      /* ✅ MODAL FULL MOBILE FIX (added) */
-      .modalCard {
-        max-width: 520px;
-        width: 100%;
-        padding: 20px 16px 16px;
-        border-radius: 26px;
-      }
-
-      /* ✅ make buttons full width in modal on mobile */
-      .btnBook {
-        width: 100%;
-        padding: 14px 22px;
-        font-size: 1.1rem;
-      }
-
-      /* Mobile Navbar Styles */
-      .hamburger {
-        display: flex;
-        z-index: 1300;
-      }
-
+      .hamburger { display: flex; z-index: 1300; }
       .navBtns {
         position: absolute;
         top: 70px;
@@ -1100,50 +566,20 @@
         padding: 15px;
         border-radius: 12px;
         display: none;
-        /* Hidden by default */
         width: 220px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       }
+      .navBtns.show { display: flex; animation: fadeUp 0.3s ease forwards; }
+      .navBtn { justify-content: center; width: 100%; }
 
-      .navBtns.show {
-        display: flex;
-        animation: fadeUp 0.3s ease forwards;
-      }
+      .cdGrid { gap: 6px; }
+      .cdNum { font-size: 1.4rem; }
 
-      .navBtn {
-        justify-content: center;
-        width: 100%;
-      }
+      .timeGrid div { flex-direction: column; align-items: flex-start; gap: 5px; }
+      .timeGrid span { width: 100%; }
 
-      /* Countdown grid small */
-      .cdGrid {
-        gap: 6px;
-      }
-
-      .cdNum {
-        font-size: 1.4rem;
-      }
-
-      .timeGrid div {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-      }
-
-      .timeGrid span {
-        width: 100%;
-      }
-
-      /* ✅ WhatsApp icon size on small screens */
-      .whatsapp {
-        width: 58px;
-        height: 58px;
-        bottom: 18px;
-        right: 18px;
-      }
+      .whatsapp { width: 58px; height: 58px; bottom: 18px; right: 18px; }
     }
-
-    /* ✅ Extra small devices (added) */
     @media(max-width: 420px) {
       .heroTitle { font-size: 2.05rem; }
       .brand img { height: 78px; }
@@ -1154,29 +590,18 @@
 </head>
 
 <body>
-
   <header class="navbar">
     <div class="container navInner">
-      <a class="brand" href="#">
-        <img src="image/logo1.png" alt="SkyKeen Logo">
-      </a>
+      <a class="brand" href="#"><img src="image/logo1.png" alt="SkyKeen Logo"></a>
 
       <div class="hamburger" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
 
       <div class="navBtns" id="mobileMenu">
-        <a class="navBtn navCall" href="tel:+917406238503">
-          📞 <small>Call</small>
-        </a>
-
-        <button class="navBtn navBook" onclick="openModal()">
-          🎟️ <small>Book</small>
-        </button>
+        <a class="navBtn navCall" href="tel:+917406238503">📞 <small>Call</small></a>
+        <button class="navBtn navBook" onclick="openModal()">🎟️ <small>Book</small></button>
       </div>
-
     </div>
   </header>
 
@@ -1185,12 +610,9 @@
       <div class="heroGrid">
         <div class="animUp">
           <h1 class="heroTitle">Celebrating Young Minds & Bright <span>Art Competition for Kids</span></h1>
-
           <p class="heroSub">
-            A kids festival with a <b>Colouring Competition</b>, an interactive <b>Workshop</b>,
-            and <b>Prize Distribution</b>.
+            A kids festival with a <b>Colouring Competition</b>, an interactive <b>Workshop</b>, and <b>Prize Distribution</b>.
           </p>
-
           <div class="badgeRow">
             <span class="badge blue">🎨 45 mins Competition</span>
             <span class="badge purple">🎓 30–40 mins Workshop</span>
@@ -1201,11 +623,9 @@
 
         <div class="heroVisual">
           <div class="kidBlob" aria-hidden="true"></div>
-
           <div class="floatIcon fi1 floaty">🖍️</div>
           <div class="floatIcon fi2 floaty">🏆</div>
           <div class="floatIcon fi3 floaty">🎨</div>
-
           <div class="kidImg" title="Kids Creative Festival">
             <img src="image/education-online-class-room-student-s-things.jpg" alt="Kids creative">
           </div>
@@ -1228,19 +648,10 @@
         </div>
 
         <div class="cdGrid" aria-label="countdown timer">
-          <div class="cdBox"><span class="cdNum" id="cdDays">00</span>
-            <div class="cdLbl">Days</div>
-          </div>
-          <div class="cdBox"><span class="cdNum" id="cdHours">00</span>
-            <div class="cdLbl">Hours</div>
-          </div>
-          <div class="cdBox"><span class="cdNum" id="cdMins">00</span>
-            <div class="cdNum" style="display:none"></div>
-            <div class="cdLbl">Minutes</div>
-          </div>
-          <div class="cdBox"><span class="cdNum" id="cdSecs">00</span>
-            <div class="cdLbl">Seconds</div>
-          </div>
+          <div class="cdBox"><span class="cdNum" id="cdDays">00</span><div class="cdLbl">Days</div></div>
+          <div class="cdBox"><span class="cdNum" id="cdHours">00</span><div class="cdLbl">Hours</div></div>
+          <div class="cdBox"><span class="cdNum" id="cdMins">00</span><div class="cdLbl">Minutes</div></div>
+          <div class="cdBox"><span class="cdNum" id="cdSecs">00</span><div class="cdLbl">Seconds</div></div>
         </div>
       </div>
 
@@ -1255,23 +666,17 @@
       <h2 class="sectionTitle">Batch–Wise Detailed Timeline</h2>
 
       <div class="batchTabs">
-        <button class="tabBtn blue active" onclick="switchBatch('b1', this)">
-          Batch 1 (Morning)
-        </button>
-        <button class="tabBtn orange" onclick="switchBatch('b2', this)">
-          Batch 2 (Afternoon)
-        </button>
+        <button class="tabBtn blue active" onclick="switchBatch('b1', this)">Batch 1 (Morning)</button>
+        <button class="tabBtn orange" onclick="switchBatch('b2', this)">Batch 2 (Afternoon)</button>
       </div>
 
-      <div id="b1" class="batchContent active fade-in">
+      <div id="b1" class="batchContent active fade-in" style="display:block">
         <div class="batchCard blue">
-
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap">
             <h3>🔵 Morning Schedule</h3>
             <span class="badge blue">10:00 AM – 1:00 PM</span>
           </div>
           <p class="batchInfo">Target: <b>100–150 Kids</b></p>
-
           <div class="timeGrid">
             <div><span>10:00 – 10:10</span> Seating + Rules Announcement</div>
             <div><span>10:10 – 10:55</span> Colouring Competition (45 mins)</div>
@@ -1281,7 +686,6 @@
             <div><span>12:15 – 12:40</span> Prize Distribution</div>
             <div><span>12:40 – 1:00</span> Certificates + Goodies + Exit</div>
           </div>
-
           <ul class="notes">
             <li>✔ Parents stay till prize distribution</li>
             <li>✔ Judges get peaceful evaluation time</li>
@@ -1291,13 +695,11 @@
 
       <div id="b2" class="batchContent fade-in">
         <div class="batchCard orange">
-
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap">
             <h3>🟠 Afternoon Schedule</h3>
             <span class="badge orange">2:00 PM – 5:00 PM</span>
           </div>
           <p class="batchInfo">Target: <b>100–150 Kids</b></p>
-
           <div class="timeGrid">
             <div><span>2:00 – 2:10</span> Seating + Rules Announcement</div>
             <div><span>2:10 – 2:55</span> Colouring Competition (45 mins)</div>
@@ -1317,17 +719,13 @@
       <div class="breakCard" style="width: 100%; max-width: 100%; margin-top: 25px;">
         <h3>🟢 Mid-Day Break / Reset</h3>
         <p>⏰ 1:00 PM – 2:00 PM (Between Batches)</p>
-
       </div>
-
     </div>
   </section>
 
   <section class="section" id="about">
     <div class="container">
-      <div class="sectionHead">
-        <h2>✨ About the Festival</h2>
-      </div>
+      <div class="sectionHead"><h2>✨ About the Festival</h2></div>
 
       <div class="grid2">
         <div class="card animUp">
@@ -1352,9 +750,7 @@
             Kids aged <b>4–10 years</b> can participate. Choose your batch and age group during registration.
           </p>
           <div class="softLine"></div>
-          <div class="noteBox">
-            💡 Tip: Arrive 15 minutes early for smooth seating and instructions.
-          </div>
+          <div class="noteBox">💡 Tip: Arrive 15 minutes early for smooth seating and instructions.</div>
         </div>
       </div>
     </div>
@@ -1362,9 +758,7 @@
 
   <section class="section" id="categories">
     <div class="container">
-      <div class="sectionHead">
-        <h2>🏅 Categories & Winners</h2>
-      </div>
+      <div class="sectionHead"><h2>🏅 Categories & Winners</h2></div>
 
       <div class="grid2">
         <div class="card animUp">
@@ -1391,9 +785,7 @@
 
   <section class="section" id="rules">
     <div class="container">
-      <div class="sectionHead">
-        <h2>📌 Rules & What to Bring</h2>
-      </div>
+      <div class="sectionHead"><h2>📌 Rules & What to Bring</h2></div>
 
       <div class="grid2">
         <div class="card animUp">
@@ -1424,28 +816,21 @@
     </div>
   </section>
 
-
   <section class="section" id="contact">
     <div class="container">
-      <div class="sectionHead">
-        <h2>📍 Contact & Venue</h2>
-      </div>
+      <div class="sectionHead"><h2>📍 Contact & Venue</h2></div>
 
       <div class="card animUp">
-
         <div class="contactGrid">
-
           <div>
             <div class="titleChip">🗺️ Venue</div>
-
             <p class="tNote" style="margin:0 0 10px">
               <b>2nd A Cross Rd, Yelahanka Satellite Town,</b><br>
               Yelahanka, Bengaluru, Karnataka 560064
             </p>
-
             <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;">
               <a href="tel:+917406238503">📞 Call</a>
-              <a href="https://wa.me/917406238503" target="_blank">💬 WhatsApp</a>
+              <a href="https://wa.me/917406238503" target="_blank" rel="noreferrer">💬 WhatsApp</a>
               <a href="#countdown" onclick="openModal()">🎟️ Book Slot</a>
             </div>
 
@@ -1460,7 +845,6 @@
 
           <div>
             <div class="titleChip">📝 Send Enquiry</div>
-
             <form class="contactForm" id="contactForm">
               <input type="text" name="contact_name" placeholder="Your Name" required>
               <input type="tel" name="contact_phone" placeholder="Mobile Number" required>
@@ -1471,13 +855,10 @@
               <div class="status" id="contactStatus" style="color:#fff"></div>
             </form>
           </div>
-
         </div>
-
       </div>
     </div>
   </section>
-
 
   <a class="whatsapp" href="https://wa.me/917406238503" target="_blank" rel="noreferrer">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -1529,173 +910,228 @@
     </div>
   </footer>
 
-  <script>
+<script>
+  // =========================
+  // ✅ SETTINGS
+  // =========================
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbxCsKoEmCFUyBAhVaLZK8gZCYZzPP-6_rhWPZQYcM3HENowOQsap_R_1XbDWj6on5lP3Q/exec";
 
-    // ===== SETTINGS =====
-    const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE"; // Google Apps Script web app
+  const AUTO_POPUP = true;
+  const AUTO_POPUP_INTERVAL_MS = 30000;
 
-    // Auto popup every 20 seconds (true/false)
-    const AUTO_POPUP = true;
-    const AUTO_POPUP_INTERVAL_MS = 30000;
+  // =========================
+  // ✅ HELPERS
+  // =========================
+  function isValidScriptUrl(url) {
+    return (
+      typeof url === "string" &&
+      url.includes("script.google.com/macros/s/") &&
+      url.endsWith("/exec")
+    );
+  }
 
-    // ====== MODAL ======
-    const modal = document.getElementById('modal');
+  function safeSetStatus(statusElement, msg, color) {
+    if (!statusElement) return;
+    statusElement.textContent = msg;
+    statusElement.style.color = color || "#333";
+  }
 
-    function openModal() {
-      modal.style.display = 'flex';
-      modal.setAttribute("aria-hidden", "false");
-    }
-    function closeModal() {
-      modal.style.display = 'none';
-      modal.setAttribute("aria-hidden", "true");
-    }
+  // =========================
+  // ✅ MODAL
+  // =========================
+  const modal = document.getElementById("modal");
 
-    // close on click outside
+  function openModal() {
+    if (!modal) return;
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  if (modal) {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
+  }
 
-    // close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.style.display === "flex") closeModal();
+  });
+
+  // =========================
+  // ✅ BATCH TOGGLE
+  // =========================
+  function switchBatch(batchId, btnElement) {
+    document.querySelectorAll(".batchContent").forEach((el) => {
+      el.classList.remove("active");
+      el.style.display = "none";
     });
 
-    // ====== BATCH TOGGLE LOGIC (NEW) ======
-    function switchBatch(batchId, btnElement) {
-      // 1. Hide all batch content
-      document.querySelectorAll('.batchContent').forEach(el => {
-        el.classList.remove('active');
-        el.style.display = 'none';
-      });
+    document.querySelectorAll(".tabBtn").forEach((btn) => btn.classList.remove("active"));
 
-      // 2. Remove active class from all buttons
-      document.querySelectorAll('.tabBtn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-
-      // 3. Show the selected batch content
-      const selectedBatch = document.getElementById(batchId);
-      selectedBatch.style.display = 'block';
-
-      // Small timeout to allow the browser to register display:block before adding opacity class
-      setTimeout(() => {
-        selectedBatch.classList.add('active');
-      }, 10);
-
-      // 4. Add active class to clicked button
-      btnElement.classList.add('active');
+    const selectedBatch = document.getElementById(batchId);
+    if (selectedBatch) {
+      selectedBatch.style.display = "block";
+      setTimeout(() => selectedBatch.classList.add("active"), 10);
     }
 
-    // ====== MOBILE MENU LOGIC ======
-    function toggleMenu() {
-      const nav = document.getElementById('mobileMenu');
-      nav.classList.toggle('show');
-    }
+    if (btnElement) btnElement.classList.add("active");
+  }
 
-    // ✅ Close menu when clicking anywhere else (added)
-    document.addEventListener("click", (e) => {
+  // =========================
+  // ✅ MOBILE MENU
+  // =========================
+  function toggleMenu() {
+    const nav = document.getElementById("mobileMenu");
+    if (!nav) return;
+    nav.classList.toggle("show");
+  }
+
+  document.addEventListener("click", (e) => {
+    const menu = document.getElementById("mobileMenu");
+    const burger = document.querySelector(".hamburger");
+    if (!menu || !burger) return;
+
+    const clickedInside = menu.contains(e.target) || burger.contains(e.target);
+    if (!clickedInside) menu.classList.remove("show");
+  });
+
+  document.querySelectorAll("#mobileMenu a, #mobileMenu button").forEach((el) => {
+    el.addEventListener("click", () => {
       const menu = document.getElementById("mobileMenu");
-      const burger = document.querySelector(".hamburger");
-      if (!menu || !burger) return;
-      const clickedInside = menu.contains(e.target) || burger.contains(e.target);
-      if (!clickedInside) menu.classList.remove("show");
+      if (menu) menu.classList.remove("show");
     });
+  });
 
-    // ✅ Close menu after clicking a menu item (added)
-    document.querySelectorAll("#mobileMenu a, #mobileMenu button").forEach(el => {
-      el.addEventListener("click", () => {
-        document.getElementById("mobileMenu").classList.remove("show");
+  // Make functions accessible from HTML onclick=""
+  window.openModal = openModal;
+  window.closeModal = closeModal;
+  window.toggleMenu = toggleMenu;
+  window.switchBatch = switchBatch;
+
+  // =========================
+  // ✅ COUNTDOWN
+  // =========================
+  const target = new Date("Jan 26, 2026 10:00:00").getTime();
+  function pad2(n) {
+    return String(n).padStart(2, "0");
+  }
+
+  setInterval(() => {
+    const now = Date.now();
+    let diff = target - now;
+    if (diff < 0) diff = 0;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const dEl = document.getElementById("cdDays");
+    const hEl = document.getElementById("cdHours");
+    const mEl = document.getElementById("cdMins");
+    const sEl = document.getElementById("cdSecs");
+
+    if (dEl) dEl.innerText = pad2(days);
+    if (hEl) hEl.innerText = pad2(hours);
+    if (mEl) mEl.innerText = pad2(mins);
+    if (sEl) sEl.innerText = pad2(secs);
+  }, 1000);
+
+  // =========================
+  // ✅ FORM SUBMISSION
+  // Fix: Send as x-www-form-urlencoded (Apps Script reads e.parameter correctly)
+  // + Prevent double submit
+  // =========================
+  async function handleFormSubmit(e, formElement, statusElement, isModal) {
+    e.preventDefault();
+
+    if (!isValidScriptUrl(SCRIPT_URL)) {
+      safeSetStatus(
+        statusElement,
+        "⚠️ Invalid SCRIPT_URL. Paste correct Web App URL ending with /exec.",
+        "red"
+      );
+      return;
+    }
+
+    const submitBtn = formElement.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    safeSetStatus(statusElement, "Submitting...", isModal ? "#333" : "#ffbd8a");
+
+    try {
+      // ✅ Convert form to URL-encoded (important!)
+      const fd = new FormData(formElement);
+      const body = new URLSearchParams(fd);
+
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        body,
+        redirect: "follow",
       });
-    });
 
-    // ====== COUNTDOWN ======
-    const target = new Date("Jan 26, 2026 10:00:00").getTime();
-    function pad2(n) { return String(n).padStart(2, '0'); }
-
-    setInterval(() => {
-      const now = Date.now();
-      let diff = target - now;
-      if (diff < 0) diff = 0;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById("cdDays").innerText = pad2(days);
-      document.getElementById("cdHours").innerText = pad2(hours);
-      document.getElementById("cdMins").innerText = pad2(mins);
-      document.getElementById("cdSecs").innerText = pad2(secs);
-    }, 1000);
-
-    // ====== UNIFIED FORM SUBMISSION LOGIC ======
-    // Handles submission for both Forms to the same Google Sheet
-
-    async function handleFormSubmit(e, formElement, statusElement, isModal) {
-      e.preventDefault();
-
-      if (!SCRIPT_URL || SCRIPT_URL.includes("PASTE_YOUR_WEB_APP_URL_HERE")) {
-        statusElement.textContent = "⚠️ Paste your Google Script Web App URL in SCRIPT_URL.";
-        statusElement.style.color = "red";
-        return;
-      }
-
-      statusElement.textContent = "Submitting...";
-      statusElement.style.color = isModal ? "#333" : "#ffbd8a"; // Different loading color for dark background contact form
-
-      const payload = Object.fromEntries(new FormData(formElement).entries());
-
+      const text = await res.text();
+      let data = {};
       try {
-        const res = await fetch(SCRIPT_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await res.json();
-
-        if (data.status === "success") {
-          statusElement.textContent = "✅ Success! We’ll contact you shortly.";
-          statusElement.style.color = "green";
-          formElement.reset();
-
-          if (isModal) {
-            setTimeout(closeModal, 1500);
-          }
-        } else {
-          throw new Error(data.message || "Unknown error");
-        }
-      } catch (err) {
-        statusElement.textContent = "❌ Failed to submit. Please try again / WhatsApp us.";
-        statusElement.style.color = "red";
-        console.error(err);
+        data = JSON.parse(text);
+      } catch (_) {
+        // If response isn't JSON, keep it in text for debugging
       }
+
+      if (data.status === "success") {
+        safeSetStatus(statusElement, "✅ Submitted successfully!", "green");
+        formElement.reset();
+        if (isModal) setTimeout(() => closeModal(), 1200);
+      } else {
+        throw new Error(text || "Unknown error");
+      }
+    } catch (err) {
+      console.error("Submit error:", err);
+      safeSetStatus(
+        statusElement,
+        "❌ Failed to submit. Please try again / WhatsApp us.",
+        "red"
+      );
+    } finally {
+      if (submitBtn) submitBtn.disabled = false;
     }
+  }
 
-    // 1. Registration Form Listener
-    const regForm = document.getElementById("regForm");
-    const regStatus = document.getElementById("status");
+  // =========================
+  // ✅ HOOK FORMS
+  // =========================
+  const regForm = document.getElementById("regForm");
+  const regStatus = document.getElementById("status");
+  if (regForm) {
+    regForm.addEventListener("submit", (e) =>
+      handleFormSubmit(e, regForm, regStatus, true)
+    );
+  }
 
-    regForm.addEventListener("submit", (e) => {
-      handleFormSubmit(e, regForm, regStatus, true);
-    });
+  const contactForm = document.getElementById("contactForm");
+  const contactStatus = document.getElementById("contactStatus");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) =>
+      handleFormSubmit(e, contactForm, contactStatus, false)
+    );
+  }
 
-    // 2. Contact Form Listener
-    const contactForm = document.getElementById("contactForm");
-    const contactStatus = document.getElementById("contactStatus");
+  // =========================
+  // ✅ AUTO POPUP
+  // =========================
+  if (AUTO_POPUP) {
+    setInterval(() => {
+      if (modal && modal.style.display !== "flex") openModal();
+    }, AUTO_POPUP_INTERVAL_MS);
+  }
+</script>
 
-    contactForm.addEventListener("submit", (e) => {
-      handleFormSubmit(e, contactForm, contactStatus, false);
-    });
-
-
-    // ====== AUTO POPUP EVERY 20 SECONDS ======
-    if (AUTO_POPUP) {
-      setInterval(() => {
-        if (modal.style.display !== "flex") openModal();
-      }, AUTO_POPUP_INTERVAL_MS);
-    }
-  </script>
 </body>
-
 </html>
