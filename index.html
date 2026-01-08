@@ -4,580 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SkyKeen Kids Creative Festival 2026</title>
-
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --orange: #FF6B35;
-      --purple: #7B2CBF;
-      --yellow: #FFB703;
-      --blue: #0081C9;
-      --bg: #fdf7f2;
-      --white: #fff;
-      --text: #232323;
-      --muted: #5a5a5a;
-      --wa: #25D366;
-      --card: #ffffff;
-      --border: #eee;
-      --shadow: 0 14px 40px rgba(0, 0, 0, .07);
-      --radius: 26px;
-      --navbg: #0b5e97;
-    }
-
+    /* ... (KEEP YOUR CSS EXACTLY AS IT WAS) ... */
+    :root { --orange: #FF6B35; --purple: #7B2CBF; --yellow: #FFB703; --blue: #0081C9; --bg: #fdf7f2; --white: #fff; --text: #232323; --muted: #5a5a5a; --wa: #25D366; --card: #ffffff; --border: #eee; --shadow: 0 14px 40px rgba(0, 0, 0, .07); --radius: 26px; --navbg: #0b5e97; }
     * { box-sizing: border-box }
     html { scroll-behavior: smooth }
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    body { margin: 0; font-family: 'Quicksand', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
     h1,h2,h3 { font-family: 'Fredoka One', cursive; margin: 0 }
     a { color: inherit; text-decoration: none }
     .container { max-width: 1150px; margin: 0 auto; padding: 0 18px }
-
-    /* ===== Animations ===== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px) }
-      to { opacity: 1; transform: translateY(0) }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes floaty {
-      0%,100% { transform: translateY(0) }
-      50% { transform: translateY(-8px) }
-    }
-    @keyframes pop {
-      from { transform: scale(.96); opacity: 0 }
-      to { transform: scale(1); opacity: 1 }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: translateY(0) } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes floaty { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+    @keyframes pop { from { transform: scale(.96); opacity: 0 } to { transform: scale(1); opacity: 1 } }
     .animUp { animation: fadeUp .75s ease both }
     .floaty { animation: floaty 3.2s ease-in-out infinite }
     .fade-in { animation: fadeIn 0.4s ease-in-out; }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1200;
-      background: rgba(11, 94, 151, .94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, .12);
-    }
-    .navInner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 10px;
-      gap: 12px;
-      position: relative;
-    }
+    .navbar { position: sticky; top: 0; z-index: 1200; background: rgba(11, 94, 151, .94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, .12); }
+    .navInner { display: flex; align-items: center; justify-content: space-between; padding: 12px 10px; gap: 12px; position: relative; }
     .brand { display: flex; align-items: center; gap: 10px; min-width: 160px; }
     .brand img { width: auto; height: 100px; padding: 2px; }
-
     .navBtns { display: flex; gap: 10px; }
-    .navBtn {
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 99px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      font-weight: 700;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      white-space: nowrap;
-    }
+    .navBtn { background: rgba(255, 255, 255, 0.15); color: #fff; padding: 8px 16px; border-radius: 99px; border: 1px solid rgba(255, 255, 255, 0.2); cursor: pointer; font-weight: 700; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
     .navBtn:hover { background: #fff; color: var(--blue); }
     .navBook { background: var(--yellow); color: #000; border: none; }
     .navBook:hover { background: #ffca2c; }
-
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger span { width: 28px; height: 3px; background: #fff; border-radius: 2px; }
-
-    /* ===== HERO ===== */
     .heroWrap { background: #fff; position: relative; overflow: hidden; }
-    .heroWrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 16% 30%, rgba(255, 183, 3, .18), transparent 40%),
-        radial-gradient(circle at 80% 35%, rgba(123, 44, 191, .14), transparent 42%),
-        radial-gradient(circle at 55% 5%, rgba(0, 129, 201, .10), transparent 40%),
-        linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
-      pointer-events: none;
-    }
+    .heroWrap::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 16% 30%, rgba(255, 183, 3, .18), transparent 40%), radial-gradient(circle at 80% 35%, rgba(123, 44, 191, .14), transparent 42%), radial-gradient(circle at 55% 5%, rgba(0, 129, 201, .10), transparent 40%), linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)); pointer-events: none; }
     .hero { position: relative; padding: 44px 0 22px; }
-    .heroGrid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-    }
-    .heroTitle {
-      font-size: 3.05rem;
-      line-height: 1.06;
-      margin-bottom: 10px;
-      color: #4d078ad7;
-    }
+    .heroGrid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
+    .heroTitle { font-size: 3.05rem; line-height: 1.06; margin-bottom: 10px; color: #4d078ad7; }
     .heroTitle span { color: var(--orange) }
-    .heroSub {
-      color: var(--muted);
-      font-weight: 700;
-      max-width: 520px;
-      margin-bottom: 18px;
-    }
+    .heroSub { color: var(--muted); font-weight: 700; max-width: 520px; margin-bottom: 18px; }
     .badgeRow { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-    .badge {
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      border: 1px solid rgba(0, 0, 0, .06);
-      background: #fff;
-      font-size: 0.9rem;
-    }
+    .badge { padding: 10px 12px; border-radius: 999px; font-weight: 900; border: 1px solid rgba(0, 0, 0, .06); background: #fff; font-size: 0.9rem; }
     .badge.blue { background: rgba(0, 129, 201, .10); color: var(--blue) }
     .badge.orange { background: rgba(255, 107, 53, .12); color: var(--orange) }
     .badge.purple { background: rgba(123, 44, 191, .10); color: var(--purple) }
     .badge.yellow { background: rgba(255, 183, 3, .20); color: #6b4b00 }
-
     .heroVisual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 320px; }
-    .kidBlob {
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 310px;
-      border-radius: 999px 999px 80px 80px;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(255, 107, 53, .24), transparent 38%),
-        radial-gradient(circle at 75% 30%, rgba(0, 129, 201, .22), transparent 40%),
-        radial-gradient(circle at 52% 70%, rgba(255, 183, 3, .22), transparent 45%),
-        #fff5ee;
-      transform: translateY(18px);
-      filter: saturate(1.05);
-    }
-    .kidImg {
-      position: relative;
-      width: min(360px, 92%);
-      height: 360px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 10px solid rgba(255, 255, 255, .9);
-      box-shadow: var(--shadow);
-      background: #fff;
-      z-index: 2;
-    }
+    .kidBlob { position: absolute; inset: auto 0 0 0; height: 310px; border-radius: 999px 999px 80px 80px; background: radial-gradient(circle at 20% 25%, rgba(255, 107, 53, .24), transparent 38%), radial-gradient(circle at 75% 30%, rgba(0, 129, 201, .22), transparent 40%), radial-gradient(circle at 52% 70%, rgba(255, 183, 3, .22), transparent 45%), #fff5ee; transform: translateY(18px); filter: saturate(1.05); }
+    .kidImg { position: relative; width: min(360px, 92%); height: 360px; border-radius: 50%; overflow: hidden; border: 10px solid rgba(255, 255, 255, .9); box-shadow: var(--shadow); background: #fff; z-index: 2; }
     .kidImg img { width: 100%; height: 100%; object-fit: cover }
-    .floatIcon {
-      position: absolute;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: #fff;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, .10);
-      font-size: 26px;
-    }
+    .floatIcon { position: absolute; z-index: 3; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #fff; box-shadow: 0 12px 26px rgba(0, 0, 0, .10); font-size: 26px; }
     .fi1 { left: 10%; top: 18% }
     .fi2 { right: 8%; top: 22% }
     .fi3 { left: 22%; bottom: 6% }
-    .wave {
-      width: 100%;
-      height: 90px;
-      background: var(--bg);
-      border-top-left-radius: 60% 100%;
-      border-top-right-radius: 60% 100%;
-      transform: translateY(24px);
-    }
-
-    /* ===== COUNTDOWN ===== */
+    .wave { width: 100%; height: 90px; background: var(--bg); border-top-left-radius: 60% 100%; border-top-right-radius: 60% 100%; transform: translateY(24px); }
     .countdownSection { position: relative; padding: 80px 0; overflow: hidden; }
-    .countdownSection::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 120px;
-      background: linear-gradient(135deg, #7b2cbf, #9d4edd);
-      z-index: 0;
-    }
-    .countdownSection::after {
-      content: "";
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 120px;
-      background: linear-gradient(135deg, #ffb703, #ffd166);
-      z-index: 0;
-    }
+    .countdownSection::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(135deg, #7b2cbf, #9d4edd); z-index: 0; }
+    .countdownSection::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(135deg, #ffb703, #ffd166); z-index: 0; }
     .countdownSection .container { position: relative; z-index: 2; }
-    .cdCard {
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, .06);
-      border-radius: 34px;
-      box-shadow: var(--shadow);
-      padding: 22px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      align-items: center;
-    }
+    .cdCard { background: #fff; border: 1px solid rgba(0, 0, 0, .06); border-radius: 34px; box-shadow: var(--shadow); padding: 22px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; align-items: center; }
     .cdText { margin: 0; font-weight: 900; color: #2c2c2c }
     .cdGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .cdBox {
-      background: rgba(123, 44, 191, .07);
-      border: 1px solid rgba(123, 44, 191, .12);
-      border-radius: 18px;
-      padding: 12px 10px;
-      text-align: center;
-    }
-    .cdNum {
-      display: block;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.7rem;
-      color: var(--purple);
-      line-height: 1;
-    }
+    .cdBox { background: rgba(123, 44, 191, .07); border: 1px solid rgba(123, 44, 191, .12); border-radius: 18px; padding: 12px 10px; text-align: center; }
+    .cdNum { display: block; font-family: 'Fredoka One', cursive; font-size: 1.7rem; color: var(--purple); line-height: 1; }
     .cdLbl { font-weight: 900; color: var(--muted); margin-top: 4px; font-size: 0.8rem; }
-
-    /* ===== TIMELINE TABS ===== */
     .timelineSection { padding: 60px 0; background: #faf7ff; }
     .sectionTitle { text-align: center; font-size: 2rem; margin-bottom: 30px; color: #4a148c; }
     .batchTabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
-    .tabBtn {
-      border: 2px solid #ddd;
-      background: #fff;
-      padding: 15px 30px;
-      border-radius: 20px;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.2rem;
-      color: #888;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      flex: 1;
-      max-width: 300px;
-    }
+    .tabBtn { border: 2px solid #ddd; background: #fff; padding: 15px 30px; border-radius: 20px; font-family: 'Fredoka One', cursive; font-size: 1.2rem; color: #888; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); flex: 1; max-width: 300px; }
     .tabBtn:hover { transform: translateY(-3px); border-color: #ccc; }
     .tabBtn.active { color: #fff; border-color: transparent; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
     .tabBtn.blue.active { background: #0081C9; }
     .tabBtn.orange.active { background: #FF6B35; }
-
     .batchContent { display: none; }
     .batchContent.active { display: block; }
-
-    #about {
-      background-image: url("image/bg.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .batchCard, .breakCard {
-      background: #fff;
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    #about { background-image: url("image/bg.jpg"); background-size: cover; background-position: center; background-repeat: no-repeat; }
+    .batchCard, .breakCard { background: #fff; border-radius: 18px; padding: 22px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); max-width: 750px; margin-left: auto; margin-right: auto; }
     .batchCard.blue { border-left: 6px solid #0081C9; }
     .batchCard.orange { border-left: 6px solid #FF6B35; }
     .batchCard h3 { margin: 0 0 8px; font-size: 1.5rem; }
     .batchInfo { font-weight: 600; margin-bottom: 15px; color: #555; }
-
     .timeGrid { display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .timeGrid div {
-      background: #f5f5f5;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .timeGrid span {
-      color: #6a1b9a;
-      min-width: 100px;
-      background: #fff;
-      padding: 4px 8px;
-      border-radius: 6px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
+    .timeGrid div { background: #f5f5f5; padding: 10px 14px; border-radius: 10px; font-weight: 600; display: flex; align-items: center; gap: 12px; }
+    .timeGrid span { color: #6a1b9a; min-width: 100px; background: #fff; padding: 4px 8px; border-radius: 6px; text-align: center; font-size: 0.9rem; }
     .notes { margin-top: 15px; padding-left: 18px; color: #444; font-weight: 600; }
     .notes li { margin-bottom: 5px; }
-
-    .breakCard {
-      text-align: center;
-      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-      border: 1px dashed #66bb6a;
-    }
+    .breakCard { text-align: center; background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border: 1px dashed #66bb6a; margin-top: 25px; width: 100%; max-width: 100%; }
     .breakCard h3 { color: #2e7d32; }
-
-    /* ===== SECTIONS ===== */
     .section { padding: 42px 0; }
-    .sectionHead {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
-    }
+    .sectionHead { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 18px; }
     .sectionHead h2 { font-size: 2rem; color: var(--purple); }
-
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      transition: .2s ease;
-    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; transition: .2s ease; }
     .card:hover { transform: translateY(-2px) }
-
     .bullet { margin: 0; padding-left: 18px; font-weight: 750; color: #3f3f3f; }
     .bullet li { margin: 8px 0 }
-
     .tNote { font-weight: 700; color: var(--muted); margin-top: 10px }
-    .titleChip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 1000;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, .04);
-      margin-bottom: 10px;
-    }
+    .titleChip { display: inline-flex; align-items: center; gap: 10px; font-weight: 1000; padding: 10px 14px; border-radius: 999px; background: rgba(0, 0, 0, .04); margin-bottom: 10px; }
     .ctaRow { display: flex; justify-content: center; margin-top: 18px; }
-    .btnBook {
-      background: var(--orange);
-      color: #fff;
-      padding: 16px 42px;
-      border-radius: 999px;
-      border: none;
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.25rem;
-      cursor: pointer;
-      box-shadow: 0 12px 26px rgba(255, 107, 53, .22);
-      transition: .2s ease;
-    }
+    .btnBook { background: var(--orange); color: #fff; padding: 16px 42px; border-radius: 999px; border: none; font-family: 'Fredoka One', cursive; font-size: 1.25rem; cursor: pointer; box-shadow: 0 12px 26px rgba(255, 107, 53, .22); transition: .2s ease; }
     .btnBook:hover { transform: translateY(-1px) }
-
-    /* ===== WhatsApp ===== */
-    .whatsapp {
-      position: fixed;
-      bottom: 26px;
-      right: 26px;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: var(--wa);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 14px 30px rgba(37, 211, 102, .35);
-      z-index: 2000;
-    }
+    .whatsapp { position: fixed; bottom: 26px; right: 26px; width: 64px; height: 64px; border-radius: 50%; background: var(--wa); display: flex; align-items: center; justify-content: center; box-shadow: 0 14px 30px rgba(37, 211, 102, .35); z-index: 2000; }
     .whatsapp img { width: 34px; height: 34px }
-
-    /* ===== Modal form ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .70);
-      z-index: 3000;
-      justify-content: center;
-      align-items: center;
-      padding: 18px;
-    }
-    .modalCard {
-      width: 100%;
-      max-width: 560px;
-      background: #fff;
-      border-radius: 34px;
-      border: 6px solid var(--yellow);
-      padding: 26px 22px 20px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      position: relative;
-      animation: pop .18s ease both;
-    }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, .70); z-index: 3000; justify-content: center; align-items: center; padding: 18px; }
+    .modalCard { width: 100%; max-width: 560px; background: #fff; border-radius: 34px; border: 6px solid var(--yellow); padding: 26px 22px 20px; text-align: center; box-shadow: var(--shadow); position: relative; animation: pop .18s ease both; }
     .modalCard h3 { color: var(--purple); font-size: 1.65rem; margin-bottom: 6px }
-    .xClose {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, .10);
-      background: #fff;
-      cursor: pointer;
-      font-weight: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: .15s ease;
-      line-height: 1;
-      font-size: 16px;
-    }
+    .xClose { position: absolute; top: 10px; right: 12px; width: 30px; height: 30px; border-radius: 10px; border: 1px solid rgba(0, 0, 0, .10); background: #fff; cursor: pointer; font-weight: 1000; display: flex; align-items: center; justify-content: center; transition: .15s ease; line-height: 1; font-size: 16px; }
     .xClose:hover { transform: scale(1.03); background: rgba(255, 107, 53, .08) }
-
     input, select, textarea, button { font-family: 'Quicksand', sans-serif; font-size: 16px; }
-    .field {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid #ddd;
-      font-weight: 800;
-      font-size: 1rem;
-      margin: 10px 0;
-      outline: none;
-      transition: .15s ease;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .field:focus {
-      border-color: rgba(123, 44, 191, .45);
-      box-shadow: 0 0 0 4px rgba(123, 44, 191, .08)
-    }
+    .field { width: 100%; padding: 12px 14px; border-radius: 14px; border: 1px solid #ddd; font-weight: 800; font-size: 1rem; margin: 10px 0; outline: none; transition: .15s ease; appearance: none; -webkit-appearance: none; }
+    .field:focus { border-color: rgba(123, 44, 191, .45); box-shadow: 0 0 0 4px rgba(123, 44, 191, .08) }
     textarea.field { resize: vertical; }
-    select.field {
-      background-image:
-        linear-gradient(45deg, transparent 50%, rgba(0,0,0,.55) 50%),
-        linear-gradient(135deg, rgba(0,0,0,.55) 50%, transparent 50%),
-        linear-gradient(to right, transparent, transparent);
-      background-position:
-        calc(100% - 18px) calc(50% - 3px),
-        calc(100% - 12px) calc(50% - 3px),
-        0 0;
-      background-size: 6px 6px, 6px 6px, 100% 100%;
-      background-repeat: no-repeat;
-      padding-right: 38px;
-    }
+    select.field { background-image: linear-gradient(45deg, transparent 50%, rgba(0,0,0,.55) 50%), linear-gradient(135deg, rgba(0,0,0,.55) 50%, transparent 50%), linear-gradient(to right, transparent, transparent); background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px), 0 0; background-size: 6px 6px, 6px 6px, 100% 100%; background-repeat: no-repeat; padding-right: 38px; }
     .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .status { font-weight: 900; margin-top: 10px; }
-
-    /* ===== Footer ===== */
     footer { margin-top: 30px; background: #0e0e0e; color: #eee; padding: 34px 0; }
     .footerTop { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; justify-content: center; }
     .footerTop img { width: auto; height: 100px; padding: 2px; }
-    .copy {
-      border-top: 1px solid rgba(255, 255, 255, .12);
-      margin-top: 18px;
-      padding-top: 14px;
-      font-weight: 800;
-      color: #cfcfcf;
-      text-align: center;
-    }
-
+    .copy { border-top: 1px solid rgba(255, 255, 255, .12); margin-top: 18px; padding-top: 14px; font-weight: 800; color: #cfcfcf; text-align: center; }
     .softLine { height: 1px; background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .08), transparent); margin: 18px 0; }
-    .noteBox {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(0, 129, 201, .07);
-      border: 1px solid rgba(0, 129, 201, .12);
-      font-weight: 800;
-      color: #2a2a2a;
-    }
-
+    .noteBox { padding: 14px 16px; border-radius: 18px; background: rgba(0, 129, 201, .07); border: 1px solid rgba(0, 129, 201, .12); font-weight: 800; color: #2a2a2a; }
     .contactGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .mapBox { width: 100%; height: 220px; border-radius: 12px; overflow: hidden; border: 1px solid #ffffff20; }
     .mapBox iframe { width: 100%; height: 100%; border: 0; }
-
     .contactForm { display: flex; flex-direction: column; gap: 10px; }
-    .contactForm input, .contactForm textarea {
-      padding: 12px 12px;
-      border-radius: 10px;
-      border: 1px solid #ffffff20;
-      background: #111;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      outline: none;
-      transition: .15s ease;
-    }
+    .contactForm input, .contactForm textarea { padding: 12px 12px; border-radius: 10px; border: 1px solid #ffffff20; background: #111; color: #fff; font-size: 16px; font-weight: 600; outline: none; transition: .15s ease; }
     .contactForm textarea { resize: vertical; }
-    .contactForm input:focus, .contactForm textarea:focus {
-      border-color: rgba(255, 183, 3, .55);
-      box-shadow: 0 0 0 4px rgba(255, 183, 3, .12);
-    }
+    .contactForm input:focus, .contactForm textarea:focus { border-color: rgba(255, 183, 3, .55); box-shadow: 0 0 0 4px rgba(255, 183, 3, .12); }
     .contactForm input::placeholder, .contactForm textarea::placeholder { color: #aaa; }
-    .btnPrimary {
-      background: #ff7a00;
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: 700;
-      transition: 0.3s;
-      font-family: 'Fredoka One', cursive;
-      letter-spacing: .2px;
-    }
+    .btnPrimary { background: #ff7a00; color: #fff; border: none; padding: 12px; border-radius: 10px; cursor: pointer; font-weight: 700; transition: 0.3s; font-family: 'Fredoka One', cursive; letter-spacing: .2px; }
     .btnPrimary:hover { opacity: 0.9; }
-
     .cdText, .tNote, .batchInfo, .bullet li, .timeGrid div { word-break: break-word; overflow-wrap: anywhere; }
-
-    /* Mobile Responsive */
     @media(max-width: 900px) {
       .heroTitle { font-size: 2.45rem }
       .heroGrid { grid-template-columns: 1fr; text-align: center; }
       .heroSub { margin-left: auto; margin-right: auto; }
       .badgeRow { justify-content: center; }
-
       .cdCard { grid-template-columns: 1fr; text-align: center; }
       .grid2, .two { grid-template-columns: 1fr; }
       .timeGrid span { min-width: 80px; font-size: 0.8rem; }
-
       .batchTabs { flex-direction: column; align-items: stretch; }
       .tabBtn { max-width: 100%; }
-
       .contactGrid { grid-template-columns: 1fr; }
       .mapBox { height: 200px; margin-bottom: 20px; }
-
       .modalCard { max-width: 520px; width: 100%; padding: 20px 16px 16px; border-radius: 26px; }
       .btnBook { width: 100%; padding: 14px 22px; font-size: 1.1rem; }
-
       .hamburger { display: flex; z-index: 1300; }
-      .navBtns {
-        position: absolute;
-        top: 70px;
-        right: 15px;
-        background: #0e0e0e;
-        border: 1px solid #333;
-        flex-direction: column;
-        padding: 15px;
-        border-radius: 12px;
-        display: none;
-        width: 220px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
+      .navBtns { position: absolute; top: 70px; right: 15px; background: #0e0e0e; border: 1px solid #333; flex-direction: column; padding: 15px; border-radius: 12px; display: none; width: 220px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
       .navBtns.show { display: flex; animation: fadeUp 0.3s ease forwards; }
       .navBtn { justify-content: center; width: 100%; }
-
       .cdGrid { gap: 6px; }
       .cdNum { font-size: 1.4rem; }
-
       .timeGrid div { flex-direction: column; align-items: flex-start; gap: 5px; }
       .timeGrid span { width: 100%; }
-
       .whatsapp { width: 58px; height: 58px; bottom: 18px; right: 18px; }
     }
     @media(max-width: 420px) {
@@ -593,11 +168,9 @@
   <header class="navbar">
     <div class="container navInner">
       <a class="brand" href="#"><img src="image/logo1.png" alt="SkyKeen Logo"></a>
-
       <div class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
-
       <div class="navBtns" id="mobileMenu">
         <a class="navBtn navCall" href="tel:+917406238503">📞 <small>Call</small></a>
         <button class="navBtn navBook" onclick="openModal()">🎟️ <small>Book</small></button>
@@ -620,7 +193,6 @@
             <span class="badge yellow">📜 Certificates + Goodies</span>
           </div>
         </div>
-
         <div class="heroVisual">
           <div class="kidBlob" aria-hidden="true"></div>
           <div class="floatIcon fi1 floaty">🖍️</div>
@@ -646,7 +218,6 @@
             Book your slot now — limited seats per batch (100–150 kids).
           </p>
         </div>
-
         <div class="cdGrid" aria-label="countdown timer">
           <div class="cdBox"><span class="cdNum" id="cdDays">00</span><div class="cdLbl">Days</div></div>
           <div class="cdBox"><span class="cdNum" id="cdHours">00</span><div class="cdLbl">Hours</div></div>
@@ -654,7 +225,6 @@
           <div class="cdBox"><span class="cdNum" id="cdSecs">00</span><div class="cdLbl">Seconds</div></div>
         </div>
       </div>
-
       <div class="ctaRow">
         <button class="btnBook" onclick="openModal()">BOOK A SLOT NOW</button>
       </div>
@@ -664,12 +234,10 @@
   <section class="timelineSection" id="timeline">
     <div class="container">
       <h2 class="sectionTitle">Batch–Wise Detailed Timeline</h2>
-
       <div class="batchTabs">
         <button class="tabBtn blue active" onclick="switchBatch('b1', this)">Batch 1 (Morning)</button>
         <button class="tabBtn orange" onclick="switchBatch('b2', this)">Batch 2 (Afternoon)</button>
       </div>
-
       <div id="b1" class="batchContent active fade-in" style="display:block">
         <div class="batchCard blue">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap">
@@ -692,7 +260,6 @@
           </ul>
         </div>
       </div>
-
       <div id="b2" class="batchContent fade-in">
         <div class="batchCard orange">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap">
@@ -715,8 +282,7 @@
           </ul>
         </div>
       </div>
-
-      <div class="breakCard" style="width: 100%; max-width: 100%; margin-top: 25px;">
+      <div class="breakCard">
         <h3>🟢 Mid-Day Break / Reset</h3>
         <p>⏰ 1:00 PM – 2:00 PM (Between Batches)</p>
       </div>
@@ -726,7 +292,6 @@
   <section class="section" id="about">
     <div class="container">
       <div class="sectionHead"><h2>✨ About the Festival</h2></div>
-
       <div class="grid2">
         <div class="card animUp">
           <div class="titleChip">🎉 What happens here?</div>
@@ -743,7 +308,6 @@
             <span class="badge yellow">🏆 Instant rewards</span>
           </div>
         </div>
-
         <div class="card animUp">
           <div class="titleChip">✅ Who can participate?</div>
           <p class="tNote" style="margin-top:0">
@@ -759,7 +323,6 @@
   <section class="section" id="categories">
     <div class="container">
       <div class="sectionHead"><h2>🏅 Categories & Winners</h2></div>
-
       <div class="grid2">
         <div class="card animUp">
           <div class="titleChip">👶 Age Groups</div>
@@ -769,7 +332,6 @@
           </ul>
           <p class="tNote"><b>Total winners:</b> 6 winners per batch • 12 winners overall</p>
         </div>
-
         <div class="card animUp">
           <div class="titleChip">🏆 Awards Included</div>
           <ul class="bullet">
@@ -786,7 +348,6 @@
   <section class="section" id="rules">
     <div class="container">
       <div class="sectionHead"><h2>📌 Rules & What to Bring</h2></div>
-
       <div class="grid2">
         <div class="card animUp">
           <div class="titleChip">📜 Rules</div>
@@ -798,7 +359,6 @@
             <li>Judges decision will be final</li>
           </ul>
         </div>
-
         <div class="card animUp">
           <div class="titleChip">🎒 Materials</div>
           <ul class="bullet">
@@ -819,7 +379,6 @@
   <section class="section" id="contact">
     <div class="container">
       <div class="sectionHead"><h2>📍 Contact & Venue</h2></div>
-
       <div class="card animUp">
         <div class="contactGrid">
           <div>
@@ -833,26 +392,22 @@
               <a href="https://wa.me/917406238503" target="_blank" rel="noreferrer">💬 WhatsApp</a>
               <a href="#countdown" onclick="openModal()">🎟️ Book Slot</a>
             </div>
-
             <div class="mapBox">
-              <iframe
-                src="https://www.google.com/maps?q=Yelahanka%20Satellite%20Town%20Bangalore&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
+              <iframe src="https://www.google.com/maps?q=Yelahanka%20Satellite%20Town%20Bangalore&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
-
           <div>
             <div class="titleChip">📝 Send Enquiry</div>
             <form class="contactForm" id="contactForm">
+              <input type="hidden" name="form_type" value="contact">
+              
               <input type="text" name="contact_name" placeholder="Your Name" required>
               <input type="tel" name="contact_phone" placeholder="Mobile Number" required>
               <input type="email" name="contact_email" placeholder="Email (optional)">
               <textarea name="contact_message" rows="4" placeholder="Your Message"></textarea>
 
               <button type="submit" class="btnPrimary">Send Message</button>
-              <div class="status" id="contactStatus" style="color:#fff"></div>
+              <div class="status" id="contactStatus" style="color:#ffb703"></div>
             </form>
           </div>
         </div>
@@ -867,17 +422,20 @@
   <div class="modal" id="modal" aria-hidden="true">
     <div class="modalCard" role="dialog" aria-modal="true" aria-label="Registration Form">
       <button class="xClose" onclick="closeModal()" aria-label="Close">✕</button>
-
       <h3>Register Now</h3>
       <p style="margin:0; font-weight:900; color:var(--muted)">Form submits to Google Sheet ✅</p>
 
       <form id="regForm">
+        <input type="hidden" name="form_type" value="register">
+
         <input class="field" name="child_name" type="text" placeholder="Child Name *" required>
 
         <div class="two">
           <input class="field" name="parent_name" type="text" placeholder="Parent Name *" required>
           <input class="field" name="phone" type="tel" placeholder="Phone Number *" required>
         </div>
+
+        <input class="field" name="email" type="email" placeholder="Email Address (Optional)">
 
         <div class="two">
           <select class="field" name="age_group" required>
@@ -911,227 +469,106 @@
   </footer>
 
 <script>
-  // =========================
-  // ✅ SETTINGS
-  // =========================
-  const SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbxCsKoEmCFUyBAhVaLZK8gZCYZzPP-6_rhWPZQYcM3HENowOQsap_R_1XbDWj6on5lP3Q/exec";
+(function () {
+  // ============================================
+  // ⚠️ PASTE YOUR NEW DEPLOYMENT URL HERE 👇
+  // ============================================
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjH4abMZ-7PjBPCKmJexZb7ndle0q5DDTSnayDkwae8-0ChOB7NSCLNT2OI1M5Gh3jeA/exec";
 
   const AUTO_POPUP = true;
   const AUTO_POPUP_INTERVAL_MS = 30000;
 
-  // =========================
-  // ✅ HELPERS
-  // =========================
   function isValidScriptUrl(url) {
-    return (
-      typeof url === "string" &&
-      url.includes("script.google.com/macros/s/") &&
-      url.endsWith("/exec")
-    );
+    return (typeof url === "string" && url.includes("script.google.com/macros/s/") && url.endsWith("/exec"));
   }
-
-  function safeSetStatus(statusElement, msg, color) {
-    if (!statusElement) return;
-    statusElement.textContent = msg;
-    statusElement.style.color = color || "#333";
+  function safeSetStatus(el, msg, color) {
+    if (!el) return;
+    el.textContent = msg || "";
+    if (color) el.style.color = color;
   }
+  function $(id) { return document.getElementById(id); }
 
-  // =========================
-  // ✅ MODAL
-  // =========================
-  const modal = document.getElementById("modal");
+  // Modal Logic
+  const modal = $("modal");
+  function openModal() { if (!modal) return; modal.style.display = "flex"; modal.setAttribute("aria-hidden", "false"); }
+  function closeModal() { if (!modal) return; modal.style.display = "none"; modal.setAttribute("aria-hidden", "true"); }
+  if (modal) { modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); }); }
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal && modal.style.display === "flex") closeModal(); });
+  window.openModal = openModal; window.closeModal = closeModal;
 
-  function openModal() {
-    if (!modal) return;
-    modal.style.display = "flex";
-    modal.setAttribute("aria-hidden", "false");
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-  }
-
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && modal.style.display === "flex") closeModal();
-  });
-
-  // =========================
-  // ✅ BATCH TOGGLE
-  // =========================
+  // Batch Toggle
   function switchBatch(batchId, btnElement) {
-    document.querySelectorAll(".batchContent").forEach((el) => {
-      el.classList.remove("active");
-      el.style.display = "none";
-    });
-
+    document.querySelectorAll(".batchContent").forEach((el) => { el.classList.remove("active"); el.style.display = "none"; });
     document.querySelectorAll(".tabBtn").forEach((btn) => btn.classList.remove("active"));
-
-    const selectedBatch = document.getElementById(batchId);
-    if (selectedBatch) {
-      selectedBatch.style.display = "block";
-      setTimeout(() => selectedBatch.classList.add("active"), 10);
-    }
-
+    const selected = document.getElementById(batchId);
+    if (selected) { selected.style.display = "block"; setTimeout(() => selected.classList.add("active"), 10); }
     if (btnElement) btnElement.classList.add("active");
   }
-
-  // =========================
-  // ✅ MOBILE MENU
-  // =========================
-  function toggleMenu() {
-    const nav = document.getElementById("mobileMenu");
-    if (!nav) return;
-    nav.classList.toggle("show");
-  }
-
-  document.addEventListener("click", (e) => {
-    const menu = document.getElementById("mobileMenu");
-    const burger = document.querySelector(".hamburger");
-    if (!menu || !burger) return;
-
-    const clickedInside = menu.contains(e.target) || burger.contains(e.target);
-    if (!clickedInside) menu.classList.remove("show");
-  });
-
-  document.querySelectorAll("#mobileMenu a, #mobileMenu button").forEach((el) => {
-    el.addEventListener("click", () => {
-      const menu = document.getElementById("mobileMenu");
-      if (menu) menu.classList.remove("show");
-    });
-  });
-
-  // Make functions accessible from HTML onclick=""
-  window.openModal = openModal;
-  window.closeModal = closeModal;
-  window.toggleMenu = toggleMenu;
   window.switchBatch = switchBatch;
 
-  // =========================
-  // ✅ COUNTDOWN
-  // =========================
-  const target = new Date("Jan 26, 2026 10:00:00").getTime();
-  function pad2(n) {
-    return String(n).padStart(2, "0");
-  }
+  // Mobile Menu
+  function toggleMenu() { const nav = $("mobileMenu"); if (!nav) return; nav.classList.toggle("show"); }
+  window.toggleMenu = toggleMenu;
+  document.addEventListener("click", (e) => {
+    const menu = $("mobileMenu"); const burger = document.querySelector(".hamburger");
+    if (!menu || !burger) return;
+    if (!menu.contains(e.target) && !burger.contains(e.target)) menu.classList.remove("show");
+  });
+  document.querySelectorAll("#mobileMenu a, #mobileMenu button").forEach((el) => {
+    el.addEventListener("click", () => { const menu = $("mobileMenu"); if (menu) menu.classList.remove("show"); });
+  });
 
+  // Countdown
+  const target = new Date("Jan 26, 2026 10:00:00").getTime();
+  const pad2 = (n) => String(n).padStart(2, "0");
   setInterval(() => {
     const now = Date.now();
-    let diff = target - now;
-    if (diff < 0) diff = 0;
-
+    let diff = target - now; if (diff < 0) diff = 0;
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-    const dEl = document.getElementById("cdDays");
-    const hEl = document.getElementById("cdHours");
-    const mEl = document.getElementById("cdMins");
-    const sEl = document.getElementById("cdSecs");
-
-    if (dEl) dEl.innerText = pad2(days);
-    if (hEl) hEl.innerText = pad2(hours);
-    if (mEl) mEl.innerText = pad2(mins);
-    if (sEl) sEl.innerText = pad2(secs);
+    const dEl = $("cdDays"); const hEl = $("cdHours"); const mEl = $("cdMins"); const sEl = $("cdSecs");
+    if (dEl) dEl.innerText = pad2(days); if (hEl) hEl.innerText = pad2(hours);
+    if (mEl) mEl.innerText = pad2(mins); if (sEl) sEl.innerText = pad2(secs);
   }, 1000);
 
-  // =========================
-  // ✅ FORM SUBMISSION
-  // Fix: Send as x-www-form-urlencoded (Apps Script reads e.parameter correctly)
-  // + Prevent double submit
-  // =========================
-  async function handleFormSubmit(e, formElement, statusElement, isModal) {
+  // Form Submission
+  async function handleFormSubmit(e, form, statusEl, isModal) {
     e.preventDefault();
-
-    if (!isValidScriptUrl(SCRIPT_URL)) {
-      safeSetStatus(
-        statusElement,
-        "⚠️ Invalid SCRIPT_URL. Paste correct Web App URL ending with /exec.",
-        "red"
-      );
-      return;
-    }
-
-    const submitBtn = formElement.querySelector('button[type="submit"]');
+    if (!isValidScriptUrl(SCRIPT_URL)) { safeSetStatus(statusEl, "⚠️ Update SCRIPT_URL in code.", "red"); return; }
+    const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) submitBtn.disabled = true;
-
-    safeSetStatus(statusElement, "Submitting...", isModal ? "#333" : "#ffbd8a");
+    safeSetStatus(statusEl, "Submitting...", isModal ? "#333" : "#ffb703");
 
     try {
-      // ✅ Convert form to URL-encoded (important!)
-      const fd = new FormData(formElement);
-      const body = new URLSearchParams(fd);
-
-      const res = await fetch(SCRIPT_URL, {
-        method: "POST",
-        body,
-        redirect: "follow",
-      });
-
+      const body = new URLSearchParams(new FormData(form));
+      const res = await fetch(SCRIPT_URL, { method: "POST", body, redirect: "follow" });
       const text = await res.text();
-      let data = {};
-      try {
-        data = JSON.parse(text);
-      } catch (_) {
-        // If response isn't JSON, keep it in text for debugging
-      }
-
-      if (data.status === "success") {
-        safeSetStatus(statusElement, "✅ Submitted successfully!", "green");
-        formElement.reset();
-        if (isModal) setTimeout(() => closeModal(), 1200);
-      } else {
-        throw new Error(text || "Unknown error");
-      }
+      let data = {}; try { data = JSON.parse(text); } catch (_) {}
+      if (!res.ok || data.status !== "success") { throw new Error(text || "Server error"); }
+      safeSetStatus(statusEl, "✅ Submitted successfully!", "green");
+      form.reset();
+      if (isModal) setTimeout(closeModal, 1200);
     } catch (err) {
       console.error("Submit error:", err);
-      safeSetStatus(
-        statusElement,
-        "❌ Failed to submit. Please try again / WhatsApp us.",
-        "red"
-      );
+      safeSetStatus(statusEl, "❌ Failed: " + (err?.message || "Unknown"), "red");
     } finally {
       if (submitBtn) submitBtn.disabled = false;
     }
   }
 
-  // =========================
-  // ✅ HOOK FORMS
-  // =========================
-  const regForm = document.getElementById("regForm");
-  const regStatus = document.getElementById("status");
-  if (regForm) {
-    regForm.addEventListener("submit", (e) =>
-      handleFormSubmit(e, regForm, regStatus, true)
-    );
-  }
+  const regForm = $("regForm");
+  const regStatus = $("status");
+  if (regForm) { regForm.addEventListener("submit", (e) => handleFormSubmit(e, regForm, regStatus, true)); }
+  const contactForm = $("contactForm");
+  const contactStatus = $("contactStatus");
+  if (contactForm) { contactForm.addEventListener("submit", (e) => handleFormSubmit(e, contactForm, contactStatus, false)); }
 
-  const contactForm = document.getElementById("contactForm");
-  const contactStatus = document.getElementById("contactStatus");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) =>
-      handleFormSubmit(e, contactForm, contactStatus, false)
-    );
-  }
-
-  // =========================
-  // ✅ AUTO POPUP
-  // =========================
   if (AUTO_POPUP) {
-    setInterval(() => {
-      if (modal && modal.style.display !== "flex") openModal();
-    }, AUTO_POPUP_INTERVAL_MS);
+    setInterval(() => { if (modal && modal.style.display !== "flex") openModal(); }, AUTO_POPUP_INTERVAL_MS);
   }
+})();
 </script>
-
 </body>
 </html>
