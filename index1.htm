@@ -1,1197 +1,747 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SkyKeen Kids Creative Festival 2026</title>
-
+  <title>SkyKeen Kids Creative Festival 2026 | Republic Day Special</title>
+  
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-  <!-- Icons (Font Awesome) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            fredoka: ['"Fredoka One"', 'cursive'],
+            quicksand: ['"Quicksand"', 'sans-serif'],
+          },
+          colors: {
+            brandRed: '#DC2626',   /* Red-600 */
+            brandDark: '#111827',  /* Gray-900 */
+            brandGray: '#F3F4F6',  /* Gray-100 */
+          }
+        }
+      }
+    }
+  </script>
 
   <style>
-    :root {
-      --orange: #FF6B35;
-      --purple: #7B2CBF;
-      --yellow: #FFB703;
-      --blue: #0081C9;
-      --bg: #fdf7f2;
-      --white: #fff;
-      --text: #232323;
-      --muted: #5a5a5a;
-      --wa: #25D366;
-      --card: #ffffff;
-      --border: #eee;
-      --shadow: 0 14px 40px rgba(0, 0, 0, .07);
-      --radius: 26px;
-      --navbg: #0b5e97;
-      --focus: rgba(123, 44, 191, .22);
-    }
-
-    * { box-sizing: border-box }
-    html { scroll-behavior: smooth }
-    body {
-      margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 { font-family: 'Fredoka One', cursive; margin: 0 }
-    a { color: inherit; text-decoration: none }
-    .container { max-width: 1150px; margin: 0 auto; padding: 0 18px }
-
-    /* ===== Animations ===== */
-    @keyframes fadeUp { from {opacity:0; transform: translateY(14px)} to {opacity:1; transform: translateY(0)} }
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    @keyframes floaty { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-8px)} }
-    @keyframes pop { from {transform: scale(.96); opacity:0} to {transform: scale(1); opacity:1} }
-
-    .animUp { animation: fadeUp .75s ease both }
-    .floaty { animation: floaty 3.2s ease-in-out infinite }
-    .fade-in { animation: fadeIn 0.4s ease-in-out }
-
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1200;
-      background: rgba(11, 94, 151, .94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, .12);
-    }
-    .navInner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      gap: 12px;
-      position: relative;
-    }
-    .brand { display:flex; align-items:center; gap:10px; min-width: 130px; }
-    .brand img { width: auto; height: 74px; padding: 2px; }
-
-    .navBtns { display:flex; gap:10px; align-items:center; }
-    .navBtn {
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      cursor: pointer;
-      font-weight: 800;
-      transition: 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-    }
-    .navBtn:hover { background:#fff; color: var(--blue); }
-    .navBook { background: var(--yellow); color:#000; border:none; }
-    .navBook:hover { background:#ffca2c; }
-
-    /* Hamburger */
-    .hamburger { display:none; flex-direction: column; gap:5px; cursor:pointer; padding: 10px; border-radius: 12px; }
-    .hamburger:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
-    .hamburger span { width: 28px; height: 3px; background:#fff; border-radius:2px; }
-
-    /* ===== HERO ===== */
-    .heroWrap { background:#fff; position:relative; overflow:hidden; }
-    .heroWrap::before{
-      content:""; position:absolute; inset:0;
-      background:
-        radial-gradient(circle at 16% 30%, rgba(255, 183, 3, .18), transparent 40%),
-        radial-gradient(circle at 80% 35%, rgba(123, 44, 191, .14), transparent 42%),
-        radial-gradient(circle at 55% 5%, rgba(0, 129, 201, .10), transparent 40%),
-        linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 1));
-      pointer-events:none;
-    }
-    .hero { position:relative; padding: 44px 0 22px; }
-    .heroGrid { display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items:center; }
-    .heroTitle { font-size: 3.05rem; line-height: 1.06; margin-bottom:10px; color:#4d078ad7; }
-    .heroTitle span { color: var(--orange) }
-    .heroSub { color: var(--muted); font-weight: 800; max-width: 520px; margin-bottom: 18px; }
-
-    .badgeRow { display:flex; flex-wrap:wrap; gap: 10px; margin-top: 12px; }
-    .badge {
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      border: 1px solid rgba(0,0,0,.06);
-      background: #fff;
-      font-size: .92rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .badge.blue { background: rgba(0,129,201,.10); color: var(--blue) }
-    .badge.orange { background: rgba(255,107,53,.12); color: var(--orange) }
-    .badge.purple { background: rgba(123,44,191,.10); color: var(--purple) }
-    .badge.yellow { background: rgba(255,183,3,.20); color:#6b4b00 }
-
-    .heroVisual { position:relative; display:flex; justify-content:center; align-items:center; min-height: 320px; }
-    .kidBlob {
-      position:absolute; inset:auto 0 0 0; height: 310px;
-      border-radius: 999px 999px 80px 80px;
-      background:
-        radial-gradient(circle at 20% 25%, rgba(255,107,53,.24), transparent 38%),
-        radial-gradient(circle at 75% 30%, rgba(0,129,201,.22), transparent 40%),
-        radial-gradient(circle at 52% 70%, rgba(255,183,3,.22), transparent 45%),
-        #fff5ee;
-      transform: translateY(18px);
-      filter: saturate(1.05);
-    }
-    .kidImg {
-      position:relative;
-      width: min(360px, 92%);
-      height: 360px;
-      border-radius: 50%;
-      overflow:hidden;
-      border: 10px solid rgba(255,255,255,.9);
-      box-shadow: var(--shadow);
-      background:#fff;
-      z-index:2;
-    }
-    .kidImg img { width:100%; height:100%; object-fit:cover }
-
-    .floatIcon {
-      position:absolute; z-index:3;
-      display:flex; align-items:center; justify-content:center;
-      width: 52px; height: 52px; border-radius: 16px;
-      background:#fff; box-shadow: 0 12px 26px rgba(0,0,0,.10);
-      font-size: 22px;
-    }
-    .fi1 { left:10%; top:18% }
-    .fi2 { right:8%; top:22% }
-    .fi3 { left:22%; bottom:6% }
-    .wave {
-      width:100%; height: 90px;
-      background: var(--bg);
-      border-top-left-radius: 60% 100%;
-      border-top-right-radius: 60% 100%;
-      transform: translateY(24px);
-    }
-
-    /* ===== COUNTDOWN ===== */
-    .countdownSection { position:relative; padding: 80px 0; overflow:hidden; }
-    .countdownSection::before{
-      content:""; position:absolute; top:0; left:0; width:100%; height:120px;
-      background: linear-gradient(135deg, #7b2cbf, #9d4edd); z-index:0;
-    }
-    .countdownSection::after{
-      content:""; position:absolute; bottom:0; left:0; width:100%; height:120px;
-      background: linear-gradient(135deg, #ffb703, #ffd166); z-index:0;
-    }
-    .countdownSection .container { position:relative; z-index:2; }
-    .cdCard{
-      background:#fff; border:1px solid rgba(0,0,0,.06);
-      border-radius: 34px; box-shadow: var(--shadow);
-      padding: 22px; display:grid; grid-template-columns: 1.2fr 0.8fr; gap:18px; align-items:center;
-    }
-    .cdText { margin:0; font-weight: 900; color:#2c2c2c }
-    .cdGrid { display:grid; grid-template-columns: repeat(4, 1fr); gap:10px; }
-    .cdBox{
-      background: rgba(123,44,191,.07);
-      border: 1px solid rgba(123,44,191,.12);
-      border-radius: 18px;
-      padding: 12px 10px;
-      text-align:center;
-    }
-    .cdNum{
-      display:block;
-      font-family:'Fredoka One', cursive;
-      font-size: 1.7rem;
-      color: var(--purple);
-      line-height: 1;
-    }
-    .cdLbl { font-weight: 900; color: var(--muted); margin-top:4px; font-size:.8rem; }
-
-    .ctaRow { display:flex; justify-content:center; margin-top:18px; }
-    .btnBook{
-      background: var(--orange);
-      color:#fff;
-      padding: 16px 42px;
-      border-radius: 999px;
-      border:none;
-      font-family:'Fredoka One', cursive;
-      font-size: 1.25rem;
-      cursor:pointer;
-      box-shadow: 0 12px 26px rgba(255,107,53,.22);
-      transition:.2s ease;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-    }
-    .btnBook:hover { transform: translateY(-1px) }
-    .btnBook:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-
-    /* ===== TIMELINE TABS ===== */
-    .timelineSection { padding: 60px 0; background: #faf7ff; }
-    .sectionTitle { text-align:center; font-size: 2rem; margin-bottom:30px; color:#4a148c; }
-    .batchTabs { display:flex; justify-content:center; gap:15px; margin-bottom:25px; }
-    .tabBtn{
-      border:2px solid #ddd;
-      background:#fff;
-      padding: 15px 30px;
-      border-radius: 20px;
-      font-family:'Fredoka One', cursive;
-      font-size: 1.2rem;
-      color:#888;
-      cursor:pointer;
-      transition:.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,.05);
-      flex:1;
-      max-width: 320px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-    }
-    .tabBtn:hover { transform: translateY(-3px); border-color:#ccc; }
-    .tabBtn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-
-    .tabBtn.active{ color:#fff; border-color:transparent; box-shadow: 0 10px 25px rgba(0,0,0,.15); }
-    .tabBtn.blue.active { background: #0081C9; }
-    .tabBtn.orange.active { background: #FF6B35; }
-
-    .batchContent { display:none; }
-    .batchContent.active { display:block; }
-
-    #about{
-      background-image: url("image/bg.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .batchCard, .breakCard{
-      background:#fff;
-      border-radius: 18px;
-      padding: 22px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.08);
-      max-width: 780px;
-      margin-left:auto;
-      margin-right:auto;
-    }
-    .batchCard.blue{ border-left: 6px solid #0081C9; }
-    .batchCard.orange{ border-left: 6px solid #FF6B35; }
-    .batchCard h3 { margin: 0 0 8px; font-size: 1.5rem; }
-    .batchInfo { font-weight: 700; margin-bottom: 15px; color:#555; }
-
-    .timeGrid { display:grid; grid-template-columns: 1fr; gap:10px; }
-    .timeGrid div{
-      background:#f5f5f5;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-weight: 700;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    .timeGrid i { color:#6a1b9a; }
-    .timeGrid span{
-      color:#6a1b9a;
-      min-width: 112px;
-      background:#fff;
-      padding: 4px 10px;
-      border-radius: 8px;
-      text-align:center;
-      font-size: .9rem;
-      font-weight: 900;
-    }
-
-    .notes { margin-top: 15px; padding-left: 18px; color:#444; font-weight: 700; }
-    .notes li { margin-bottom: 5px; }
-
-    .breakCard{
-      text-align:center;
-      background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-      border: 1px dashed #66bb6a;
-      max-width: 980px;
-    }
-    .breakCard h3 { color:#2e7d32; }
-
-    /* ===== SECTIONS ===== */
-    .section { padding: 42px 0; }
-    .sectionHead{
-      display:flex;
-      justify-content:space-between;
-      gap:16px;
-      align-items:flex-end;
-      flex-wrap:wrap;
-      margin-bottom: 18px;
-    }
-    .sectionHead h2 { font-size: 2rem; color: var(--purple); }
-
-    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .card{
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-      transition: .2s ease;
-    }
-    .card:hover { transform: translateY(-2px) }
-
-    .titleChip{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight: 1000;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.04);
-      margin-bottom: 10px;
-    }
-
-    .bullet{ margin:0; padding-left: 18px; font-weight: 750; color:#3f3f3f; }
-    .bullet li{ margin: 8px 0 }
-
-    .softLine{
-      height:1px;
-      background: linear-gradient(90deg, transparent, rgba(0,0,0,.08), transparent);
-      margin: 18px 0;
-    }
-    .noteBox{
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(0,129,201,.07);
-      border: 1px solid rgba(0,129,201,.12);
-      font-weight: 800;
-      color:#2a2a2a;
-    }
-    .tNote{ font-weight: 750; color: var(--muted); margin-top: 10px }
-
-    /* ===== WhatsApp ===== */
-    .whatsapp{
-      position: fixed;
-      bottom: 18px;
-      right: 18px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--wa);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 14px 30px rgba(37,211,102,.35);
-      z-index: 2000;
-    }
-    .whatsapp i { color:#fff; font-size: 28px; }
-
-    /* ===== Modal form ===== */
-    .modal{
-      display:none;
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,.70);
-      z-index: 3000;
-      justify-content:center;
-      align-items:center;
-      padding: 18px;
-    }
-    .modalCard{
-      width: 100%;
-      max-width: 600px;
-      background:#fff;
-      border-radius: 34px;
-      border: 6px solid var(--yellow);
-      padding: 26px 22px 20px;
-      text-align:center;
-      box-shadow: var(--shadow);
-      position:relative;
-      animation: pop .18s ease both;
-    }
-    .modalCard h3{ color: var(--purple); font-size: 1.65rem; margin-bottom: 6px }
-
-    .xClose{
-      position:absolute;
-      top:10px; right:12px;
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.10);
-      background:#fff;
-      cursor:pointer;
-      font-weight: 1000;
-      display:flex; align-items:center; justify-content:center;
-      transition:.15s ease;
-      line-height: 1;
-      font-size: 16px;
-    }
-    .xClose:hover{ transform: scale(1.03); background: rgba(255,107,53,.08) }
-    .xClose:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-
-    /* ====== Form UI (Improved + Icons) ====== */
-    .formGrid { display: grid; gap: 12px; text-align:left; }
-    .two { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-
-    .fieldWrap { display:flex; flex-direction:column; gap: 6px; }
-    .label {
-      font-weight: 900;
-      font-size: .92rem;
-      color: #2a2a2a;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-    }
-
-    .inputIcon{
-      position: relative;
-      display:flex;
-      align-items:center;
-    }
-    .inputIcon i{
-      position:absolute;
-      left: 14px;
-      color: #7b2cbf;
-      opacity: .85;
-      pointer-events:none;
-    }
-    .field, .selectField, .textField {
-      width:100%;
-      padding: 12px 14px 12px 44px; /* left padding for icon */
-      border-radius: 14px;
-      border: 1px solid #ddd;
-      font-weight: 800;
-      font-size: 1rem;
-      font-family:'Quicksand', sans-serif;
-      outline:none;
-      transition:.15s ease;
-      background:#fff;
-    }
-    .textField { padding-top: 12px; padding-bottom: 12px; min-height: 110px; resize: vertical; }
-    select.selectField { appearance:none; -webkit-appearance:none; -moz-appearance:none; }
-    .selectCaret{
-      position:absolute;
-      right: 14px;
-      color:#6b6b6b;
-      pointer-events:none;
-      font-size: 14px;
-    }
-
-    .field:focus, .selectField:focus, .textField:focus{
-      border-color: rgba(123,44,191,.55);
-      box-shadow: 0 0 0 4px rgba(123,44,191,.10);
-    }
-
-    .helpText { font-size: .86rem; color: var(--muted); font-weight: 700; margin: 0; }
-
-    .status { font-weight: 900; margin-top: 10px; }
-
-    /* ===== Contact section form ===== */
-    .contactGrid { display:grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .mapBox { width:100%; height: 240px; border-radius: 14px; overflow:hidden; border: 1px solid #ffffff20; }
-    .mapBox iframe { width:100%; height:100%; border:0; }
-
-    .contactActions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 10px 0 12px;
-    }
-    .contactActions a{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.06);
-      font-weight: 900;
-    }
-    .contactActions a:hover{ background: rgba(0,0,0,.10) }
-
-    .contactCardForm{
-      background: #0e0e0e;
-      color: #fff;
-      border-radius: 18px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    .contactCardForm .label { color:#fff; }
-    .contactCardForm .helpText { color: rgba(255,255,255,.75); }
-    .contactCardForm .field,
-    .contactCardForm .selectField,
-    .contactCardForm .textField{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.14);
-      color:#fff;
-    }
-    .contactCardForm .field::placeholder,
-    .contactCardForm .textField::placeholder { color: rgba(255,255,255,.65); }
-    .contactCardForm .inputIcon i{ color: #ffca2c; }
-    .contactCardForm .selectCaret{ color: rgba(255,255,255,.75); }
-
-    .btnPrimary{
-      background: #ff7a00;
-      color:#fff;
-      border:none;
-      padding: 12px 14px;
-      border-radius: 12px;
-      cursor:pointer;
-      font-weight: 900;
-      transition: .3s;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      width: 100%;
-    }
-    .btnPrimary:hover{ opacity:.95; transform: translateY(-1px); }
-    .btnPrimary:focus-visible{ outline: 3px solid var(--focus); outline-offset: 3px; }
-
-    /* ===== Footer ===== */
-    footer{ margin-top: 30px; background: #0e0e0e; color:#eee; padding: 34px 0; }
-    .footerTop{ display:flex; align-items:center; gap:12px; margin-bottom:14px; justify-content:center; }
-    .footerTop img{ width:auto; height: 90px; padding:2px; }
-    .copy{
-      border-top: 1px solid rgba(255,255,255,.12);
-      margin-top: 18px;
-      padding-top: 14px;
-      font-weight: 800;
-      color:#cfcfcf;
-      text-align:center;
-    }
-
-    /* ===== Responsive (Improved) ===== */
-    @media (max-width: 900px){
-      .brand img { height: 62px; }
-      .heroTitle { font-size: 2.35rem }
-      .heroGrid { grid-template-columns: 1fr; text-align:center; }
-      .heroSub { margin-left:auto; margin-right:auto; }
-      .badgeRow { justify-content:center; }
-
-      .cdCard { grid-template-columns: 1fr; text-align:center; }
-      .cdGrid { gap: 8px; }
-      .cdNum { font-size: 1.45rem; }
-
-      .grid2, .two, .contactGrid { grid-template-columns: 1fr; }
-      .batchTabs { flex-direction: column; align-items: stretch; }
-      .tabBtn { max-width: 100%; }
-
-      .hamburger { display:flex; }
-      .navBtns{
-        position:absolute;
-        top: 78px;
-        right: 12px;
-        background: rgba(14,14,14,.96);
-        border: 1px solid rgba(255,255,255,.12);
-        flex-direction: column;
-        padding: 14px;
-        border-radius: 16px;
-        display:none;
-        width: min(92vw, 240px);
-        box-shadow: 0 10px 30px rgba(0,0,0,.45);
-      }
-      .navBtns.show { display:flex; animation: fadeUp .25s ease forwards; }
-      .navBtn { justify-content:center; width: 100%; }
-
-      .timeGrid div { flex-direction: column; align-items:flex-start; gap: 8px; }
-      .timeGrid span { width: 100%; }
-
-      .mapBox { height: 210px; margin-bottom: 14px; }
-
-      .whatsapp { width: 56px; height: 56px; bottom: 14px; right: 14px; }
-    }
-
-    @media (max-width: 520px){
-      .hero { padding-top: 32px; }
-      .heroTitle { font-size: 2.05rem; }
-      .btnBook { width: 100%; padding: 14px 18px; font-size: 1.1rem; }
-      .kidImg { height: 300px; }
-      .floatIcon { width: 46px; height: 46px; border-radius: 14px; }
-      .modalCard { padding: 22px 16px 18px; border-width: 5px; }
-    }
+    /* Minimal Custom Overrides where Tailwind is too verbose */
+    body { font-family: 'Quicksand', sans-serif; }
+    h1, h2, h3, h4, .font-heading { font-family: 'Fredoka One', cursive; }
+    .blob-shape { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    .clip-wave { clip-path: ellipse(150% 100% at 50% 100%); }
   </style>
 </head>
 
-<body>
-  <header class="navbar">
-    <div class="container navInner">
-      <a class="brand" href="#">
-        <img src="image/logo1.png" alt="SkyKeen Logo">
-      </a>
+<body class="bg-white text-gray-800 antialiased overflow-x-hidden">
 
-      <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false" id="menuBtn">
-        <span></span><span></span><span></span>
-      </button>
+<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm top-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-24">
+        <div class="flex-shrink-0 flex items-center cursor-pointer">
+           <img src="image/logonav.png" alt="SkyKeen Logo" class="h-24 md:h-28 w-auto object-contain">
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+           <a href="tel:+917406238503" class="text-brandDark font-bold hover:text-brandRed transition ml-4">
+             <i class="fas fa-phone-alt mr-2"></i>+91 74062 38503
+           </a>
+           <button onclick="openModal()" class="bg-brandRed text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg transform hover:-translate-y-0.5 border-2 border-brandRed">
+             Book Slot
+           </button>
+        </div>
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleMenu()" class="text-brandDark focus:outline-none">
+            <i class="fas fa-bars text-3xl"></i> </button>
+        </div>
+      </div>
+    </div>
 
-      <div class="navBtns" id="mobileMenu">
-        <a class="navBtn navCall" href="tel:+917406238503">
-          <i class="fa-solid fa-phone"></i> <small>Call</small>
-        </a>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+      <div class="px-4 pt-2 pb-4 space-y-2 flex flex-col items-center">
+          <a href="tel:+917406238503" class="block w-full text-center py-3 font-bold text-brandDark border border-gray-200 rounded-lg">📞 Call Now</a>
+        <button onclick="openModal()" class="block w-full py-3 bg-brandRed text-white font-bold rounded-lg">🎟️ Book Now</button>
+      </div>
+    </div>
+  </nav>
 
-        <button class="navBtn navBook" onclick="openModal()">
-          <i class="fa-solid fa-ticket"></i> <small>Book</small>
+  <section class="relative pt-28 pb-10 lg:pt-40 lg:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="text-center lg:text-left gsap-hero-text order-2 lg:order-1"> <div class="inline-block bg-red-100 text-brandRed font-bold px-4 py-1 rounded-full text-sm mb-3 border border-red-200">
+            🇮🇳 Republic Day Special
+          </div>
+          <h1 class="text-4xl lg:text-6xl font-heading text-brandDark leading-tight mb-4 lg:mb-6">
+            Celebrating Young Minds & <span class="text-brandRed">Art Competition</span>
+          </h1>
+          <p class="text-lg text-gray-600 font-semibold mb-6 lg:mb-8 max-w-lg mx-auto lg:mx-0">
+            A kids festival with a <b class="text-black">Colouring Competition</b>, an interactive <b class="text-black">Workshop</b>, and <b class="text-black">Prize Distribution</b>.
+          </p>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-2 lg:gap-3 mb-6 lg:mb-8">
+            <span class="px-3 py-1 lg:px-4 lg:py-2 bg-gray-100 border border-gray-300 rounded-full font-bold text-xs lg:text-sm text-gray-700">🎨 45 mins Competition</span>
+            <span class="px-3 py-1 lg:px-4 lg:py-2 bg-gray-100 border border-gray-300 rounded-full font-bold text-xs lg:text-sm text-gray-700">🎓 Workshop Included</span>
+            <span class="px-3 py-1 lg:px-4 lg:py-2 bg-red-50 border border-red-200 rounded-full font-bold text-xs lg:text-sm text-brandRed">🏆 Instant Prizes</span>
+          </div>
+          <button onclick="openModal()" class="bg-brandRed text-white text-lg lg:text-xl px-8 py-3 lg:px-10 lg:py-4 rounded-full font-heading hover:bg-brandDark transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1">
+            REGISTER NOW
+          </button>
+        </div>
+
+        <div class="relative flex justify-center items-center gsap-hero-img order-1 lg:order-2">
+          <div class="absolute w-[280px] h-[280px] lg:w-[450px] lg:h-[450px] bg-red-100 blob-shape animate-pulse z-0"></div>
+          <div class="relative z-10 w-64 h-64 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white shadow-2xl">
+            <img src="image/education-online-class-room-student-s-things.jpg" alt="Happy Kid Drawing" class="w-full h-full object-cover hover:scale-110 transition duration-700">
+          </div>
+          <div class="absolute top-0 right-6 lg:right-10 bg-white p-2 lg:p-3 rounded-xl shadow-lg text-xl lg:text-2xl z-20 animate-bounce">🎨</div>
+          <div class="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 bg-white p-2 lg:p-3 rounded-xl shadow-lg text-xl lg:text-2xl z-20 animate-bounce" style="animation-delay: 1s;">🏆</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="countdown" class="py-10 lg:py-16 bg-brandDark text-white relative">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <div class="gsap-fade-up">
+        <h3 class="text-xl lg:text-2xl mb-2 font-heading text-brandRed">Monday, 26 January 2026</h3>
+        <p class="mb-6 lg:mb-8 text-gray-300 text-sm lg:text-base">Start: 10:00 AM • Yelahanka Satellite Town, Bengaluru</p>
+      </div>
+
+      <div class="grid grid-cols-4 gap-2 lg:gap-4 max-w-2xl mx-auto mb-6 lg:mb-10 gsap-fade-up">
+        <div class="bg-gray-800 rounded-xl p-3 lg:p-4 border border-gray-700">
+          <span id="cdDays" class="block text-2xl lg:text-4xl font-heading text-brandRed">00</span>
+          <span class="text-[10px] lg:text-xs text-gray-400 font-bold uppercase">Days</span>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-3 lg:p-4 border border-gray-700">
+          <span id="cdHours" class="block text-2xl lg:text-4xl font-heading text-brandRed">00</span>
+          <span class="text-[10px] lg:text-xs text-gray-400 font-bold uppercase">Hours</span>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-3 lg:p-4 border border-gray-700">
+          <span id="cdMins" class="block text-2xl lg:text-4xl font-heading text-brandRed">00</span>
+          <span class="text-[10px] lg:text-xs text-gray-400 font-bold uppercase">Mins</span>
+        </div>
+        <div class="bg-gray-800 rounded-xl p-3 lg:p-4 border border-gray-700">
+          <span id="cdSecs" class="block text-2xl lg:text-4xl font-heading text-brandRed">00</span>
+          <span class="text-[10px] lg:text-xs text-gray-400 font-bold uppercase">Secs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="py-10 lg:py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-2xl lg:text-3xl text-center text-brandDark mb-2 font-heading gsap-fade-up">Batch–Wise Detailed Timeline</h2>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-3 lg:gap-4 mb-6 lg:mb-8 gsap-fade-up">
+        <button onclick="switchBatch('b1', this)" class="tab-btn active bg-brandRed text-white border-2 border-brandRed px-6 py-2 lg:px-8 lg:py-3 rounded-full font-heading shadow-md transition w-full sm:w-auto transform hover:-translate-y-1 text-sm lg:text-base">
+          Batch 1 (Morning)
+        </button>
+        <button onclick="switchBatch('b2', this)" class="tab-btn bg-white text-gray-500 border-2 border-gray-300 px-6 py-2 lg:px-8 lg:py-3 rounded-full font-heading hover:border-brandRed hover:text-brandRed transition w-full sm:w-auto transform hover:-translate-y-1 text-sm lg:text-base">
+          Batch 2 (Afternoon)
         </button>
       </div>
-    </div>
-  </header>
 
-  <section class="heroWrap">
-    <div class="container hero">
-      <div class="heroGrid">
-        <div class="animUp">
-          <h1 class="heroTitle">Celebrating Young Minds & Bright <span>Art Competition for Kids</span></h1>
-
-          <p class="heroSub">
-            A kids festival with a <b>Colouring Competition</b>, an interactive <b>Workshop</b>,
-            and <b>Prize Distribution</b>.
-          </p>
-
-          <div class="badgeRow">
-            <span class="badge blue"><i class="fa-solid fa-palette"></i> 45 mins Competition</span>
-            <span class="badge purple"><i class="fa-solid fa-chalkboard-user"></i> 30–40 mins Workshop</span>
-            <span class="badge orange"><i class="fa-solid fa-trophy"></i> Prize After Each Batch</span>
-            <span class="badge yellow"><i class="fa-solid fa-certificate"></i> Certificates + Goodies</span>
-          </div>
-        </div>
-
-        <div class="heroVisual">
-          <div class="kidBlob" aria-hidden="true"></div>
-
-          <div class="floatIcon fi1 floaty" aria-hidden="true"><i class="fa-solid fa-crayon"></i></div>
-          <div class="floatIcon fi2 floaty" aria-hidden="true"><i class="fa-solid fa-trophy"></i></div>
-          <div class="floatIcon fi3 floaty" aria-hidden="true"><i class="fa-solid fa-palette"></i></div>
-
-          <div class="kidImg" title="Kids Creative Festival">
-            <img src="image/education-online-class-room-student-s-things.jpg" alt="Kids creative">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="wave" aria-hidden="true"></div>
-  </section>
-
-  <section class="countdownSection" id="countdown">
-    <div class="container">
-      <div class="cdCard animUp">
-        <div>
-          <p class="cdText">
-            <b>Date:</b> Sunday, 26 Jan 2026 • <b>Start:</b> 10:00 AM •
-            Venue: 2nd A Cross Rd, Yelahanka Satellite Town, Yelahanka, Bengaluru, Karnataka 560064
-          </p>
-          <p class="cdText" style="margin-top:8px;">
-            Book your slot now — limited seats per batch (100–150 kids).
-          </p>
-        </div>
-
-        <div class="cdGrid" aria-label="countdown timer">
-          <div class="cdBox"><span class="cdNum" id="cdDays">00</span><div class="cdLbl">Days</div></div>
-          <div class="cdBox"><span class="cdNum" id="cdHours">00</span><div class="cdLbl">Hours</div></div>
-          <div class="cdBox"><span class="cdNum" id="cdMins">00</span><div class="cdLbl">Minutes</div></div>
-          <div class="cdBox"><span class="cdNum" id="cdSecs">00</span><div class="cdLbl">Seconds</div></div>
-        </div>
-      </div>
-
-      <div class="ctaRow">
-        <button class="btnBook" onclick="openModal()">
-          <i class="fa-solid fa-ticket"></i> BOOK A SLOT NOW
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="timelineSection" id="timeline">
-    <div class="container">
-      <h2 class="sectionTitle">Batch–Wise Detailed Timeline</h2>
-
-      <div class="batchTabs">
-        <button class="tabBtn blue active" onclick="switchBatch('b1', this)">
-          <i class="fa-solid fa-sun"></i> Batch 1 (Morning)
-        </button>
-        <button class="tabBtn orange" onclick="switchBatch('b2', this)">
-          <i class="fa-solid fa-cloud-sun"></i> Batch 2 (Afternoon)
-        </button>
-      </div>
-
-      <div id="b1" class="batchContent active fade-in">
-        <div class="batchCard blue">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <h3>🔵 Morning Schedule</h3>
-            <span class="badge blue"><i class="fa-regular fa-clock"></i> 10:00 AM – 1:00 PM</span>
-          </div>
-          <p class="batchInfo">Target: <b>100–150 Kids</b></p>
-
-          <div class="timeGrid">
-            <div><span>10:00 – 10:10</span> <i class="fa-solid fa-chair"></i> Seating + Rules Announcement</div>
-            <div><span>10:10 – 10:55</span> <i class="fa-solid fa-palette"></i> Colouring Competition (45 mins)</div>
-            <div><span>10:55 – 11:05</span> <i class="fa-solid fa-file-arrow-up"></i> Sheet Collection</div>
-            <div><span>11:05 – 11:45</span> <i class="fa-solid fa-chalkboard-user"></i> Workshop – Handwriting / Creative Skills</div>
-            <div><span>11:45 – 12:15</span> <i class="fa-solid fa-clipboard-check"></i> Judging (Parallel to Workshop)</div>
-            <div><span>12:15 – 12:40</span> <i class="fa-solid fa-trophy"></i> Prize Distribution</div>
-            <div><span>12:40 – 1:00</span> <i class="fa-solid fa-certificate"></i> Certificates + Goodies + Exit</div>
-          </div>
-
-          <ul class="notes">
-            <li>✔ Parents stay till prize distribution</li>
-            <li>✔ Judges get peaceful evaluation time</li>
-          </ul>
-        </div>
-      </div>
-
-      <div id="b2" class="batchContent fade-in">
-        <div class="batchCard orange">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <h3>🟠 Afternoon Schedule</h3>
-            <span class="badge orange"><i class="fa-regular fa-clock"></i> 2:00 PM – 5:00 PM</span>
-          </div>
-          <p class="batchInfo">Target: <b>100–150 Kids</b></p>
-
-          <div class="timeGrid">
-            <div><span>2:00 – 2:10</span> <i class="fa-solid fa-chair"></i> Seating + Rules Announcement</div>
-            <div><span>2:10 – 2:55</span> <i class="fa-solid fa-palette"></i> Colouring Competition (45 mins)</div>
-            <div><span>2:55 – 3:05</span> <i class="fa-solid fa-file-arrow-up"></i> Sheet Collection</div>
-            <div><span>3:05 – 3:45</span> <i class="fa-solid fa-chalkboard-user"></i> Workshop – Handwriting / Art Improvement</div>
-            <div><span>3:45 – 4:15</span> <i class="fa-solid fa-clipboard-check"></i> Judging (Parallel to Workshop)</div>
-            <div><span>4:15 – 4:40</span> <i class="fa-solid fa-trophy"></i> Prize Distribution</div>
-            <div><span>4:40 – 5:00</span> <i class="fa-solid fa-certificate"></i> Certificates + Goodies + Exit</div>
-          </div>
-
-          <ul class="notes">
-            <li>✔ Parents stay till prize distribution</li>
-            <li>✔ Fresh batch of kids and parents</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="breakCard" style="width:100%; margin-top:25px;">
-        <h3>🟢 Mid-Day Break / Reset</h3>
-        <p>⏰ 1:00 PM – 2:00 PM (Between Batches)</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="container">
-      <div class="sectionHead">
-        <h2>✨ About the Festival</h2>
-      </div>
-
-      <div class="grid2">
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-wand-magic-sparkles"></i> What happens here?</div>
-          <ul class="bullet">
-            <li>Colouring competition with age-based categories</li>
-            <li>Workshop that improves handwriting + creativity</li>
-            <li>Prize distribution after every batch</li>
-            <li>Certificates + goodies for all participants</li>
-          </ul>
-          <div class="badgeRow">
-            <span class="badge orange"><i class="fa-solid fa-lightbulb"></i> Creative confidence</span>
-            <span class="badge purple"><i class="fa-solid fa-pen-nib"></i> Skill building</span>
-            <span class="badge blue"><i class="fa-solid fa-people-group"></i> Parent-friendly</span>
-            <span class="badge yellow"><i class="fa-solid fa-trophy"></i> Instant rewards</span>
-          </div>
-        </div>
-
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-children"></i> Who can participate?</div>
-          <p class="tNote" style="margin-top:0">
-            Kids aged <b>4–10 years</b> can participate. Choose your batch and age group during registration.
-          </p>
-          <div class="softLine"></div>
-          <div class="noteBox">
-            <i class="fa-solid fa-circle-info"></i> Tip: Arrive 15 minutes early for smooth seating and instructions.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="sectionHead">
-        <h2>🏅 Categories & Winners</h2>
-      </div>
-
-      <div class="grid2">
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-layer-group"></i> Age Groups</div>
-          <ul class="bullet">
-            <li><b>4–6 Years</b> — 1st / 2nd / 3rd prizes</li>
-            <li><b>7–10 Years</b> — 1st / 2nd / 3rd prizes</li>
-          </ul>
-          <p class="tNote"><b>Total winners:</b> 6 winners per batch • 12 winners overall</p>
-        </div>
-
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-award"></i> Awards Included</div>
-          <ul class="bullet">
-            <li>Prizes + medals/trophies for winners</li>
-            <li>Certificates for all participants</li>
-            <li>Goodies for every child</li>
-            <li>Stage photo moment for winners</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="rules">
-    <div class="container">
-      <div class="sectionHead">
-        <h2>📌 Rules & What to Bring</h2>
-      </div>
-
-      <div class="grid2">
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-scroll"></i> Rules</div>
-          <ul class="bullet">
-            <li>Competition time: <b>45 minutes</b></li>
-            <li>Sheets will be provided at the venue</li>
-            <li>No outside drawing/trace sheets allowed</li>
-            <li>Parents must not assist during the competition</li>
-            <li>Judges decision will be final</li>
-          </ul>
-        </div>
-
-        <div class="card animUp">
-          <div class="titleChip"><i class="fa-solid fa-backpack"></i> Materials</div>
-          <ul class="bullet">
-            <li>Bring your own: crayons / colour pencils / sketch pens</li>
-            <li>Optional: water bottle</li>
-            <li>Wear comfortable dress for kids</li>
-          </ul>
-          <div class="badgeRow">
-            <span class="badge yellow"><i class="fa-solid fa-crayon"></i> Bring colours</span>
-            <span class="badge blue"><i class="fa-solid fa-chair"></i> Seating arranged</span>
-            <span class="badge purple"><i class="fa-solid fa-file-lines"></i> Sheet provided</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="sectionHead">
-        <h2>📍 Contact & Venue</h2>
-      </div>
-
-      <div class="card animUp">
-        <div class="contactGrid">
+      <div id="b1" class="batch-content block bg-white rounded-2xl p-5 lg:p-10 shadow-xl border-t-8 border-brandRed gsap-fade-up">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-gray-100 pb-4 gap-2">
           <div>
-            <div class="titleChip"><i class="fa-solid fa-location-dot"></i> Venue</div>
+            <h3 class="text-xl lg:text-2xl font-heading text-brandDark">🔵 Morning Schedule</h3>
+            <p class="text-xs lg:text-sm text-gray-500 font-bold mt-1">Target: 100–150 Kids</p>
+          </div>
+          <span class="bg-red-100 text-brandRed px-3 py-1 lg:px-4 lg:py-2 rounded-lg font-bold text-xs lg:text-sm shadow-sm">10:00 AM – 1:00 PM</span>
+        </div>
+        
+        <div class="space-y-2 lg:space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">10:00 - 10:10</span>
+            <span class="font-semibold text-gray-700 text-sm lg:text-base">Seating + Rules Announcement</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">10:10 - 10:55</span>
+            <span class="font-semibold text-gray-700 text-sm lg:text-base">Colouring Competition (45 mins)</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">10:55 - 11:05</span>
+            <span class="font-semibold text-gray-700 text-sm lg:text-base">Sheet Collection</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-blue-50 rounded-lg border border-blue-100">
+            <span class="font-bold text-blue-600 min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-blue-200 text-center text-xs lg:text-sm">11:05 - 11:45</span>
+            <span class="font-bold text-brandDark text-sm lg:text-base">Workshop – Handwriting / Creative Skills</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">11:45 - 12:15</span>
+            <span class="font-semibold text-gray-700 text-sm lg:text-base">Judging <span class="text-xs text-gray-400 font-normal">(Parallel to Workshop)</span></span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-red-50 rounded-lg border border-red-100 shadow-sm">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-red-200 text-center text-xs lg:text-sm">12:15 - 12:40</span>
+            <span class="font-bold text-brandDark flex items-center gap-2 text-sm lg:text-base">Prize Distribution 🏆</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">12:40 - 01:00</span>
+            <span class="font-semibold text-gray-700 text-sm lg:text-base">Certificates + Goodies + Exit</span>
+          </div>
+        </div>
+      </div>
 
-            <p class="tNote" style="margin:0 0 10px">
-              <b>2nd A Cross Rd, Yelahanka Satellite Town,</b><br>
+      <div id="b2" class="batch-content hidden bg-white rounded-2xl p-5 lg:p-10 shadow-xl border-t-8 border-brandDark">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 border-b border-gray-100 pb-4 gap-2">
+          <div>
+            <h3 class="text-xl lg:text-2xl font-heading text-brandDark">🟠 Afternoon Schedule</h3>
+            <p class="text-xs lg:text-sm text-gray-500 font-bold mt-1">Target: 100–150 Kids</p>
+          </div>
+          <span class="bg-gray-200 text-brandDark px-3 py-1 lg:px-4 lg:py-2 rounded-lg font-bold text-xs lg:text-sm shadow-sm">2:00 PM – 5:00 PM</span>
+        </div>
+        
+        <div class="space-y-2 lg:space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">02:00 - 02:10</span>
+                <span class="font-semibold text-gray-700 text-sm lg:text-base">Seating + Rules Announcement</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">02:10 - 02:55</span>
+                <span class="font-semibold text-gray-700 text-sm lg:text-base">Colouring Competition (45 mins)</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">02:55 - 03:05</span>
+                <span class="font-semibold text-gray-700 text-sm lg:text-base">Sheet Collection</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-blue-50 rounded-lg border border-blue-100">
+                <span class="font-bold text-blue-600 min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-blue-200 text-center text-xs lg:text-sm">03:05 - 03:45</span>
+                <span class="font-bold text-brandDark text-sm lg:text-base">Workshop – Handwriting / Art Improvement</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">03:45 - 04:15</span>
+                <span class="font-semibold text-gray-700 text-sm lg:text-base">Judging <span class="text-xs text-gray-400 font-normal">(Parallel to Workshop)</span></span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-red-50 rounded-lg border border-red-100 shadow-sm">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-red-200 text-center text-xs lg:text-sm">04:15 - 04:40</span>
+                <span class="font-bold text-brandDark flex items-center gap-2 text-sm lg:text-base">Prize Distribution 🏆</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 p-2 lg:p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                <span class="font-bold text-brandRed min-w-[120px] bg-white px-2 py-1 lg:px-3 rounded border border-gray-200 text-center text-xs lg:text-sm">04:40 - 05:00</span>
+                <span class="font-semibold text-gray-700 text-sm lg:text-base">Certificates + Goodies + Exit</span>
+              </div>
+        </div>
+      </div>
+
+      <div class="mt-6 lg:mt-8 bg-gradient-to-r from-gray-100 to-gray-200 border-2 border-dashed border-gray-400 rounded-2xl p-4 lg:p-6 text-center gsap-fade-up">
+        <h3 class="text-lg lg:text-xl font-heading text-green-700 mb-1 flex items-center justify-center gap-2">
+          <i class="fas fa-coffee"></i> Mid-Day Break / Reset
+        </h3>
+        <p class="font-bold text-brandDark text-base lg:text-lg">⏰ 1:00 PM – 2:00 PM <span class="text-xs lg:text-sm text-gray-600 font-normal">(Between Batches)</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="details" class="py-10 lg:py-20 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10 lg:mb-16 gsap-fade-up">
+        <h2 class="text-3xl lg:text-4xl font-heading text-brandDark mb-4">🏆 Categories, Rules & Details</h2>
+        <div class="w-24 h-1 bg-brandRed mx-auto rounded-full"></div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div class="flex flex-col gap-6 lg:gap-8">
+          <div class="bg-gray-50 rounded-3xl p-6 lg:p-8 border border-gray-100 shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-brandRed gsap-fade-up">
+            <div class="flex items-center gap-3 mb-4 lg:mb-6">
+              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full flex items-center justify-center text-xl lg:text-2xl shadow-sm">👶</div>
+              <h3 class="text-xl lg:text-2xl font-heading text-brandDark">Age Groups & Winners</h3>
+            </div>
+            <div class="space-y-3 lg:space-y-4">
+              <div class="flex justify-between items-center bg-white p-3 lg:p-4 rounded-xl border border-gray-200">
+                <span class="font-bold text-base lg:text-lg text-gray-800">4–6 Years</span>
+                <span class="text-brandRed font-bold bg-red-50 px-2 py-1 lg:px-3 rounded-lg text-xs lg:text-sm">1st / 2nd / 3rd Prizes</span>
+              </div>
+              <div class="flex justify-between items-center bg-white p-3 lg:p-4 rounded-xl border border-gray-200">
+                <span class="font-bold text-base lg:text-lg text-gray-800">7–10 Years</span>
+                <span class="text-brandRed font-bold bg-red-50 px-2 py-1 lg:px-3 rounded-lg text-xs lg:text-sm">1st / 2nd / 3rd Prizes</span>
+              </div>
+            </div>
+            <div class="mt-5 lg:mt-6 bg-brandDark text-white p-3 lg:p-4 rounded-xl text-center">
+              <p class="font-bold text-sm lg:text-base">Total Winners: <span class="text-brandRed">3 per batch</span> • 6 Overall</p>
+            </div>
+          </div>
+
+          <div class="bg-brandDark text-white rounded-3xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition duration-300 relative overflow-hidden gsap-fade-up">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-gray-800 rounded-full opacity-50"></div>
+            <div class="flex items-center gap-3 mb-4 lg:mb-6 relative z-10">
+              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gray-700 rounded-full flex items-center justify-center text-xl lg:text-2xl shadow-sm">🏆</div>
+              <h3 class="text-xl lg:text-2xl font-heading text-white">Awards Included</h3>
+            </div>
+            <ul class="space-y-2 lg:space-y-3 relative z-10 text-gray-300 font-semibold text-sm lg:text-base">
+              <li class="flex items-center gap-3"><i class="fas fa-medal text-yellow-400"></i> Prizes + Medals/Trophies for winners</li>
+              <li class="flex items-center gap-3"><i class="fas fa-certificate text-blue-400"></i> Certificates for <span class="text-white underline decoration-brandRed">ALL</span> participants</li>
+              <li class="flex items-center gap-3"><i class="fas fa-gift text-pink-400"></i> Goodies for every child</li>
+              <li class="flex items-center gap-3"><i class="fas fa-camera text-brandRed"></i> Stage photo moment for winners</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6 lg:gap-8">
+          <div class="bg-white rounded-3xl p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-t-brandDark gsap-fade-up">
+            <div class="flex items-center gap-3 mb-4 lg:mb-6">
+              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-gray-100 rounded-full flex items-center justify-center text-xl lg:text-2xl shadow-sm">📜</div>
+              <h3 class="text-xl lg:text-2xl font-heading text-brandDark">Competition Rules</h3>
+            </div>
+            <ul class="space-y-3 lg:space-y-4 text-sm lg:text-base">
+              <li class="flex items-start gap-3">
+                <i class="fas fa-hourglass-half text-brandRed mt-1"></i>
+                <span class="font-semibold text-gray-700">Competition time: <b class="text-black">45 minutes</b>.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-file-alt text-brandRed mt-1"></i>
+                <span class="font-semibold text-gray-700">Drawing sheets will be provided at the venue.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-ban text-brandRed mt-1"></i>
+                <span class="font-semibold text-gray-700">No outside drawing/trace sheets allowed.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-user-slash text-brandRed mt-1"></i>
+                <span class="font-semibold text-gray-700">Parents must not assist during the competition.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fas fa-gavel text-brandRed mt-1"></i>
+                <span class="font-semibold text-gray-700">Judges decision will be final.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-red-50 rounded-3xl p-6 lg:p-8 border border-red-100 shadow-lg hover:shadow-xl transition duration-300 gsap-fade-up">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full flex items-center justify-center text-xl lg:text-2xl shadow-sm">🎒</div>
+              <h3 class="text-xl lg:text-2xl font-heading text-brandDark">What to Bring</h3>
+            </div>
+            <div class="mb-6 text-sm lg:text-base">
+              <p class="font-bold text-brandDark mb-2 flex items-center gap-2">
+                <i class="fas fa-check-circle text-green-600"></i> Bring your own:
+              </p>
+              <p class="font-bold text-brandDark mb-2 flex items-center gap-2 mt-4">
+                <i class="fas fa-info-circle text-blue-600"></i> Optional:
+              </p>
+              <p class="text-gray-600 pl-6">Water bottle • Wear comfortable dress</p>
+            </div>
+            <div class="flex flex-wrap gap-2 lg:gap-3 pt-4 border-t border-red-200">
+              
+              <span class="px-3 py-2 bg-white border border-gray-200 rounded-full font-bold text-xs lg:text-sm text-brandDark shadow-sm">
+                 Seating Arranged
+              </span>
+              <span class="px-3 py-2 bg-brandRed border border-red-600 rounded-full font-bold text-xs lg:text-sm text-white shadow-sm">
+                Sheet Provided
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-10 lg:py-20 bg-white relative overflow-hidden">
+    <div class="absolute -left-20 top-20 w-64 h-64 bg-red-50 rounded-full opacity-50 z-0"></div>
+    <div class="absolute -right-20 bottom-20 w-80 h-80 bg-gray-100 rounded-full opacity-50 z-0"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <div class="text-center mb-10 lg:mb-16 gsap-fade-up">
+        <h2 class="text-3xl lg:text-4xl font-heading text-brandDark mb-4">🎉 Event Experience</h2>
+        <p class="text-lg lg:text-xl text-brandRed font-bold mb-2">Republic Day Special | Family-Friendly Event</p>
+        <p class="text-gray-600 text-sm lg:text-base">Monday, 26 January 2026 • 10:00 AM – 5:00 PM</p>
+        <div class="mt-4 inline-block bg-black text-white px-5 py-2 rounded-full font-bold shadow-lg text-sm lg:text-base">
+          🎟️ Entry is FREE for Visitors
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-t-brandRed gsap-fade-up">
+          <div class="w-12 h-12 lg:w-14 lg:h-14 bg-red-100 rounded-full flex items-center justify-center text-2xl lg:text-3xl mb-4 lg:mb-6 text-brandRed">🍔</div>
+          <h3 class="text-xl lg:text-2xl font-heading text-brandDark mb-3 lg:mb-4">Food Stalls</h3>
+          <ul class="space-y-2 lg:space-y-3 text-gray-700 font-semibold text-sm lg:text-base">
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brandRed text-xs"></i> Kid-friendly snacks</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brandRed text-xs"></i> Refreshments & juices</li>
+            <li class="flex items-center gap-2"><i class="fas fa-check text-brandRed text-xs"></i> Light meals</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-t-black gsap-fade-up">
+          <div class="w-12 h-12 lg:w-14 lg:h-14 bg-gray-100 rounded-full flex items-center justify-center text-2xl lg:text-3xl mb-4 lg:mb-6 text-black">🛍️</div>
+          <h3 class="text-xl lg:text-2xl font-heading text-brandDark mb-3 lg:mb-4">Shopping & Stalls</h3>
+          <ul class="space-y-2 lg:space-y-3 text-gray-700 font-semibold text-sm lg:text-base">
+            <li class="flex items-center gap-2"><i class="fas fa-star text-black text-xs"></i> Kids toys & games</li>
+            <li class="flex items-center gap-2"><i class="fas fa-star text-black text-xs"></i> Books & stationery</li>
+            <li class="flex items-center gap-2"><i class="fas fa-star text-black text-xs"></i> Educational products</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-t-brandRed gsap-fade-up">
+          <div class="w-12 h-12 lg:w-14 lg:h-14 bg-red-100 rounded-full flex items-center justify-center text-2xl lg:text-3xl mb-4 lg:mb-6 text-brandRed">🎯</div>
+          <h3 class="text-xl lg:text-2xl font-heading text-brandDark mb-3 lg:mb-4">Games Zone</h3>
+          <ul class="space-y-2 lg:space-y-3 text-gray-700 font-semibold text-sm lg:text-base">
+            <li class="flex items-center gap-2"><i class="fas fa-play text-brandRed text-xs"></i> Skill-based challenges</li>
+            <li class="flex items-center gap-2"><i class="fas fa-play text-brandRed text-xs"></i> Fun games with prizes</li>
+            <li class="flex items-center gap-2"><i class="fas fa-play text-brandRed text-xs"></i> Interactive play areas</li>
+          </ul>
+        </div>
+
+        <div class="col-span-1 md:col-span-2 lg:col-span-3 mt-4 lg:mt-8 bg-gray-900 text-white rounded-3xl p-6 lg:p-12 shadow-2xl relative overflow-hidden gsap-fade-up">
+           <div class="absolute top-0 right-0 w-64 h-64 bg-red-600 rounded-full filter blur-3xl opacity-20 pointer-events-none"></div>
+           <div class="grid md:grid-cols-2 gap-8 lg:gap-10 items-center">
+             <div>
+                <h3 class="text-2xl lg:text-3xl font-heading mb-4 lg:mb-6">🎟️ Registration Pricing <span class="text-brandRed">(Per Child)</span></h3>
+                <div class="space-y-3 lg:space-y-4">
+                  <div class="flex justify-between items-center bg-white/10 p-3 lg:p-4 rounded-xl border border-white/20">
+                    <div>
+                      <span class="block font-bold text-lg lg:text-xl">Early Bird Offer</span>
+                      <span class="text-xs text-gray-400">Limited seats only</span>
+                    </div>
+                    <span class="text-2xl lg:text-3xl font-heading text-brandRed">₹599</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 lg:p-4">
+                    <span class="font-bold text-base lg:text-lg text-gray-300">Regular</span>
+                    <span class="text-xl lg:text-2xl font-heading">₹699</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 lg:p-4">
+                    <div>
+                      <span class="font-bold text-base lg:text-lg text-gray-300">On-Spot</span>
+                      <span class="block text-xs text-gray-500">Subject to availability</span>
+                    </div>
+                    <span class="text-xl lg:text-2xl font-heading">₹799</span>
+                  </div>
+                </div>
+             </div>
+             <div class="text-center md:text-left">
+               <h4 class="text-lg lg:text-xl font-bold mb-3 lg:mb-4 text-brandRed">What's Included:</h4>
+               <ul class="grid grid-cols-1 gap-2 lg:gap-3 mb-6 lg:mb-8 text-gray-300 font-semibold text-sm lg:text-base">
+                 <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Participation in Colouring Competition</li>
+                 <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Entry to Workshop Session</li>
+                 <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Certificate & Goodies for ALL</li>
+                 <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-500"></i> Access to Workshops</li>
+               </ul>
+               <button onclick="openModal()" class="w-full bg-brandRed hover:bg-red-700 text-white font-heading text-lg lg:text-xl py-3 lg:py-4 rounded-xl shadow-lg transition transform hover:scale-105">
+                 SECURE YOUR SEAT
+               </button>
+               <p class="mt-4 text-xs text-gray-500 text-center">We recommend online registration to avoid disappointment.</p>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="details" class="py-10 lg:py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-fade-up">
+          <div class="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mb-4 lg:mb-6">
+            <span class="font-heading text-brandDark text-sm lg:text-base">✨ About the Festival</span>
+          </div>
+          <ul class="space-y-3 lg:space-y-4 text-sm lg:text-base">
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-brandRed text-white flex items-center justify-center text-xs font-bold mt-1">1</span>
+              <p class="font-semibold text-gray-700">Colouring competition with age-based categories (4-6 & 7-10 yrs).</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-brandRed text-white flex items-center justify-center text-xs font-bold mt-1">2</span>
+              <p class="font-semibold text-gray-700">Workshop that improves handwriting + creativity.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-full bg-brandRed text-white flex items-center justify-center text-xs font-bold mt-1">3</span>
+              <p class="font-semibold text-gray-700">Certificates + Goodies for every participant.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg border border-gray-100 gsap-fade-up">
+          <div class="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mb-4 lg:mb-6">
+            <span class="font-heading text-brandDark text-sm lg:text-base">📌 Rules & Materials</span>
+          </div>
+          <ul class="space-y-3 lg:space-y-4 text-sm lg:text-base">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-clock text-brandRed mt-1"></i>
+              <p class="font-semibold text-gray-700">Competition time: <b>45 minutes</b>.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-paper-plane text-brandRed mt-1"></i>
+              <p class="font-semibold text-gray-700">Drawing sheets are provided by us.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-pencil-alt text-brandRed mt-1"></i>
+              <p class="font-semibold text-gray-700"><b>Bring your own:</b> crayons, pencils, sketch pens.</p>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-exclamation-circle text-brandRed mt-1"></i>
+              <p class="font-semibold text-gray-700">Judges decision will be final.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-10 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-heading text-center mb-8 lg:mb-12 text-brandDark gsap-fade-up">📍 Venue & Contact</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <div class="gsap-fade-up">
+          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 mb-6">
+            <h3 class="font-bold text-xl mb-2 text-brandDark">Venue Address</h3>
+            <p class="text-gray-700 font-semibold mb-4 text-sm lg:text-base">
+              2nd A Cross Rd, Yelahanka Satellite Town,<br>
               Yelahanka, Bengaluru, Karnataka 560064
             </p>
-
-            <div class="contactActions">
-              <a href="tel:+917406238503"><i class="fa-solid fa-phone"></i> Call</a>
-              <a href="https://wa.me/917406238503" target="_blank" rel="noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-              <a href="#countdown" onclick="openModal()"><i class="fa-solid fa-ticket"></i> Book Slot</a>
-            </div>
-
-            <div class="mapBox">
-              <iframe
-                src="https://www.google.com/maps?q=Yelahanka%20Satellite%20Town%20Bangalore&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-              </iframe>
+            <div class="flex gap-4">
+              <a href="tel:+917406238503" class="text-brandRed font-bold hover:underline">📞 Call Us</a>
+              <a href="https://wa.me/917406238503" class="text-green-600 font-bold hover:underline">💬 WhatsApp</a>
             </div>
           </div>
-
-          <div class="contactCardForm">
-            <div class="titleChip" style="background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.10);">
-              <i class="fa-solid fa-paper-plane"></i> Send Enquiry
-            </div>
-
-            <form id="contactForm" class="formGrid">
-              <div class="fieldWrap">
-                <div class="label"><i class="fa-solid fa-user"></i> Your Name</div>
-                <div class="inputIcon">
-                  <i class="fa-solid fa-user"></i>
-                  <input class="field" type="text" name="contact_name" placeholder="Enter your name" required>
-                </div>
-              </div>
-
-              <div class="fieldWrap">
-                <div class="label"><i class="fa-solid fa-phone"></i> Mobile Number</div>
-                <div class="inputIcon">
-                  <i class="fa-solid fa-phone"></i>
-                  <input class="field" type="tel" name="contact_phone" placeholder="Enter mobile number" required inputmode="tel">
-                </div>
-              </div>
-
-              <div class="fieldWrap">
-                <div class="label"><i class="fa-solid fa-envelope"></i> Email (optional)</div>
-                <div class="inputIcon">
-                  <i class="fa-solid fa-envelope"></i>
-                  <input class="field" type="email" name="contact_email" placeholder="Enter email (optional)">
-                </div>
-              </div>
-
-              <div class="fieldWrap">
-                <div class="label"><i class="fa-solid fa-message"></i> Message</div>
-                <div class="inputIcon" style="align-items:flex-start;">
-                  <i class="fa-solid fa-message" style="top: 14px;"></i>
-                  <textarea class="textField" name="contact_message" rows="4" placeholder="Write your message"></textarea>
-                </div>
-                <p class="helpText">We’ll get back to you shortly.</p>
-              </div>
-
-              <button type="submit" class="btnPrimary">
-                <i class="fa-solid fa-paper-plane"></i> Send Message
-              </button>
-
-              <div class="status" id="contactStatus"></div>
-            </form>
+          <div class="w-full h-48 lg:h-64 bg-gray-200 rounded-2xl overflow-hidden shadow-inner">
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.6667362870465!2d77.5935!3d13.0975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA1JzUxLjAiTiA3N8KwMzUnMzYuNiJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
           </div>
         </div>
+
+       <div class="gsap-fade-up">
+        <form id="contactForm" class="bg-black text-white p-6 lg:p-8 rounded-3xl border-4 border-white shadow-[0_10px_20px_rgba(0,0,0,0.5)] relative">
+
+            <input type="hidden" name="form_type" value="contact">
+            <h3 class="text-xl lg:text-2xl font-heading mb-4 lg:mb-6 text-white">Ask a Question</h3>
+            
+            <div class="space-y-3 lg:space-y-4">
+              <div class="relative">
+                  <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg pointer-events-none"></i>
+                  <input type="text" name="contact_name" placeholder="Your Name" required 
+                         class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:border-brandRed focus:ring-1 focus:ring-brandRed transition placeholder-gray-500 text-sm lg:text-base">
+              </div>
+              <div class="relative">
+                  <i class="fas fa-phone absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500 text-lg pointer-events-none"></i>
+                  <input type="tel" name="contact_phone" placeholder="Mobile Number" required 
+                         class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:border-brandRed focus:ring-1 focus:ring-brandRed transition placeholder-gray-500 text-sm lg:text-base">
+              </div>
+              <div class="relative">
+                  <i class="fas fa-envelope absolute left-4 top-4 text-gray-500 text-lg pointer-events-none"></i>
+                  <textarea name="contact_message" rows="3" placeholder="Message" 
+                            class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg pl-12 pr-4 py-3 focus:outline-none focus:border-brandRed focus:ring-1 focus:ring-brandRed transition placeholder-gray-500 text-sm lg:text-base"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full mt-6 bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-lg transition border border-red-500 shadow-lg flex items-center justify-center gap-2">
+              <i class="fas fa-paper-plane"></i> SEND MESSAGE
+            </button>
+            <div id="contactStatus" class="mt-4 text-center font-bold text-yellow-400"></div>
+        </form>
+       </div>
       </div>
     </div>
   </section>
 
-  <a class="whatsapp" href="https://wa.me/917406238503" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
+<footer class="bg-black text-white py-6 border-t border-gray-900">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      
+      <div class="flex items-center justify-center mb-2">
+         <img src="image/logo.png" alt="SkyKeen Logo" class="h-24 lg:h-32 w-auto object-contain opacity-90 hover:opacity-100 transition">
+      </div>
+      
+      <p class="text-gray-500 mb-4 font-semibold text-sm lg:text-base">Creating platforms. Connecting communities.</p>
+      
+      <div class="text-xs text-gray-600 border-t border-gray-800 pt-4">
+        © 2026 SkyKeen. All rights reserved.
+      </div>
+    </div>
+</footer>
+
+  <a href="https://wa.me/917406238503" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition animate-bounce">
+    <i class="fab fa-whatsapp text-white text-2xl lg:text-3xl"></i>
   </a>
 
-  <!-- Modal -->
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modalCard" role="dialog" aria-modal="true" aria-label="Registration Form">
-      <button class="xClose" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-
-      <h3>Register Now</h3>
-      <p style="margin:0; font-weight:900; color:var(--muted)">
-        <i class="fa-solid fa-sheet-plastic"></i> Form submits to Google Sheet ✅
-      </p>
-
-      <form id="regForm" class="formGrid" style="margin-top:14px;">
-        <div class="fieldWrap">
-          <div class="label"><i class="fa-solid fa-child"></i> Child Name *</div>
-          <div class="inputIcon">
-            <i class="fa-solid fa-child"></i>
-            <input class="field" name="child_name" type="text" placeholder="Child Name" required>
-          </div>
+<div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm overflow-y-auto py-4 lg:py-10">
+    <div class="bg-white w-full max-w-lg mx-4 rounded-3xl p-5 lg:p-8 relative shadow-2xl animate-[pop_0.2s_ease-out] border-4 border-brandRed my-auto">
+      <button onclick="closeModal()" class="absolute top-3 right-3 lg:top-4 lg:right-4 w-8 h-8 lg:w-10 lg:h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-brandRed transition font-bold z-10">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="text-center mb-4 lg:mb-6">
+          <div class="inline-block bg-red-100 text-brandRed px-4 py-1 rounded-full text-xs font-bold mb-2">LIMITED SEATS</div>
+          <h3 class="text-2xl lg:text-3xl font-heading text-brandDark">Book Your Slot</h3>
+          <p class="text-gray-500 text-xs lg:text-sm">Fill details below to register.</p>
+      </div>
+      
+      <form id="regForm" class="space-y-3 lg:space-y-4">
+        <input type="hidden" name="form_type" value="register">
+        
+        <div class="relative">
+            <i class="fas fa-child absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+            <input name="child_name" type="text" placeholder="Child Name *" required 
+                   class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+            <div class="relative">
+                <i class="fas fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+                <input name="parent_name" type="text" placeholder="Parent Name *" required 
+                       class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
+            </div>
+            <div class="relative">
+                <i class="fas fa-phone absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+                <input name="phone" type="tel" placeholder="Phone *" required 
+                       class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
+            </div>
         </div>
 
-        <div class="two">
-          <div class="fieldWrap">
-            <div class="label"><i class="fa-solid fa-user-group"></i> Parent Name *</div>
-            <div class="inputIcon">
-              <i class="fa-solid fa-user-group"></i>
-              <input class="field" name="parent_name" type="text" placeholder="Parent Name" required>
-            </div>
-          </div>
-
-          <div class="fieldWrap">
-            <div class="label"><i class="fa-solid fa-phone"></i> Phone Number *</div>
-            <div class="inputIcon">
-              <i class="fa-solid fa-phone"></i>
-              <input class="field" name="phone" type="tel" placeholder="Phone Number" required inputmode="tel">
-            </div>
-          </div>
+        <div class="relative">
+            <i class="fas fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+            <input name="email" type="email" placeholder="Email (Optional)" 
+                   class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
         </div>
-
-        <div class="two">
-          <div class="fieldWrap">
-            <div class="label"><i class="fa-solid fa-children"></i> Age Group *</div>
-            <div class="inputIcon">
-              <i class="fa-solid fa-children"></i>
-              <select class="selectField" name="age_group" required>
-                <option value="">Select Age Group</option>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4">
+          <div class="relative">
+             <i class="fas fa-birthday-cake absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+             <select name="age_group" required 
+                     class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-8 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed appearance-none text-gray-800 text-sm lg:text-base">
+                <option value="">Age Group *</option>
                 <option>4–6 Years</option>
                 <option>7–10 Years</option>
-              </select>
-              <i class="fa-solid fa-chevron-down selectCaret"></i>
-            </div>
+             </select>
+             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="fas fa-chevron-down text-gray-400 text-xs mr-2"></i>
+             </div>
           </div>
-
-          <div class="fieldWrap">
-            <div class="label"><i class="fa-solid fa-clock"></i> Batch *</div>
-            <div class="inputIcon">
-              <i class="fa-solid fa-clock"></i>
-              <select class="selectField" name="batch" required>
-                <option value="">Select Batch</option>
-                <option>Batch 1 (10:00 AM)</option>
-                <option>Batch 2 (2:00 PM)</option>
-              </select>
-              <i class="fa-solid fa-chevron-down selectCaret"></i>
-            </div>
-          </div>
-        </div>
-
-        <div class="fieldWrap">
-          <div class="label"><i class="fa-solid fa-location-crosshairs"></i> Area / City (optional)</div>
-          <div class="inputIcon">
-            <i class="fa-solid fa-location-crosshairs"></i>
-            <input class="field" name="city" type="text" placeholder="Area / City">
+          <div class="relative">
+             <i class="fas fa-clock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg pointer-events-none"></i>
+             <select name="batch" required 
+                     class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-8 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed appearance-none text-gray-800 text-sm lg:text-base">
+                <option value="">Batch *</option>
+                <option>Batch 1 (10 AM)</option>
+                <option>Batch 2 (2 PM)</option>
+             </select>
+             <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <i class="fas fa-chevron-down text-gray-400 text-xs mr-2"></i>
+             </div>
           </div>
         </div>
 
-        <div class="fieldWrap">
-          <div class="label"><i class="fa-solid fa-note-sticky"></i> Notes (optional)</div>
-          <div class="inputIcon" style="align-items:flex-start;">
-            <i class="fa-solid fa-note-sticky" style="top:14px;"></i>
-            <textarea class="textField" name="notes" rows="3" placeholder="Any notes (optional)"></textarea>
-          </div>
-        </div>
-
-        <button class="btnBook" type="submit" style="width:100%; margin-top:4px">
-          <i class="fa-solid fa-circle-check"></i> SUBMIT
+        
+        <button type="submit" class="w-full bg-brandDark text-white font-heading text-base lg:text-lg py-3 lg:py-4 rounded-xl hover:bg-gray-800 transition shadow-lg mt-2 border-2 border-brandRed flex items-center justify-center gap-2">
+            <i class="fas fa-check-circle"></i> CONFIRM BOOKING
         </button>
-        <div class="status" id="status"></div>
+        <div id="status" class="text-center font-bold text-sm mt-2"></div>
       </form>
     </div>
   </div>
 
-  <footer id="footer">
-    <div class="container">
-      <div class="footerTop">
-        <img src="image/logo1.png" alt="SkyKeen Logo">
-      </div>
-      <div class="copy">© 2026 SkyKeen. All rights reserved.</div>
-    </div>
-  </footer>
-
   <script>
-    // ===== SETTINGS =====
-    const SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE"; // Google Apps Script web app
-    const AUTO_POPUP = true;
-    const AUTO_POPUP_INTERVAL_MS = 30000;
+    // --- GSAP ANIMATIONS ---
+    document.addEventListener("DOMContentLoaded", (event) => {
+      gsap.registerPlugin(ScrollTrigger);
 
-    // ====== MODAL ======
-    const modal = document.getElementById('modal');
-
-    function openModal() {
-      modal.style.display = 'flex';
-      modal.setAttribute("aria-hidden", "false");
-      // focus first field for better mobile UX
-      const first = modal.querySelector("input, select, textarea, button");
-      if (first) setTimeout(() => first.focus(), 50);
-    }
-    function closeModal() {
-      modal.style.display = 'none';
-      modal.setAttribute("aria-hidden", "true");
-    }
-
-    // close on click outside
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    // close on ESC
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.style.display === "flex") closeModal();
-    });
-
-    // ====== BATCH TOGGLE LOGIC ======
-    function switchBatch(batchId, btnElement) {
-      document.querySelectorAll('.batchContent').forEach(el => {
-        el.classList.remove('active');
-        el.style.display = 'none';
+      // Hero Text Animation
+      gsap.from(".gsap-hero-text > *", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power3.out"
       });
-      document.querySelectorAll('.tabBtn').forEach(btn => btn.classList.remove('active'));
 
-      const selectedBatch = document.getElementById(batchId);
-      selectedBatch.style.display = 'block';
-      setTimeout(() => selectedBatch.classList.add('active'), 10);
-      btnElement.classList.add('active');
-    }
+      // Hero Image Animation
+      gsap.from(".gsap-hero-img", {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1.2,
+        ease: "elastic.out(1, 0.7)"
+      });
 
-    // ====== MOBILE MENU LOGIC ======
-    function toggleMenu() {
-      const nav = document.getElementById('mobileMenu');
-      const btn = document.getElementById('menuBtn');
-      nav.classList.toggle('show');
-      btn.setAttribute('aria-expanded', nav.classList.contains('show') ? 'true' : 'false');
-    }
-
-    // close menu if user taps outside on mobile
-    document.addEventListener('click', (e) => {
-      const nav = document.getElementById('mobileMenu');
-      const btn = document.getElementById('menuBtn');
-      if (!nav || !btn) return;
-      const clickedInside = nav.contains(e.target) || btn.contains(e.target);
-      if (!clickedInside && nav.classList.contains('show')) {
-        nav.classList.remove('show');
-        btn.setAttribute('aria-expanded', 'false');
-      }
+      // General Fade Up Elements
+      gsap.utils.toArray('.gsap-fade-up').forEach(element => {
+        gsap.from(element, {
+          y: 60,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element,
+            start: "top 85%", // Animation starts when top of element hits 85% of viewport height
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
     });
 
-    // ====== COUNTDOWN ======
-    const target = new Date("Jan 26, 2026 10:00:00").getTime();
-    function pad2(n){ return String(n).padStart(2,'0'); }
+    // --- LOGIC ---
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxjH4abMZ-7PjBPCKmJexZb7ndle0q5DDTSnayDkwae8-0ChOB7NSCLNT2OI1M5Gh3jeA/exec";
+    
+    // UI Helpers
+    function $(id) { return document.getElementById(id); }
+    
+    // Modal
+    const modal = $("modal");
+    function openModal() { modal.classList.remove("hidden"); modal.classList.add("flex"); }
+    function closeModal() { modal.classList.add("hidden"); modal.classList.remove("flex"); }
+    modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
 
+    // Mobile Menu
+    function toggleMenu() {
+      const menu = $("mobileMenu");
+      menu.classList.toggle("hidden");
+    }
+
+    // Batch Switcher
+    function switchBatch(batchId, btn) {
+      document.querySelectorAll(".batch-content").forEach(el => el.classList.add("hidden"));
+      document.querySelectorAll(".tab-btn").forEach(el => {
+        el.classList.remove("bg-brandRed", "text-white", "border-brandRed");
+        el.classList.add("bg-white", "text-gray-500", "border-gray-300");
+      });
+      
+      document.getElementById(batchId).classList.remove("hidden");
+      btn.classList.remove("bg-white", "text-gray-500", "border-gray-300");
+      btn.classList.add("bg-brandRed", "text-white", "border-brandRed");
+      
+      // Refresh ScrollTrigger after DOM change
+      ScrollTrigger.refresh();
+    }
+
+    // Countdown
+    const target = new Date("Jan 26, 2026 10:00:00").getTime();
+    const pad = (n) => String(n).padStart(2, "0");
     setInterval(() => {
       const now = Date.now();
       let diff = target - now;
       if (diff < 0) diff = 0;
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById("cdDays").innerText = pad2(days);
-      document.getElementById("cdHours").innerText = pad2(hours);
-      document.getElementById("cdMins").innerText = pad2(mins);
-      document.getElementById("cdSecs").innerText = pad2(secs);
+      $("cdDays").innerText = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+      $("cdHours").innerText = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      $("cdMins").innerText = pad(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)));
+      $("cdSecs").innerText = pad(Math.floor((diff % (1000 * 60)) / 1000));
     }, 1000);
 
-    // ====== UNIFIED FORM SUBMISSION LOGIC ======
-    async function handleFormSubmit(e, formElement, statusElement, isModal) {
+    // Form Submission
+    async function handleFormSubmit(e, formId, statusId, isModal) {
       e.preventDefault();
-
-      if (!SCRIPT_URL || SCRIPT_URL.includes("PASTE_YOUR_WEB_APP_URL_HERE")) {
-        statusElement.textContent = "⚠️ Paste your Google Script Web App URL in SCRIPT_URL.";
-        statusElement.style.color = isModal ? "red" : "#ffbdbd";
-        return;
-      }
-
-      statusElement.textContent = "Submitting...";
-      statusElement.style.color = isModal ? "#333" : "#ffd7a6";
-
-      const payload = Object.fromEntries(new FormData(formElement).entries());
-
+      const form = $(formId);
+      const status = $(statusId);
+      const btn = form.querySelector('button[type="submit"]');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      
       try {
-        const res = await fetch(SCRIPT_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-
-        const data = await res.json();
-
-        if (data.status === "success") {
-          statusElement.textContent = "✅ Success! We’ll contact you shortly.";
-          statusElement.style.color = isModal ? "green" : "#baffc6";
-          formElement.reset();
-
-          if (isModal) setTimeout(closeModal, 1500);
-        } else {
-          throw new Error(data.message || "Unknown error");
-        }
+        const body = new URLSearchParams(new FormData(form));
+        await fetch(SCRIPT_URL, { method: "POST", body });
+        status.innerText = "✅ Submitted Successfully!";
+        status.className = "mt-2 text-center font-bold text-green-600";
+        form.reset();
+        if(isModal) setTimeout(closeModal, 1500);
       } catch (err) {
-        statusElement.textContent = "❌ Failed to submit. Please try again / WhatsApp us.";
-        statusElement.style.color = isModal ? "red" : "#ffbdbd";
-        console.error(err);
+        status.innerText = "❌ Error submitting. Try again.";
+        status.className = "mt-2 text-center font-bold text-red-600";
+      } finally {
+        btn.disabled = false;
+        btn.innerText = isModal ? "SUBMIT REGISTRATION" : "SEND MESSAGE";
       }
     }
 
-    // Registration form
-    const regForm = document.getElementById("regForm");
-    const regStatus = document.getElementById("status");
-    regForm.addEventListener("submit", (e) => handleFormSubmit(e, regForm, regStatus, true));
+    if($("regForm")) $("regForm").addEventListener("submit", (e) => handleFormSubmit(e, "regForm", "status", true));
+    if($("contactForm")) $("contactForm").addEventListener("submit", (e) => handleFormSubmit(e, "contactForm", "contactStatus", false));
 
-    // Contact form
-    const contactForm = document.getElementById("contactForm");
-    const contactStatus = document.getElementById("contactStatus");
-    contactForm.addEventListener("submit", (e) => handleFormSubmit(e, contactForm, contactStatus, false));
+    // Auto Popup
+    setTimeout(() => { if(modal.classList.contains("hidden")) openModal(); }, 30000);
 
-    // ====== AUTO POPUP ======
-    if (AUTO_POPUP) {
-      setInterval(() => {
-        if (modal.style.display !== "flex") openModal();
-      }, AUTO_POPUP_INTERVAL_MS);
-    }
   </script>
 </body>
 </html>
