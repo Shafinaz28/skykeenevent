@@ -169,19 +169,19 @@
     </div>
 
     <script>
-        // 1. SET THE DATE:
-        // Currently set to 5 days from now
+        // --- CONFIGURATION ---
+        // 1. Set your specific launch date and time here.
+        // Format: "Month Day, Year Hour:Minute:Second"
+        var targetDateString = "Jan 20, 2026 09:00:00"; 
         
-        var targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 5); 
-        var countDownDate = targetDate.getTime();
+        var countDownDate = new Date(targetDateString).getTime();
 
-        // 2. Update the count down every 1 second
-        var x = setInterval(function() {
-
+        // 2. Define the calculation function
+        function updateTimer() {
             var now = new Date().getTime();
             var distance = countDownDate - now;
 
+            // Math calculations for days, hours, minutes, and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -192,17 +192,25 @@
                 return time < 10 ? "0" + time : time;
             }
 
-            document.getElementById("days").innerHTML = formatTime(days);
-            document.getElementById("hours").innerHTML = formatTime(hours);
-            document.getElementById("minutes").innerHTML = formatTime(minutes);
-            document.getElementById("seconds").innerHTML = formatTime(seconds);
-
+            // Check if date has passed
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("countdown").innerHTML = "<h2>WE ARE LIVE!</h2>";
+                document.getElementById("countdown").innerHTML = "<h2 style='color:#ff6600;'>WE ARE LIVE!</h2>";
+                // Optional: Hide the loader text or change message
+            } else {
+                // Update the HTML
+                document.getElementById("days").innerHTML = formatTime(days);
+                document.getElementById("hours").innerHTML = formatTime(hours);
+                document.getElementById("minutes").innerHTML = formatTime(minutes);
+                document.getElementById("seconds").innerHTML = formatTime(seconds);
             }
-        }, 1000);
-    </script>
+        }
 
+        // 3. RUN IMMEDIATELY (Prevents the 00:00 flash)
+        updateTimer();
+
+        // 4. Update every 1 second
+        var x = setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html>
