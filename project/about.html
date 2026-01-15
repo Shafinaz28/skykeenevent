@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventPro | About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+
+  <section class="page-hero">
+  <div class="container">
+    <h1>About Us</h1>
+    <p class="breadcrumb">Home <span>/</span> About Us</p>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container flex-row">
+      <div class="col-text reveal">
+        <span class="sub-title">Our Story</span>
+        <h2>Founded on Creativity, <br><span style="color:var(--primary)">Driven by Execution</span></h2>
+        <p>
+          EventPro is a founder-led events team focused on delivering high-impact formats like workshops,
+          competitions, brand activations, and flea marketing experiences.
+        </p>
+        <ul class="check-list">
+          <li><span class="check-dot">✓</span> Concept → Planning → Execution</li>
+          <li><span class="check-dot">✓</span> Vendor management & on-ground ops</li>
+          <li><span class="check-dot">✓</span> Creative + measurable outcomes</li>
+          <li><span class="check-dot">✓</span> Transparent timelines & reporting</li>
+        </ul>
+      </div>
+
+      <div class="col-grid">
+        <div class="feature-box reveal delay-1">
+          <div class="f-icon-wrapper">🎯</div>
+          <h4>Mission</h4>
+          <p>Create unforgettable experiences that deliver real brand value.</p>
+        </div>
+        <div class="feature-box reveal delay-2">
+          <div class="f-icon-wrapper">✨</div>
+          <h4>Vision</h4>
+          <p>Become the most trusted team for scalable event formats.</p>
+        </div>
+        <div class="feature-box reveal delay-3">
+          <div class="f-icon-wrapper">🤝</div>
+          <h4>Values</h4>
+          <p>Quality, clarity, creativity, and consistency on ground.</p>
+        </div>
+        <div class="feature-box reveal delay-4">
+          <div class="f-icon-wrapper">⚡</div>
+          <h4>Strength</h4>
+          <p>Fast execution with a strong vendor + ops network.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-light">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sub-title">What We Do Best</span>
+        <h2>Our Core Formats</h2>
+        <p>Built for engagement, visibility, and community connection.</p>
+      </div>
+
+      <div class="grid-4">
+        <a class="service-card reveal" href="services.html#workshops" style="background-image:url('../img/workshop.jpg')">
+          <div class="card-content">
+            <div class="icon-pill">🎨</div>
+            <h3>Workshops</h3>
+            <p>Interactive learning experiences.</p>
+          </div>
+        </a>
+
+        <a class="service-card reveal delay-1" href="services.html#brand" style="background-image:url('../img/brandcompetation.jpg')">
+          <div class="card-content">
+            <div class="icon-pill">🏆</div>
+            <h3>Brand Activation</h3>
+            <p>Immersive brand experiences.</p>
+          </div>
+        </a>
+
+        <a class="service-card reveal delay-2" href="services.html#competitions" style="background-image:url('../img/img1.jpg')">
+          <div class="card-content">
+            <div class="icon-pill">👥</div>
+            <h3>Competitions</h3>
+            <p>High-energy event formats.</p>
+          </div>
+        </a>
+
+        <a class="service-card reveal delay-3" href="services.html#flea" style="background-image:url('../img/fleamarket.jpg')">
+          <div class="card-content">
+            <div class="icon-pill">⛺</div>
+            <h3>Flea Marketing</h3>
+            <p>Community-driven markets.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer"></div>
+
+<!-- POPUP FORM -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-card">
+    <button class="popup-close" id="popupClose">×</button>
+
+    <h3 class="popup-title">Get a Free Callback</h3>
+    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
+
+      <form class="styled-form js-sheet-form" id="popupForm">
+  <input type="hidden" name="source" value="popup-form">
+
+  <div class="form-group">
+    <label>Name</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-user"></i>
+      <input name="name" type="text" placeholder="Your name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Phone</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-phone"></i>
+      <input name="phone" type="tel" placeholder="Your phone number" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Event Type</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-calendar-check"></i>
+      <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+    </div>
+  </div>
+
+  <button class="btn btn-primary full-width" type="submit">
+    Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+  </button>
+
+  <p class="form-status" aria-live="polite"></p>
+</form>
+  </div>
+</div>
+
+<script src="../js/components.js"></script>
+<script src="../js/reveal.js"></script>
+<script src="../js/popup.js"></script>
+<script src="../js/forms.js"></script>
+</body>
+</html>

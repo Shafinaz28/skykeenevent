@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EventPro | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<div id="header"></div>
+
+<main>
+
+   <section class="page-hero">
+  <div class="container">
+    <h1>Portfolio</h1>
+    <p class="breadcrumb">Home <span>/</span> Portfolio</p>
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="sub-title">Our Work</span>
+        <h2>Project Gallery</h2>
+        <p>Replace these placeholders with your real images.</p>
+      </div>
+
+      <div class="project-grid reveal">
+        <div class="project-item large" style="background-image:url('https://placehold.co/900x650/111/444?text=Brand+Activation');">
+          <div class="p-overlay"><h3>Brand Activation</h3></div>
+        </div>
+
+        <div class="project-item" style="background-image:url('https://placehold.co/600x400/222/666?text=Workshop');">
+          <div class="p-overlay"><h3>Creative Workshop</h3></div>
+        </div>
+
+        <div class="project-item" style="background-image:url('https://placehold.co/600x400/333/777?text=Competition');">
+          <div class="p-overlay"><h3>Annual Talent Competition</h3></div>
+        </div>
+      </div>
+
+      <div class="grid-4" style="margin-top:22px;">
+        <div class="service-card reveal" style="background-image:url('https://placehold.co/800x500/111/555?text=Flea+Marketing');">
+          <div class="card-content">
+            <div class="icon-pill">⛺</div>
+            <h3>Flea Marketing</h3>
+            <p>Vendor + community events.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal delay-1" style="background-image:url('https://placehold.co/800x500/222/666?text=Workshop');">
+          <div class="card-content">
+            <div class="icon-pill">🎨</div>
+            <h3>Workshops</h3>
+            <p>Hands-on formats.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal delay-2" style="background-image:url('https://placehold.co/800x500/333/777?text=Brand+Activation');">
+          <div class="card-content">
+            <div class="icon-pill">🏆</div>
+            <h3>Brand Activation</h3>
+            <p>Lead + engagement.</p>
+          </div>
+        </div>
+
+        <div class="service-card reveal delay-3" style="background-image:url('https://placehold.co/800x500/444/888?text=Competition');">
+          <div class="card-content">
+            <div class="icon-pill">👥</div>
+            <h3>Competitions</h3>
+            <p>Stage + audience energy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="footer"></div>
+
+<!-- POPUP FORM -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-card">
+    <button class="popup-close" id="popupClose">×</button>
+
+    <h3 class="popup-title">Get a Free Callback</h3>
+    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
+
+      <form class="styled-form js-sheet-form" id="popupForm">
+  <input type="hidden" name="source" value="popup-form">
+
+  <div class="form-group">
+    <label>Name</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-user"></i>
+      <input name="name" type="text" placeholder="Your name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Phone</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-phone"></i>
+      <input name="phone" type="tel" placeholder="Your phone number" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Event Type</label>
+    <div class="input-wrap">
+      <i class="fa-solid fa-calendar-check"></i>
+      <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+    </div>
+  </div>
+
+  <button class="btn btn-primary full-width" type="submit">
+    Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+  </button>
+
+  <p class="form-status" aria-live="polite"></p>
+</form>
+  </div>
+</div>
+<script src="../js/components.js"></script>
+<script src="../js/reveal.js"></script>
+<script src="../js/forms.js"></script>
+<script src="../js/popup.js"></script>
+</body>
+</html>
