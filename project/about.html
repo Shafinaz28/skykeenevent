@@ -3,161 +3,640 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EventPro | About</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Skykeen Events | About</title>
 
-  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+   :root { --header-h: 120px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .10s; }
+    .delay-2 { transition-delay: .20s; }
+    .delay-3 { transition-delay: .30s; }
+    .delay-4 { transition-delay: .40s; }
+
+    /* WhatsApp floating */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 4px 10px rgba(17,24,39,0.30),
+        0 0 0 3px rgba(220,38,38,0.35);
+    }
+    .whatsapp-float i{ color: #fff; font-size: 28px; }
+
+    /* Marquee */
+    .logo-marquee { overflow: hidden; position: relative; margin-top: 22px; }
+    .logo-track {
+      display: flex;
+      width: max-content;
+      animation: scrollLogos 30s linear infinite;
+    }
+    .logo-item{
+      min-width: 160px;
+      height: 90px;
+      margin: 0 14px;
+      background: #fff;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 800;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+      transition: transform .3s ease;
+      border: 1px solid rgba(17,24,39,0.08);
+    }
+    .logo-item:hover{ transform: scale(1.08); }
+    @keyframes scrollLogos{
+      0%{ transform: translateX(0); }
+      100%{ transform: translateX(-50%); }
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(220 38 38)",
+            primaryDark: "rgb(185 28 28)",
+            darkText: "rgb(17 24 39)",
+          },
+          boxShadow: {
+            soft: "0 20px 60px rgba(17,24,39,0.15)"
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
 
-<div id="header"></div>
+<body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-<main>
+  <!-- HEADER (same as index) -->
+  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
+      <a href="index.html">
+      <img class="h-28 md:h-36 w-auto object-contain"
+     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+     alt="Skykeen Events" />
+      </a>
 
-  <section class="page-hero">
-  <div class="container">
-    <h1>About Us</h1>
-    <p class="breadcrumb">Home <span>/</span> About Us</p>
-  </div>
-</section>
+      <button id="hamburgerBtn"
+        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
+        aria-label="Open menu" type="button">☰</button>
 
-  <section class="section">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Our Story</span>
-        <h2>Founded on Creativity, <br><span style="color:var(--primary)">Driven by Execution</span></h2>
-        <p>
-          EventPro is a founder-led events team focused on delivering high-impact formats like workshops,
-          competitions, brand activations, and flea marketing experiences.
+      <nav class="hidden md:flex items-center gap-6 font-bold">
+        <a class="hover:text-primaryDark" href="../project/index.html">Home</a>
+        <a class="hover:text-primaryDark text-primary" href="../project/about.html">About</a>
+        <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
+        <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
+        <a class="hover:text-primaryDark" href="../project/contact.html">Contact</a>
+        <a href="#" id="openPopupDesktop"
+           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+          Get Started
+        </a>
+      </nav>
+    </div>
+
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
+
+    <nav id="navMenu"
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
+             flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
+             translate-x-[110%] transition md:hidden z-[10001]">
+      <button id="closeMenu"
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+        aria-label="Close menu" type="button">×</button>
+
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5 text-primary" href="../project/about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/portfolio.html">Portfolio</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/contact.html">Contact</a>
+
+      <a href="#" id="openPopupMobile"
+         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+        Get Started
+      </a>
+    </nav>
+  </header>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <main>
+    <!-- PAGE HERO -->
+    <section class="relative py-16 text-white text-center overflow-hidden"
+      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
+      <div class="absolute inset-0 opacity-20"
+        style="background:
+          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
+          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-3 reveal active">
+        <h1 class="text-4xl md:text-5xl font-black">About Us</h1>
+        <p class="mt-3 text-white/90 font-bold">
+          Home <span class="opacity-80 mx-1">/</span> About Us
         </p>
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> Concept → Planning → Execution</li>
-          <li><span class="check-dot">✓</span> Vendor management & on-ground ops</li>
-          <li><span class="check-dot">✓</span> Creative + measurable outcomes</li>
-          <li><span class="check-dot">✓</span> Transparent timelines & reporting</li>
+      </div>
+    </section>
+
+    <!-- OUR STORY -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
+        <div class="flex-1 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Story</span>
+
+          <h2 class="text-[42px] font-black leading-tight">
+            Founded on Creativity, <br>
+            <span class="text-primary">Driven by Execution</span>
+          </h2>
+
+          <p class="mt-3 text-black/60 leading-7 max-w-[720px]">
+            Skykeen Events is a founder-led events team focused on delivering high-impact formats like workshops,
+            competitions, brand activations, and flea marketing experiences.
+          </p>
+
+          <!-- Mini badges -->
+          <div class="mt-4 flex flex-wrap gap-2 reveal delay-1">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
+              ⭐ 3+ Years of Experience
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
+              🧩 End-to-End Execution
+            </span>
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
+              📍 On-Ground Ops Team
+            </span>
+          </div>
+
+          <!-- Checklist -->
+          <ul class="mt-5 grid gap-3 font-extrabold reveal delay-2">
+            <li class="flex gap-2 items-start">
+              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span>
+              Concept → Planning → Execution
+            </li>
+            <li class="flex gap-2 items-start">
+              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span>
+              Vendor management & on-ground ops
+            </li>
+            <li class="flex gap-2 items-start">
+              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span>
+              Creative + measurable outcomes
+            </li>
+            <li class="flex gap-2 items-start">
+              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span>
+              Transparent timelines & reporting
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mission/Vision grid -->
+        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎯</div>
+            <h4 class="font-black">Mission</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Create unforgettable experiences that deliver real brand value.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">✨</div>
+            <h4 class="font-black">Vision</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Become the most trusted team for scalable event formats.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🤝</div>
+            <h4 class="font-black">Values</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Quality, clarity, creativity, and consistency on ground.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">⚡</div>
+            <h4 class="font-black">Strength</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Fast execution with a strong vendor + ops network.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK STATS (animated) -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Partners</span>
+          <p class="text-black/60">Real on-ground experience that turns plans into packed events.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-7">
+          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal">
+            <h3 class="text-[40px] leading-none font-black text-primary">
+              <span class="count" data-target="3">0</span>+
+            </h3>
+            <p class="mt-2 text-black/60 font-bold">Years in Events</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-1">
+            <h3 class="text-[40px] leading-none font-black text-primary">
+              <span class="count" data-target="120">0</span>+
+            </h3>
+            <p class="mt-2 text-black/60 font-bold">Events Executed</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-2">
+            <h3 class="text-[40px] leading-none font-black text-primary">
+              <span class="count" data-target="250">0</span>+
+            </h3>
+            <p class="mt-2 text-black/60 font-bold">Vendors Network</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-3">
+            <h3 class="text-[40px] leading-none font-black text-primary">
+              <span class="count" data-target="60">0</span>+
+            </h3>
+            <p class="mt-2 text-black/60 font-bold">Brand Collaborations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US (same section style) -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
+        <div class="flex-1 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Why Choose Us</span>
+          <h2 class="text-[42px] font-black leading-tight">
+            We Make Events <br><span class="text-primary">Unforgettable</span>
+          </h2>
+          <p class="mt-2 text-black/60 leading-7">
+            We combine creativity + strategy with flawless execution to deliver real results.
+          </p>
+
+          <ul class="mt-5 grid gap-3 font-extrabold">
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> End-to-end event management</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Custom-tailored experiences</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Real-time reporting</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Dedicated support</li>
+          </ul>
+        </div>
+
+        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎯</div>
+            <h4 class="font-black">Strategic Planning</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Every event is planned with measurable objectives.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">✨</div>
+            <h4 class="font-black">Creative Excellence</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">We push fresh concepts that stand out.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">❤️</div>
+            <h4 class="font-black">Passionate Team</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Dedicated professionals who make it happen.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">⚡</div>
+            <h4 class="font-black">Flawless Execution</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">From setup to wrap-up, we handle it all.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Partners</span>
+          <h2 class="text-[38px] font-black leading-tight">Trusted by 16+ Brands</h2>
+          <p class="mt-2 text-black/60">Collaborations that move our events forward.</p>
+        </div>
+
+        <div class="logo-marquee reveal delay-1">
+          <div class="logo-track" id="logoTrack">
+            <!-- 16 logos -->
+            <div class="logo-item">Client 1</div>
+            <div class="logo-item">Client 2</div>
+            <div class="logo-item">Client 3</div>
+            <div class="logo-item">Client 4</div>
+            <div class="logo-item">Client 5</div>
+            <div class="logo-item">Client 6</div>
+            <div class="logo-item">Client 7</div>
+            <div class="logo-item">Client 8</div>
+            <div class="logo-item">Client 9</div>
+            <div class="logo-item">Client 10</div>
+            <div class="logo-item">Client 11</div>
+            <div class="logo-item">Client 12</div>
+            <div class="logo-item">Client 13</div>
+            <div class="logo-item">Client 14</div>
+            <div class="logo-item">Client 15</div>
+            <div class="logo-item">Client 16</div>
+
+            <!-- duplicate for seamless loop -->
+            <div class="logo-item">Client 1</div>
+            <div class="logo-item">Client 2</div>
+            <div class="logo-item">Client 3</div>
+            <div class="logo-item">Client 4</div>
+            <div class="logo-item">Client 5</div>
+            <div class="logo-item">Client 6</div>
+            <div class="logo-item">Client 7</div>
+            <div class="logo-item">Client 8</div>
+            <div class="logo-item">Client 9</div>
+            <div class="logo-item">Client 10</div>
+            <div class="logo-item">Client 11</div>
+            <div class="logo-item">Client 12</div>
+            <div class="logo-item">Client 13</div>
+            <div class="logo-item">Client 14</div>
+            <div class="logo-item">Client 15</div>
+            <div class="logo-item">Client 16</div>
+          </div>
+        </div>
+
+        <div class="text-center mt-8 reveal delay-2">
+          <a href="../project/contact.html"
+             class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+            Work With Us →
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (simple) -->
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <p class="text-white/65 leading-7">
+          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
+        </p>
+        <div class="flex gap-3 mt-4 flex-wrap">
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Quick Links</h4>
+        <ul class="grid gap-3">
+          <li><a class="hover:text-white transition" href="../project/index.html">Home</a></li>
+          <li><a class="hover:text-white transition" href="../project/about.html">About</a></li>
+          <li><a class="hover:text-white transition" href="../project/services.html">Services</a></li>
+          <li><a class="hover:text-white transition" href="../project/portfolio.html">Portfolio</a></li>
+          <li><a class="hover:text-white transition" href="../project/contact.html">Contact</a></li>
         </ul>
       </div>
 
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">🎯</div>
-          <h4>Mission</h4>
-          <p>Create unforgettable experiences that deliver real brand value.</p>
-        </div>
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">✨</div>
-          <h4>Vision</h4>
-          <p>Become the most trusted team for scalable event formats.</p>
-        </div>
-        <div class="feature-box reveal delay-3">
-          <div class="f-icon-wrapper">🤝</div>
-          <h4>Values</h4>
-          <p>Quality, clarity, creativity, and consistency on ground.</p>
-        </div>
-        <div class="feature-box reveal delay-4">
-          <div class="f-icon-wrapper">⚡</div>
-          <h4>Strength</h4>
-          <p>Fast execution with a strong vendor + ops network.</p>
-        </div>
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Contact</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <section class="section bg-light">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="sub-title">What We Do Best</span>
-        <h2>Our Core Formats</h2>
-        <p>Built for engagement, visibility, and community connection.</p>
-      </div>
-
-      <div class="grid-4">
-        <a class="service-card reveal" href="services.html#workshops" style="background-image:url('../img/workshop.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">🎨</div>
-            <h3>Workshops</h3>
-            <p>Interactive learning experiences.</p>
-          </div>
-        </a>
-
-        <a class="service-card reveal delay-1" href="services.html#brand" style="background-image:url('../img/brandcompetation.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">🏆</div>
-            <h3>Brand Activation</h3>
-            <p>Immersive brand experiences.</p>
-          </div>
-        </a>
-
-        <a class="service-card reveal delay-2" href="services.html#competitions" style="background-image:url('../img/img1.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">👥</div>
-            <h3>Competitions</h3>
-            <p>High-energy event formats.</p>
-          </div>
-        </a>
-
-        <a class="service-card reveal delay-3" href="services.html#flea" style="background-image:url('../img/fleamarket.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">⛺</div>
-            <h3>Flea Marketing</h3>
-            <p>Community-driven markets.</p>
-          </div>
-        </a>
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <!-- POPUP -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
+    <div class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
+         id="popupCard">
+      <button id="popupClose"
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+              type="button"
+              aria-label="Close popup">×</button>
 
-<div id="footer"></div>
+      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
+      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
 
-<!-- POPUP FORM -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-card">
-    <button class="popup-close" id="popupClose">×</button>
+      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+        <input type="hidden" name="source" value="Popup Form">
 
-    <h3 class="popup-title">Get a Free Callback</h3>
-    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Name</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="name" type="text" placeholder="Your name" required>
+          </div>
+        </div>
 
-      <form class="styled-form js-sheet-form" id="popupForm">
-  <input type="hidden" name="source" value="popup-form">
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="phone" type="tel" placeholder="Your phone number" required>
+          </div>
+        </div>
 
-  <div class="form-group">
-    <label>Name</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-user"></i>
-      <input name="name" type="text" placeholder="Your name" required>
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Event Type</label>
+          <div class="relative">
+            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+          </div>
+        </div>
+
+        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+                type="submit">
+          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+
+        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Phone</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-phone"></i>
-      <input name="phone" type="tel" placeholder="Your phone number" required>
-    </div>
-  </div>
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="form-group">
-    <label>Event Type</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-calendar-check"></i>
-      <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
-    </div>
-  </div>
+    // Mobile nav
+    const hamburger = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+    const navOverlay = document.getElementById("navOverlay");
+    const closeMenu = document.getElementById("closeMenu");
 
-  <button class="btn btn-primary full-width" type="submit">
-    Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
-  </button>
+    function openNav() {
+      navMenu.classList.remove("translate-x-[110%]");
+      navOverlay.classList.remove("opacity-0", "pointer-events-none");
+      navOverlay.classList.add("opacity-100");
+      hamburger.style.visibility = "hidden";
+    }
+    function closeNavFn() {
+      navMenu.classList.add("translate-x-[110%]");
+      navOverlay.classList.add("opacity-0", "pointer-events-none");
+      navOverlay.classList.remove("opacity-100");
+      hamburger.style.visibility = "visible";
+    }
 
-  <p class="form-status" aria-live="polite"></p>
-</form>
-  </div>
-</div>
+    hamburger?.addEventListener("click", () => {
+      const isOpen = !navMenu.classList.contains("translate-x-[110%]");
+      isOpen ? closeNavFn() : openNav();
+    });
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
 
-<script src="../js/components.js"></script>
-<script src="../js/reveal.js"></script>
-<script src="../js/popup.js"></script>
-<script src="../js/forms.js"></script>
+    // Reveal
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const run = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", run);
+      run();
+    });
+
+    // Stats counter (runs when stats grid visible)
+    const counters = document.querySelectorAll(".count");
+    const statsGrid = document.querySelector(".count")?.closest("section");
+
+    function animateCount(el) {
+      const target = +el.getAttribute("data-target");
+      const duration = 1200;
+      const start = 0;
+      const t0 = performance.now();
+
+      const step = (t) => {
+        const p = Math.min((t - t0) / duration, 1);
+        const value = Math.floor(start + (target - start) * (1 - Math.pow(1 - p, 3)));
+        el.textContent = value;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(step);
+    }
+
+    if (statsGrid) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            counters.forEach(c => animateCount(c));
+            statsObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.25 });
+      statsObserver.observe(statsGrid);
+    }
+
+    // Marquee pause on hover
+    const logoTrack = document.getElementById("logoTrack");
+    logoTrack?.addEventListener("mouseenter", () => logoTrack.style.animationPlayState = "paused");
+    logoTrack?.addEventListener("mouseleave", () => logoTrack.style.animationPlayState = "running");
+
+    // Popup
+    const popup = document.getElementById("popupOverlay");
+    const popupCard = document.getElementById("popupCard");
+    const popupClose = document.getElementById("popupClose");
+    const openPopupDesktop = document.getElementById("openPopupDesktop");
+    const openPopupMobile = document.getElementById("openPopupMobile");
+
+    function openPopup() {
+      popup.classList.remove("invisible", "opacity-0");
+      popup.classList.add("opacity-100");
+      popupCard.classList.remove("opacity-0", "translate-y-2", "scale-[0.98]");
+      popupCard.classList.add("opacity-100", "translate-y-0", "scale-100");
+    }
+    function closePopup() {
+      popup.classList.add("opacity-0");
+      popup.classList.remove("opacity-100");
+      popupCard.classList.add("opacity-0", "translate-y-2", "scale-[0.98]");
+      popupCard.classList.remove("opacity-100", "translate-y-0", "scale-100");
+
+      setTimeout(() => popup.classList.add("invisible"), 200);
+      setTimeout(openPopup, 40000);
+    }
+
+    setTimeout(openPopup, 3000);
+
+    openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+
+    popupClose?.addEventListener("click", closePopup);
+    popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
+
+    // Forms to Google Sheet
+    const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
+
+    function bindFormToSheet(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      const statusEl = form.querySelector(".form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = "Sending...";
+
+        const fd = new FormData(form);
+
+        try {
+          const res = await fetch(SHEET_WEBAPP_URL, { method: "POST", body: fd });
+          const data = await res.json().catch(() => ({}));
+
+          if (data.ok) {
+            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            form.reset();
+          } else {
+            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+        }
+      });
+    }
+
+    bindFormToSheet("popupForm");
+  </script>
 </body>
 </html>

@@ -3,195 +3,714 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EventPro | Services</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Skykeen Events | Services</title>
 
-  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+   :root { --header-h: 120px; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .10s; }
+    .delay-2 { transition-delay: .20s; }
+    .delay-3 { transition-delay: .30s; }
+    .delay-4 { transition-delay: .40s; }
+
+    /* WhatsApp floating */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 4px 10px rgba(17,24,39,0.30),
+        0 0 0 3px rgba(220,38,38,0.35);
+    }
+    .whatsapp-float i{ color:#fff; font-size:28px; }
+
+    /* Service blocks: clickable + hover */
+    .service-block{ position: relative; border-radius: 22px; overflow: hidden; }
+    .service-block .section-link{ position:absolute; inset:0; z-index: 2; }
+    .service-block .inner{ position: relative; z-index: 3; }
+    .service-block{
+      transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
+      border: 1px solid rgba(17,24,39,0.10);
+    }
+    .service-block:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.10);
+      background: linear-gradient(120deg, rgba(220,38,38,.06), rgba(220,38,38,.02));
+    }
+    .service-block::after{
+      content:"View Details →";
+      position:absolute;
+      right: 22px;
+      bottom: 18px;
+      z-index: 4;
+      font-weight: 800;
+      color: rgb(220 38 38);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .25s ease;
+      pointer-events: none;
+    }
+    .service-block:hover::after{ opacity: 1; transform: translateY(0); }
+
+    /* Popup */
+    #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
+    #popupOverlay.show{ opacity:1; visibility:visible; }
+    #popupCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
+    #popupOverlay.show #popupCard{ transform: translateY(0) scale(1); opacity:1; }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(220 38 38)",
+            primaryDark: "rgb(185 28 28)",
+            darkText: "rgb(17 24 39)",
+          },
+          boxShadow: {
+            soft: "0 20px 60px rgba(17,24,39,0.15)"
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
 
-<div id="header"></div>
+<body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-<main>
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
+      <a href="index.html">
+      <img class="h-28 md:h-36 w-auto object-contain"
+     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+     alt="Skykeen Events" />
+      </a>
 
-   <section class="page-hero">
-  <div class="container">
-    <h1>Services</h1>
-    <p class="breadcrumb">Home <span>/</span> Services</p>
-  </div>
-</section>
+      <button id="hamburgerBtn"
+        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
+        aria-label="Open menu" type="button">☰</button>
 
-  <section class="section" id="workshops">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Workshops</span>
-        <h2>Interactive Learning, <br><span style="color:var(--primary)">Real Participation</span></h2>
-        <p>Skill-based workshops for apartments, schools, corporates, and communities — from setup to facilitation.</p>
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> Topic planning + creatives</li>
-          <li><span class="check-dot">✓</span> Trainer coordination</li>
-          <li><span class="check-dot">✓</span> Registration handling</li>
-          <li><span class="check-dot">✓</span> On-ground management</li>
+      <nav class="hidden md:flex items-center gap-6 font-bold">
+        <a class="hover:text-primaryDark" href="../project/index.html">Home</a>
+        <a class="hover:text-primaryDark" href="../project/about.html">About</a>
+        <a class="hover:text-primaryDark text-primary" href="../project/services.html">Services</a>
+        <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
+        <a class="hover:text-primaryDark" href="../project/contact.html">Contact</a>
+        <a href="#" id="openPopupDesktop"
+           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+          Get Started
+        </a>
+      </nav>
+    </div>
+
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
+
+    <nav id="navMenu"
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
+             flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
+             translate-x-[110%] transition md:hidden z-[10001]">
+      <button id="closeMenu"
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+        aria-label="Close menu" type="button">×</button>
+
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5 text-primary" href="../project/services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/portfolio.html">Portfolio</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/contact.html">Contact</a>
+
+      <a href="#" id="openPopupMobile"
+         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+        Get Started
+      </a>
+    </nav>
+  </header>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <main>
+    <!-- HERO -->
+    <section class="relative py-16 text-white text-center overflow-hidden"
+      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
+      <div class="absolute inset-0 opacity-20"
+        style="background:
+          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
+          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-3 reveal active">
+        <h1 class="text-4xl md:text-5xl font-black">Services</h1>
+        <p class="mt-3 text-white/90 font-bold">
+          Home <span class="opacity-80 mx-1">/</span> Services
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-3 text-center reveal">
+        <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">What We Do</span>
+        <h2 class="text-[38px] font-black leading-tight">High-Impact Event Formats</h2>
+        <p class="mt-2 text-black/60 font-semibold max-w-3xl mx-auto">
+          From workshops to brand activations & flea marketing — we plan, manage, and execute events with strong on-ground operations.
+        </p>
+      </div>
+    </section>
+
+    <!-- WORKSHOPS (CLICKABLE) -->
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-white">
+          <a class="section-link" href="workshops.html" aria-label="Open Workshops page"></a>
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Workshops</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Interactive Learning, <br><span class="text-primary">Real Participation</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  Skill-based workshops for apartments, schools, corporates, and communities — from setup to facilitation.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Topic planning + creatives</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Trainer coordination</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Registration handling</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> On-ground management</li>
+                </ul>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🧩</div>
+                  <h4 class="font-black">Custom Themes</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Kids, adults, corporate, and community formats.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📸</div>
+                  <h4 class="font-black">Content Ready</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Photo/video capture for social media marketing.</p>
+                </div>
+
+                <div class="sm:col-span-2 reveal delay-3">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="../image/workshop.jpg" onerror="this.src='https://picsum.photos/seed/workshop/900/520';"
+                         class="w-full h-[240px] object-cover" alt="Workshops">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- BRAND ACTIVATION -->
+    <section class="py-14 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-gray-50">
+          <a class="section-link" href="brand-activation.html" aria-label="Open Brand Activation page"></a>
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Brand Activation</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Make Your Brand <br><span class="text-primary">Unmissable</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  High-impact activations that increase visibility, footfall, and audience interaction.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Concept + stall setup</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Emcee + engagement</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Sampling + lead capture</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Reporting + insights</li>
+                </ul>
+
+                <a href="brand-activation.html"
+                   class="mt-6 inline-flex items-center justify-center gap-2 h-13 px-5 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                  More Information →
+                </a>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="sm:col-span-2 reveal delay-1">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="../image/brandcompetation.jpg" onerror="this.src='https://picsum.photos/seed/activation/900/520';"
+                         class="w-full h-[240px] object-cover" alt="Brand Activation">
+                  </div>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📍</div>
+                  <h4 class="font-black">Ideal Venues</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Malls, tech parks, apartments, public venues.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📊</div>
+                  <h4 class="font-black">Measurable</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Footfall, engagement, leads, conversion-ready data.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- COMPETITIONS -->
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-white">
+          <a class="section-link" href="competitions.html" aria-label="Open Competitions page"></a>
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Competitions</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Build Buzz with <br><span class="text-primary">High Energy Events</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  Stage-based and community competitions that drive participation and strong audience presence.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Registration + rules</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Judges + trophies</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stage + sound + lighting</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Announcements + hosting</li>
+                </ul>
+
+                <a href="competitions.html"
+                   class="mt-6 inline-flex items-center justify-center gap-2 h-13 px-5 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                  More Information →
+                </a>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="sm:col-span-2 reveal delay-1">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="../image/img1.jpg" onerror="this.src='https://picsum.photos/seed/competitions/900/520';"
+                         class="w-full h-[240px] object-cover" alt="Competitions">
+                  </div>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🏅</div>
+                  <h4 class="font-black">Prize Planning</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Trophies, certificates, and sponsor tie-ups.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎤</div>
+                  <h4 class="font-black">Full Production</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">MC, stage, AV, and on-ground operations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- FLEA MARKETING -->
+    <section class="py-14 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-gray-50">
+          <a class="section-link" href="flea-marketing.html" aria-label="Open Flea Marketing page"></a>
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Flea Marketing</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Community Markets <br><span class="text-primary">That Sell</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  Vendor-driven flea marketing events with food, stalls, music, and strong visitor footfall.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Vendor onboarding</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stall layout + allocation</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Entry + crowd management</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Promotion + creatives</li>
+                </ul>
+
+                <a href="flea-marketing.html"
+                   class="mt-6 inline-flex items-center justify-center gap-2 h-13 px-5 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                  More Information →
+                </a>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="sm:col-span-2 reveal delay-1">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="../image/fleamarket.jpg" onerror="this.src='https://picsum.photos/seed/fleamarket/900/520';"
+                         class="w-full h-[240px] object-cover" alt="Flea Marketing">
+                  </div>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🛍️</div>
+                  <h4 class="font-black">Vendor Network</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Curated categories to keep the market premium.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎶</div>
+                  <h4 class="font-black">Experience Layer</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Music, activities, kids zone, food court options.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- CORPORATE EVENTS -->
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-white">
+          <a class="section-link" href="corporate-events.html" aria-label="Open Corporate Events page"></a>
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Corporate Events</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Professional Events <br><span class="text-primary">That Impress</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  End-to-end corporate event planning for conferences, product launches, and annual meets.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stage & AV setup</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Guest management</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Branding & backdrops</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Complete coordination</li>
+                </ul>
+
+                <a href="corporate-events.html"
+                   class="mt-6 inline-flex items-center justify-center gap-2 h-13 px-5 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                  More Information →
+                </a>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="sm:col-span-2 reveal delay-1">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="https://picsum.photos/seed/corporateevent/900/520"
+                         class="w-full h-[240px] object-cover" alt="Corporate Events">
+                  </div>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🏢</div>
+                  <h4 class="font-black">Corporate Venues</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Hotels, convention halls, IT parks.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎥</div>
+                  <h4 class="font-black">Premium Production</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">LED walls, lighting, sound & live streaming.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="relative overflow-hidden rounded-[26px] border border-black/10 bg-gradient-to-br from-primary/10 to-primary/5 shadow-[0_18px_60px_rgba(0,0,0,.10)] p-7 md:p-11 reveal">
+          <div class="absolute w-[420px] h-[420px] rounded-full top-[-160px] right-[-120px] blur-[2px] opacity-60"
+               style="background: radial-gradient(circle, rgba(220,38,38,.55), rgba(220,38,38,0) 60%);"></div>
+
+          <div class="relative max-w-3xl">
+            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/75 border border-primary/30 font-extrabold text-sm mb-3">
+              ⚡ Fast Planning • Strong Execution
+            </span>
+
+            <h2 class="text-[38px] md:text-[44px] leading-tight font-black">Ready to Plan Your Next Event?</h2>
+            <p class="mt-2 text-black/70 font-semibold">
+              Tell us your requirement — we’ll share a plan and callback quickly.
+            </p>
+
+            <div class="mt-6 flex gap-3 flex-wrap">
+              <a href="#" id="openPopupCTA"
+                 class="inline-flex items-center justify-center gap-2 h-13 px-6 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                Get a Free Callback <span class="inline-block transition group-hover:translate-x-1">→</span>
+              </a>
+              <a href="../project/contact.html"
+                 class="inline-flex items-center justify-center gap-2 h-13 px-6 rounded-xl font-black bg-white/80 border border-black/10 hover:bg-white hover:-translate-y-[1px] transition">
+                Contact Page →
+              </a>
+            </div>
+
+            <div class="mt-5 flex gap-3 flex-wrap text-sm font-extrabold text-black/70">
+              <span class="px-3 py-2 rounded-full bg-white/60 border border-black/10">Workshops</span>
+              <span class="px-3 py-2 rounded-full bg-white/60 border border-black/10">Brand Activation</span>
+              <span class="px-3 py-2 rounded-full bg-white/60 border border-black/10">Competitions</span>
+              <span class="px-3 py-2 rounded-full bg-white/60 border border-black/10">Flea Marketing</span>
+              <span class="px-3 py-2 rounded-full bg-white/60 border border-black/10">Corporate Events</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <p class="text-white/65 leading-7">
+          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
+        </p>
+        <div class="flex gap-3 mt-4 flex-wrap">
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Quick Links</h4>
+        <ul class="grid gap-3">
+          <li><a class="hover:text-white transition" href="../project/index.html">Home</a></li>
+          <li><a class="hover:text-white transition" href="../project/about.html">About</a></li>
+          <li><a class="hover:text-white transition" href="../project/services.html">Services</a></li>
+          <li><a class="hover:text-white transition" href="../project/portfolio.html">Portfolio</a></li>
+          <li><a class="hover:text-white transition" href="../project/contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">🧩</div>
-          <h4>Custom Themes</h4>
-          <p>Kids, adults, corporate, and community formats.</p>
-        </div>
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">📸</div>
-          <h4>Content Ready</h4>
-          <p>Photo/video capture for social media marketing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section bg-light" id="brand">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Brand Activation</span>
-        <h2>Make Your Brand <br><span style="color:var(--primary)">Unmissable</span></h2>
-        <p>High-impact activations that increase visibility, footfall, and audience interaction.</p>
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> Concept + stall setup</li>
-          <li><span class="check-dot">✓</span> Emcee + engagement</li>
-          <li><span class="check-dot">✓</span> Sampling + lead capture</li>
-          <li><span class="check-dot">✓</span> Reporting + insights</li>
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Contact</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
         </ul>
       </div>
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">📍</div>
-          <h4>Ideal Venues</h4>
-          <p>Malls, tech parks, apartments, public venues.</p>
-        </div>
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">📊</div>
-          <h4>Measurable</h4>
-          <p>Footfall, engagement, leads, conversion-ready data.</p>
-        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <section class="section" id="competitions">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Competitions</span>
-        <h2>Build Buzz with <br><span style="color:var(--primary)">High Energy Events</span></h2>
-        <p>Stage-based and community competitions that drive participation and strong audience presence.</p>
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> Registration + rules</li>
-          <li><span class="check-dot">✓</span> Judges + trophies</li>
-          <li><span class="check-dot">✓</span> Stage + sound + lighting</li>
-          <li><span class="check-dot">✓</span> Announcements + hosting</li>
-        </ul>
-      </div>
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">🏅</div>
-          <h4>Prize Planning</h4>
-          <p>Trophies, certificates, and sponsor tie-ups.</p>
+  <!-- POPUP -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
+    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
+      <button id="popupClose"
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+              type="button"
+              aria-label="Close popup">×</button>
+
+      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
+      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
+
+      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+        <input type="hidden" name="source" value="Popup Form">
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Name</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="name" type="text" placeholder="Your name" required>
+          </div>
         </div>
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">🎤</div>
-          <h4>Full Production</h4>
-          <p>MC, stage, AV, and on-ground operations.</p>
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="phone" type="tel" placeholder="Your phone number" required>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section bg-light" id="flea">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Flea Marketing</span>
-        <h2>Community Markets <br><span style="color:var(--primary)">That Sell</span></h2>
-        <p>Vendor-driven flea marketing events with food, stalls, music, and strong visitor footfall.</p>
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> Vendor onboarding</li>
-          <li><span class="check-dot">✓</span> Stall layout + allocation</li>
-          <li><span class="check-dot">✓</span> Entry + crowd management</li>
-          <li><span class="check-dot">✓</span> Promotion + creatives</li>
-        </ul>
-      </div>
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">🛍️</div>
-          <h4>Vendor Network</h4>
-          <p>Curated categories to keep the market premium.</p>
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Event Type</label>
+          <div class="relative">
+            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+          </div>
         </div>
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">🎶</div>
-          <h4>Experience Layer</h4>
-          <p>Music, activities, kids zone, food court options.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container" style="text-align:center;">
-      <h2 class="reveal">Ready to plan your event?</h2>
-      <p class="reveal">Tell us your requirement and get a callback.</p>
-      <a href="contact.html#contact" class="btn btn-primary reveal">Contact Us →</a>
-    </div>
-  </section>
+        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+                type="submit">
+          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
 
-</main>
-
-<div id="footer"></div>
-
-<!-- POPUP FORM -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-card">
-    <button class="popup-close" id="popupClose">×</button>
-
-    <h3 class="popup-title">Get a Free Callback</h3>
-    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
-
-      <form class="styled-form js-sheet-form" id="popupForm">
-  <input type="hidden" name="source" value="popup-form">
-
-  <div class="form-group">
-    <label>Name</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-user"></i>
-      <input name="name" type="text" placeholder="Your name" required>
+        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Phone</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-phone"></i>
-      <input name="phone" type="tel" placeholder="Your phone number" required>
-    </div>
-  </div>
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="form-group">
-    <label>Event Type</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-calendar-check"></i>
-      <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
-    </div>
-  </div>
+    // Mobile nav
+    const hamburger = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+    const navOverlay = document.getElementById("navOverlay");
+    const closeMenu = document.getElementById("closeMenu");
 
-  <button class="btn btn-primary full-width" type="submit">
-    Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
-  </button>
+    function openNav() {
+      navMenu.classList.remove("translate-x-[110%]");
+      navOverlay.classList.remove("opacity-0", "pointer-events-none");
+      navOverlay.classList.add("opacity-100");
+      hamburger.style.visibility = "hidden";
+    }
+    function closeNavFn() {
+      navMenu.classList.add("translate-x-[110%]");
+      navOverlay.classList.add("opacity-0", "pointer-events-none");
+      navOverlay.classList.remove("opacity-100");
+      hamburger.style.visibility = "visible";
+    }
 
-  <p class="form-status" aria-live="polite"></p>
-</form>
-  </div>
-</div>
+    hamburger?.addEventListener("click", () => {
+      const isOpen = !navMenu.classList.contains("translate-x-[110%]");
+      isOpen ? closeNavFn() : openNav();
+    });
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
 
-<script src="../js/components.js"></script>
-<script src="../js/reveal.js"></script>
-<script src="../js/forms.js"></script>
-<script src="../js/popup.js"></script>
+    // Reveal
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const run = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", run);
+      run();
+    });
+
+    // Click entire section (backup)
+    document.querySelectorAll(".service-block").forEach((block) => {
+      block.addEventListener("click", (e) => {
+        if (e.target.closest("a, button")) return;
+        const a = block.querySelector(".section-link");
+        if (a && a.getAttribute("href")) window.location.href = a.getAttribute("href");
+      });
+    });
+
+    // Popup
+    const popup = document.getElementById("popupOverlay");
+    const popupClose = document.getElementById("popupClose");
+    const openPopupDesktop = document.getElementById("openPopupDesktop");
+    const openPopupMobile = document.getElementById("openPopupMobile");
+    const openPopupCTA = document.getElementById("openPopupCTA");
+
+    function openPopup() { popup.classList.add("show"); }
+    function closePopup() {
+      popup.classList.remove("show");
+      setTimeout(openPopup, 40000);
+    }
+
+    setTimeout(openPopup, 3000);
+
+    openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    openPopupCTA?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+
+    popupClose?.addEventListener("click", closePopup);
+    popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
+
+    // Forms to Google Sheet
+    const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
+
+    function bindFormToSheet(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      const statusEl = form.querySelector(".form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = "Sending...";
+
+        const fd = new FormData(form);
+
+        try {
+          const res = await fetch(SHEET_WEBAPP_URL, { method: "POST", body: fd });
+          const data = await res.json().catch(() => ({}));
+
+          if (data.ok) {
+            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            form.reset();
+          } else {
+            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+        }
+      });
+    }
+
+    bindFormToSheet("popupForm");
+
+    // Hide popup initially (so it doesn't show instantly)
+    // then open after 3 seconds (handled above)
+    popup.classList.remove("show");
+  </script>
 </body>
 </html>

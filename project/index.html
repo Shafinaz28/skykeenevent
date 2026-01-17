@@ -3,389 +3,751 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EventPro | Home</title>
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>Skykeen Events | Home</title>
 
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root { --header-h: 120px; }
+
+    /* Smooth reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .10s; }
+    .delay-2 { transition-delay: .20s; }
+    .delay-3 { transition-delay: .30s; }
+    .delay-4 { transition-delay: .40s; }
+
+    /* WhatsApp floating */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 4px 10px rgba(17,24,39,0.30),
+        0 0 0 3px rgba(220,38,38,0.35);
+    }
+    .whatsapp-float i{ color: #fff; font-size: 28px; }
+  </style>
+
+  <script>
+    // Tailwind theme config (optional)
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(220 38 38)",
+            primaryDark: "rgb(185 28 28)",
+            darkText: "rgb(17 24 39)",
+          },
+          boxShadow: {
+            soft: "0 20px 60px rgba(17,24,39,0.15)"
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
 
-<div id="header"></div>
+<body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-<main>
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
+      <a href="index.html">
+      <img class="h-28 md:h-36 w-auto object-contain"
+     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+     alt="Skykeen Events" />
+      </a>
 
-  <!-- HERO -->
-  <section class="hero-section">
-    <div class="hero-overlay"></div>
-    <div class="hero-content reveal active">
-      <span class="sub-title">Creating Unforgettable Experiences</span>
-      <h1>Transform Your Brand <br>With <span class="text-gradient">Epic Events</span></h1>
-      <p>From workshops to brand activations & flea marketing — we design experiences that captivate audiences and elevate your brand.</p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Start Your Event →</a>
-        <a href="portfolio.html" class="btn btn-outline">Watch</a>
-      </div>
+      <!-- Hamburger (mobile) -->
+      <button
+        id="hamburgerBtn"
+        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
+        aria-label="Open menu"
+        type="button"
+      >
+        ☰
+      </button>
+
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 font-bold">
+        <a class="hover:text-primaryDark" href="../project/index.html">Home</a>
+        <a class="hover:text-primaryDark" href="../project/about.html">About</a>
+        <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
+        <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
+        <a class="hover:text-primaryDark" href="../project/contact.html">Contact</a>
+        <a
+          href="#"
+          id="openPopupDesktop"
+          class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition"
+        >
+          Get Started
+        </a>
+      </nav>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section class="section about-mini">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="sub-title">About Us</span>
-        <h2>Events That Build Brands</h2>
-        <p>We create high-energy experiences that connect people, spark engagement, and generate real business impact.</p>
-      </div>
+    <!-- Mobile overlay -->
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-      <div class="about-grid">
-        <div class="about-card reveal">
-          <p class="lead">
-            We are a Bangalore-based event team specializing in Workshops, Brand Activations, Competitions, and Flea Marketing.
-            From concept to execution, we manage everything with creativity, structure, and attention to detail.
-          </p>
+    <!-- Mobile drawer -->
+    <nav
+      id="navMenu"
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
+             flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
+             translate-x-[110%] transition md:hidden z-[10001]"
+      aria-label="Mobile menu"
+    >
+      <button
+        id="closeMenu"
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+        aria-label="Close menu"
+        type="button"
+      >
+        ×
+      </button>
 
-          <div class="about-points">
-            <span class="pill">✅ End-to-end execution</span>
-            <span class="pill">✅ Vendor & venue coordination</span>
-            <span class="pill">✅ On-ground team support</span>
-            <span class="pill">✅ Audience engagement focus</span>
-          </div>
-        </div>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/portfolio.html">Portfolio</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/contact.html">Contact</a>
 
-        <div class="about-card reveal delay-1">
-          <h3 style="margin-top:0;">Quick Highlights</h3>
-          <ul class="check-list" style="margin-top:12px;">
-            <li><span class="check-dot">✓</span> Creative event concepts</li>
-            <li><span class="check-dot">✓</span> Smooth operations</li>
-            <li><span class="check-dot">✓</span> Budget-friendly planning</li>
-            <li><span class="check-dot">✓</span> Reliable timelines</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+      <a
+        href="#"
+        id="openPopupMobile"
+        class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition"
+      >
+        Get Started
+      </a>
+    </nav>
+  </header>
 
-  <!-- SERVICES -->
-  <section class="section services">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="sub-title">Our Services</span>
-        <h2>What We Create</h2>
-        <p>From intimate workshops to large-scale brand activations.</p>
-      </div>
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp" rel="noreferrer">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
-      <div class="grid-4">
-        <div class="service-card reveal" style="background-image:url('../image/workshop.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">🎨</div>
-            <h3>Workshops</h3>
-            <p>Interactive learning experiences.</p>
-          </div>
-        </div>
+  <main>
+    <!-- HERO -->
+    <section
+      class="relative min-h-[calc(100vh-var(--header-h))] flex items-center justify-center py-16 overflow-hidden"
+      style="background: url('../image/homebanner.jpg') center/cover no-repeat;"
+    >
+      <div class="absolute inset-0 bg-[radial-gradient(900px_500px_at_10%_20%,rgba(220,38,38,0.35),transparent_60%),linear-gradient(180deg,rgba(17,24,39,0.55),rgba(17,24,39,0.92))]"></div>
 
-        <div class="service-card reveal delay-1" style="background-image:url('../image/brandcompetation.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">🏆</div>
-            <h3>Brand Activation</h3>
-            <p>Immersive brand experiences.</p>
-          </div>
-        </div>
+      <div class="relative z-10 w-[min(1100px,92%)] text-white text-left reveal active">
+        <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Creating Unforgettable Experiences</span>
 
-        <div class="service-card reveal delay-2" style="background-image:url('../image/img1.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">👥</div>
-            <h3>Competitions</h3>
-            <p>High-energy event formats.</p>
-          </div>
-        </div>
+        <h1 class="mt-2 mb-3 font-black leading-[1.05] text-[clamp(2.4rem,5vw,4.6rem)]">
+          Transform Your Brand <br />
+          With <span class="bg-gradient-to-r from-white to-primary bg-clip-text text-transparent">Epic Events</span>
+        </h1>
 
-        <div class="service-card reveal delay-3" style="background-image:url('../image/fleamarket.jpg')">
-          <div class="card-content">
-            <div class="icon-pill">⛺</div>
-            <h3>Flea Marketing</h3>
-            <p>Community-driven markets.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <p class="text-white/90 max-w-[720px] text-[1.06rem] leading-7">
+          From workshops to brand activations & flea marketing — we design experiences that captivate audiences and elevate your brand.
+        </p>
 
-  <!-- WHY CHOOSE US -->
-  <section class="section bg-light">
-    <div class="container flex-row">
-      <div class="col-text reveal">
-        <span class="sub-title">Why Choose Us</span>
-        <h2>We Make Events <br><span style="color:var(--primary)">Unforgettable</span></h2>
-        <p>We combine creativity + strategy with flawless execution to deliver real results.</p>
-
-        <ul class="check-list">
-          <li><span class="check-dot">✓</span> End-to-end event management</li>
-          <li><span class="check-dot">✓</span> Custom-tailored experiences</li>
-          <li><span class="check-dot">✓</span> Real-time reporting</li>
-          <li><span class="check-dot">✓</span> Dedicated support</li>
-        </ul>
-      </div>
-
-      <div class="col-grid">
-        <div class="feature-box reveal delay-1">
-          <div class="f-icon-wrapper">🎯</div>
-          <h4>Strategic Planning</h4>
-          <p>Every event is planned with measurable objectives.</p>
-        </div>
-
-        <div class="feature-box reveal delay-2">
-          <div class="f-icon-wrapper">✨</div>
-          <h4>Creative Excellence</h4>
-          <p>We push fresh concepts that stand out.</p>
-        </div>
-
-        <div class="feature-box reveal delay-3">
-          <div class="f-icon-wrapper">❤️</div>
-          <h4>Passionate Team</h4>
-          <p>Dedicated professionals who make it happen.</p>
-        </div>
-
-        <div class="feature-box reveal delay-4">
-          <div class="f-icon-wrapper">⚡</div>
-          <h4>Flawless Execution</h4>
-          <p>From setup to wrap-up, we handle it all.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="sub-title">Our Work</span>
-        <h2>Featured Projects</h2>
-      </div>
-
-      <div class="project-grid reveal">
-        <div class="project-item large" style="background-image:url('https://placehold.co/900x650/111/555?text=Brand+Activation');">
-          <div class="p-overlay"><h3>Brand Activation</h3></div>
-        </div>
-        <div class="project-item" style="background-image:url('https://placehold.co/600x400/222/666?text=Creative+Workshop');">
-          <div class="p-overlay"><h3>Creative Workshop</h3></div>
-        </div>
-        <div class="project-item" style="background-image:url('https://placehold.co/600x400/333/777?text=Tech+Summit');">
-          <div class="p-overlay"><h3>Tech Innovation Summit</h3></div>
-        </div>
-      </div>
-
-      <div style="text-align:center; margin-top:22px;">
-        <a class="btn btn-primary" href="portfolio.html">View All Projects →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section bg-light" id="contact">
-    <div class="container contact-grid">
-
-      <div class="contact-left reveal">
-        <span class="sub-title">Get in Touch</span>
-        <h2>Talk to Our Team</h2>
-        <p class="lead">Workshops • Competitions • Brand Activation • Flea Marketing</p>
-
-        <div class="contact-info-wrapper">
-          <div class="contact-item">
-            <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-            <div class="info-text">
-              <span class="label">Email</span>
-              <p>hello@eventpro.com</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
-            <div class="info-text">
-              <span class="label">Phone</span>
-              <p>+91 7406238503</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
-            <div class="info-text">
-              <span class="label">Location</span>
-              <p>Bengaluru, India</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="contact-right reveal delay-2">
-        <div class="contact-card">
-          <form class="styled-form" id="contactForm">
-            <div class="form-row-grid">
-              <div class="form-group">
-                <label>Your Name</label>
-                <div class="input-wrap">
-                  <i class="fa-solid fa-user"></i>
-                  <input name="name" type="text" placeholder="John Doe" required />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Email Address</label>
-                <div class="input-wrap">
-                  <i class="fa-solid fa-envelope"></i>
-                  <input name="email" type="email" placeholder="john@example.com" required />
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Phone</label>
-              <div class="input-wrap">
-                <i class="fa-solid fa-phone"></i>
-                <input name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Event Type</label>
-              <div class="input-wrap">
-                <i class="fa-solid fa-calendar-check"></i>
-                <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Your Message</label>
-              <div class="input-wrap textarea">
-                <i class="fa-solid fa-pen-to-square"></i>
-                <textarea name="message" placeholder="Tell us about your event..." rows="5"></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary full-width">
-              Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </button>
-
-            <p class="form-status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section testimonials">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="sub-title">Testimonials</span>
-        <h2>What Clients Say</h2>
-        <p>Real feedback from brands and communities we’ve worked with.</p>
-      </div>
-
-      <div class="testimonial-grid">
-        <div class="t-card reveal">
-          <div class="stars">★★★★★</div>
-          <p>“Super smooth execution and great crowd management. The brand activation was a big success!”</p>
-          <div class="t-user">
-            <div class="t-avatar">A</div>
-            <div class="t-meta"><strong>Ananya</strong><span>Brand Manager</span></div>
-          </div>
-        </div>
-
-        <div class="t-card reveal delay-1">
-          <div class="stars">★★★★★</div>
-          <p>“Loved the workshop flow. The team handled everything professionally and on time.”</p>
-          <div class="t-user">
-            <div class="t-avatar">R</div>
-            <div class="t-meta"><strong>Rohit</strong><span>Community Lead</span></div>
-          </div>
-        </div>
-
-        <div class="t-card reveal delay-2">
-          <div class="stars">★★★★★</div>
-          <p>“Our flea marketing event was packed! Great planning, good vendors, and amazing energy.”</p>
-          <div class="t-user">
-            <div class="t-avatar">S</div>
-            <div class="t-meta"><strong>Swathi</strong><span>Business Owner</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="section cta-banner">
-    <div class="container">
-      <div class="cta-wrap reveal">
-        <div>
-          <span class="sub-title">Ready to Plan?</span>
-          <h2>Let’s Build Your Next Big Event</h2>
-          <p class="lead">Tell us your requirement — we’ll share a plan and callback quickly.</p>
-        </div>
-        <div class="cta-actions">
-          <a href="#contact" class="btn btn-primary">Contact Us →</a>
-          <a href="https://wa.me/917406238503" class="btn btn-outline">
-            WhatsApp <i class="fa-brands fa-whatsapp"></i>
+        <div class="flex gap-3 mt-5 flex-wrap">
+          <a href="#contact" class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+            Start Your Event →
+          </a>
+          <a href="portfolio.html" class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 bg-black/10 border border-white/15 text-white hover:-translate-y-[1px] transition">
+            Watch
           </a>
         </div>
       </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="py-20">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center mb-7 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">About Us</span>
+          <h2 class="text-[38px] font-black leading-tight">
+            Events That <span class="text-primary">Build Brands</span>
+          </h2>
+          <p class="mt-2 text-black/60">
+            We create high-energy experiences that connect people, spark engagement, and generate real business impact.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-7 items-start">
+          <div class="bg-white border border-black/10 rounded-2xl p-7 shadow-soft reveal">
+            <p class="text-black/65 leading-7">
+              We are a Bangalore-based event team specializing in Workshops, Brand Activations, Competitions, and Flea Marketing.
+              From concept to execution, we manage everything with creativity, structure, and attention to detail.
+            </p>
+
+            <div class="grid gap-3 mt-4">
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 w-fit">✅ End-to-end execution</span>
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 w-fit">✅ Vendor & venue coordination</span>
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 w-fit">✅ On-ground team support</span>
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-black/5 border border-black/10 w-fit">✅ Audience engagement focus</span>
+            </div>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-7 shadow-soft reveal delay-1">
+            <h3 class="mt-0 text-xl font-black">Quick Highlights</h3>
+            <ul class="mt-3 grid gap-3 font-extrabold">
+              <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Creative event concepts</li>
+              <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Smooth operations</li>
+              <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Budget-friendly planning</li>
+              <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Reliable timelines</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="py-16 bg-white">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center mb-7 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Services</span>
+          <h2 class="text-[38px] font-black leading-tight">What We <span class="text-primary">Create</span></h2>
+          <p class="mt-2 text-black/60">From intimate workshops to large-scale brand activations.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Card -->
+          <div class="relative h-[290px] rounded-2xl overflow-hidden border border-black/10 cursor-pointer hover:-translate-y-1.5 transition reveal"
+               style="background: url('../image/workshop.jpg') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10"></div>
+            <div class="absolute left-0 right-0 bottom-0 p-6 text-white">
+              <div class="w-12 h-12 rounded-2xl bg-primary inline-flex items-center justify-center font-black text-lg">🎨</div>
+              <h3 class="mt-2 mb-1 text-xl font-black">Workshops</h3>
+              <p class="text-white/85">Interactive learning experiences.</p>
+            </div>
+          </div>
+
+          <div class="relative h-[290px] rounded-2xl overflow-hidden border border-black/10 cursor-pointer hover:-translate-y-1.5 transition reveal delay-1"
+               style="background: url('../image/brandcompetation.jpg') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10"></div>
+            <div class="absolute left-0 right-0 bottom-0 p-6 text-white">
+              <div class="w-12 h-12 rounded-2xl bg-primary inline-flex items-center justify-center font-black text-lg">🏆</div>
+              <h3 class="mt-2 mb-1 text-xl font-black">Brand Activation</h3>
+              <p class="text-white/85">Immersive brand experiences.</p>
+            </div>
+          </div>
+
+          <div class="relative h-[290px] rounded-2xl overflow-hidden border border-black/10 cursor-pointer hover:-translate-y-1.5 transition reveal delay-2"
+               style="background: url('../image/img1.jpg') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10"></div>
+            <div class="absolute left-0 right-0 bottom-0 p-6 text-white">
+              <div class="w-12 h-12 rounded-2xl bg-primary inline-flex items-center justify-center font-black text-lg">👥</div>
+              <h3 class="mt-2 mb-1 text-xl font-black">Competitions</h3>
+              <p class="text-white/85">High-energy event formats.</p>
+            </div>
+          </div>
+
+          <div class="relative h-[290px] rounded-2xl overflow-hidden border border-black/10 cursor-pointer hover:-translate-y-1.5 transition reveal delay-3"
+               style="background: url('../image/fleamarket.jpg') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 to-black/10"></div>
+            <div class="absolute left-0 right-0 bottom-0 p-6 text-white">
+              <div class="w-12 h-12 rounded-2xl bg-primary inline-flex items-center justify-center font-black text-lg">⛺</div>
+              <h3 class="mt-2 mb-1 text-xl font-black">Flea Marketing</h3>
+              <p class="text-white/85">Community-driven markets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-16 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
+        <div class="flex-1 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Why Choose Us</span>
+          <h2 class="text-[42px] font-black leading-tight">
+            We Make Events <br><span class="text-primary">Unforgettable</span>
+          </h2>
+          <p class="mt-2 text-black/60 leading-7">
+            We combine creativity + strategy with flawless execution to deliver real results.
+          </p>
+
+          <ul class="mt-5 grid gap-3 font-extrabold">
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> End-to-end event management</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Custom-tailored experiences</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Real-time reporting</li>
+            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Dedicated support</li>
+          </ul>
+        </div>
+
+        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎯</div>
+            <h4 class="font-black">Strategic Planning</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Every event is planned with measurable objectives.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">✨</div>
+            <h4 class="font-black">Creative Excellence</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">We push fresh concepts that stand out.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">❤️</div>
+            <h4 class="font-black">Passionate Team</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">Dedicated professionals who make it happen.</p>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">⚡</div>
+            <h4 class="font-black">Flawless Execution</h4>
+            <p class="text-sm text-black/60 mt-1 leading-6">From setup to wrap-up, we handle it all.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center mb-7 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Work</span>
+          <h2 class="text-[38px] font-black leading-tight">Featured <span class="text-primary">Workshops</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-4 min-h-[520px] reveal">
+          <div class="relative rounded-2xl overflow-hidden border border-black/10 cursor-pointer lg:row-span-2"
+               style="background: url('https://placehold.co/900x650/111/555?text=Brand+Activation') center/cover no-repeat;">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0 opacity-0 hover:opacity-100 transition"></div>
+            <div class="absolute left-0 right-0 bottom-0 p-4 text-white opacity-0 hover:opacity-100 transition">
+              <h3 class="font-black text-lg">Brand Activation</h3>
+            </div>
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden border border-black/10 cursor-pointer h-[220px] lg:h-auto"
+               style="background: url('https://placehold.co/600x400/222/666?text=Creative+Workshop') center/cover no-repeat;">
+            <div class="absolute left-0 right-0 bottom-0 p-4 text-white bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition">
+              <h3 class="font-black text-lg">Creative Workshop</h3>
+            </div>
+          </div>
+
+          <div class="relative rounded-2xl overflow-hidden border border-black/10 cursor-pointer h-[220px] lg:h-auto"
+               style="background: url('https://placehold.co/600x400/333/777?text=Tech+Summit') center/cover no-repeat;">
+            <div class="absolute left-0 right-0 bottom-0 p-4 text-white bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition">
+              <h3 class="font-black text-lg">Tech Innovation Summit</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <a class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+             href="portfolio.html">
+            View All Projects →
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center mb-7 reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Testimonials</span>
+          <h2 class="text-[38px] font-black leading-tight">What <span class="text-primary">Clients Say</span></h2>
+          <p class="mt-2 text-black/60">Real feedback from brands and communities we’ve worked with.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-soft reveal">
+            <div class="tracking-[2px] text-primary font-black">★★★★★</div>
+            <p class="mt-2 text-black/60">“Super smooth execution and great crowd management. The brand activation was a big success!”</p>
+            <div class="mt-4 flex gap-3 items-center">
+              <div class="w-11 h-11 rounded-2xl border border-black/10 grid place-items-center font-black bg-black/5">A</div>
+              <div>
+                <strong class="block text-sm">Ananya</strong>
+                <span class="text-sm text-black/60">Brand Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-soft reveal delay-1">
+            <div class="tracking-[2px] text-primary font-black">★★★★★</div>
+            <p class="mt-2 text-black/60">“Loved the workshop flow. The team handled everything professionally and on time.”</p>
+            <div class="mt-4 flex gap-3 items-center">
+              <div class="w-11 h-11 rounded-2xl border border-black/10 grid place-items-center font-black bg-black/5">R</div>
+              <div>
+                <strong class="block text-sm">Rohit</strong>
+                <span class="text-sm text-black/60">Community Lead</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-soft reveal delay-2">
+            <div class="tracking-[2px] text-primary font-black">★★★★★</div>
+            <p class="mt-2 text-black/60">“Our flea marketing event was packed! Great planning, good vendors, and amazing energy.”</p>
+            <div class="mt-4 flex gap-3 items-center">
+              <div class="w-11 h-11 rounded-2xl border border-black/10 grid place-items-center font-black bg-black/5">S</div>
+              <div>
+                <strong class="block text-sm">Swathi</strong>
+                <span class="text-sm text-black/60">Business Owner</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="py-16 bg-gray-50" id="contact">
+      <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
+        <div class="reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Get in Touch</span>
+          <h2 class="font-black leading-[1.05] text-[clamp(34px,4vw,52px)]">
+            Talk to <span class="text-primary">Our Team</span>
+          </h2>
+          <p class="mt-3 text-black/60 leading-7">Workshops • Competitions • Brand Activation • Flea Marketing</p>
+
+          <div class="mt-6 grid gap-3">
+            <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(17,24,39,0.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center shadow-[0_12px_24px_rgba(220,38,38,0.22)]">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Email</span>
+                <p class="font-black">skykeenbiz@gmail.com</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(17,24,39,0.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center shadow-[0_12px_24px_rgba(220,38,38,0.22)]">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Phone</span>
+                <p class="font-black">+91 7406238503</p>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(17,24,39,0.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center shadow-[0_12px_24px_rgba(220,38,38,0.22)]">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Location</span>
+                <p class="font-black">Bengaluru, India</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal delay-2">
+          <div class="bg-white border border-black/10 rounded-[22px] p-6 shadow-[0_20px_60px_rgba(17,24,39,0.12)]">
+            <form id="contactForm" class="flex flex-col gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-black">Your Name</label>
+                  <div class="relative">
+                    <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                           name="name" type="text" placeholder="John Doe" required />
+                  </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-black">Email Address</label>
+                  <div class="relative">
+                    <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                           name="email" type="email" placeholder="john@example.com" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Phone</label>
+                <div class="relative">
+                  <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                         name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required />
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Event Type</label>
+                <div class="relative">
+                  <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                         name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required />
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Your Message</label>
+                <div class="relative">
+                  <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <textarea class="w-full min-h-[140px] resize-y rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                            name="message" placeholder="Tell us about your event..." rows="5"></textarea>
+                </div>
+              </div>
+
+              <button type="submit"
+                      class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+                Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+
+              <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="bg-black/5 border border-black/10 rounded-[22px] p-7 shadow-soft text-center md:text-left grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-4 items-center reveal">
+          <div>
+            <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Ready to Plan?</span>
+            <h2 class="text-3xl font-black">Let’s Build Your Next Big Event</h2>
+            <p class="mt-2 text-black/60">Tell us your requirement — we’ll share a plan and callback quickly.</p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <a href="#contact"
+               class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+              Contact Us →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (simple) -->
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <p class="text-white/65 leading-7">
+          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
+        </p>
+        <div class="flex gap-3 mt-4 flex-wrap">
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Quick Links</h4>
+        <ul class="grid gap-3">
+          <li><a class="hover:text-white transition" href="../project/index.html">Home</a></li>
+          <li><a class="hover:text-white transition" href="../project/about.html">About</a></li>
+          <li><a class="hover:text-white transition" href="../project/services.html">Services</a></li>
+          <li><a class="hover:text-white transition" href="../project/portfolio.html">Portfolio</a></li>
+          <li><a class="hover:text-white transition" href="../project/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Contact</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        </ul>
+      </div>
     </div>
-  </section>
 
-</main>
-
-<div id="footer"></div>
-
-<!-- POPUP -->
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-card">
-    <button class="popup-close" id="popupClose">×</button>
-
-    <h3 class="popup-title">Get a Free Callback</h3>
-    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
-
-    <form class="styled-form" id="popupForm">
-      <div class="form-group">
-        <label>Name</label>
-        <div class="input-wrap">
-          <i class="fa-solid fa-user"></i>
-          <input name="name" type="text" placeholder="Your name" required>
-        </div>
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
       </div>
+    </div>
+  </footer>
 
-      <div class="form-group">
-        <label>Phone</label>
-        <div class="input-wrap">
-          <i class="fa-solid fa-phone"></i>
-          <input name="phone" type="tel" placeholder="Your phone number" required>
+  <!-- POPUP -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
+    <div class="bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
+         id="popupCard">
+      <button id="popupClose"
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+              type="button"
+              aria-label="Close popup">×</button>
+
+      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
+      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
+
+      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+        <input type="hidden" name="source" value="Popup Form">
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Name</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="name" type="text" placeholder="Your name" required>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label>Event Type</label>
-        <div class="input-wrap">
-          <i class="fa-solid fa-calendar-check"></i>
-          <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="phone" type="tel" placeholder="Your phone number" required>
+          </div>
         </div>
-      </div>
 
-      <button class="btn btn-primary full-width" type="submit">
-        Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
-      </button>
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Event Type</label>
+          <div class="relative">
+            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+          </div>
+        </div>
 
-      <p class="form-status" aria-live="polite"></p>
-    </form>
+        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+                type="submit">
+          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+
+        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
-</div>
 
-<script src="../js/components.js"></script>
-<script src="../js/reveal.js"></script>
-<script src="../js/popup.js"></script>
-<script src="../js/forms.js"></script>
+  <script>
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Mobile nav logic
+    const hamburger = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+    const navOverlay = document.getElementById("navOverlay");
+    const closeMenu = document.getElementById("closeMenu");
 
-</body>
-</html>
+    function openNav() {
+      navMenu.classList.remove("translate-x-[110%]");
+      navOverlay.classList.remove("opacity-0", "pointer-events-none");
+      navOverlay.classList.add("opacity-100");
+      hamburger.style.visibility = "hidden";
+    }
+    function closeNavFn() {
+      navMenu.classList.add("translate-x-[110%]");
+      navOverlay.classList.add("opacity-0", "pointer-events-none");
+      navOverlay.classList.remove("opacity-100");
+      hamburger.style.visibility = "visible";
+    }
 
+    hamburger?.addEventListener("click", () => {
+      const isOpen = !navMenu.classList.contains("translate-x-[110%]");
+      isOpen ? closeNavFn() : openNav();
+    });
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
+
+    // Reveal on scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const reveal = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", reveal);
+      reveal();
+    });
+
+    // Popup logic
+    const popup = document.getElementById("popupOverlay");
+    const popupCard = document.getElementById("popupCard");
+    const popupClose = document.getElementById("popupClose");
+    const openPopupDesktop = document.getElementById("openPopupDesktop");
+    const openPopupMobile = document.getElementById("openPopupMobile");
+
+    function openPopup() {
+      popup.classList.remove("invisible", "opacity-0");
+      popup.classList.add("opacity-100");
+      popupCard.classList.remove("opacity-0", "translate-y-2", "scale-[0.98]");
+      popupCard.classList.add("opacity-100", "translate-y-0", "scale-100");
+    }
+    function closePopup() {
+      popup.classList.add("opacity-0");
+      popup.classList.remove("opacity-100");
+      popupCard.classList.add("opacity-0", "translate-y-2", "scale-[0.98]");
+      popupCard.classList.remove("opacity-100", "translate-y-0", "scale-100");
+
+      setTimeout(() => {
+        popup.classList.add("invisible");
+      }, 200);
+
+      // Re-open after 40 seconds
+      setTimeout(openPopup, 40000);
+    }
+
+    // Auto open after 3 seconds
+    setTimeout(openPopup, 3000);
+
+    openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+
+    popupClose?.addEventListener("click", closePopup);
+    popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
+
+    // Forms to Google Sheet
+    const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
+
+    function bindFormToSheet(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      const statusEl = form.querySelector(".form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = "Sending...";
+
+        const fd = new FormData(form);
+
+        try {
+          const res = await fetch(SHEET_WEBAPP_URL, { method: "POST", body: fd });
+          const data = await res.json().catch(() => ({}));
+
+          if (data.ok) {
+            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            form.reset();
+          } else {
+            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+        }
+      });
+    }
+
+    bindFormToSheet("popupForm");
+    bindFormToSheet("contactForm");
+  </script>
 </body>
 </html>

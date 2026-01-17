@@ -5,118 +5,257 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | Contact</title>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+   :root { --header-h: 120px; }
+
+
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .10s; }
+    .delay-2 { transition-delay: .20s; }
+    .delay-3 { transition-delay: .30s; }
+    .delay-4 { transition-delay: .40s; }
+
+    /* WhatsApp floating */
+    .whatsapp-float{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 4px 10px rgba(17,24,39,0.30),
+        0 0 0 3px rgba(220,38,38,0.35);
+    }
+    .whatsapp-float i{ color:#fff; font-size:28px; }
+
+    /* Popup */
+    #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
+    #popupOverlay.show{ opacity:1; visibility:visible; }
+    #popupCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
+    #popupOverlay.show #popupCard{ transform: translateY(0) scale(1); opacity:1; }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(220 38 38)",
+            primaryDark: "rgb(185 28 28)",
+            darkText: "rgb(17 24 39)",
+          }
+        }
+      }
+    }
+  </script>
 </head>
 
-<body>
-  <!-- Loaded via components.js -->
-  <div id="header"></div>
+<body class="bg-white text-darkText" style="padding-top: var(--header-h);">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
+      <a href="index.html">
+      <img class="h-28 md:h-36 w-auto object-contain"
+     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+     alt="Skykeen Events" />
+      </a>
+
+      <button id="hamburgerBtn"
+        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
+        aria-label="Open menu" type="button">☰</button>
+
+      <nav class="hidden md:flex items-center gap-6 font-bold">
+        <a class="hover:text-primaryDark" href="../project/index.html">Home</a>
+        <a class="hover:text-primaryDark" href="../project/about.html">About</a>
+        <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
+        <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
+        <a class="hover:text-primaryDark text-primary" href="../project/contact.html">Contact</a>
+        <a href="#" id="openPopupDesktop"
+           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+          Get Started
+        </a>
+      </nav>
+    </div>
+
+    <!-- Mobile overlay + drawer -->
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
+
+    <nav id="navMenu"
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
+             flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
+             translate-x-[110%] transition md:hidden z-[10001]">
+      <button id="closeMenu"
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+        aria-label="Close menu" type="button">×</button>
+
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/portfolio.html">Portfolio</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5 text-primary" href="../project/contact.html">Contact</a>
+
+      <a href="#" id="openPopupMobile"
+         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+        Get Started
+      </a>
+    </nav>
+  </header>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <main>
     <!-- HERO -->
-    <section class="page-hero">
-      <div class="container">
-        <h1>Contact Us</h1>
-        <p class="breadcrumb">Home <span>/</span> Contact Us</p>
+    <section class="relative py-16 text-white text-center overflow-hidden"
+      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
+      <div class="absolute inset-0 opacity-20"
+        style="background:
+          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
+          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
+      </div>
+
+      <div class="relative max-w-6xl mx-auto px-3 reveal active">
+        <h1 class="text-4xl md:text-5xl font-black">Contact Us</h1>
+        <p class="mt-3 text-white/90 font-bold">
+          Home <span class="opacity-80 mx-1">/</span> Contact Us
+        </p>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section bg-light" id="contact">
-      <div class="container contact-grid">
+    <section class="py-14 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 
         <!-- LEFT -->
-        <div class="contact-left reveal">
-          <span class="sub-title">Get in Touch</span>
-          <h2>Talk to Our Team</h2>
-          <p class="lead">
+        <div class="reveal">
+          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Get in Touch</span>
+          <h2 class="text-[40px] md:text-[48px] font-black leading-tight">
+            Talk to <span class="text-primary">Our Team</span>
+          </h2>
+          <p class="mt-3 text-black/65 font-semibold leading-7">
             Workshops • Competitions • Brand Activation • Flea Marketing
           </p>
 
-          <div class="contact-info-wrapper">
-            <div class="contact-item">
-              <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-              <div class="info-text">
-                <span class="label">Email</span>
-                <p>hello@eventpro.com</p>
+          <div class="mt-6 grid gap-4">
+            <!-- Email -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Email</span>
+                <p class="font-black">skykeenbiz@gmail.com</p>
               </div>
             </div>
 
-            <div class="contact-item">
-              <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
-              <div class="info-text">
-                <span class="label">Phone</span>
-                <p>+91 7406238503</p>
+            <!-- Phone -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Phone</span>
+                <p class="font-black">+91 7406238503</p>
               </div>
             </div>
 
-            <div class="contact-item">
-              <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
-              <div class="info-text">
-                <span class="label">Location</span>
-                <p>Bengaluru, India</p>
+            <!-- Location -->
+            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-black/60 font-bold">Location</span>
+                <p class="font-black">Bengaluru, India</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT -->
-        <div class="contact-right reveal delay-2">
-          <div class="contact-card">
-            <form class="styled-form js-sheet-form" id="contactForm">
+        <!-- RIGHT FORM -->
+        <div class="reveal delay-2">
+          <div class="bg-white rounded-3xl border border-black/10 shadow-[0_20px_60px_rgba(17,24,39,0.12)] p-6 md:p-7">
+            <form id="contactForm" class="flex flex-col gap-4">
               <input type="hidden" name="source" value="contact-page">
 
-              <div class="form-row-grid">
-                <div class="form-group">
-                  <label>Your Name</label>
-                  <div class="input-wrap">
-                    <i class="fa-solid fa-user"></i>
-                    <input name="name" type="text" placeholder="John Doe" required>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Name -->
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-black">Your Name</label>
+                  <div class="relative">
+                    <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                      name="name" type="text" placeholder="John Doe" required>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label>Email Address</label>
-                  <div class="input-wrap">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input name="email" type="email" placeholder="john@example.com" required>
+                <!-- Email -->
+                <div class="flex flex-col gap-2">
+                  <label class="text-sm font-black">Email Address</label>
+                  <div class="relative">
+                    <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                      name="email" type="email" placeholder="john@example.com" required>
                   </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Phone</label>
-                <div class="input-wrap">
-                  <i class="fa-solid fa-phone"></i>
-                  <input name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
+              <!-- Phone -->
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Phone</label>
+                <div class="relative">
+                  <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                    name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Event Type</label>
-                <div class="input-wrap">
-                  <i class="fa-solid fa-calendar-check"></i>
-                  <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required>
+              <!-- Event Type -->
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Event Type</label>
+                <div class="relative">
+                  <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                    name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label>Your Message</label>
-                <div class="input-wrap textarea">
-                  <i class="fa-solid fa-pen-to-square"></i>
-                  <textarea name="message" placeholder="Tell us about your event..." rows="5"></textarea>
+              <!-- Message -->
+              <div class="flex flex-col gap-2">
+                <label class="text-sm font-black">Your Message</label>
+                <div class="relative">
+                  <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <textarea class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 min-h-[140px] outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                    name="message" placeholder="Tell us about your event..." rows="5"></textarea>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary full-width">
+              <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white
+                             bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)]
+                             hover:-translate-y-[1px] transition"
+                      type="submit">
                 Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </button>
 
-              <p class="form-status" aria-live="polite"></p>
+              <p class="form-status text-sm text-black/60" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -125,8 +264,9 @@
     </section>
 
     <!-- MAP -->
-    <section class="map-section">
+    <section class="w-full">
       <iframe
+        class="w-full h-[400px] border-0 block"
         src="https://www.google.com/maps?q=Bengaluru,India&output=embed"
         allowfullscreen=""
         loading="lazy">
@@ -134,58 +274,211 @@
     </section>
   </main>
 
-  <!-- Loaded via components.js -->
-  <div id="footer"></div>
+  <!-- FOOTER -->
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div>
+        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <p class="text-white/65 leading-7">
+          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
+        </p>
+        <div class="flex gap-3 mt-4 flex-wrap">
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition" href="#" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </div>
+      </div>
 
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Quick Links</h4>
+        <ul class="grid gap-3">
+          <li><a class="hover:text-white transition" href="../project/index.html">Home</a></li>
+          <li><a class="hover:text-white transition" href="../project/about.html">About</a></li>
+          <li><a class="hover:text-white transition" href="../project/services.html">Services</a></li>
+          <li><a class="hover:text-white transition" href="../project/portfolio.html">Portfolio</a></li>
+          <li><a class="hover:text-white transition" href="../project/contact.html">Contact</a></li>
+        </ul>
+      </div>
 
-<!-- POPUP FORM -->
- 
-<div class="popup-overlay" id="popupOverlay">
-  <div class="popup-card">
-    <button class="popup-close" id="popupClose">×</button>
+      <div>
+        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Contact</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        </ul>
+      </div>
+    </div>
 
-    <h3 class="popup-title">Get a Free Callback</h3>
-    <p class="popup-sub">Share your details — we’ll contact you shortly.</p>
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
+      </div>
+    </div>
+  </footer>
 
-      <form class="styled-form js-sheet-form" id="popupForm">
-  <input type="hidden" name="source" value="popup-form">
+  <!-- POPUP -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
+    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
+      <button id="popupClose"
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+              type="button"
+              aria-label="Close popup">×</button>
 
-  <div class="form-group">
-    <label>Name</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-user"></i>
-      <input name="name" type="text" placeholder="Your name" required>
+      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
+      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
+
+      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+        <input type="hidden" name="source" value="Popup Form">
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Name</label>
+          <div class="relative">
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="name" type="text" placeholder="Your name" required>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Phone</label>
+          <div class="relative">
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="phone" type="tel" placeholder="Your phone number" required>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label class="text-sm font-black">Event Type</label>
+          <div class="relative">
+            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+          </div>
+        </div>
+
+        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+                type="submit">
+          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+
+        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+      </form>
     </div>
   </div>
 
-  <div class="form-group">
-    <label>Phone</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-phone"></i>
-      <input name="phone" type="tel" placeholder="Your phone number" required>
-    </div>
-  </div>
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-  <div class="form-group">
-    <label>Event Type</label>
-    <div class="input-wrap">
-      <i class="fa-solid fa-calendar-check"></i>
-      <input name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
-    </div>
-  </div>
+    // Mobile nav
+    const hamburger = document.getElementById("hamburgerBtn");
+    const navMenu = document.getElementById("navMenu");
+    const navOverlay = document.getElementById("navOverlay");
+    const closeMenu = document.getElementById("closeMenu");
 
-  <button class="btn btn-primary full-width" type="submit">
-    Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
-  </button>
+    function openNav() {
+      navMenu.classList.remove("translate-x-[110%]");
+      navOverlay.classList.remove("opacity-0", "pointer-events-none");
+      navOverlay.classList.add("opacity-100");
+      hamburger.style.visibility = "hidden";
+    }
+    function closeNavFn() {
+      navMenu.classList.add("translate-x-[110%]");
+      navOverlay.classList.add("opacity-0", "pointer-events-none");
+      navOverlay.classList.remove("opacity-100");
+      hamburger.style.visibility = "visible";
+    }
 
-  <p class="form-status" aria-live="polite"></p>
-</form>
-  </div>
-</div>
-  <!-- JS -->
-  <script src="../js/components.js"></script>
-  <script src="../js/reveal.js"></script>
-  <script src="../js/forms.js"></script>
-  <script src="../js/popup.js"></script>
+    hamburger?.addEventListener("click", () => {
+      const isOpen = !navMenu.classList.contains("translate-x-[110%]");
+      isOpen ? closeNavFn() : openNav();
+    });
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
+
+    // Reveal
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const run = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", run);
+      run();
+    });
+
+    // Popup
+    const popup = document.getElementById("popupOverlay");
+    const popupClose = document.getElementById("popupClose");
+    const openPopupDesktop = document.getElementById("openPopupDesktop");
+    const openPopupMobile = document.getElementById("openPopupMobile");
+
+    function openPopup() { popup.classList.add("show"); }
+    function closePopup() {
+      popup.classList.remove("show");
+      setTimeout(openPopup, 40000);
+    }
+
+    setTimeout(openPopup, 3000);
+
+    openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+
+    popupClose?.addEventListener("click", closePopup);
+    popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
+
+    // Forms to Google Sheet
+    const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
+
+    function bindFormToSheet(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      const statusEl = form.querySelector(".form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = "Sending...";
+
+        const fd = new FormData(form);
+
+        try {
+          const res = await fetch(SHEET_WEBAPP_URL, { method: "POST", body: fd });
+          const data = await res.json().catch(() => ({}));
+
+          if (data.ok) {
+            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            form.reset();
+          } else {
+            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+        }
+      });
+    }
+
+    bindFormToSheet("popupForm");
+    bindFormToSheet("contactForm");
+
+    // Keep popup hidden initially (auto opens after 3 seconds)
+    popup.classList.remove("show");
+  </script>
 </body>
 </html>

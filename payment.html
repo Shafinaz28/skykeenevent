@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment - ₹599</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0b0b0b; margin:0; padding:20px; }
+    .card{
+      max-width:520px; margin:0 auto; background:#fff; border-radius:18px;
+      padding:16px; box-shadow:0 20px 60px rgba(0,0,0,.35);
+    }
+    .badge{ display:inline-block; background:#fee2e2; color:#b91c1c; padding:6px 10px;
+      border-radius:999px; font-weight:700; font-size:12px; }
+    h2{ margin:10px 0 4px; }
+    .muted{ color:#666; font-size:13px; margin:0 0 12px; }
+    .btn{
+      width:100%; border:0; border-radius:14px; padding:12px 14px; cursor:pointer;
+      font-weight:800;
+    }
+    .btn-dark{ background:#111; color:#fff; }
+    .btn-gray{ background:#eee; color:#111; }
+    .qr{ width:100%; border-radius:14px; border:1px solid #eee; margin:12px 0; }
+    .box{ background:#fafafa; border:1px solid #eee; border-radius:14px; padding:12px; }
+    .status{ margin-top:10px; font-weight:800; font-size:14px; text-align:center; }
+    .hidden{ display:none; }
+    input[type="file"]{ width:100%; padding:10px; border-radius:12px; border:1px solid #ddd; background:#fff; }
+    .row{ display:flex; gap:10px; margin-top:10px; }
+    .row button{ flex:1; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="badge">PAYMENT</div>
+    <h2>Pay ₹599</h2>
+    <p class="muted">Scan the QR to pay, then upload your payment screenshot.</p>
+
+    <button class="btn btn-dark" id="payBtn">₹599 • Make Payment</button>
+
+    <div id="paymentBox" class="box hidden">
+      <p style="margin:0; font-weight:800;">Scan & Pay</p>
+
+      <!-- ✅ change this path to your QR image -->
+      <img class="qr" src="image/paymentscneer.jpeg" alt="Scanner QR" />
+
+      <label style="display:block; margin:8px 0 6px; font-weight:800; font-size:13px;">
+        Upload Payment Screenshot *
+      </label>
+
+      <input id="shotInput" type="file" accept="image/*" />
+
+      <div id="previewWrap" class="hidden">
+        <p style="margin:10px 0 6px; font-weight:800; font-size:13px;">Preview</p>
+        <img id="previewImg" class="qr" alt="Screenshot Preview" />
+
+        <div class="row">
+          <button class="btn btn-gray" id="removeBtn" type="button">Remove</button>
+          <button class="btn btn-dark" id="doneBtn" type="button">Done</button>
+        </div>
+      </div>
+
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+
+  <script>
+    const payBtn = document.getElementById("payBtn");
+    const paymentBox = document.getElementById("paymentBox");
+    const shotInput = document.getElementById("shotInput");
+    const previewWrap = document.getElementById("previewWrap");
+    const previewImg = document.getElementById("previewImg");
+    const statusEl = document.getElementById("status");
+    const removeBtn = document.getElementById("removeBtn");
+    const doneBtn = document.getElementById("doneBtn");
+
+    payBtn.addEventListener("click", () => {
+      paymentBox.classList.remove("hidden");
+      statusEl.textContent = "✅ Scan the QR and complete payment.";
+      paymentBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    // Restore previous upload (browser only)
+    window.addEventListener("DOMContentLoaded", () => {
+      const saved = localStorage.getItem("payment_screenshot_base64");
+      if (saved) {
+        paymentBox.classList.remove("hidden");
+        previewWrap.classList.remove("hidden");
+        previewImg.src = saved;
+        statusEl.textContent = "✅ Screenshot already uploaded (restored).";
+      }
+    });
+
+    shotInput.addEventListener("change", () => {
+      const file = shotInput.files?.[0];
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        statusEl.textContent = "❌ Only image files allowed.";
+        shotInput.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        previewImg.src = reader.result;
+        previewWrap.classList.remove("hidden");
+        statusEl.textContent = "✅ Screenshot added. Click Done.";
+
+        // Save in browser storage (NOT server folder)
+        localStorage.setItem("payment_screenshot_base64", reader.result);
+        localStorage.setItem("payment_screenshot_name", file.name);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    removeBtn.addEventListener("click", () => {
+      shotInput.value = "";
+      previewWrap.classList.add("hidden");
+      statusEl.textContent = "Screenshot removed.";
+      localStorage.removeItem("payment_screenshot_base64");
+      localStorage.removeItem("payment_screenshot_name");
+    });
+
+    doneBtn.addEventListener("click", () => {
+      const saved = localStorage.getItem("payment_screenshot_base64");
+      if (!saved) {
+        statusEl.textContent = "❌ Please upload screenshot first.";
+        return;
+      }
+      statusEl.textContent = "✅ Payment proof saved. You can go back and confirm booking.";
+      // Optional redirect back to booking page
+      // window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
