@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Carnival Day @ Woofville</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['"Fredoka One"', 'cursive'],
+                        quicksand: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        brandRed: '#DC2626',
+                        brandDark: '#111827',
+                        brandGray: '#F3F4F6',
+                        brandCream: '#FFFDF5',
+                    },
+                    borderRadius: {
+                        'xl': '20px',
+                        '2xl': '40px',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-quicksand text-brandDark bg-brandCream overflow-x-hidden">
+
+    <nav
+        class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img src="image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Woofville Logo"
+                        class="h-20 md:h-24 w-auto object-contain hover:scale-105 transition">
+                </div>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-brandDark font-bold hover:text-brandRed transition">About</a>
+                    <a href="#schedule" class="text-brandDark font-bold hover:text-brandRed transition">Schedule</a>
+                    <a href="#gallery" class="text-brandDark font-bold hover:text-brandRed transition">Gallery</a>
+                    <a href="#contact" class="text-brandDark font-bold hover:text-brandRed transition">Contact</a>
+
+                    <button onclick="openModal()"
+                        class="bg-brandRed text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-lg transform hover:-translate-y-0.5 border-2 border-brandRed">
+                        Book Slot
+                    </button>
+                </div>
+
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMenu()" class="text-brandDark focus:outline-none p-2">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-6 py-4 space-y-4 flex flex-col">
+                <a href="#about" onclick="toggleMenu()" class="block font-bold text-gray-700">About</a>
+                <a href="#schedule" onclick="toggleMenu()" class="block font-bold text-gray-700">Schedule</a>
+                <a href="#contact" onclick="toggleMenu()" class="block font-bold text-gray-700">Contact Us</a>
+                <button onclick="openModal(); toggleMenu()"
+                    class="block w-full py-3 bg-brandRed text-white font-bold rounded-lg text-center">🎟️ Book
+                    Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <section
+        class="relative px-6 md:px-12 py-12 md:py-20 mt-20 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="z-10 order-2 md:order-1">
+            <span
+                class="bg-red-100 text-brandRed px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block animate-pulse">
+                Sat, Jan 24th • Yelahanka
+            </span>
+            <h1 class="font-fredoka text-5xl md:text-7xl leading-tight mb-6 text-brandDark">
+                We take care of your <span class="text-brandRed">Fun.</span>
+            </h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-md font-medium">
+                The ultimate Pet Carnival experience! Workshops, social play, and a star-studded contest evening for you
+                and your furry best friend.
+            </p>
+            <div class="flex gap-4">
+                <button onclick="openModal()"
+                    class="bg-brandRed text-white px-8 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl transition transform hover:-translate-y-1">
+                    Get Tickets
+                </button>
+                <a href="#schedule"
+                    class="flex items-center gap-2 px-6 py-4 font-bold text-brandDark hover:text-brandRed transition">
+                    <i class="fa-solid fa-arrow-down"></i> Explore
+                </a>
+            </div>
+        </div>
+
+        <div class="relative order-1 md:order-2">
+            <div
+                class="absolute top-10 right-10 w-full h-full bg-brandGray rounded-full -z-10 transform translate-x-4 translate-y-4">
+            </div>
+            <div class="rounded-[40px] overflow-hidden shadow-2xl border-4 border-white">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    alt="Happy Dog"
+                    class="w-full h-auto object-cover transform hover:scale-105 transition duration-700">
+            </div>
+            <div
+                class="absolute top-8 -right-4 md:-right-8 bg-brandRed text-white p-2 rounded-full shadow-lg flex flex-col items-center justify-center w-24 h-40 border-4 border-white">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-2 border-2 border-white">
+                    <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        class="object-cover w-full h-full">
+                </div>
+                <div class="text-center leading-tight">
+                    <span class="block text-xs font-bold opacity-80">START</span>
+                    <span class="block font-fredoka text-sm">10:30</span>
+                    <span class="block text-xs font-bold">AM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="bg-brandRed text-white py-12 px-6 shadow-inner">
+        <div
+            class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div>
+                <h3 class="font-fredoka text-2xl mb-2">"Where love meets paws."</h3>
+                <p class="opacity-90 text-sm max-w-lg">A safe, premium environment. No breed bias, strictly friendly
+                    judging, and 100% fun.</p>
+            </div>
+            <div class="flex gap-10">
+                <div class="text-center group">
+                    <i class="fa-solid fa-dog text-3xl mb-2 text-brandDark group-hover:scale-110 transition"></i>
+                    <div class="font-bold">Social Play</div>
+                </div>
+                <div class="text-center group">
+                    <i class="fa-solid fa-trophy text-3xl mb-2 text-brandDark group-hover:scale-110 transition"></i>
+                    <div class="font-bold">Contest</div>
+                </div>
+                <div class="text-center group">
+                    <i class="fa-solid fa-camera text-3xl mb-2 text-brandDark group-hover:scale-110 transition"></i>
+                    <div class="font-bold">Photo Zone</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-full md:w-1/2">
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=400&q=80"
+                        class="rounded-2xl shadow-lg mt-8">
+                    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=400&q=80"
+                        class="rounded-2xl shadow-lg">
+                </div>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="font-fredoka text-4xl text-brandDark mb-6">Why Woofville?</h2>
+                <p class="text-gray-600 text-lg mb-6">
+                    Woofville isn't just a venue; it's a paradise for paws. Located in the serene green belts of
+                    Yelahanka, we offer a distraction-free zone where you can bond with your pet without city noise.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-brandRed"></i> 5-Acre Fenced
+                        Play Area</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-brandRed"></i> Vet on Call
+                        During Events</li>
+                    <li class="flex items-center gap-3"><i class="fas fa-check-circle text-brandRed"></i> Fresh Water
+                        Stations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing"
+        class="py-20 px-6 max-w-6xl mx-auto bg-white rounded-[50px] my-10 shadow-sm border border-brandGray">
+        <div class="text-center mb-16">
+            <h2 class="font-fredoka text-4xl text-brandDark mb-4">Choose Your Experience</h2>
+            <p class="text-gray-600">Note: Each ticket covers 1 Pet + 1 Pet Parent</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div
+                class="bg-brandCream p-8 rounded-[30px] shadow-sm border-2 border-transparent hover:border-brandRed transition group">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-fredoka text-2xl text-gray-700">Visitor Pass</h3>
+                    <span
+                        class="bg-white text-gray-600 px-3 py-1 rounded-full text-xs font-bold shadow-sm">RELAXED</span>
+                </div>
+                <div class="mb-8">
+                    <span class="text-4xl font-fredoka text-brandDark">₹199</span>
+                    <span class="text-gray-500">/ pet</span>
+                </div>
+                <ul class="space-y-4 mb-8 text-sm font-semibold text-gray-600">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Entry Access
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Pet Social Play
+                    </li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Photo Zone</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-green-500"></i> Watch Contest
+                    </li>
+                    <li class="flex items-center gap-3 opacity-40"><i class="fa-solid fa-xmark text-red-400"></i> No
+                        Contest Entry</li>
+                </ul>
+                <button onclick="openModal('Visitor Pass')"
+                    class="w-full py-4 rounded-xl border-2 border-brandDark font-bold hover:bg-brandDark hover:text-white transition">
+                    Get Visitor Pass
+                </button>
+            </div>
+
+            <div
+                class="bg-brandDark text-white p-10 rounded-[30px] shadow-2xl relative transform md:scale-105 border-4 border-brandDark">
+                <div
+                    class="absolute top-0 right-0 bg-brandRed text-white text-xs font-bold px-4 py-2 rounded-bl-xl rounded-tr-xl">
+                    LIMITED SLOTS
+                </div>
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-fredoka text-3xl text-white">Contest Star</h3>
+                    <i class="fa-solid fa-crown text-yellow-400 text-2xl"></i>
+                </div>
+                <div class="mb-8">
+                    <span class="text-5xl font-fredoka text-brandRed">₹499</span>
+                    <span class="text-gray-400">/ pet</span>
+                </div>
+                <ul class="space-y-4 mb-8 text-sm font-semibold text-gray-300">
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brandRed"></i>
+                        <strong>Everything in Visitor</strong></li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brandRed"></i> Contest
+                        Participation</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brandRed"></i> Certificate &
+                        Prizes</li>
+                    <li class="flex items-center gap-3"><i class="fa-solid fa-check text-brandRed"></i> Professional
+                        Reels/Photos</li>
+                </ul>
+                <button onclick="openModal('Contest Pass')"
+                    class="w-full py-4 rounded-xl bg-brandRed font-bold text-white hover:bg-white hover:text-brandRed transition shadow-lg">
+                    Register for Contest
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-fredoka text-4xl text-brandDark mb-12">Paw-some Moments 📸</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="rounded-xl overflow-hidden h-64"><img
+                        src="https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=500&q=80"
+                        class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="rounded-xl overflow-hidden h-64"><img
+                        src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?auto=format&fit=crop&w=500&q=80"
+                        class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="rounded-xl overflow-hidden h-64"><img
+                        src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=500&q=80"
+                        class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+                <div class="rounded-xl overflow-hidden h-64"><img
+                        src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=500&q=80"
+                        class="w-full h-full object-cover hover:scale-110 transition duration-500"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="bg-white py-20 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-fredoka text-3xl text-brandDark mb-8">Event Flow</h2>
+                <div class="space-y-8 border-l-4 border-brandGray pl-8 ml-2">
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[42px] top-1 bg-brandRed w-5 h-5 rounded-full border-4 border-white"></span>
+                        <h4 class="font-bold text-lg">10:30 AM – 3:30 PM</h4>
+                        <p class="text-gray-600">Social Play, Photo Zones, Stalls & Workshops.</p>
+                        <p class="text-xs text-gray-400 mt-1">*Pool/Rain Dance available (paid add-on)</p>
+                    </div>
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[42px] top-1 bg-brandDark w-5 h-5 rounded-full border-4 border-white"></span>
+                        <h4 class="font-bold text-lg text-brandRed">4:00 PM – 7:00 PM (Main Event)</h4>
+                        <p class="text-gray-600">Pet Contest, Stage Activities, Awards & Photo Session.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rules" class="bg-brandGray rounded-3xl p-8">
+                <h2 class="font-fredoka text-3xl text-brandDark mb-6">House Rules 🛡️</h2>
+                <ul class="space-y-4">
+                    <li class="flex gap-4"><i class="fa-solid fa-paw text-brandRed mt-1"></i><span
+                            class="text-sm font-medium">Dogs must be on leash at all times.</span></li>
+                    <li class="flex gap-4"><i class="fa-solid fa-paw text-brandRed mt-1"></i><span
+                            class="text-sm font-medium">Aggressive/distressed dogs may be withdrawn for safety.</span>
+                    </li>
+                    <li class="flex gap-4"><i class="fa-solid fa-paw text-brandRed mt-1"></i><span
+                            class="text-sm font-medium">Owners must be present with pets at all times.</span></li>
+                    <li class="flex gap-4"><i class="fa-solid fa-paw text-brandRed mt-1"></i><span
+                            class="text-sm font-medium">Clean up after your pet (We provide bags!).</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 bg-brandDark text-white mt-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="font-fredoka text-4xl">Get in Touch</h2>
+                <p class="text-gray-400">Have a question? Drop us a message or visit us!</p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 rounded-[40px] overflow-hidden bg-white text-brandDark shadow-2xl">
+
+                <div class="p-8 md:p-12 bg-white">
+                    <h3 class="font-bold text-2xl mb-6 text-brandRed">Send us a Message</h3>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" placeholder="Name"
+                                class="w-full px-4 py-3 bg-brandGray rounded-lg focus:outline-none focus:ring-2 focus:ring-brandRed">
+                            <input type="tel" placeholder="Phone"
+                                class="w-full px-4 py-3 bg-brandGray rounded-lg focus:outline-none focus:ring-2 focus:ring-brandRed">
+                        </div>
+                        <input type="email" placeholder="Email Address"
+                            class="w-full px-4 py-3 bg-brandGray rounded-lg focus:outline-none focus:ring-2 focus:ring-brandRed">
+                        <textarea rows="4" placeholder="Your Message / Query"
+                            class="w-full px-4 py-3 bg-brandGray rounded-lg focus:outline-none focus:ring-2 focus:ring-brandRed"></textarea>
+                        <button
+                            class="w-full bg-brandRed text-white font-bold py-3 rounded-lg hover:bg-red-700 transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="bg-brandGray p-8 md:p-12 flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-white p-3 rounded-full text-brandRed shadow-sm"><i
+                                    class="fa-solid fa-location-dot text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold">Visit Us</h4>
+                                <p class="text-sm text-gray-600">Woofville, Survey No. 12/3, Yelahanka Main Road,
+                                    Bangalore, Karnataka 560064</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-white p-3 rounded-full text-brandRed shadow-sm"><i
+                                    class="fa-solid fa-phone text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold">Call Us</h4>
+                                <p class="text-sm text-gray-600">+91 74062 38503</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-white p-3 rounded-full text-brandRed shadow-sm"><i
+                                    class="fa-solid fa-envelope text-xl"></i></div>
+                            <div>
+                                <h4 class="font-bold">Email</h4>
+                                <p class="text-sm text-gray-600">events@skykeen.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 h-48 rounded-xl overflow-hidden shadow-md border-2 border-white">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.5715330010926!2d77.5848737!3d13.126307799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae198b5781d9fb%3A0xb0c6fac864baadc6!2sWoofville!5e0!3m2!1sen!2sin!4v1768626603999!5m2!1sen!2sin"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-8 border-t border-gray-900 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center mb-4">
+                <img src="image/logo.png" alt="Logo"
+                    class="h-16 w-auto opacity-80 grayscale hover:grayscale-0 transition">
+            </div>
+            <p class="text-gray-500 text-sm">Creating platforms. Connecting communities.</p>
+            <div class="text-xs text-gray-700 mt-4">
+                © 2026 SkyKeen. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/917406238503" target="_blank"
+        class="fixed bottom-6 right-6 z-40 bg-[#25D366] w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition animate-bounce">
+        <i class="fab fa-whatsapp text-white text-2xl lg:text-3xl"></i>
+    </a>
+
+    <div id="bookingModal" class="fixed inset-0 z-[60] hidden flex items-center justify-center px-4">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeModal()"></div>
+
+        <div class="bg-white rounded-[30px] p-8 md:p-10 w-full max-w-lg relative shadow-2xl transform transition-all scale-95 opacity-0"
+            id="modalBox">
+            <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-400 hover:text-brandRed text-2xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <h3 class="font-fredoka text-3xl text-brandDark">Secure Your Spot!</h3>
+                <p class="text-gray-500 text-sm mt-1">Limited slots available. Don't miss out!</p>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Your Name</label>
+                    <input type="text" placeholder="John Doe"
+                        class="w-full px-4 py-3 rounded-xl border-2 border-brandGray focus:border-brandRed focus:outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Mobile Number</label>
+                    <input type="tel" placeholder="+91 99999 99999"
+                        class="w-full px-4 py-3 rounded-xl border-2 border-brandGray focus:border-brandRed focus:outline-none transition">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Select Ticket Type</label>
+                    <select id="ticketType"
+                        class="w-full px-4 py-3 rounded-xl border-2 border-brandGray focus:border-brandRed focus:outline-none transition bg-white">
+                        <option value="Visitor Pass">Visitor Pass (₹199)</option>
+                        <option value="Contest Pass">Contest Participant (₹499)</option>
+                        <option value="Inquiry">General Inquiry</option>
+                    </select>
+                </div>
+                <button type="submit"
+                    class="w-full bg-brandRed text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition">
+                    Confirm Registration
+                </button>
+                <p class="text-xs text-center text-gray-400 mt-2">We'll contact you shortly for payment.</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 2. Modal Logic
+        const modal = document.getElementById('bookingModal');
+        const modalBox = document.getElementById('modalBox');
+
+        function openModal(preselectType = '') {
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalBox.classList.remove('scale-95', 'opacity-0');
+                modalBox.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            if (preselectType) {
+                const select = document.getElementById('ticketType');
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value.includes(preselectType)) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        function closeModal() {
+            modalBox.classList.remove('scale-100', 'opacity-100');
+            modalBox.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // 3. Auto-Trigger Popup every 40 Seconds
+        setInterval(() => {
+            if (modal.classList.contains('hidden')) {
+                openModal();
+                console.log("Auto-popup triggered");
+            }
+        }, 40000); 
+    </script>
+
+</body>
+
+</html>
