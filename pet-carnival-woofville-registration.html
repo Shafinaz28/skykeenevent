@@ -86,11 +86,31 @@
         <div class="z-10 order-2 md:order-1">
             <span
                 class="bg-red-100 text-brandRed px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block animate-pulse">
-                Sat, Jan 24th • Yelahanka
+                Sun, Feb 1st • Yelahanka
             </span>
+            
             <h1 class="font-fredoka text-5xl md:text-7xl leading-tight mb-6 text-brandDark">
                 We take care of your <span class="text-brandRed">Fun.</span>
             </h1>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+                <div class="bg-white p-3 rounded-2xl shadow-md border-2 border-brandGray text-center min-w-[75px]">
+                    <span id="days" class="block font-fredoka text-3xl text-brandRed">00</span>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Days</span>
+                </div>
+                <div class="bg-white p-3 rounded-2xl shadow-md border-2 border-brandGray text-center min-w-[75px]">
+                    <span id="hours" class="block font-fredoka text-3xl text-brandRed">00</span>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Hrs</span>
+                </div>
+                <div class="bg-white p-3 rounded-2xl shadow-md border-2 border-brandGray text-center min-w-[75px]">
+                    <span id="minutes" class="block font-fredoka text-3xl text-brandRed">00</span>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Min</span>
+                </div>
+                <div class="bg-white p-3 rounded-2xl shadow-md border-2 border-brandGray text-center min-w-[75px]">
+                    <span id="seconds" class="block font-fredoka text-3xl text-brandRed">00</span>
+                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Sec</span>
+                </div>
+            </div>
             <p class="text-lg text-gray-600 mb-8 max-w-md font-medium">
                 The ultimate Pet Carnival experience! Workshops, social play, and a star-studded contest evening for you
                 and your furry best friend.
@@ -485,6 +505,39 @@
                 console.log("Auto-popup triggered");
             }
         }, 40000); 
+
+        // 4. NEW: COUNTDOWN LOGIC FOR FEB 1st
+        // Set the date we're counting down to
+        const eventDate = new Date("Feb 1, 2026 10:30:00").getTime();
+
+        const countdownTimer = setInterval(function() {
+            // Get today's date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            const distance = eventDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in the elements with id
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+            }
+        }, 1000);
     </script>
 
 </body>
