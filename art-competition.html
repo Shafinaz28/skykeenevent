@@ -1105,9 +1105,12 @@
     if ($("regForm")) $("regForm").addEventListener("submit", (e) => handleFormSubmit(e, "regForm", "status", true));
     if ($("contactForm")) $("contactForm").addEventListener("submit", (e) => handleFormSubmit(e, "contactForm", "contactStatus", false));
 
-    // Auto Popup
-    setTimeout(() => { if (modal.classList.contains("hidden")) openModal(); }, 30000);
-
+    // Auto Popup (Repeats every 30 seconds)
+    setInterval(() => { 
+        if (modal.classList.contains("hidden")) {
+            openModal(); 
+        }
+    }, 30000);
   </script>
 </body>
 
