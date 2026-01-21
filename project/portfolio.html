@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | Portfolio</title>
 
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
@@ -35,7 +33,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
+      box-shadow: 
         0 4px 10px rgba(17,24,39,0.30),
         0 0 0 3px rgba(220,38,38,0.35);
     }
@@ -66,6 +64,9 @@
             primary: "rgb(220 38 38)",
             primaryDark: "rgb(185 28 28)",
             darkText: "rgb(17 24 39)",
+          },
+          boxShadow: {
+            soft: "0 20px 60px rgba(17,24,39,0.15)"
           }
         }
       }
@@ -75,16 +76,15 @@
 
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-  <!-- HEADER -->
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
       <a href="index.html">
-      <img class="h-28 md:h-36 w-auto object-contain"
-     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
-     alt="Skykeen Events" />
+      <img class="h-28 md:h-36 w-auto object-contain" 
+       src="../image/sdc1-Picsart-AiImageEnhancer 1.png" 
+       alt="Skykeen Events" />
       </a>
 
-      <button id="hamburgerBtn"
+      <button id="hamburgerBtn" 
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
         aria-label="Open menu" type="button">☰</button>
 
@@ -94,22 +94,22 @@
         <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
         <a class="hover:text-primaryDark text-primary" href="../project/portfolio.html">Portfolio</a>
         <a class="hover:text-primaryDark" href="../project/contact.html">Contact</a>
+        
         <a href="#" id="openPopupDesktop"
-           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+           class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
           Get Started
         </a>
       </nav>
     </div>
 
-    <!-- Mobile overlay + drawer -->
     <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-    <nav id="navMenu"
+    <nav id="navMenu" 
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
              flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
              translate-x-[110%] transition md:hidden z-[10001]">
-      <button id="closeMenu"
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+      <button id="closeMenu" 
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center" 
         aria-label="Close menu" type="button">×</button>
 
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
@@ -119,23 +119,21 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/contact.html">Contact</a>
 
       <a href="#" id="openPopupMobile"
-         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+         class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
         Get Started
       </a>
     </nav>
   </header>
 
-  <!-- WhatsApp -->
   <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
-    <!-- HERO -->
-    <section class="relative py-16 text-white text-center overflow-hidden"
+    <section class="relative py-16 text-white text-center overflow-hidden" 
       style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20"
-        style="background:
+      <div class="absolute inset-0 opacity-20" 
+        style="background: 
           radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
           radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
       </div>
@@ -148,7 +146,6 @@
       </div>
     </section>
 
-    <!-- INTRO -->
     <section class="py-12">
       <div class="max-w-6xl mx-auto px-3 text-center reveal">
         <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Work</span>
@@ -159,32 +156,27 @@
       </div>
     </section>
 
-    <!-- FEATURED GRID -->
     <section class="pb-12">
       <div class="max-w-6xl mx-auto px-3">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
-          <!-- Large -->
-          <a href="#"
+          <a href="#" 
              class="p-card md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden border border-black/10 relative min-h-[320px] md:min-h-[520px]">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/900x650/111/444?text=Brand+Activation" alt="Brand Activation">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/WhatsApp Image 2026-01-16 at 2.51.39 PM (2).jpeg" alt="Flea Marketing">
             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
             <div class="absolute left-5 right-5 bottom-5 flex items-end justify-between gap-3">
               <div>
                 <p class="text-white/80 font-extrabold text-sm">Featured</p>
-                <h3 class="text-white font-black text-2xl">Brand Activation</h3>
+                <h3 class="text-white font-black text-2xl">Flea Marketing</h3>
               </div>
-              <span class="text-white font-extrabold bg-white/10 border border-white/20 rounded-full px-4 py-2">
-                View →
-              </span>
+              
             </div>
           </a>
 
-          <!-- Small 1 -->
-          <a href="#"
+          <a href="#" 
              class="p-card rounded-3xl overflow-hidden border border-black/10 relative min-h-[240px]">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/600x400/222/666?text=Workshop" alt="Creative Workshop">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/creative workshop.jpg" alt="Creative Workshop">
             <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"></div>
             <div class="absolute left-5 right-5 bottom-5">
               <h3 class="text-white font-black text-xl">Creative Workshop</h3>
@@ -192,31 +184,28 @@
             </div>
           </a>
 
-          <!-- Small 2 -->
-          <a href="#"
+          <a href="#" 
              class="p-card rounded-3xl overflow-hidden border border-black/10 relative min-h-[240px]">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/600x400/333/777?text=Competition" alt="Annual Talent Competition">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Annual Talent Competition">
             <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent"></div>
             <div class="absolute left-5 right-5 bottom-5">
-              <h3 class="text-white font-black text-xl">Annual Talent Competition</h3>
-              <p class="text-white/75 font-semibold text-sm mt-1">Stage + audience energy</p>
+              <h3 class="text-white font-black text-xl">Pet Show</h3>
+              <p class="text-white/75 font-semibold text-sm mt-1">Annual Community Gathering</p>
             </div>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORY CARDS -->
     <section class="pb-16">
       <div class="max-w-6xl mx-auto px-3">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Flea -->
           <a href="#" class="p-card rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/800x500/111/555?text=Flea+Marketing" alt="Flea Marketing">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/flem.jpeg" alt="Flea Marketing">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-
+            
             <div class="absolute left-5 right-5 bottom-5">
               <div class="w-12 h-12 rounded-2xl bg-primary text-white grid place-items-center font-black text-lg">⛺</div>
               <h3 class="mt-3 text-white font-black text-xl">Flea Marketing</h3>
@@ -224,12 +213,11 @@
             </div>
           </a>
 
-          <!-- Workshops -->
           <a href="#" class="p-card rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-1">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/800x500/222/666?text=Workshop" alt="Workshops">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/workshop1.jpg" alt="Workshops">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-
+            
             <div class="absolute left-5 right-5 bottom-5">
               <div class="w-12 h-12 rounded-2xl bg-primary text-white grid place-items-center font-black text-lg">🎨</div>
               <h3 class="mt-3 text-white font-black text-xl">Workshops</h3>
@@ -237,12 +225,11 @@
             </div>
           </a>
 
-          <!-- Activation -->
           <a href="#" class="p-card rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-2">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/800x500/333/777?text=Brand+Activation" alt="Brand Activation">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/brand activation.jpg" alt="Brand Activation">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-
+            
             <div class="absolute left-5 right-5 bottom-5">
               <div class="w-12 h-12 rounded-2xl bg-primary text-white grid place-items-center font-black text-lg">🏆</div>
               <h3 class="mt-3 text-white font-black text-xl">Brand Activation</h3>
@@ -250,12 +237,11 @@
             </div>
           </a>
 
-          <!-- Competitions -->
           <a href="#" class="p-card rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-3">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://placehold.co/800x500/444/888?text=Competition" alt="Competitions">
+            <img class="absolute inset-0 w-full h-full object-cover" 
+                 src="../image/competetion.jpg" alt="Competitions">
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-
+            
             <div class="absolute left-5 right-5 bottom-5">
               <div class="w-12 h-12 rounded-2xl bg-primary text-white grid place-items-center font-black text-lg">👥</div>
               <h3 class="mt-3 text-white font-black text-xl">Competitions</h3>
@@ -266,44 +252,29 @@
       </div>
     </section>
 
-    <!-- CTA -->
     <section class="pb-16">
       <div class="max-w-6xl mx-auto px-3">
-        <div class="rounded-[26px] border border-black/10 bg-gradient-to-br from-primary/10 to-primary/5 p-7 md:p-11 shadow-[0_18px_60px_rgba(0,0,0,.10)] reveal">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/75 border border-primary/30 font-extrabold text-sm">
-                📸 Want your brand here?
-              </span>
-              <h2 class="mt-3 text-[34px] md:text-[42px] font-black leading-tight">
-                Let’s Create Your Next <span class="text-primary">Showcase Event</span>
-              </h2>
-              <p class="mt-2 text-black/70 font-semibold">
-                Share your requirement — we’ll suggest a concept + plan quickly.
-              </p>
-            </div>
-
-            <div class="flex gap-3 flex-wrap">
-              <a href="#" id="openPopupCTA"
-                 class="inline-flex items-center justify-center gap-2 h-13 px-6 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
-                Get a Free Callback →
-              </a>
-              <a href="../project/contact.html"
-                 class="inline-flex items-center justify-center gap-2 h-13 px-6 rounded-xl font-black bg-white/80 border border-black/10 hover:bg-white hover:-translate-y-[1px] transition">
-                Contact Page →
-              </a>
-            </div>
+        <div class="bg-black/5 border border-black/10 rounded-[22px] p-9 shadow-soft text-center md:text-left grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 items-center reveal">
+          <div>
+            <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Ready to Plan?</span>
+            <h2 class="text-3xl font-black">Let’s Build Your Next Big Event</h2>
+            <p class="mt-2 text-black/60">Tell us your requirement — we’ll share a plan and callback quickly.</p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <a href="../project/contact.html"
+               class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+              Contact Us →
+            </a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <img class="h-28 md:h-36 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
           Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
         </p>
@@ -350,18 +321,17 @@
     </div>
   </footer>
 
-  <!-- POPUP -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
-    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
-      <button id="popupClose"
-              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-              type="button"
+    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
+      <button id="popupClose" 
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl" 
+              type="button" 
               aria-label="Close popup">×</button>
 
       <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
       <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
 
-      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+      <form id="popupForm" class="mt-6 flex flex-col gap-5">
         <input type="hidden" name="source" value="Popup Form">
 
         <div class="flex flex-col gap-2">
@@ -391,7 +361,7 @@
           </div>
         </div>
 
-        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
                 type="submit">
           Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
@@ -452,7 +422,6 @@
     const popupClose = document.getElementById("popupClose");
     const openPopupDesktop = document.getElementById("openPopupDesktop");
     const openPopupMobile = document.getElementById("openPopupMobile");
-    const openPopupCTA = document.getElementById("openPopupCTA");
 
     function openPopup() { popup.classList.add("show"); }
     function closePopup() {
@@ -464,7 +433,6 @@
 
     openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
     openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
-    openPopupCTA?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
 
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });

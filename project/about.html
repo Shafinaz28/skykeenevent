@@ -5,10 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | About</title>
 
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
@@ -35,7 +33,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
+      box-shadow: 
         0 4px 10px rgba(17,24,39,0.30),
         0 0 0 3px rgba(220,38,38,0.35);
     }
@@ -43,10 +41,10 @@
 
     /* Marquee */
     .logo-marquee { overflow: hidden; position: relative; margin-top: 22px; }
-    .logo-track {
-      display: flex;
-      width: max-content;
-      animation: scrollLogos 30s linear infinite;
+    .logo-track { 
+      display: flex; 
+      width: max-content; 
+      animation: scrollLogos 30s linear infinite; 
     }
     .logo-item{
       min-width: 160px;
@@ -89,16 +87,15 @@
 
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-  <!-- HEADER (same as index) -->
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
       <a href="index.html">
-      <img class="h-28 md:h-36 w-auto object-contain"
-     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
-     alt="Skykeen Events" />
+      <img class="h-28 md:h-36 w-auto object-contain" 
+       src="../image/sdc1-Picsart-AiImageEnhancer 1.png" 
+       alt="Skykeen Events" />
       </a>
 
-      <button id="hamburgerBtn"
+      <button id="hamburgerBtn" 
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
         aria-label="Open menu" type="button">☰</button>
 
@@ -108,8 +105,9 @@
         <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
         <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
         <a class="hover:text-primaryDark" href="../project/contact.html">Contact</a>
+        
         <a href="#" id="openPopupDesktop"
-           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+           class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
           Get Started
         </a>
       </nav>
@@ -117,12 +115,12 @@
 
     <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-    <nav id="navMenu"
+    <nav id="navMenu" 
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
              flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
              translate-x-[110%] transition md:hidden z-[10001]">
-      <button id="closeMenu"
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+      <button id="closeMenu" 
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center" 
         aria-label="Close menu" type="button">×</button>
 
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
@@ -132,23 +130,21 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/contact.html">Contact</a>
 
       <a href="#" id="openPopupMobile"
-         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+         class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
         Get Started
       </a>
     </nav>
   </header>
 
-  <!-- WhatsApp -->
   <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
-    <!-- PAGE HERO -->
-    <section class="relative py-16 text-white text-center overflow-hidden"
+    <section class="relative py-16 text-white text-center overflow-hidden" 
       style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20"
-        style="background:
+      <div class="absolute inset-0 opacity-20" 
+        style="background: 
           radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
           radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
       </div>
@@ -161,23 +157,21 @@
       </div>
     </section>
 
-    <!-- OUR STORY -->
     <section class="py-16">
       <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
         <div class="flex-1 reveal">
           <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Story</span>
-
+          
           <h2 class="text-[42px] font-black leading-tight">
             Founded on Creativity, <br>
             <span class="text-primary">Driven by Execution</span>
           </h2>
-
+          
           <p class="mt-3 text-black/60 leading-7 max-w-[720px]">
-            Skykeen Events is a founder-led events team focused on delivering high-impact formats like workshops,
+            Skykeen Events is a founder-led events team focused on delivering high-impact formats like workshops, 
             competitions, brand activations, and flea marketing experiences.
           </p>
 
-          <!-- Mini badges -->
           <div class="mt-4 flex flex-wrap gap-2 reveal delay-1">
             <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
               ⭐ 3+ Years of Experience
@@ -190,7 +184,6 @@
             </span>
           </div>
 
-          <!-- Checklist -->
           <ul class="mt-5 grid gap-3 font-extrabold reveal delay-2">
             <li class="flex gap-2 items-start">
               <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span>
@@ -211,7 +204,6 @@
           </ul>
         </div>
 
-        <!-- Mission/Vision grid -->
         <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
           <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
             <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎯</div>
@@ -240,7 +232,6 @@
       </div>
     </section>
 
-    <!-- QUICK STATS (animated) -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3">
         <div class="text-center reveal">
@@ -280,7 +271,6 @@
       </div>
     </section>
 
-    <!-- WHY CHOOSE US (same section style) -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
         <div class="flex-1 reveal">
@@ -306,19 +296,16 @@
             <h4 class="font-black">Strategic Planning</h4>
             <p class="text-sm text-black/60 mt-1 leading-6">Every event is planned with measurable objectives.</p>
           </div>
-
           <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
             <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">✨</div>
             <h4 class="font-black">Creative Excellence</h4>
             <p class="text-sm text-black/60 mt-1 leading-6">We push fresh concepts that stand out.</p>
           </div>
-
           <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
             <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">❤️</div>
             <h4 class="font-black">Passionate Team</h4>
             <p class="text-sm text-black/60 mt-1 leading-6">Dedicated professionals who make it happen.</p>
           </div>
-
           <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
             <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">⚡</div>
             <h4 class="font-black">Flawless Execution</h4>
@@ -328,8 +315,7 @@
       </div>
     </section>
 
-    <!-- PARTNERS -->
-    <section class="py-16 bg-gray-50">
+<section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3">
         <div class="text-center reveal">
           <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Partners</span>
@@ -339,59 +325,93 @@
 
         <div class="logo-marquee reveal delay-1">
           <div class="logo-track" id="logoTrack">
-            <!-- 16 logos -->
-            <div class="logo-item">Client 1</div>
-            <div class="logo-item">Client 2</div>
-            <div class="logo-item">Client 3</div>
-            <div class="logo-item">Client 4</div>
-            <div class="logo-item">Client 5</div>
-            <div class="logo-item">Client 6</div>
-            <div class="logo-item">Client 7</div>
-            <div class="logo-item">Client 8</div>
-            <div class="logo-item">Client 9</div>
-            <div class="logo-item">Client 10</div>
-            <div class="logo-item">Client 11</div>
-            <div class="logo-item">Client 12</div>
-            <div class="logo-item">Client 13</div>
-            <div class="logo-item">Client 14</div>
-            <div class="logo-item">Client 15</div>
-            <div class="logo-item">Client 16</div>
+            
+            <div class="logo-item">
+              <img src="https://clubmahindra.gumlet.io/themes/prospect/assets/images/logo-new-black.svg?w=200&dpr=1.0" alt="Partner 1" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png" alt="Partner 2" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB_F4HkzQI9b3fs0wX8nHTEa03wGUGKp1MjQ&s" alt="Partner 3" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4bW7LpZfsb8HDjcY04_3RNaLa3dNxGthhUw&s" alt="Partner 4" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://www.nicepng.com/png/full/44-448979_the-traditional-orchid-flower-stands-for-perfection-orchids.png" alt="Partner 5" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nW6bHVqOEKc1xy1vE5_Udc4D_6suBRg3-g&s" alt="Partner 6" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://1000logos.net/wp-content/uploads/2022/08/Ola-Cabs-Logo.jpg" alt="Partner 7" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://etimg.etb2bimg.com/photo/111112535.cms" alt="Partner 8" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
 
-            <!-- duplicate for seamless loop -->
-            <div class="logo-item">Client 1</div>
-            <div class="logo-item">Client 2</div>
-            <div class="logo-item">Client 3</div>
-            <div class="logo-item">Client 4</div>
-            <div class="logo-item">Client 5</div>
-            <div class="logo-item">Client 6</div>
-            <div class="logo-item">Client 7</div>
-            <div class="logo-item">Client 8</div>
-            <div class="logo-item">Client 9</div>
-            <div class="logo-item">Client 10</div>
-            <div class="logo-item">Client 11</div>
-            <div class="logo-item">Client 12</div>
-            <div class="logo-item">Client 13</div>
-            <div class="logo-item">Client 14</div>
-            <div class="logo-item">Client 15</div>
-            <div class="logo-item">Client 16</div>
+            <div class="logo-item">
+              <img src="https://content3.jdmagicbox.com/comp/temp/p5/0431px431.x431.230804012718.m7p5/catalogue/-21p7yanbzc.jpg" alt="Partner 1" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png" alt="Partner 2" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://thehardcopy.co/wp-content/uploads/Zepto-Featured-Image-Option-2.png" alt="Partner 3" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://zerodha.com/z-connect/wp-content/uploads/2024/01/Akshayakalpa-Logo_MGSY8_1000x562-1.jpeg" alt="Partner 4" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://www.nicepng.com/png/full/44-448979_the-traditional-orchid-flower-stands-for-perfection-orchids.png" alt="Partner 5" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://static.wikia.nocookie.net/logopedia/images/f/fe/Bhima_Jewellers.png/revision/latest?cb=20200826110704" alt="Partner 6" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nW6bHVqOEKc1xy1vE5_Udc4D_6suBRg3-g&s" alt="Partner 7" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+            <div class="logo-item">
+              <img src="https://etimg.etb2bimg.com/photo/111112535.cms" alt="Partner 8" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+            </div>
+
           </div>
         </div>
 
         <div class="text-center mt-8 reveal delay-2">
-          <a href="../project/contact.html"
-             class="h-13 px-5 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition">
+          <a href="../project/contact.html" 
+             class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
             Work With Us →
           </a>
         </div>
       </div>
     </section>
+
+    <section class="py-16">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="bg-black/5 border border-black/10 rounded-[22px] p-9 shadow-soft text-center md:text-left grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 items-center reveal">
+          <div>
+            <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Ready to Plan?</span>
+            <h2 class="text-3xl font-black">Let’s Build Your Next Big Event</h2>
+            <p class="mt-2 text-black/60">Tell us your requirement — we’ll share a plan and callback quickly.</p>
+          </div>
+          <div class="flex justify-center md:justify-end">
+            <a href="../project/contact.html"
+               class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+              Contact Us →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- FOOTER (simple) -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <img class="h-28 md:h-36 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
           Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
         </p>
@@ -438,13 +458,12 @@
     </div>
   </footer>
 
-  <!-- POPUP -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
     <div class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
          id="popupCard">
-      <button id="popupClose"
-              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-              type="button"
+      <button id="popupClose" 
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl" 
+              type="button" 
               aria-label="Close popup">×</button>
 
       <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
@@ -480,7 +499,7 @@
           </div>
         </div>
 
-        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
                 type="submit">
           Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>

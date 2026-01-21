@@ -5,16 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | Contact</title>
 
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
   <style>
    :root { --header-h: 120px; }
-
-
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
@@ -37,7 +33,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow:
+      box-shadow: 
         0 4px 10px rgba(17,24,39,0.30),
         0 0 0 3px rgba(220,38,38,0.35);
     }
@@ -58,6 +54,9 @@
             primary: "rgb(220 38 38)",
             primaryDark: "rgb(185 28 28)",
             darkText: "rgb(17 24 39)",
+          },
+          boxShadow: {
+            soft: "0 20px 60px rgba(17,24,39,0.15)"
           }
         }
       }
@@ -67,16 +66,15 @@
 
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-  <!-- HEADER -->
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
       <a href="index.html">
-      <img class="h-28 md:h-36 w-auto object-contain"
-     src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
-     alt="Skykeen Events" />
+      <img class="h-28 md:h-36 w-auto object-contain" 
+       src="../image/sdc1-Picsart-AiImageEnhancer 1.png" 
+       alt="Skykeen Events" />
       </a>
 
-      <button id="hamburgerBtn"
+      <button id="hamburgerBtn" 
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
         aria-label="Open menu" type="button">☰</button>
 
@@ -86,22 +84,22 @@
         <a class="hover:text-primaryDark" href="../project/services.html">Services</a>
         <a class="hover:text-primaryDark" href="../project/portfolio.html">Portfolio</a>
         <a class="hover:text-primaryDark text-primary" href="../project/contact.html">Contact</a>
+        
         <a href="#" id="openPopupDesktop"
-           class="inline-flex items-center justify-center h-11 px-5 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+           class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
           Get Started
         </a>
       </nav>
     </div>
 
-    <!-- Mobile overlay + drawer -->
     <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-    <nav id="navMenu"
+    <nav id="navMenu" 
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
              flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
              translate-x-[110%] transition md:hidden z-[10001]">
-      <button id="closeMenu"
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+      <button id="closeMenu" 
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center" 
         aria-label="Close menu" type="button">×</button>
 
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="../project/index.html">Home</a>
@@ -111,23 +109,21 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5 text-primary" href="../project/contact.html">Contact</a>
 
       <a href="#" id="openPopupMobile"
-         class="w-full max-w-[260px] h-12 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+         class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
         Get Started
       </a>
     </nav>
   </header>
 
-  <!-- WhatsApp -->
   <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
-    <!-- HERO -->
-    <section class="relative py-16 text-white text-center overflow-hidden"
+    <section class="relative py-16 text-white text-center overflow-hidden" 
       style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20"
-        style="background:
+      <div class="absolute inset-0 opacity-20" 
+        style="background: 
           radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
           radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
       </div>
@@ -140,11 +136,9 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="py-14 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+      <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
-        <!-- LEFT -->
         <div class="reveal">
           <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Get in Touch</span>
           <h2 class="text-[40px] md:text-[48px] font-black leading-tight">
@@ -154,50 +148,45 @@
             Workshops • Competitions • Brand Activation • Flea Marketing
           </p>
 
-          <div class="mt-6 grid gap-4">
-            <!-- Email -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+          <div class="mt-8 grid gap-5">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-envelope"></i>
               </div>
               <div>
                 <span class="block text-xs text-black/60 font-bold">Email</span>
-                <p class="font-black">skykeenbiz@gmail.com</p>
+                <p class="font-black text-lg">skykeenbiz@gmail.com</p>
               </div>
             </div>
 
-            <!-- Phone -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-phone"></i>
               </div>
               <div>
                 <span class="block text-xs text-black/60 font-bold">Phone</span>
-                <p class="font-black">+91 7406238503</p>
+                <p class="font-black text-lg">+91 7406238503</p>
               </div>
             </div>
 
-            <!-- Location -->
-            <div class="flex items-center gap-4 p-4 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
                 <span class="block text-xs text-black/60 font-bold">Location</span>
-                <p class="font-black">Bengaluru, India</p>
+                <p class="font-black text-lg">Bengaluru, India</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT FORM -->
         <div class="reveal delay-2">
-          <div class="bg-white rounded-3xl border border-black/10 shadow-[0_20px_60px_rgba(17,24,39,0.12)] p-6 md:p-7">
-            <form id="contactForm" class="flex flex-col gap-4">
+          <div class="bg-white rounded-3xl border border-black/10 shadow-[0_20px_60px_rgba(17,24,39,0.12)] p-9">
+            <form id="contactForm" class="flex flex-col gap-6">
               <input type="hidden" name="source" value="contact-page">
 
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Name -->
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-black">Your Name</label>
                   <div class="relative">
@@ -207,7 +196,6 @@
                   </div>
                 </div>
 
-                <!-- Email -->
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-black">Email Address</label>
                   <div class="relative">
@@ -218,7 +206,6 @@
                 </div>
               </div>
 
-              <!-- Phone -->
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Phone</label>
                 <div class="relative">
@@ -228,7 +215,6 @@
                 </div>
               </div>
 
-              <!-- Event Type -->
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Event Type</label>
                 <div class="relative">
@@ -238,7 +224,6 @@
                 </div>
               </div>
 
-              <!-- Message -->
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Your Message</label>
                 <div class="relative">
@@ -248,9 +233,9 @@
                 </div>
               </div>
 
-              <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white
+              <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white
                              bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)]
-                             hover:-translate-y-[1px] transition"
+                             hover:-translate-y-[1px] transition text-lg"
                       type="submit">
                 Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
               </button>
@@ -263,10 +248,9 @@
       </div>
     </section>
 
-    <!-- MAP -->
     <section class="w-full">
       <iframe
-        class="w-full h-[400px] border-0 block"
+        class="w-full h-[450px] border-0 block"
         src="https://www.google.com/maps?q=Bengaluru,India&output=embed"
         allowfullscreen=""
         loading="lazy">
@@ -274,11 +258,10 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-        <img class="h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <img class="h-28 md:h-36 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
           Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
         </p>
@@ -325,18 +308,17 @@
     </div>
   </footer>
 
-  <!-- POPUP -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
-    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
-      <button id="popupClose"
-              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-              type="button"
+    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
+      <button id="popupClose" 
+              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl" 
+              type="button" 
               aria-label="Close popup">×</button>
 
       <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
       <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
 
-      <form id="popupForm" class="mt-4 flex flex-col gap-4">
+      <form id="popupForm" class="mt-6 flex flex-col gap-5">
         <input type="hidden" name="source" value="Popup Form">
 
         <div class="flex flex-col gap-2">
@@ -366,7 +348,7 @@
           </div>
         </div>
 
-        <button class="w-full h-13 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition"
+        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
                 type="submit">
           Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
@@ -377,7 +359,7 @@
   </div>
 
   <script>
-    // Year
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile nav
