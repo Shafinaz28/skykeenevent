@@ -95,7 +95,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         <div class="text-center lg:text-left gsap-hero-text order-2 lg:order-1">
-          
+
           <h1 class="text-4xl lg:text-6xl font-heading text-brandDark leading-tight mb-4 lg:mb-6">
             Little Patriots<span class="text-brandRed"> Art Championship 2026</span>
           </h1>
@@ -771,7 +771,7 @@
           </div>
         </div>
         <input name="school_name" type="text" placeholder="School Name *" required
-  class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
+          class="w-full bg-gray-50 border-2 border-gray-200 rounded-lg pl-12 pr-4 py-2 lg:py-3 font-semibold focus:outline-none focus:border-brandRed transition text-gray-800 placeholder-gray-400 text-sm lg:text-base">
 
 
         <div class="relative">
@@ -807,7 +807,7 @@
           <div class="text-center mb-4">
             <h4 class="font-heading text-brandDark text-base lg:text-lg mb-2">Payment</h4>
           </div>
-          
+
           <div class="mb-4" id="paymentContainer">
             <div class="bg-gray-50 rounded-lg p-4 border-2 border-gray-300">
               <div class="flex justify-center">
@@ -962,61 +962,68 @@
 
     // Make function globally accessible
     window.validatePromoCode = function (code) {
-      const promoStatus = document.getElementById('promoStatus');
-      const qrImage = document.getElementById('paymentQR');
-      // Added payment container variable to handle visibility
-      const paymentContainer = document.getElementById('paymentContainer');
+    const promoStatus = document.getElementById('promoStatus');
+    const qrImage = document.getElementById('paymentQR');
+    const paymentContainer = document.getElementById('paymentContainer');
 
-      if (!promoStatus || !qrImage) {
-        console.error('Promo code elements not found');
-        return false;
-      }
+    if (!promoStatus || !qrImage) return false;
 
-      const codeUpper = (code || '').trim().toUpperCase();
+    const codeUpper = (code || '').trim().toUpperCase();
 
-      // Default state: Show payment container
-      if (paymentContainer) paymentContainer.style.display = 'block';
+    // Default: show payment block
+    if (paymentContainer) paymentContainer.style.display = 'block';
 
-      if (!codeUpper) {
-        // Empty - show default QR (qr2)
-        qrImage.src = 'image/qr2.jpeg';
-        qrImage.style.display = 'block';
-        promoStatus.textContent = '';
-        promoStatus.className = 'text-xs mt-1 text-center font-semibold';
-        return false;
-      }
+    // Empty code -> default QR2
+    if (!codeUpper) {
+      qrImage.src = 'image/qr2.jpeg';
+      qrImage.style.display = 'block';
+      promoStatus.textContent = '';
+      promoStatus.className = 'text-xs mt-1 text-center font-semibold';
+      return false;
+    }
 
-      // Valid promo codes check (encoded)
-      const c1 = String.fromCharCode(83, 67, 76, 48, 48, 49); // SCL001
-      const c2 = String.fromCharCode(80, 82, 48, 49, 49, 55); // PR0117
-      const validCodes = [c1, c2];
-      const freeCode = "FREE101";
+    // Codes
+    const discountCodes = [
+      'SCL001',
+      'PR0117'
+    ];
+    const specialPriceCode = 'CODE149';
+    const freeCode = 'FREE101';
 
-      if (codeUpper === freeCode) {
-        // FREE CODE LOGIC: Hide QR and show success message
-        if (paymentContainer) paymentContainer.style.display = 'none';
-        
-        promoStatus.textContent = '🎉 Free Entry Code Applied! No Payment Required.';
-        promoStatus.className = 'text-xs mt-1 text-center font-bold text-green-600';
-        return true;
+    // FREE -> hide payment
+    if (codeUpper === freeCode) {
+      if (paymentContainer) paymentContainer.style.display = 'none';
+      promoStatus.textContent = '🎉 Free Entry Code Applied!';
+      promoStatus.className = 'text-xs mt-1 text-center font-bold text-green-600';
+      return true;
+    }
 
-      } else if (validCodes.includes(codeUpper)) {
-        // DISCOUNT CODE LOGIC: Show QR1 (Discounted)
-        qrImage.src = 'image/qr1.jpeg';
-        qrImage.style.display = 'block';
-        promoStatus.textContent = '✅ Discount Promo Code Applied!';
-        promoStatus.className = 'text-xs mt-1 text-center font-semibold text-green-600';
-        return true;
+    // CODE149 -> show QR3
+    if (codeUpper === specialPriceCode) {
+      qrImage.src = 'image/qr3.jpeg';   // ✅ correct path
+      qrImage.style.display = 'block';
+      promoStatus.textContent = '🔥 Special ₹149 Offer Applied!';
+      promoStatus.className = 'text-xs mt-1 text-center font-bold text-orange-600';
+      return true;
+    }
 
-      } else {
-        // INVALID CODE LOGIC: Show Default QR (qr2)
-        qrImage.src = 'image/qr2.jpeg';
-        qrImage.style.display = 'block';
-        promoStatus.textContent = '❌ Invalid Promo Code';
-        promoStatus.className = 'text-xs mt-1 text-center font-semibold text-red-600';
-        return false;
-      }
-    };
+    // Discount -> show QR1
+    if (discountCodes.includes(codeUpper)) {
+      qrImage.src = 'image/qr1.jpeg';
+      qrImage.style.display = 'block';
+      promoStatus.textContent = '✅ Discount Promo Code Applied!';
+      promoStatus.className = 'text-xs mt-1 text-center font-semibold text-green-600';
+      return true;
+    }
+
+    // Invalid -> default QR2
+    qrImage.src = 'image/qr2.jpeg';
+    qrImage.style.display = 'block';
+    promoStatus.textContent = '❌ Invalid Promo Code';
+    promoStatus.className = 'text-xs mt-1 text-center font-semibold text-red-600';
+    return false;
+  };
+    
 
     // Form Submission
     async function handleFormSubmit(e, formId, statusId, isModal) {
@@ -1043,10 +1050,11 @@
           // Reset promo code QR to default and show container again
           const qrImage = document.getElementById('paymentQR');
           const paymentContainer = document.getElementById('paymentContainer');
-          
+
           if (qrImage) {
             qrImage.src = 'image/qr2.jpeg';
           }
+
           if (paymentContainer) {
             paymentContainer.style.display = 'block';
           }
@@ -1103,10 +1111,10 @@
     if ($("contactForm")) $("contactForm").addEventListener("submit", (e) => handleFormSubmit(e, "contactForm", "contactStatus", false));
 
     // Auto Popup (Repeats every 30 seconds)
-    setInterval(() => { 
-        if (modal.classList.contains("hidden")) {
-            openModal(); 
-        }
+    setInterval(() => {
+      if (modal.classList.contains("hidden")) {
+        openModal();
+      }
     }, 30000);
   </script>
 </body>
