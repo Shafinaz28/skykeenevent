@@ -6,45 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | Contact</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- SweetAlert2 (swal) -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <style>
-    :root {
-      --header-h: 120px;
-    }
+    :root { --header-h: 120px; }
+
+    body { font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
     /* Reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: all .75s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 {
-      transition-delay: .10s;
-    }
-
-    .delay-2 {
-      transition-delay: .20s;
-    }
-
-    .delay-3 {
-      transition-delay: .30s;
-    }
-
-    .delay-4 {
-      transition-delay: .40s;
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .10s; }
+    .delay-2 { transition-delay: .20s; }
+    .delay-3 { transition-delay: .30s; }
+    .delay-4 { transition-delay: .40s; }
 
     /* WhatsApp floating */
-    .whatsapp-float {
+    .whatsapp-float{
       position: fixed;
       bottom: 20px;
       right: 20px;
@@ -57,37 +47,16 @@
       align-items: center;
       justify-content: center;
       box-shadow:
-        0 4px 10px rgba(17, 24, 39, 0.30),
-        0 0 0 3px rgba(220, 38, 38, 0.35);
+        0 4px 10px rgba(17,24,39,0.30),
+        0 0 0 3px rgba(220,38,38,0.35);
     }
-
-    .whatsapp-float i {
-      color: #fff;
-      font-size: 28px;
-    }
+    .whatsapp-float i{ color:#fff; font-size:28px; }
 
     /* Popup */
-    #popupOverlay {
-      opacity: 0;
-      visibility: hidden;
-      transition: .25s ease;
-    }
-
-    #popupOverlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    #popupCard {
-      transform: translateY(10px) scale(.98);
-      opacity: 0;
-      transition: .2s ease;
-    }
-
-    #popupOverlay.show #popupCard {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
+    #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
+    #popupOverlay.show{ opacity:1; visibility:visible; }
+    #popupCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
+    #popupOverlay.show #popupCard{ transform: translateY(0) scale(1); opacity:1; }
   </style>
 
   <script>
@@ -113,8 +82,9 @@
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
       <a href="index.html">
-        <img class="h-28 md:h-36 w-auto object-contain" src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
-          alt="Skykeen Events" />
+        <img class="h-28 md:h-36 w-auto object-contain"
+             src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+             alt="Skykeen Events" />
       </a>
 
       <button id="hamburgerBtn"
@@ -135,10 +105,10 @@
       </nav>
     </div>
 
-    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]">
-    </div>
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-    <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
+    <nav id="navMenu"
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
              flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
              translate-x-[110%] transition md:hidden z-[10001]">
       <button id="closeMenu"
@@ -163,15 +133,14 @@
     </nav>
   </header>
 
-  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer"
-    aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
     <section class="relative py-16 text-white text-center overflow-hidden"
       style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20" style="background: 
+      <div class="absolute inset-0 opacity-20" style="background:
           radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
           radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
       </div>
@@ -197,10 +166,8 @@
           </p>
 
           <div class="mt-8 grid gap-5">
-            <div
-              class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div
-                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-envelope"></i>
               </div>
               <div>
@@ -209,10 +176,8 @@
               </div>
             </div>
 
-            <div
-              class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div
-                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-phone"></i>
               </div>
               <div>
@@ -221,10 +186,8 @@
               </div>
             </div>
 
-            <div
-              class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div
-                class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
+            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
               <div>
@@ -244,10 +207,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-black">Your Name</label>
                   <div class="relative">
-                    <i
-                      class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                    <input
-                      class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                    <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="name" type="text" placeholder="John Doe" required>
                   </div>
                 </div>
@@ -255,10 +216,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-black">Email Address</label>
                   <div class="relative">
-                    <i
-                      class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                    <input
-                      class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                    <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="email" type="email" placeholder="john@example.com" required>
                   </div>
                 </div>
@@ -267,10 +226,8 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Phone</label>
                 <div class="relative">
-                  <i
-                    class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <input
-                    class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                  <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                     name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
                 </div>
               </div>
@@ -278,10 +235,8 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Event Type</label>
                 <div class="relative">
-                  <i
-                    class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <input
-                    class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                  <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                     name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required>
                 </div>
               </div>
@@ -289,10 +244,8 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-black">Your Message</label>
                 <div class="relative">
-                  <i
-                    class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <textarea
-                    class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 min-h-[140px] outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+                  <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <textarea class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 min-h-[140px] outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                     name="message" placeholder="Tell us about your event..." rows="5"></textarea>
                 </div>
               </div>
@@ -313,44 +266,43 @@
 
     <section class="w-full">
       <iframe class="w-full h-[450px] border-0 block" src="https://www.google.com/maps?q=Bengaluru,India&output=embed"
-        allowfullscreen="" loading="lazy">
-      </iframe>
+        allowfullscreen="" loading="lazy"></iframe>
     </section>
   </main>
 
-   <footer class="bg-darkText text-white/75 border-t border-white/10">
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-       <img class="h-14 md:h-16 w-auto object-contain mb-3"
-     src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
-     alt="Skykeen Events" />
+        <img class="h-14 md:h-16 w-auto object-contain mb-3"
+          src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
+          alt="Skykeen Events" />
 
         <p class="text-white/65 leading-7">
           Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people
           remember.
         </p>
+
         <div class="flex gap-3 mt-4 flex-wrap">
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
-    <i class="fa-brands fa-facebook"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
-    <i class="fa-brands fa-youtube"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin-in"></i>
-  </a>
-</div>
-
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
       </div>
 
       <div>
@@ -374,8 +326,7 @@
       </div>
     </div>
 
-    <div
-      class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
       <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
       <div class="flex gap-4">
         <a class="hover:text-white transition" href="#">Privacy</a>
@@ -384,6 +335,7 @@
     </div>
   </footer>
 
+  <!-- Popup -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
     <div id="popupCard"
       class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
@@ -400,10 +352,8 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-black">Name</label>
           <div class="relative">
-            <i
-              class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input
-              class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="name" type="text" placeholder="Your name" required>
           </div>
         </div>
@@ -411,10 +361,8 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-black">Phone</label>
           <div class="relative">
-            <i
-              class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input
-              class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="phone" type="tel" placeholder="Your phone number" required>
           </div>
         </div>
@@ -422,16 +370,13 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-black">Event Type</label>
           <div class="relative">
-            <i
-              class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input
-              class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
           </div>
         </div>
 
-        <button
-          class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
+        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
           type="submit">
           Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
@@ -511,7 +456,17 @@
     // Forms to Google Sheet
     const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
 
-    function bindFormToSheet(formId) {
+    function showSwal(type, title, text) {
+      Swal.fire({
+        icon: type,                 // "success" | "error" | "warning" | "info" | "question"
+        title: title,
+        text: text,
+        confirmButtonText: "OK",
+        confirmButtonColor: "rgb(220 38 38)"
+      });
+    }
+
+    function bindFormToSheet(formId, afterSuccess) {
       const form = document.getElementById(formId);
       if (!form) return;
 
@@ -528,19 +483,26 @@
           const data = await res.json().catch(() => ({}));
 
           if (data.ok) {
-            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            if (statusEl) statusEl.textContent = "";
             form.reset();
+            if (typeof afterSuccess === "function") afterSuccess();
+            showSwal("success", "Submitted Successfully", "We will contact you shortly.");
           } else {
-            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+            if (statusEl) statusEl.textContent = "Something went wrong. Please try again.";
+            showSwal("error", "Submission Failed", "Please try again.");
           }
         } catch (err) {
-          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+          if (statusEl) statusEl.textContent = "Network error. Please try again.";
+          showSwal("error", "Network Error", "Please check your internet and try again.");
         }
       });
     }
 
-    bindFormToSheet("popupForm");
+    // Contact form: show swal on success/fail
     bindFormToSheet("contactForm");
+
+    // Popup form: close popup after success + swal
+    bindFormToSheet("popupForm", () => closePopup());
 
     // Keep popup hidden initially (auto opens after 3 seconds)
     popup.classList.remove("show");

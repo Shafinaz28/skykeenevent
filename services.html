@@ -5,12 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Skykeen Events | Services</title>
 
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <style>
-   :root { --header-h: 120px; }
+    :root { --header-h: 120px; }
+    body { font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
@@ -33,7 +44,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 
+      box-shadow:
         0 4px 10px rgba(17,24,39,0.30),
         0 0 0 3px rgba(220,38,38,0.35);
     }
@@ -43,28 +54,16 @@
     .service-block{ position: relative; border-radius: 22px; overflow: hidden; }
     .service-block .section-link{ position:absolute; inset:0; z-index: 2; }
     .service-block .inner{ position: relative; z-index: 3; }
-    .service-block{ 
+    .service-block{
       transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
       border: 1px solid rgba(17,24,39,0.10);
     }
-    .service-block:hover{ 
-      transform: translateY(-6px); 
+    .service-block:hover{
+      transform: translateY(-6px);
       box-shadow: 0 18px 50px rgba(0,0,0,.10);
       background: linear-gradient(120deg, rgba(220,38,38,.06), rgba(220,38,38,.02));
     }
-    .service-block::after{
-      content:"View Details →";
-      position:absolute;
-      right: 22px;
-      bottom: 18px;
-      z-index: 4;
-      font-weight: 800;
-      color: rgb(220 38 38);
-      opacity: 0;
-      transform: translateY(6px);
-      transition: .25s ease;
-      pointer-events: none;
-    }
+    
     .service-block:hover::after{ opacity: 1; transform: translateY(0); }
 
     /* Popup */
@@ -97,14 +96,17 @@
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
       <a href="index.html">
-      <img class="h-28 md:h-36 w-auto object-contain" 
-       src="../image/sdc1-Picsart-AiImageEnhancer 1.png" 
-       alt="Skykeen Events" />
+        <img class="h-28 md:h-36 w-auto object-contain"
+          src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
+          alt="Skykeen Events" />
       </a>
 
-      <button id="hamburgerBtn" 
+      <!-- Removed emoji icon -->
+      <button id="hamburgerBtn"
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
-        aria-label="Open menu" type="button">☰</button>
+        aria-label="Open menu" type="button">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
       <nav class="hidden md:flex items-center gap-6 font-bold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
@@ -112,9 +114,9 @@
         <a class="hover:text-primaryDark text-primary" href="services.html">Services</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Portfolio</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-        
+
         <a href="#" id="openPopupDesktop"
-           class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+          class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
           Get Started
         </a>
       </nav>
@@ -122,13 +124,17 @@
 
     <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
 
-    <nav id="navMenu" 
+    <nav id="navMenu"
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-black/10
              flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
              translate-x-[110%] transition md:hidden z-[10001]">
-      <button id="closeMenu" 
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center" 
-        aria-label="Close menu" type="button">×</button>
+
+      <!-- Removed emoji icon -->
+      <button id="closeMenu"
+        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
+        aria-label="Close menu" type="button">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="index.html">Home</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="about.html">About</a>
@@ -137,7 +143,7 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="contact.html">Contact</a>
 
       <a href="#" id="openPopupMobile"
-         class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
+        class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
         Get Started
       </a>
     </nav>
@@ -148,10 +154,10 @@
   </a>
 
   <main>
-    <section class="relative py-16 text-white text-center overflow-hidden" 
+    <section class="relative py-16 text-white text-center overflow-hidden"
       style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20" 
-        style="background: 
+      <div class="absolute inset-0 opacity-20"
+        style="background:
           radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
           radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
       </div>
@@ -169,125 +175,16 @@
         <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">What We Do</span>
         <h2 class="text-[38px] font-black leading-tight">High-Impact Event Formats</h2>
         <p class="mt-2 text-black/60 font-semibold max-w-3xl mx-auto">
-          From workshops to brand activations & flea marketing — we plan, manage, and execute events with strong on-ground operations.
+          From workshops to brand activations and flea marketing — we plan, manage, and execute events with strong on-ground operations.
         </p>
       </div>
     </section>
 
+    <!-- COMPETITIONS -->
     <section class="py-14">
       <div class="max-w-6xl mx-auto px-3">
         <section class="service-block bg-white">
-          <a class="section-link" href="workshops.html" aria-label="Open Workshops page"></a>
-
-          <div class="inner px-6 md:px-10 py-10">
-            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
-              <div class="flex-1 reveal">
-                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Workshops</span>
-                <h2 class="text-[42px] font-black leading-tight">
-                  Interactive Learning, <br><span class="text-primary">Real Participation</span>
-                </h2>
-                <p class="mt-2 text-black/60 leading-7 font-semibold">
-                  Skill-based workshops for apartments, schools, corporates, and communities — from setup to facilitation.
-                </p>
-
-                <ul class="mt-5 grid gap-3 font-extrabold">
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Topic planning + creatives</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Trainer coordination</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Registration handling</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> On-ground management</li>
-                </ul>
-
-                <a href="workshops.html" 
-                   class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                  More Information →
-                </a>
-              </div>
-
-              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🧩</div>
-                  <h4 class="font-black">Custom Themes</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">Kids, adults, corporate, and community formats.</p>
-                </div>
-
-                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📸</div>
-                  <h4 class="font-black">Content Ready</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">Photo/video capture for social media marketing.</p>
-                </div>
-
-                <div class="sm:col-span-2 reveal delay-3">
-                  <div class="rounded-2xl overflow-hidden border border-black/10">
-                    <img src="../image/workshop.jpg" onerror="this.src='https://picsum.photos/seed/workshop/900/520';"
-                         class="w-full h-[240px] object-cover" alt="Workshops">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="py-14 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-3">
-        <section class="service-block bg-gray-50">
-          <a class="section-link" href="brand-activation.html" aria-label="Open Brand Activation page"></a>
-
-          <div class="inner px-6 md:px-10 py-10">
-            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
-              <div class="flex-1 reveal">
-                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Brand Activation</span>
-                <h2 class="text-[42px] font-black leading-tight">
-                  Make Your Brand <br><span class="text-primary">Unmissable</span>
-                </h2>
-                <p class="mt-2 text-black/60 leading-7 font-semibold">
-                  High-impact activations that increase visibility, footfall, and audience interaction.
-                </p>
-
-                <ul class="mt-5 grid gap-3 font-extrabold">
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Concept + stall setup</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Emcee + engagement</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Sampling + lead capture</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Reporting + insights</li>
-                </ul>
-
-                <a href="brand-activation.html" 
-                   class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                  More Information →
-                </a>
-              </div>
-
-              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                <div class="sm:col-span-2 reveal delay-1">
-                  <div class="rounded-2xl overflow-hidden border border-black/10">
-                    <img src="../image/brandcompetation.jpg" onerror="this.src='https://picsum.photos/seed/activation/900/520';"
-                         class="w-full h-[240px] object-cover" alt="Brand Activation">
-                  </div>
-                </div>
-
-                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📍</div>
-                  <h4 class="font-black">Ideal Venues</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">Malls, tech parks, apartments, public venues.</p>
-                </div>
-
-                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">📊</div>
-                  <h4 class="font-black">Measurable</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">Footfall, engagement, leads, conversion-ready data.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="py-14">
-      <div class="max-w-6xl mx-auto px-3">
-        <section class="service-block bg-white">
-          <a class="section-link" href="competitions.html" aria-label="Open Competitions page"></a>
+          <!-- <a class="section-link" href="competitions.html" aria-label="Open Competitions page"></a> -->
 
           <div class="inner px-6 md:px-10 py-10">
             <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
@@ -301,48 +198,54 @@
                 </p>
 
                 <ul class="mt-5 grid gap-3 font-extrabold">
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Registration + rules</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Judges + trophies</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stage + sound + lighting</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Announcements + hosting</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Registration and rules</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Judges and trophies</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Stage, sound, and lighting</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Announcements and hosting</li>
                 </ul>
 
-                <a href="competitions.html" 
-                   class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                  More Information →
+                <a href="contact.html"
+                  class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+                  More Information <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
 
               <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                 <div class="sm:col-span-2 reveal delay-1">
                   <div class="rounded-2xl overflow-hidden border border-black/10">
-                    <img src="../image/img1.jpg" onerror="this.src='https://picsum.photos/seed/competitions/900/520';"
-                         class="w-full h-[240px] object-cover" alt="Competitions">
+                    <img src="../image/education-online-class-room-student-s-things.jpg" onerror="this.src='https://picsum.photos/seed/competitions/900/520';"
+                      class="w-full h-[240px] object-cover" alt="Competitions">
                   </div>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🏅</div>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-trophy"></i>
+                  </div>
                   <h4 class="font-black">Prize Planning</h4>
                   <p class="text-sm text-black/60 mt-1 leading-6">Trophies, certificates, and sponsor tie-ups.</p>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎤</div>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-microphone"></i>
+                  </div>
                   <h4 class="font-black">Full Production</h4>
                   <p class="text-sm text-black/60 mt-1 leading-6">MC, stage, AV, and on-ground operations.</p>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
       </div>
     </section>
 
+    <!-- FLEA MARKETING -->
     <section class="py-14 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3">
         <section class="service-block bg-gray-50">
-          <a class="section-link" href="flea-marketing.html" aria-label="Open Flea Marketing page"></a>
+          <!-- <a class="section-link" href="flea-marketing.html" aria-label="Open Flea Marketing page"></a> -->
 
           <div class="inner px-6 md:px-10 py-10">
             <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
@@ -356,15 +259,15 @@
                 </p>
 
                 <ul class="mt-5 grid gap-3 font-extrabold">
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Vendor onboarding</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stall layout + allocation</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Entry + crowd management</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Promotion + creatives</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Vendor onboarding</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Stall layout and allocation</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Entry and crowd management</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Promotion and creatives</li>
                 </ul>
 
-                <a href="flea-marketing.html" 
-                   class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                  More Information →
+                <a href="contact.html"
+                  class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+                  More Information <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
 
@@ -372,94 +275,168 @@
                 <div class="sm:col-span-2 reveal delay-1">
                   <div class="rounded-2xl overflow-hidden border border-black/10">
                     <img src="../image/fleamarket.jpg" onerror="this.src='https://picsum.photos/seed/fleamarket/900/520';"
-                         class="w-full h-[240px] object-cover" alt="Flea Marketing">
+                      class="w-full h-[240px] object-cover" alt="Flea Marketing">
                   </div>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🛍️</div>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-store"></i>
+                  </div>
                   <h4 class="font-black">Vendor Network</h4>
                   <p class="text-sm text-black/60 mt-1 leading-6">Curated categories to keep the market premium.</p>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎶</div>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-music"></i>
+                  </div>
                   <h4 class="font-black">Experience Layer</h4>
                   <p class="text-sm text-black/60 mt-1 leading-6">Music, activities, kids zone, food court options.</p>
                 </div>
               </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+        <!-- WORKSHOPS -->
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto px-3">
+        <section class="service-block bg-white">
+          <!-- <a class="section-link" href="workshops.html" aria-label="Open Workshops page"></a> -->
+
+          <div class="inner px-6 md:px-10 py-10">
+            <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
+              <div class="flex-1 reveal">
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Workshops</span>
+                <h2 class="text-[42px] font-black leading-tight">
+                  Interactive Learning, <br><span class="text-primary">Real Participation</span>
+                </h2>
+                <p class="mt-2 text-black/60 leading-7 font-semibold">
+                  Skill-based workshops for apartments, schools, corporates, and communities — from setup to facilitation.
+                </p>
+
+                <ul class="mt-5 grid gap-3 font-extrabold">
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Topic planning and creatives</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Trainer coordination</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Registration handling</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> On-ground management</li>
+                </ul>
+
+                <a href="contact.html"
+                  class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+                  More Information <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                  </div>
+                  <h4 class="font-black">Custom Themes</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Kids, adults, corporate, and community formats.</p>
+                </div>
+
+                <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-camera"></i>
+                  </div>
+                  <h4 class="font-black">Content Ready</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Photo/video capture for social media marketing.</p>
+                </div>
+
+                <div class="sm:col-span-2 reveal delay-3">
+                  <div class="rounded-2xl overflow-hidden border border-black/10">
+                    <img src="../image/workshop.jpg" onerror="this.src='https://picsum.photos/seed/workshop/900/520';"
+                      class="w-full h-[240px] object-cover" alt="Workshops">
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
       </div>
     </section>
 
-    <section class="py-14">
+    <!-- BRAND ACTIVATION -->
+    <section class="py-14 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3">
-        <section class="service-block bg-white">
-          <a class="section-link" href="corporate-events.html" aria-label="Open Corporate Events page"></a>
+        <section class="service-block bg-gray-50">
+          <!-- <a class="section-link" href="brand-activation.html" aria-label="Open Brand Activation page"></a> -->
 
           <div class="inner px-6 md:px-10 py-10">
             <div class="flex flex-col lg:flex-row gap-14 items-center justify-between">
               <div class="flex-1 reveal">
-                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Corporate Events</span>
+                <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Brand Activation</span>
                 <h2 class="text-[42px] font-black leading-tight">
-                  Professional Events <br><span class="text-primary">That Impress</span>
+                  Make Your Brand <br><span class="text-primary">Unmissable</span>
                 </h2>
                 <p class="mt-2 text-black/60 leading-7 font-semibold">
-                  End-to-end corporate event planning for conferences, product launches, and annual meets.
+                  High-impact activations that increase visibility, footfall, and audience interaction.
                 </p>
 
                 <ul class="mt-5 grid gap-3 font-extrabold">
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Stage & AV setup</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Guest management</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Branding & backdrops</li>
-                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]">✓</span> Complete coordination</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Concept and stall setup</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Emcee and engagement</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Sampling and lead capture</li>
+                  <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Reporting and insights</li>
                 </ul>
 
-                <a href="corporate-events.html" 
-                   class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                  More Information →
+                <a href="contact.html"
+                  class="mt-8 inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+                  More Information <i class="fa-solid fa-arrow-right"></i>
                 </a>
               </div>
 
               <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
                 <div class="sm:col-span-2 reveal delay-1">
                   <div class="rounded-2xl overflow-hidden border border-black/10">
-                    <img src="https://picsum.photos/seed/corporateevent/900/520" 
-                         class="w-full h-[240px] object-cover" alt="Corporate Events">
+                    <img src="../image/brandcompetation.jpg" onerror="this.src='https://picsum.photos/seed/activation/900/520';"
+                      class="w-full h-[240px] object-cover" alt="Brand Activation">
                   </div>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🏢</div>
-                  <h4 class="font-black">Corporate Venues</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">Hotels, convention halls, IT parks.</p>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <h4 class="font-black">Ideal Venues</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Malls, tech parks, apartments, public venues.</p>
                 </div>
 
                 <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">🎥</div>
-                  <h4 class="font-black">Premium Production</h4>
-                  <p class="text-sm text-black/60 mt-1 leading-6">LED walls, lighting, sound & live streaming.</p>
+                  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
+                    <i class="fa-solid fa-chart-column"></i>
+                  </div>
+                  <h4 class="font-black">Measurable</h4>
+                  <p class="text-sm text-black/60 mt-1 leading-6">Footfall, engagement, leads, conversion-ready data.</p>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
       </div>
     </section>
 
+   
+
+    <!-- CTA (removed emojis) -->
     <section class="py-16 bg-gray-50">
       <div class="max-w-6xl mx-auto px-3">
         <div class="relative overflow-hidden rounded-[26px] border border-black/10 bg-gradient-to-br from-primary/10 to-primary/5 shadow-[0_18px_60px_rgba(0,0,0,.10)] p-7 md:p-11 reveal">
-          <div class="absolute w-[420px] h-[420px] rounded-full top-[-160px] right-[-120px] blur-[2px] opacity-60" 
-               style="background: radial-gradient(circle, rgba(220,38,38,.55), rgba(220,38,38,0) 60%);"></div>
+          <div class="absolute w-[420px] h-[420px] rounded-full top-[-160px] right-[-120px] blur-[2px] opacity-60"
+            style="background: radial-gradient(circle, rgba(220,38,38,.55), rgba(220,38,38,0) 60%);"></div>
 
           <div class="relative max-w-3xl">
             <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/75 border border-primary/30 font-extrabold text-sm mb-3">
-              ⚡ Fast Planning • Strong Execution
+              <i class="fa-solid fa-bolt text-primary"></i> Fast Planning • Strong Execution
             </span>
-            
+
             <h2 class="text-[38px] md:text-[44px] leading-tight font-black">Ready to Plan Your Next Event?</h2>
             <p class="mt-2 text-black/70 font-semibold">
               Tell us your requirement — we’ll share a plan and callback quickly.
@@ -467,12 +444,12 @@
 
             <div class="mt-6 flex gap-3 flex-wrap">
               <a href="#" id="openPopupCTA"
-                 class="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-                Get a Free Callback <span class="inline-block transition group-hover:translate-x-1">→</span>
+                class="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
+                Get a Free Callback <i class="fa-solid fa-arrow-right"></i>
               </a>
               <a href="../project/contact.html"
-                 class="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black bg-white/80 border border-black/10 hover:bg-white hover:-translate-y-[1px] transition text-lg">
-                Contact Page →
+                class="inline-flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black bg-white/80 border border-black/10 hover:bg-white hover:-translate-y-[1px] transition text-lg">
+                Contact Page <i class="fa-solid fa-arrow-right"></i>
               </a>
             </div>
 
@@ -489,39 +466,38 @@
     </section>
   </main>
 
-   <footer class="bg-darkText text-white/75 border-t border-white/10">
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
       <div>
-       <img class="h-14 md:h-16 w-auto object-contain mb-3"
-     src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
-     alt="Skykeen Events" />
+        <img class="h-14 md:h-16 w-auto object-contain mb-3"
+          src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
+          alt="Skykeen Events" />
 
         <p class="text-white/65 leading-7">
-          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people
-          remember.
+          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
         </p>
+
         <div class="flex gap-3 mt-4 flex-wrap">
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
-    <i class="fa-brands fa-facebook"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
-    <i class="fa-brands fa-youtube"></i>
-  </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
 
-  <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-     href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin-in"></i>
-  </a>
-</div>
-
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
       </div>
 
       <div>
@@ -545,8 +521,7 @@
       </div>
     </div>
 
-    <div
-      class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
       <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
       <div class="flex gap-4">
         <a class="hover:text-white transition" href="#">Privacy</a>
@@ -555,12 +530,14 @@
     </div>
   </footer>
 
+  <!-- Popup -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
     <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
-      <button id="popupClose" 
-              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl" 
-              type="button" 
-              aria-label="Close popup">×</button>
+      <button id="popupClose"
+        class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+        type="button" aria-label="Close popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
       <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
       <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
@@ -573,7 +550,7 @@
           <div class="relative">
             <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="name" type="text" placeholder="Your name" required>
+              name="name" type="text" placeholder="Your name" required>
           </div>
         </div>
 
@@ -582,7 +559,7 @@
           <div class="relative">
             <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="phone" type="tel" placeholder="Your phone number" required>
+              name="phone" type="tel" placeholder="Your phone number" required>
           </div>
         </div>
 
@@ -591,13 +568,15 @@
           <div class="relative">
             <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+              name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
           </div>
         </div>
 
-        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
-                type="submit">
-          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <button id="popupSubmit"
+          class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
+          type="submit">
+          <span class="btnText">Request Callback</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
 
         <p class="form-status text-sm text-black/60" aria-live="polite"></p>
@@ -635,7 +614,7 @@
     closeMenu?.addEventListener("click", closeNavFn);
     navOverlay?.addEventListener("click", closeNavFn);
     navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeNavFn(); closePopup(); } });
 
     // Reveal
     document.addEventListener("DOMContentLoaded", () => {
@@ -666,6 +645,7 @@
     const openPopupDesktop = document.getElementById("openPopupDesktop");
     const openPopupMobile = document.getElementById("openPopupMobile");
     const openPopupCTA = document.getElementById("openPopupCTA");
+    const popupForm = document.getElementById("popupForm");
 
     function openPopup() { popup.classList.add("show"); }
     function closePopup() {
@@ -673,6 +653,8 @@
       setTimeout(openPopup, 40000);
     }
 
+    // Start hidden, open after 3 seconds
+    popup.classList.remove("show");
     setTimeout(openPopup, 3000);
 
     openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
@@ -681,9 +663,8 @@
 
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
 
-    // Forms to Google Sheet
+    // Forms to Google Sheet + SweetAlert2 (no emojis)
     const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
 
     function bindFormToSheet(formId) {
@@ -691,10 +672,15 @@
       if (!form) return;
 
       const statusEl = form.querySelector(".form-status");
+      const submitBtn = document.getElementById("popupSubmit");
+      const btnText = submitBtn?.querySelector(".btnText");
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
+
         if (statusEl) statusEl.textContent = "Sending...";
+        if (submitBtn) submitBtn.disabled = true;
+        if (btnText) btnText.textContent = "Submitting...";
 
         const fd = new FormData(form);
 
@@ -703,22 +689,40 @@
           const data = await res.json().catch(() => ({}));
 
           if (data.ok) {
-            if (statusEl) statusEl.textContent = "✅ Submitted successfully!";
+            if (statusEl) statusEl.textContent = "Submitted successfully.";
+            Swal.fire({
+              icon: "success",
+              title: "Submitted",
+              text: "Thanks! We will contact you shortly.",
+              confirmButtonText: "OK"
+            });
             form.reset();
+            setTimeout(closePopup, 400);
           } else {
-            if (statusEl) statusEl.textContent = "❌ Error. Try again.";
+            if (statusEl) statusEl.textContent = "Error. Try again.";
+            Swal.fire({
+              icon: "error",
+              title: "Submission Failed",
+              text: "Something went wrong. Please try again.",
+              confirmButtonText: "OK"
+            });
           }
         } catch (err) {
-          if (statusEl) statusEl.textContent = "❌ Network error. Try again.";
+          if (statusEl) statusEl.textContent = "Network error. Try again.";
+          Swal.fire({
+            icon: "error",
+            title: "Network Error",
+            text: "Please check your internet connection and try again.",
+            confirmButtonText: "OK"
+          });
+        } finally {
+          if (submitBtn) submitBtn.disabled = false;
+          if (btnText) btnText.textContent = "Request Callback";
         }
       });
     }
 
     bindFormToSheet("popupForm");
-
-    // Hide popup initially (so it doesn't show instantly)
-    // then open after 3 seconds (handled above)
-    popup.classList.remove("show");
   </script>
 </body>
 </html>
