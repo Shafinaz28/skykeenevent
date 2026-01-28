@@ -120,12 +120,18 @@
       </nav>
     </div>
 
-    <div id="navOverlay" class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition md:hidden z-[10000]"></div>
+<div id="navOverlay"
+  class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none
+         transition-opacity duration-300 ease-in-out
+         md:hidden z-[10000] will-change-opacity"></div>
 
     <nav id="navMenu"
-      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
-             flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
-             translate-x-[110%] transition md:hidden z-[10001]" aria-label="Mobile menu">
+  class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+         shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
+         flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
+         translate-x-full transition-transform duration-500 ease-in-out
+         md:hidden z-[10001] will-change-transform">
+
       <button id="closeMenu"
         class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-gray-200 bg-white text-xl inline-flex items-center justify-center"
         aria-label="Close menu" type="button">
@@ -893,32 +899,46 @@
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile nav logic
-    const hamburger = document.getElementById("hamburgerBtn");
-    const navMenu = document.getElementById("navMenu");
-    const navOverlay = document.getElementById("navOverlay");
-    const closeMenu = document.getElementById("closeMenu");
+  const hamburger = document.getElementById("hamburgerBtn");
+  const navMenu = document.getElementById("navMenu");
+  const navOverlay = document.getElementById("navOverlay");
+  const closeMenu = document.getElementById("closeMenu");
 
-    function openNav() {
-      navMenu.classList.remove("translate-x-[110%]");
-      navOverlay.classList.remove("opacity-0", "pointer-events-none");
-      navOverlay.classList.add("opacity-100");
-      hamburger.style.visibility = "hidden";
-    }
-    function closeNavFn() {
-      navMenu.classList.add("translate-x-[110%]");
-      navOverlay.classList.add("opacity-0", "pointer-events-none");
-      navOverlay.classList.remove("opacity-100");
-      hamburger.style.visibility = "visible";
-    }
+  let isOpen = false;
 
-    hamburger?.addEventListener("click", () => {
-      const isOpen = !navMenu.classList.contains("translate-x-[110%]");
-      isOpen ? closeNavFn() : openNav();
-    });
-    closeMenu?.addEventListener("click", closeNavFn);
-    navOverlay?.addEventListener("click", closeNavFn);
-    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNavFn(); });
+  function openNav() {
+    isOpen = true;
+    document.body.style.overflow = "hidden"; // lock scroll
+    navMenu.classList.remove("translate-x-full");
+    navOverlay.classList.remove("opacity-0", "pointer-events-none");
+    navOverlay.classList.add("opacity-100");
+    hamburger.style.visibility = "hidden";
+  }
+
+  function closeNav() {
+    isOpen = false;
+    document.body.style.overflow = ""; // unlock scroll
+    navMenu.classList.add("translate-x-full");
+    navOverlay.classList.add("opacity-0", "pointer-events-none");
+    navOverlay.classList.remove("opacity-100");
+    hamburger.style.visibility = "visible";
+  }
+
+  hamburger.addEventListener("click", () => {
+    isOpen ? closeNav() : openNav();
+  });
+
+  closeMenu.addEventListener("click", closeNav);
+  navOverlay.addEventListener("click", closeNav);
+
+  navMenu.querySelectorAll("a").forEach(a => {
+    a.addEventListener("click", closeNav);
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeNav();
+  });
+
 
     // Reveal on scroll
     document.addEventListener("DOMContentLoaded", () => {
