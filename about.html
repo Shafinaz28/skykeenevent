@@ -100,32 +100,35 @@
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
   <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
-    <div class="max-w-6xl mx-auto px-3 flex items-center justify-between h-full">
-      <a href="index.html">
-        <img class="h-28 md:h-36 w-auto object-contain"
-          src="../image/sdc1-Picsart-AiImageEnhancer 1.png"
-          alt="Skykeen Events" />
-      </a>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+  <a href="index.html">
+    <img class="hidden md:block h-28 md:h-36 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png"
+      alt="Skykeen Events" />
 
-      <button id="hamburgerBtn"
-        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-black/10 bg-white text-xl"
-        aria-label="Open menu" type="button">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <img class="block md:hidden h-20 w-auto object-contain" src="image/mobile menu logo.jpeg"
+      alt="Skykeen Events" />
+  </a>
 
-      <nav class="hidden md:flex items-center gap-6 font-bold">
-        <a class="hover:text-primaryDark" href="index.html">Home</a>
-        <a class="hover:text-primaryDark text-primary" href="about.html">About</a>
-        <a class="hover:text-primaryDark" href="services.html">Services</a>
-        <a class="hover:text-primaryDark" href="portfolio.html">Portfolio</a>
-        <a class="hover:text-primaryDark" href="contact.html">Contact</a>
+  <button id="hamburgerBtn"
+    class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-xl"
+    aria-label="Open menu" type="button">
+    <i class="fa-solid fa-bars"></i>
+  </button>
 
-        <a href="#" id="openPopupDesktop"
-          class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
-          Get Started
-        </a>
-      </nav>
-    </div>
+  <nav class="hidden md:flex items-center gap-6 font-bold">
+    <a class="hover:text-primaryDark" href="index.html">Home</a>
+    <a class="hover:text-primaryDark" href="about.html">About</a>
+    <a class="hover:text-primaryDark" href="services.html">Services</a>
+    <a class="hover:text-primaryDark" href="portfolio.html">Portfolio</a>
+    <a class="hover:text-primaryDark" href="contact.html">Contact</a>
+
+    <a href="#" id="openPopupDesktop"
+      class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
+      Get Started
+    </a>
+  </nav>
+</div>
+
 
     <div id="navOverlay"
   class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none
