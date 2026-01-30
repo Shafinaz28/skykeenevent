@@ -67,15 +67,15 @@
     }
     .whatsapp-float i{ color:#fff; font-size:28px; }
 
-    /* Mobile nav */
+    /* ✅ Mobile nav uses .show */
     #navOverlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
     #navOverlay.show{opacity:1;pointer-events:auto}
     #navMenu{transform:translateX(100%);transition:transform .5s ease}
     #navMenu.show{transform:translateX(0)}
-/* Hide header on scroll (down) */
+
+    /* Hide header on scroll (down) */
     header.nav-hidden { transform: translateY(-110%); }
     header { transition: transform .35s ease; will-change: transform; }
-
 
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
@@ -88,7 +88,6 @@
 <body class="page-bg text-darkText" style="padding-top: var(--header-h);">
 
   <!-- HEADER -->
-  <!-- HEADER -->
   <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
       <a href="index.html" class="shrink-0">
@@ -96,13 +95,14 @@
         <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg" alt="Skykeen Events" />
       </a>
 
+      <!-- ✅ keep hamburger visible; toggle aria-expanded -->
       <button id="hamburgerBtn"
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-        aria-label="Open menu" type="button">
+        aria-label="Open menu" aria-expanded="false" type="button">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- Desktop Nav (anchors) -->
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
@@ -110,21 +110,18 @@
         <a class="hover:text-primaryDark" href="event.html">Events</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-
-        
       </nav>
     </div>
 
     <!-- Mobile Overlay -->
     <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity"></div>
+      class="fixed inset-0 bg-black/40 md:hidden z-[10000] will-change-opacity"></div>
 
-    <!-- Mobile Menu (anchors) -->
+    <!-- ✅ Mobile Menu (remove translate-x-full; CSS handles transform) -->
     <nav id="navMenu"
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
-             translate-x-full transition-transform duration-500 ease-in-out
              md:hidden z-[10001] will-change-transform">
 
       <button id="closeMenu"
@@ -139,7 +136,6 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="event.html">Events</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="portfolio.html">Gallery</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="contact.html">Contact</a>
-
     </nav>
   </header>
 
@@ -178,22 +174,18 @@
               <a href="services.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
                 Back to Services <i class="fa-solid fa-arrow-left"></i>
               </a>
-              
             </div>
-
-            
           </div>
 
           <!-- Hero Image -->
           <div class="reveal active delay-1">
             <div class="relative rounded-[30px] border border-black/10 bg-white/70 backdrop-blur p-3 shadow-[0_24px_60px_rgba(17,24,39,0.10)]">
               <img
-                src="https://www.showtruck-marketing.com/media/images/0/d/csm_back-to-.the-roots_e825a3eb97.jpg"
+                src="image/offline img.jpg"
                 alt="Skykeen Events Offline Marketing"
                 class="w-full h-[320px] md:h-[420px] object-cover rounded-[24px]"
                 onerror="this.src='https://images.unsplash.com/photo-1520975958225-1b4b08f4d174?auto=format&fit=crop&w=1400&q=80';"
               />
-              
             </div>
           </div>
 
@@ -221,7 +213,8 @@
 
         <div class="bg-white/80 backdrop-blur rounded-[26px] border border-black/10 p-8 reveal">
           <h3 class="text-2xl font-black">Best For</h3>
-          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- ✅ 2 cols on mobile -->
+          <div class="mt-5 grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div class="p-5 rounded-2xl border border-black/10 bg-white">
               <i class="fa-solid fa-store text-primary text-2xl"></i>
               <h4 class="mt-2 font-black">Retail Stores</h4>
@@ -243,8 +236,6 @@
               <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Offers promo + opening campaigns.</p>
             </div>
           </div>
-
-         
         </div>
       </div>
     </section>
@@ -257,7 +248,8 @@
           Clear steps for smooth offline execution.
         </p>
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-5">
+        <!-- ✅ 2 cols on mobile -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5">
           <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
             <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">1</div>
             <h4 class="mt-3 font-black">Plan</h4>
@@ -282,7 +274,6 @@
       </div>
     </section>
 
-
     <!-- CTA -->
     <section class="py-14">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,38 +296,28 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- ✅ UPDATED FOOTER (fix image path + consistent) -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-      <!-- Brand -->
       <div>
-        <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
+        <img class="h-12 md:h-14 w-auto object-contain mb-3" src="image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
           Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
         </p>
 
         <div class="flex gap-3 mt-4 flex-wrap">
           <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
+            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
           <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
+            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
           <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
-            <i class="fa-brands fa-youtube"></i>
-          </a>
+            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
+            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
         </div>
       </div>
 
-      <!-- Quick Links -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
         <ul class="grid gap-3">
@@ -349,7 +330,6 @@
         </ul>
       </div>
 
-      <!-- Services -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
         <ul class="grid gap-3 text-white/70">
@@ -362,7 +342,6 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
         <ul class="grid gap-3 text-white/70">
@@ -436,64 +415,54 @@
 
   <script>
     // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile nav
+    // ✅ Mobile nav (fixed: no hamburger hide + .show classes)
     const hamburger = document.getElementById("hamburgerBtn");
     const navMenu = document.getElementById("navMenu");
     const navOverlay = document.getElementById("navOverlay");
     const closeMenu = document.getElementById("closeMenu");
 
-    let isOpen = false;
-
     function openNav() {
-      isOpen = true;
       document.body.style.overflow = "hidden";
-      navMenu.classList.remove("translate-x-full");
-      navOverlay.classList.remove("opacity-0", "pointer-events-none");
-      navOverlay.classList.add("opacity-100");
-      hamburger.style.visibility = "hidden";
+      navOverlay.classList.add("show");
+      navMenu.classList.add("show");
+      hamburger?.setAttribute("aria-expanded", "true");
     }
 
     function closeNavFn() {
-      isOpen = false;
       document.body.style.overflow = "";
-      navMenu.classList.add("translate-x-full");
-      navOverlay.classList.add("opacity-0", "pointer-events-none");
-      navOverlay.classList.remove("opacity-100");
-      hamburger.style.visibility = "visible";
+      navOverlay.classList.remove("show");
+      navMenu.classList.remove("show");
+      hamburger?.setAttribute("aria-expanded", "false");
     }
 
-    hamburger.addEventListener("click", () => {
+    hamburger?.addEventListener("click", () => {
+      const isOpen = navMenu.classList.contains("show");
       isOpen ? closeNavFn() : openNav();
     });
 
-    closeMenu.addEventListener("click", closeNavFn);
-    navOverlay.addEventListener("click", closeNavFn);
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeNavFn(); });
 
-    navMenu.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", closeNavFn);
-    });
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") closeNavFn();
-    });
-
-    // Reveal
+    // Reveal (single)
     document.addEventListener("DOMContentLoaded", () => {
       const items = document.querySelectorAll(".reveal");
-      const run = () => {
+      const reveal = () => {
         const winH = window.innerHeight;
         items.forEach(el => {
           const top = el.getBoundingClientRect().top;
           if (top < winH - 120) el.classList.add("active");
         });
       };
-      window.addEventListener("scroll", run);
-      run();
+      window.addEventListener("scroll", reveal, { passive: true });
+      reveal();
     });
 
-     // Hide navbar on scroll down, show on scroll up
+    // Hide navbar on scroll down, show on scroll up
     const headerEl = document.getElementById("siteHeader");
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -515,21 +484,6 @@
         ticking = true;
       }
     }, { passive: true });
-
-    // Reveal on scroll
-    document.addEventListener("DOMContentLoaded", () => {
-      const items = document.querySelectorAll(".reveal");
-      const reveal = () => {
-        const winH = window.innerHeight;
-        items.forEach(el => {
-          const top = el.getBoundingClientRect().top;
-          if (top < winH - 120) el.classList.add("active");
-        });
-      };
-      window.addEventListener("scroll", reveal, { passive: true });
-      reveal();
-    });
-
 
     // Popup
     const popup = document.getElementById("popupOverlay");

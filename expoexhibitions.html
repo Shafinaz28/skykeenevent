@@ -67,15 +67,15 @@
     }
     .whatsapp-float i{ color:#fff; font-size:28px; }
 
-    /* Mobile nav */
+    /* ✅ Mobile nav (use .show) */
     #navOverlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
     #navOverlay.show{opacity:1;pointer-events:auto}
     #navMenu{transform:translateX(100%);transition:transform .5s ease}
     #navMenu.show{transform:translateX(0)}
-/* Hide header on scroll (down) */
+
+    /* Hide header on scroll (down) */
     header.nav-hidden { transform: translateY(-110%); }
     header { transition: transform .35s ease; will-change: transform; }
-
 
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
@@ -88,7 +88,6 @@
 <body class="page-bg text-darkText" style="padding-top: var(--header-h);">
 
   <!-- HEADER -->
-  <!-- HEADER -->
   <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
       <a href="index.html" class="shrink-0">
@@ -96,13 +95,14 @@
         <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg" alt="Skykeen Events" />
       </a>
 
+      <!-- ✅ Keep hamburger visible -->
       <button id="hamburgerBtn"
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-        aria-label="Open menu" type="button">
+        aria-label="Open menu" aria-expanded="false" type="button">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- Desktop Nav (anchors) -->
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
@@ -110,21 +110,17 @@
         <a class="hover:text-primaryDark" href="event.html">Events</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-
-        
       </nav>
     </div>
 
     <!-- Mobile Overlay -->
-    <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity"></div>
+    <div id="navOverlay" class="fixed inset-0 bg-black/40 md:hidden z-[10000] will-change-opacity"></div>
 
-    <!-- Mobile Menu (anchors) -->
+    <!-- ✅ Mobile Menu (removed translate-x-full; CSS handles it) -->
     <nav id="navMenu"
       class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
-             translate-x-full transition-transform duration-500 ease-in-out
              md:hidden z-[10001] will-change-transform">
 
       <button id="closeMenu"
@@ -139,7 +135,6 @@
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="event.html">Events</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="portfolio.html">Gallery</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="contact.html">Contact</a>
-
     </nav>
   </header>
 
@@ -162,7 +157,6 @@
         </span>
 
         <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <!-- Text -->
           <div class="reveal active">
             <h1 class="text-4xl md:text-6xl font-black leading-tight">
               Expos & Exhibitions that <span class="text-primary">Attract Crowds</span>
@@ -178,13 +172,9 @@
               <a href="services.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
                 Back to Services <i class="fa-solid fa-arrow-left"></i>
               </a>
-             
             </div>
-
-            
           </div>
 
-          <!-- Hero Image -->
           <div class="reveal active delay-1">
             <div class="relative rounded-[30px] border border-black/10 bg-white/70 backdrop-blur p-3 shadow-[0_24px_60px_rgba(17,24,39,0.10)]">
               <img
@@ -193,10 +183,8 @@
                 class="w-full h-[320px] md:h-[420px] object-cover rounded-[24px]"
                 onerror="this.src='https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=80';"
               />
-              
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -219,9 +207,10 @@
           </ul>
         </div>
 
+        <!-- ✅ Best For: 2 columns on mobile (2x2) -->
         <div class="bg-white/80 backdrop-blur rounded-[26px] border border-black/10 p-8 reveal">
           <h3 class="text-2xl font-black">Best For</h3>
-          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="mt-5 grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div class="p-5 rounded-2xl border border-black/10 bg-white">
               <i class="fa-solid fa-industry text-primary text-2xl"></i>
               <h4 class="mt-2 font-black">Trade Shows</h4>
@@ -243,8 +232,6 @@
               <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Local markets & lifestyle exhibitions.</p>
             </div>
           </div>
-
-          
         </div>
       </div>
     </section>
@@ -257,7 +244,8 @@
           Smooth execution from planning to event-day operations.
         </p>
 
-        <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-5">
+        <!-- ✅ Our Process: 2 columns on mobile (2x2) -->
+        <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5">
           <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
             <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">1</div>
             <h4 class="mt-3 font-black">Plan</h4>
@@ -282,8 +270,6 @@
       </div>
     </section>
 
-   
-
     <!-- CTA -->
     <section class="py-14">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,8 +291,7 @@
       </div>
     </section>
   </main>
-
-  <!-- FOOTER -->
+    <!-- FOOTER -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -428,65 +413,54 @@
   </div>
 
   <script>
-    // Footer year
+       // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav
+    // ✅ Mobile nav (fixed: no hiding hamburger)
     const hamburger = document.getElementById("hamburgerBtn");
     const navMenu = document.getElementById("navMenu");
     const navOverlay = document.getElementById("navOverlay");
     const closeMenu = document.getElementById("closeMenu");
 
-    let isOpen = false;
-
     function openNav() {
-      isOpen = true;
       document.body.style.overflow = "hidden";
-      navMenu.classList.remove("translate-x-full");
-      navOverlay.classList.remove("opacity-0", "pointer-events-none");
-      navOverlay.classList.add("opacity-100");
-      hamburger.style.visibility = "hidden";
+      navOverlay.classList.add("show");
+      navMenu.classList.add("show");
+      hamburger?.setAttribute("aria-expanded", "true");
     }
 
-    function closeNavFn() {
-      isOpen = false;
+    function closeNav() {
       document.body.style.overflow = "";
-      navMenu.classList.add("translate-x-full");
-      navOverlay.classList.add("opacity-0", "pointer-events-none");
-      navOverlay.classList.remove("opacity-100");
-      hamburger.style.visibility = "visible";
+      navOverlay.classList.remove("show");
+      navMenu.classList.remove("show");
+      hamburger?.setAttribute("aria-expanded", "false");
     }
 
-    hamburger.addEventListener("click", () => {
-      isOpen ? closeNavFn() : openNav();
+    hamburger?.addEventListener("click", () => {
+      const isOpen = navMenu.classList.contains("show");
+      isOpen ? closeNav() : openNav();
     });
 
-    closeMenu.addEventListener("click", closeNavFn);
-    navOverlay.addEventListener("click", closeNavFn);
+    closeMenu?.addEventListener("click", closeNav);
+    navOverlay?.addEventListener("click", closeNav);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNav));
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeNav(); });
 
-    navMenu.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", closeNavFn);
-    });
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape") closeNavFn();
-    });
-
-    // Reveal
+    // Reveal (single)
     document.addEventListener("DOMContentLoaded", () => {
       const items = document.querySelectorAll(".reveal");
-      const run = () => {
+      const reveal = () => {
         const winH = window.innerHeight;
         items.forEach(el => {
           const top = el.getBoundingClientRect().top;
           if (top < winH - 120) el.classList.add("active");
         });
       };
-      window.addEventListener("scroll", run);
-      run();
+      window.addEventListener("scroll", reveal, { passive: true });
+      reveal();
     });
 
-     // Hide navbar on scroll down, show on scroll up
+    // Hide navbar on scroll down, show on scroll up
     const headerEl = document.getElementById("siteHeader");
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -509,24 +483,10 @@
       }
     }, { passive: true });
 
-    // Reveal on scroll
-    document.addEventListener("DOMContentLoaded", () => {
-      const items = document.querySelectorAll(".reveal");
-      const reveal = () => {
-        const winH = window.innerHeight;
-        items.forEach(el => {
-          const top = el.getBoundingClientRect().top;
-          if (top < winH - 120) el.classList.add("active");
-        });
-      };
-      window.addEventListener("scroll", reveal, { passive: true });
-      reveal();
-    });
-
-
     // Popup
     const popup = document.getElementById("popupOverlay");
     const popupClose = document.getElementById("popupClose");
+    const openPopupCTA = document.getElementById("openPopupCTA");
 
     function openPopup() { popup.classList.add("show"); }
     function closePopup() {
@@ -534,12 +494,9 @@
       setTimeout(openPopup, 40000);
     }
 
-    ["openPopupHero","openPopupCard","openPopupCTA"].forEach(id => {
-      const el = document.getElementById(id);
-      el?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
-    });
-
     setTimeout(openPopup, 3000);
+    openPopupCTA?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
