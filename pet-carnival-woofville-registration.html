@@ -83,14 +83,14 @@
         <div class="z-10 order-2 md:order-1">
             <span
                 class="bg-red-100 text-brandRed px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block animate-pulse">
-                Sun, Feb 1st • Yelahanka
+               Wed, Mar 4th • Yelahanka
             </span>
 
             <h1 class="font-fredoka text-5xl md:text-7xl leading-tight mb-6 text-brandDark">
                 We take care of your <span class="text-brandRed">Fun.</span>
             </h1>
 
-            <div class="flex flex-wrap gap-3 mb-8">
+            <div class="flex flex-wrap gap-3 -8">
                 <div class="bg-white p-3 rounded-2xl shadow-md border-2 border-brandGray text-center min-w-[75px]">
                     <span id="days" class="block font-fredoka text-3xl text-brandRed">00</span>
                     <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Days</span>
@@ -107,7 +107,7 @@
                     <span id="seconds" class="block font-fredoka text-3xl text-brandRed">00</span>
                     <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Sec</span>
                 </div>
-            </div>
+            </div>mb
             <p class="text-lg text-gray-600 mb-8 max-w-md font-medium">
                 The ultimate Pet Carnival experience! Workshops, social play, and a star-studded contest evening for you
                 and your furry best friend.
@@ -747,7 +747,9 @@
         }, 40000);
 
         // Countdown Logic
-        const eventDate = new Date("Feb 1, 2026 10:30:00").getTime();
+       <!-- ✅ Change ONLY this line -->
+const eventDate = new Date("Mar 4, 2026 10:30:00").getTime();
+
 
         function updateCountdown() {
             const now = new Date().getTime();

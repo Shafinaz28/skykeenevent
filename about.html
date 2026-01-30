@@ -99,48 +99,44 @@
 
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-  <header class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
+  <!-- HEADER -->
+  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
-  <a href="index.html">
-    <img class="hidden md:block h-28 md:h-36 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png"
-      alt="Skykeen Events" />
+      <a href="index.html" class="shrink-0">
+        <img class="hidden md:block h-24 md:h-28 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
+        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg" alt="Skykeen Events" />
+      </a>
 
-    <img class="block md:hidden h-20 w-auto object-contain" src="image/mobile menu logo.jpeg"
-      alt="Skykeen Events" />
-  </a>
+      <button id="hamburgerBtn"
+        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
+        aria-label="Open menu" type="button">
+        <i class="fa-solid fa-bars"></i>
+      </button>
 
-  <button id="hamburgerBtn"
-    class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-    aria-label="Open menu" type="button">
-    <i class="fa-solid fa-bars"></i>
-  </button>
+      <!-- Desktop Nav (anchors) -->
+      <nav class="hidden md:flex items-center gap-6 font-semibold">
+        <a class="hover:text-primaryDark" href="index.html">Home</a>
+        <a class="hover:text-primaryDark" href="about.html">About</a>
+        <a class="hover:text-primaryDark" href="services.html">Services</a>
+        <a class="hover:text-primaryDark" href="event.html">Events</a>
+        <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
+        <a class="hover:text-primaryDark" href="contact.html">Contact</a>
 
-  <nav class="hidden md:flex items-center gap-6 font-bold">
-    <a class="hover:text-primaryDark" href="index.html">Home</a>
-    <a class="hover:text-primaryDark" href="about.html">About</a>
-    <a class="hover:text-primaryDark" href="services.html">Services</a>
-    <a class="hover:text-primaryDark" href="portfolio.html">Portfolio</a>
-    <a class="hover:text-primaryDark" href="contact.html">Contact</a>
+       
+      </nav>
+    </div>
 
-    <a href="#" id="openPopupDesktop"
-      class="inline-flex items-center justify-center py-3 px-7 rounded-full bg-primary text-white border-2 border-darkText font-extrabold hover:bg-white hover:text-darkText transition">
-      Get Started
-    </a>
-  </nav>
-</div>
-
-
+    <!-- Mobile Overlay -->
     <div id="navOverlay"
-  class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none
-         transition-opacity duration-300 ease-in-out
-         md:hidden z-[10000] will-change-opacity"></div>
+      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity"></div>
 
+    <!-- Mobile Menu (anchors) -->
     <nav id="navMenu"
-  class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
-         shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
-         flex flex-col gap-4 px-5 pt-16 pb-7 items-center text-center
-         translate-x-full transition-transform duration-500 ease-in-out
-         md:hidden z-[10001] will-change-transform">
+      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+             shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
+             flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
+             translate-x-full transition-transform duration-500 ease-in-out
+             md:hidden z-[10001] will-change-transform">
 
       <button id="closeMenu"
         class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
@@ -148,16 +144,14 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="index.html">Home</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5 text-primary" href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="services.html">Services</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="portfolio.html">Portfolio</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-extrabold hover:bg-black/5" href="contact.html">Contact</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary" href="#home">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="#about">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="#services">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="#events">Events</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="#gallery">Gallery</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="#contact">Contact</a>
 
-      <a href="#" id="openPopupMobile"
-        class="w-full max-w-[260px] py-4 rounded-full bg-primary text-white border-2 border-darkText font-extrabold inline-flex items-center justify-center hover:bg-white hover:text-darkText transition">
-        Get Started
-      </a>
+     
     </nav>
   </header>
 
@@ -424,69 +418,84 @@
 
   </main>
 
-  <footer class="bg-darkText text-white/75 border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-      <div>
-        <img class="h-14 md:h-16 w-auto object-contain mb-3"
-          src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
-          alt="Skykeen Events" />
+  <!-- FOOTER -->
+<footer class="bg-darkText text-white/75 border-t border-white/10">
+  <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
+  <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-        <p class="text-white/65 leading-7">
-          Workshops • Competitions • Brand Activation • Flea Marketing — we plan, manage, and execute events that people remember.
-        </p>
+    <!-- Brand -->
+    <div>
+      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
+      <p class="text-white/65 leading-7">
+        Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
+      </p>
 
-        <div class="flex gap-3 mt-4 flex-wrap">
-          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-
-          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
-            <i class="fa-brands fa-facebook"></i>
-          </a>
-
-          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
-            <i class="fa-brands fa-youtube"></i>
-          </a>
-
-          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Quick Links</h4>
-        <ul class="grid gap-3">
-          <li><a class="hover:text-white transition" href="index.html">Home</a></li>
-          <li><a class="hover:text-white transition" href="about.html">About</a></li>
-          <li><a class="hover:text-white transition" href="services.html">Services</a></li>
-          <li><a class="hover:text-white transition" href="portfolio.html">Portfolio</a></li>
-          <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-xs font-black tracking-widest uppercase text-white mb-3">Contact</h4>
-        <ul class="grid gap-3 text-white/70">
-          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
-          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
-          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
-        </ul>
+      <div class="flex gap-3 mt-4 flex-wrap">
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+          href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+          href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+          href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+          href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
-      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
-      <div class="flex gap-4">
-        <a class="hover:text-white transition" href="#">Privacy</a>
-        <a class="hover:text-white transition" href="#">Terms</a>
-      </div>
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
+      <ul class="grid gap-3">
+        <li><a class="hover:text-white transition" href="index.html">Home</a></li>
+        <li><a class="hover:text-white transition" href="about.html">About</a></li>
+        <li><a class="hover:text-white transition" href="services.html">Services</a></li>
+        <li><a class="hover:text-white transition" href="event.html">Events</a></li>
+        <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
+        <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
+      </ul>
     </div>
-  </footer>
+
+    <!-- ✅ Services Column (New) -->
+    <div>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
+      <ul class="grid gap-3 text-white/70">
+        <li><a class="hover:text-white transition" href="flea-marketing.html">Flea Marketing</a></li>
+        <li><a class="hover:text-white transition" href="brand-activation.html">Brand Activation</a></li>
+        <li><a class="hover:text-white transition" href="offlinemarketing.html">Offline Marketing</a></li>
+        <li><a class="hover:text-white transition" href="corporateevents.html">Corporate Events</a></li>
+        <li><a class="hover:text-white transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
+        <li><a class="hover:text-white transition" href="competitions.html">Competitions</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
+      <ul class="grid gap-3 text-white/70">
+        <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+        <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+        <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+    <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+    <div class="flex gap-4">
+      <a class="hover:text-white transition" href="#">Privacy</a>
+      <a class="hover:text-white transition" href="#">Terms</a>
+    </div>
+  </div>
+</footer>
 
   <!-- Popup -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">

@@ -3,15 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skykeen Events | Portfolio</title>
+  <title>Brand Activation | Skykeen Events</title>
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,9 +14,31 @@
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "rgb(220 38 38)",
+            primaryDark: "rgb(185 28 28)",
+            darkText: "rgb(17 24 39)"
+          }
+        }
+      }
+    };
+  </script>
+
   <style>
     :root { --header-h: 120px; }
     body { font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+    .page-bg{
+      background:
+        radial-gradient(900px 420px at 12% 12%, rgba(220,38,38,.08), transparent 55%),
+        radial-gradient(900px 420px at 88% 18%, rgba(253,186,116,.18), transparent 55%),
+        radial-gradient(900px 420px at 60% 90%, rgba(17,24,39,.06), transparent 60%),
+        linear-gradient(180deg, #fff, #fff);
+    }
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
@@ -50,22 +67,11 @@
     }
     .whatsapp-float i{ color:#fff; font-size:28px; }
 
-    /* Portfolio card hover */
-    .p-card{
-      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
-      cursor: zoom-in;
-    }
-    .p-card:hover{
-      transform: translateY(-6px);
-      box-shadow: 0 20px 60px rgba(17,24,39,0.15);
-      filter: saturate(1.05);
-    }
-
-    /* Lightbox */
-    #lightboxOverlay{ opacity:0; visibility:hidden; transition:.25s ease; }
-    #lightboxOverlay.show{ opacity:1; visibility:visible; }
-    #lightboxCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
-    #lightboxOverlay.show #lightboxCard{ transform: translateY(0) scale(1); opacity:1; }
+    /* Mobile nav */
+    #navOverlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+    #navOverlay.show{opacity:1;pointer-events:auto}
+    #navMenu{transform:translateX(100%);transition:transform .5s ease}
+    #navMenu.show{transform:translateX(0)}
 
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
@@ -73,26 +79,9 @@
     #popupCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
     #popupOverlay.show #popupCard{ transform: translateY(0) scale(1); opacity:1; }
   </style>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: "rgb(220 38 38)",
-            primaryDark: "rgb(185 28 28)",
-            darkText: "rgb(17 24 39)",
-          },
-          boxShadow: {
-            soft: "0 20px 60px rgba(17,24,39,0.15)"
-          }
-        }
-      }
-    }
-  </script>
 </head>
 
-<body class="bg-white text-darkText" style="padding-top: var(--header-h);">
+<body class="page-bg text-darkText" style="padding-top: var(--header-h);">
 
   <!-- HEADER -->
   <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
@@ -108,6 +97,7 @@
         <i class="fa-solid fa-bars"></i>
       </button>
 
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
@@ -152,114 +142,154 @@
 
   <main>
     <!-- Hero -->
-    <section class="relative py-16 text-white text-center overflow-hidden"
-      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20"
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0"
         style="background:
-          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
-          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
-      </div>
+          radial-gradient(900px 380px at 12% 25%, rgba(253,186,116,.20), transparent 60%),
+          radial-gradient(900px 380px at 88% 18%, rgba(220,38,38,.14), transparent 60%),
+          linear-gradient(135deg, rgba(17,24,39,.03), rgba(255,255,255,1));"></div>
 
-      <div class="relative max-w-6xl mx-auto px-3 reveal active">
-        <h1 class="text-4xl md:text-5xl font-black">Portfolio</h1>
-        <p class="mt-3 text-white/90 font-bold">
-          Home <span class="opacity-80 mx-1">/</span> Portfolio
-        </p>
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 reveal active">
+        <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/75 border border-black/10 font-extrabold text-sm">
+          <span class="w-2 h-2 rounded-full bg-primary"></span> Skykeen Events • Brand Activation
+        </span>
+
+        <div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <!-- Text -->
+          <div class="reveal active">
+            <!-- ✅ Crisp + Correct Brand Activation Hero -->
+            <h1 class="text-4xl md:text-6xl font-black leading-tight">
+              Brand Activations 
+            </h1>
+            <p class="mt-3 text-black/70 font-semibold max-w-3xl leading-7">
+              Sampling, demos, roadshows & lead capture—planned, staffed, and executed end-to-end.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="contact.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-primary text-white border-2 border-darkText hover:bg-white hover:text-darkText transition">
+                Plan an Activation <i class="fa-solid fa-arrow-right"></i>
+              </a>
+              <a href="services.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
+                Back to Services <i class="fa-solid fa-arrow-left"></i>
+              </a>
+              
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <div class="reveal active delay-1">
+            <div class="relative rounded-[30px] border border-black/10 bg-white/70 backdrop-blur p-3 shadow-[0_24px_60px_rgba(17,24,39,0.10)]">
+              <img
+                src="image/brandactivationimg.jpg"
+                alt="Skykeen Events Brand Activation"
+                class="w-full h-[320px] md:h-[420px] object-cover rounded-[24px]"
+                onerror="this.src='https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1400&q=80';"
+              />
+              
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- Intro -->
+    <!-- What we handle -->
     <section class="py-12">
-      <div class="max-w-6xl mx-auto px-3 text-center reveal">
-        <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Work</span>
-        <h2 class="text-[38px] font-black leading-tight">Project Gallery</h2>
-        <p class="mt-2 text-black/60 font-semibold max-w-3xl mx-auto">
-          Click any image to view full size. Use next/previous arrows to browse.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-7">
+        <div class="bg-white/80 backdrop-blur rounded-[26px] border border-black/10 p-8 reveal">
+          <h2 class="text-3xl font-black">What We Handle</h2>
+          <p class="mt-2 text-black/65 font-semibold leading-7">
+            From concept to execution—we ensure visibility, engagement, and measurable results.
+          </p>
+          <ul class="mt-6 grid gap-3 font-extrabold">
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Campaign concept + activity design</li>
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Venue permissions + logistics</li>
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Stall/booth setup, branding & props</li>
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Promoters, emcee & crowd engagement</li>
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Sampling, demos & product trials</li>
+            <li class="flex gap-3"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary grid place-items-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Lead capture + daily reporting</li>
+          </ul>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur rounded-[26px] border border-black/10 p-8 reveal">
+          <h3 class="text-2xl font-black">Best For</h3>
+          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-5 rounded-2xl border border-black/10 bg-white">
+              <i class="fa-solid fa-store text-primary text-2xl"></i>
+              <h4 class="mt-2 font-black">Retail & Malls</h4>
+              <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Footfall-driven campaigns & demos.</p>
+            </div>
+            <div class="p-5 rounded-2xl border border-black/10 bg-white">
+              <i class="fa-solid fa-graduation-cap text-primary text-2xl"></i>
+              <h4 class="mt-2 font-black">College / Campus</h4>
+              <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Youth engagement & lead capture.</p>
+            </div>
+            <div class="p-5 rounded-2xl border border-black/10 bg-white">
+              <i class="fa-solid fa-city text-primary text-2xl"></i>
+              <h4 class="mt-2 font-black">Roadshows</h4>
+              <p class="mt-1 text-sm text-black/65 font-semibold leading-6">High visibility with moving activations.</p>
+            </div>
+            <div class="p-5 rounded-2xl border border-black/10 bg-white">
+              <i class="fa-solid fa-building text-primary text-2xl"></i>
+              <h4 class="mt-2 font-black">Corporate Parks</h4>
+              <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Employee engagement & sampling.</p>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-black text-center reveal">Our Process</h2>
+        <p class="mt-2 text-center text-black/65 font-semibold max-w-3xl mx-auto reveal">
+          Simple steps for high-impact brand activations.
         </p>
-      </div>
-    </section>
 
-    <!-- Featured Grid (NO TEXT ON IMAGES) -->
-    <section class="pb-12">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
-
-          <!-- Big -->
-          <a href="#"
-             class="p-card js-lightbox md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden border border-black/10 relative min-h-[320px] md:min-h-[520px]"
-             data-full="./image/img1.jpeg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="./image/img1.jpeg" alt="Gallery Image 1">
-          </a>
-
-          <!-- Small -->
-          <a href="#"
-             class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative min-h-[240px]"
-             data-full="../image/creative workshop.jpg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="../image/creative workshop.jpg" alt="Gallery Image 2"
-                 onerror="this.src='https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=80';">
-          </a>
-
-          <!-- Small -->
-          <a href="#"
-             class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative min-h-[240px]"
-             data-full="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1400&q=80">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1400&q=80"
-                 alt="Gallery Image 3">
-          </a>
-
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-4 gap-5">
+          <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
+            <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">1</div>
+            <h4 class="mt-3 font-black">Plan</h4>
+            <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Audience, venue, goal, budget & timeline.</p>
+          </div>
+          <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
+            <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">2</div>
+            <h4 class="mt-3 font-black">Design</h4>
+            <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Stall, creatives, activity flow & scripts.</p>
+          </div>
+          <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
+            <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">3</div>
+            <h4 class="mt-3 font-black">Execute</h4>
+            <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Setup, promoters, engagement & leads.</p>
+          </div>
+          <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
+            <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">4</div>
+            <h4 class="mt-3 font-black">Report</h4>
+            <p class="mt-1 text-sm text-black/65 font-semibold leading-6">Daily report, photos, leads & insights.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4 Cards (NO TEXT ON IMAGES) -->
-    <section class="pb-16">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-          <a href="#" class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal"
-             data-full="../image/flem.jpeg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="../image/flem.jpeg" alt="Gallery Image 4">
-          </a>
-
-          <a href="#" class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-1"
-             data-full="../image/workshop1.jpg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="../image/workshop1.jpg" alt="Gallery Image 5">
-          </a>
-
-          <a href="#" class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-2"
-             data-full="../image/brand activation.jpg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="../image/brand activation.jpg" alt="Gallery Image 6">
-          </a>
-
-          <a href="#" class="p-card js-lightbox rounded-3xl overflow-hidden border border-black/10 relative h-[290px] reveal delay-3"
-             data-full="../image/competetion.jpg">
-            <img class="absolute inset-0 w-full h-full object-cover"
-                 src="../image/competetion.jpg" alt="Gallery Image 7">
-          </a>
-
-        </div>
-      </div>
-    </section>
 
     <!-- CTA -->
-    <section class="pb-16">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="bg-black/5 border border-black/10 rounded-[22px] p-9 shadow-soft text-center md:text-left grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 items-center reveal">
-          <div>
-            <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Ready to Plan?</span>
-            <h2 class="text-3xl font-black">Let’s Build Your Next Big Event</h2>
-            <p class="mt-2 text-black/60">Tell us your requirement — we’ll share a plan and callback quickly.</p>
-          </div>
-          <div class="flex justify-center md:justify-end">
-            <a href="contact.html"
-               class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-              Contact Us →
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-[28px] border border-black/10 bg-white/80 backdrop-blur p-8 md:p-12 reveal">
+          <h3 class="text-3xl md:text-4xl font-black">Let’s Activate Your Brand</h3>
+          <p class="mt-2 text-black/65 font-semibold max-w-3xl leading-7">
+            Tell us your goal (leads / footfall / trials). We’ll propose the right activation plan.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#" id="openPopupCTA"
+               class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-primary text-white border-2 border-darkText hover:bg-white hover:text-darkText transition">
+              Request Callback <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="portfolio.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white border border-black/10 hover:bg-white transition">
+              View Portfolio <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
         </div>
@@ -271,6 +301,7 @@
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
+      <!-- Brand -->
       <div>
         <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
@@ -297,6 +328,7 @@
         </div>
       </div>
 
+      <!-- Quick Links -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
         <ul class="grid gap-3">
@@ -309,6 +341,7 @@
         </ul>
       </div>
 
+      <!-- Services -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
         <ul class="grid gap-3 text-white/70">
@@ -321,6 +354,7 @@
         </ul>
       </div>
 
+      <!-- Contact -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
         <ul class="grid gap-3 text-white/70">
@@ -341,46 +375,13 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX (Full Image + Next/Prev Arrows) -->
-  <div id="lightboxOverlay" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[99999]">
-    <div id="lightboxCard" class="relative w-[92%] max-w-5xl">
-      <!-- Close -->
-      <button id="lbClose"
-        class="absolute -top-12 right-0 w-11 h-11 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 text-white inline-flex items-center justify-center text-xl"
-        aria-label="Close" type="button">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <!-- Prev -->
-      <button id="lbPrev"
-        class="absolute left-2 md:-left-14 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl border border-white/20 bg-white/10 hover:bg-white/20 text-white inline-flex items-center justify-center text-xl"
-        aria-label="Previous" type="button">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-
-      <!-- Next -->
-      <button id="lbNext"
-        class="absolute right-2 md:-right-14 top-1/2 -translate-y-1/2 w-12 h-12 rounded-2xl border border-white/20 bg-white/10 hover:bg-white/20 text-white inline-flex items-center justify-center text-xl"
-        aria-label="Next" type="button">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-      <!-- Image -->
-      <div class="rounded-3xl overflow-hidden border border-white/10 bg-black">
-        <img id="lbImg" src="" alt="Full Image"
-             class="w-full max-h-[80vh] object-contain select-none"
-             draggable="false">
-      </div>
-    </div>
-  </div>
-
-  <!-- Popup (kept as-is) -->
+  <!-- Popup -->
   <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
-    <div id="popupCard" class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
+    <div id="popupCard"
+      class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
       <button id="popupClose"
-              class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-              type="button"
-              aria-label="Close popup">×</button>
+        class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
+        type="button" aria-label="Close popup">×</button>
 
       <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
       <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
@@ -393,7 +394,7 @@
           <div class="relative">
             <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="name" type="text" placeholder="Your name" required>
+              name="name" type="text" placeholder="Your name" required>
           </div>
         </div>
 
@@ -402,21 +403,21 @@
           <div class="relative">
             <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="phone" type="tel" placeholder="Your phone number" required>
+              name="phone" type="tel" placeholder="Your phone number" required>
           </div>
         </div>
 
         <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Event Type</label>
+          <label class="text-sm font-black">Activation Type</label>
           <div class="relative">
-            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <i class="fa-solid fa-bullhorn absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
             <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                   name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
+              name="eventType" type="text" placeholder="Sampling / Mall / Roadshow / Corporate Park...">
           </div>
         </div>
 
         <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
-                type="submit">
+          type="submit">
           Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
 
@@ -446,7 +447,7 @@
       hamburger.style.visibility = "hidden";
     }
 
-    function closeNav() {
+    function closeNavFn() {
       isOpen = false;
       document.body.style.overflow = "";
       navMenu.classList.add("translate-x-full");
@@ -455,11 +456,20 @@
       hamburger.style.visibility = "visible";
     }
 
-    hamburger.addEventListener("click", () => { isOpen ? closeNav() : openNav(); });
-    closeMenu.addEventListener("click", closeNav);
-    navOverlay.addEventListener("click", closeNav);
-    navMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNav));
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeNav(); });
+    hamburger.addEventListener("click", () => {
+      isOpen ? closeNavFn() : openNav();
+    });
+
+    closeMenu.addEventListener("click", closeNavFn);
+    navOverlay.addEventListener("click", closeNavFn);
+
+    navMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", closeNavFn);
+    });
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") closeNavFn();
+    });
 
     // Reveal
     document.addEventListener("DOMContentLoaded", () => {
@@ -475,83 +485,7 @@
       run();
     });
 
-    // ===== LIGHTBOX (click image -> full view + next/prev) =====
-    const lbOverlay = document.getElementById("lightboxOverlay");
-    const lbImg = document.getElementById("lbImg");
-    const lbClose = document.getElementById("lbClose");
-    const lbPrev = document.getElementById("lbPrev");
-    const lbNext = document.getElementById("lbNext");
-
-    const lbItems = Array.from(document.querySelectorAll(".js-lightbox"));
-    const lbImages = lbItems.map(el => ({
-      src: el.getAttribute("data-full") || el.querySelector("img")?.src,
-      alt: el.querySelector("img")?.alt || "Gallery Image"
-    })).filter(x => !!x.src);
-
-    let lbIndex = 0;
-
-    function openLightbox(index){
-      lbIndex = index;
-      const item = lbImages[lbIndex];
-      if (!item) return;
-
-      lbImg.src = item.src;
-      lbImg.alt = item.alt;
-
-      lbOverlay.classList.add("show");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeLightbox(){
-      lbOverlay.classList.remove("show");
-      document.body.style.overflow = "";
-      // optional: clear src for performance
-      setTimeout(()=>{ lbImg.src = ""; }, 150);
-    }
-
-    function nextImg(){
-      lbIndex = (lbIndex + 1) % lbImages.length;
-      const item = lbImages[lbIndex];
-      lbImg.src = item.src;
-      lbImg.alt = item.alt;
-    }
-
-    function prevImg(){
-      lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
-      const item = lbImages[lbIndex];
-      lbImg.src = item.src;
-      lbImg.alt = item.alt;
-    }
-
-    // bind clicks
-    lbItems.forEach((el, idx) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        openLightbox(idx);
-      });
-    });
-
-    lbClose.addEventListener("click", closeLightbox);
-    lbNext.addEventListener("click", nextImg);
-    lbPrev.addEventListener("click", prevImg);
-
-    // click outside image closes
-    lbOverlay.addEventListener("click", (e) => {
-      if (e.target === lbOverlay) closeLightbox();
-    });
-
-    // keyboard controls
-    document.addEventListener("keydown", (e) => {
-      if (!lbOverlay.classList.contains("show")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") nextImg();
-      if (e.key === "ArrowLeft") prevImg();
-    });
-
-    // keep lightbox hidden initially
-    lbOverlay.classList.remove("show");
-
-    // ===== Popup (kept) =====
+    // Popup
     const popup = document.getElementById("popupOverlay");
     const popupClose = document.getElementById("popupClose");
 
@@ -560,6 +494,12 @@
       popup.classList.remove("show");
       setTimeout(openPopup, 40000);
     }
+
+    ["openPopupHero","openPopupCard","openPopupCTA"].forEach(id => {
+      const el = document.getElementById(id);
+      el?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    });
+
     setTimeout(openPopup, 3000);
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
@@ -568,7 +508,17 @@
     // Forms to Google Sheet
     const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
 
-    function bindFormToSheet(formId) {
+    function showSwal(type, title, text) {
+      Swal.fire({
+        icon: type,
+        title: title,
+        text: text,
+        confirmButtonText: "OK",
+        confirmButtonColor: "rgb(220 38 38)"
+      });
+    }
+
+    function bindFormToSheet(formId, afterSuccess) {
       const form = document.getElementById(formId);
       if (!form) return;
 
@@ -587,39 +537,20 @@
           if (data.ok) {
             if (statusEl) statusEl.textContent = "";
             form.reset();
-            closePopup();
-
-            Swal.fire({
-              icon: "success",
-              title: "Submitted Successfully",
-              text: "We will contact you shortly.",
-              confirmButtonText: "OK",
-              confirmButtonColor: "rgb(220 38 38)"
-            });
+            if (typeof afterSuccess === "function") afterSuccess();
+            showSwal("success", "Submitted Successfully", "We will contact you shortly.");
           } else {
             if (statusEl) statusEl.textContent = "Something went wrong. Please try again.";
-            Swal.fire({
-              icon: "error",
-              title: "Submission Failed",
-              text: "Please try again.",
-              confirmButtonText: "OK",
-              confirmButtonColor: "rgb(220 38 38)"
-            });
+            showSwal("error", "Submission Failed", "Please try again.");
           }
         } catch (err) {
           if (statusEl) statusEl.textContent = "Network error. Please try again.";
-          Swal.fire({
-            icon: "error",
-            title: "Network Error",
-            text: "Please check your internet and try again.",
-            confirmButtonText: "OK",
-            confirmButtonColor: "rgb(220 38 38)"
-          });
+          showSwal("error", "Network Error", "Please check your internet and try again.");
         }
       });
     }
 
-    bindFormToSheet("popupForm");
+    bindFormToSheet("popupForm", () => closePopup());
     popup.classList.remove("show");
   </script>
 </body>
