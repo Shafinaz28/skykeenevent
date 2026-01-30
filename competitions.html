@@ -73,6 +73,11 @@
     #navMenu{transform:translateX(100%);transition:transform .5s ease}
     #navMenu.show{transform:translateX(0)}
 
+    /* Hide header on scroll (down) */
+    header.nav-hidden { transform: translateY(-110%); }
+    header { transition: transform .35s ease; will-change: transform; }
+
+
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
     #popupOverlay.show{ opacity:1; visibility:visible; }
@@ -487,6 +492,44 @@
       window.addEventListener("scroll", run);
       run();
     });
+
+ // Hide navbar on scroll down, show on scroll up
+    const headerEl = document.getElementById("siteHeader");
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+      const goingDown = y > lastScrollY;
+      const nearTop = y < 80;
+
+      if (!nearTop && goingDown) headerEl.classList.add("nav-hidden");
+      else headerEl.classList.remove("nav-hidden");
+
+      lastScrollY = y;
+      ticking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Reveal on scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const reveal = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", reveal, { passive: true });
+      reveal();
+    });
+
 
     // Popup (IMPORTANT: wiring correct ids)
     const popup = document.getElementById("popupOverlay");

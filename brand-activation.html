@@ -78,7 +78,13 @@
     #popupOverlay.show{ opacity:1; visibility:visible; }
     #popupCard{ transform: translateY(10px) scale(.98); opacity:0; transition:.2s ease; }
     #popupOverlay.show #popupCard{ transform: translateY(0) scale(1); opacity:1; }
+
+    /* Hide header on scroll (down) */
+    header.nav-hidden { transform: translateY(-110%); }
+    header { transition: transform .35s ease; will-change: transform; }
+
   </style>
+
 </head>
 
 <body class="page-bg text-darkText" style="padding-top: var(--header-h);">
@@ -486,6 +492,44 @@
       window.addEventListener("scroll", run);
       run();
     });
+
+ // Hide navbar on scroll down, show on scroll up
+    const headerEl = document.getElementById("siteHeader");
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+      const goingDown = y > lastScrollY;
+      const nearTop = y < 80;
+
+      if (!nearTop && goingDown) headerEl.classList.add("nav-hidden");
+      else headerEl.classList.remove("nav-hidden");
+
+      lastScrollY = y;
+      ticking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Reveal on scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const reveal = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", reveal, { passive: true });
+      reveal();
+    });
+
 
     // Popup
     const popup = document.getElementById("popupOverlay");

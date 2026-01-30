@@ -36,6 +36,10 @@
         linear-gradient(180deg, #fff, #fff);
     }
 
+    /* Hide header on scroll (down) */
+    header.nav-hidden { transform: translateY(-110%); }
+    header { transition: transform .35s ease; will-change: transform; }
+
     /* WhatsApp floating */
     .whatsapp-float{
       position: fixed; bottom: 20px; right: 20px; z-index: 9999;
@@ -166,9 +170,9 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary" href="index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="index.html">Home</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary" href="services.html">Services</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="event.html">Events</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="portfolio.html">Gallery</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="contact.html">Contact</a>
@@ -547,6 +551,43 @@
   </script>
    <script>
    
+    // Hide navbar on scroll down, show on scroll up
+    const headerEl = document.getElementById("siteHeader");
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+      const goingDown = y > lastScrollY;
+      const nearTop = y < 80;
+
+      if (!nearTop && goingDown) headerEl.classList.add("nav-hidden");
+      else headerEl.classList.remove("nav-hidden");
+
+      lastScrollY = y;
+      ticking = false;
+    }
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Reveal on scroll
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".reveal");
+      const reveal = () => {
+        const winH = window.innerHeight;
+        items.forEach(el => {
+          const top = el.getBoundingClientRect().top;
+          if (top < winH - 120) el.classList.add("active");
+        });
+      };
+      window.addEventListener("scroll", reveal, { passive: true });
+      reveal();
+    });
+
     // Popup
     const popup = document.getElementById("popupOverlay");
     const popupClose = document.getElementById("popupClose");
