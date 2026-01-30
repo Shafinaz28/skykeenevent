@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,108 +30,228 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
-    :root { --header-h: 112px; }
-    html { scroll-behavior: smooth; }
-    body { font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    :root {
+      --header-h: 80px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
 
     /* section offset for fixed header */
-    section { scroll-margin-top: 140px; }
+    section {
+      scroll-margin-top: 140px;
+    }
+
 
     /* Reveal */
-    .reveal { opacity: 0; transform: translateY(22px); transition: all .7s ease; }
-    .reveal.active { opacity: 1; transform: translateY(0); }
-    .delay-1 { transition-delay: .10s; }
-    .delay-2 { transition-delay: .20s; }
-    .delay-3 { transition-delay: .30s; }
-    .delay-4 { transition-delay: .40s; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: all .7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: .10s;
+    }
+
+    .delay-2 {
+      transition-delay: .20s;
+    }
+
+    .delay-3 {
+      transition-delay: .30s;
+    }
+
+    .delay-4 {
+      transition-delay: .40s;
+    }
 
     /* Hide header on scroll (down) */
-    header.nav-hidden { transform: translateY(-110%); }
-    header { transition: transform .35s ease; will-change: transform; }
+    header.nav-hidden {
+      transform: translateY(-110%);
+    }
+
+    header {
+      transition: transform .35s ease;
+      will-change: transform;
+    }
 
     /* WhatsApp floating */
-    .whatsapp-float{
-      position: fixed; bottom: 20px; right: 20px; z-index: 9999;
-      width: 56px; height: 56px; border-radius: 9999px;
-      background: #25D366; display:flex; align-items:center; justify-content:center;
-      box-shadow: 0 4px 10px rgba(17,24,39,.30), 0 0 0 3px rgba(220,38,38,.35);
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 56px;
+      height: 56px;
+      border-radius: 9999px;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(17, 24, 39, .30), 0 0 0 3px rgba(220, 38, 38, .35);
     }
-    .whatsapp-float i{ color:#fff; font-size:28px; }
+
+    .whatsapp-float i {
+      color: #fff;
+      font-size: 28px;
+    }
 
     /* Countdown chips */
-    .count-chip{
-      background: rgba(255,255,255,.10);
-      border: 1px solid rgba(255,255,255,.18);
+    .count-chip {
+      background: rgba(255, 255, 255, .10);
+      border: 1px solid rgba(255, 255, 255, .18);
       backdrop-filter: blur(10px);
     }
 
     /* Small button spinner */
-    .btn-spinner{ display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; }
+    .btn-spinner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
 
     /* ===== Animated shade background (subtle) ===== */
-    .shade-bg{
-      position:relative; overflow:hidden; isolation:isolate;
+    .shade-bg {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
       background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(220,38,38,0.10), transparent 55%),
-        radial-gradient(900px 600px at 90% 20%, rgba(59,130,246,0.10), transparent 55%),
-        radial-gradient(900px 700px at 50% 100%, rgba(14,165,233,0.08), transparent 60%),
+        radial-gradient(1200px 700px at 10% 10%, rgba(220, 38, 38, 0.10), transparent 55%),
+        radial-gradient(900px 600px at 90% 20%, rgba(59, 130, 246, 0.10), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(14, 165, 233, 0.08), transparent 60%),
         #f6f7fb;
     }
+
     .shade-bg::before,
-    .shade-bg::after{
-      content:""; position:absolute; inset:-30%; z-index:-1;
+    .shade-bg::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      z-index: -1;
       background: conic-gradient(from 180deg at 50% 50%,
-        rgba(220,38,38,0.14),
-        rgba(59,130,246,0.12),
-        rgba(14,165,233,0.10),
-        rgba(220,38,38,0.14));
+          rgba(220, 38, 38, 0.14),
+          rgba(59, 130, 246, 0.12),
+          rgba(14, 165, 233, 0.10),
+          rgba(220, 38, 38, 0.14));
       filter: blur(44px);
-      opacity:.55;
+      opacity: .55;
       animation: spinShade 14s linear infinite;
     }
-    .shade-bg::after{ animation-duration: 22s; opacity:.35; }
-    @keyframes spinShade{
-      0%{ transform: rotate(0deg) scale(1.05); }
-      100%{ transform: rotate(360deg) scale(1.05); }
+
+    .shade-bg::after {
+      animation-duration: 22s;
+      opacity: .35;
+    }
+
+    @keyframes spinShade {
+      0% {
+        transform: rotate(0deg) scale(1.05);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1.05);
+      }
     }
 
     /* ===== Gallery slider ===== */
-    .gallery-wrap{ position:relative; }
-    .gallery-viewport{ overflow:hidden; border-radius:18px; }
-    .gallery-track{
-      display:flex; gap:14px; padding:10px;
-      will-change: transform; transition: transform .5s ease;
+    .gallery-wrap {
+      position: relative;
     }
-    .gallery-item{
+
+    .gallery-viewport {
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 14px;
+      padding: 10px;
+      will-change: transform;
+      transition: transform .5s ease;
+    }
+
+    .gallery-item {
       flex: 0 0 calc(25% - 11px);
-      height: 210px; border-radius:14px; overflow:hidden;
-      border: 1px solid rgba(0,0,0,0.08);
-      background:#fff;
+      height: 210px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: #fff;
     }
-    .gallery-item img{
-      width:100%; height:100%; object-fit:cover;
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform .6s ease;
     }
-    .gallery-item:hover img{ transform: scale(1.07); }
-    .gbtn{
-      position:absolute; top:50%; transform: translateY(-50%);
-      width:44px; height:44px; border-radius:14px;
-      border:1px solid rgba(0,0,0,0.10);
-      background: rgba(255,255,255,0.92);
-      box-shadow: 0 10px 25px rgba(17,24,39,0.10);
-      display:grid; place-items:center;
-      cursor:pointer; transition: transform .2s ease, background .2s ease;
-      z-index:2;
-    }
-    .gbtn:hover{ transform: translateY(-50%) scale(1.03); background: rgba(255,255,255,1); }
-    .gbtn.left{ left:-10px; }
-    .gbtn.right{ right:-10px; }
 
-    @media (max-width:1024px){ .gallery-item{ flex-basis: calc(50% - 10px); } }
-    @media (max-width:640px){
-      .gallery-item{ flex-basis: 85%; }
-      .gbtn.left{ left:6px; }
-      .gbtn.right{ right:6px; }
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .gbtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.10);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 25px rgba(17, 24, 39, 0.10);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+      z-index: 2;
+    }
+
+    .gbtn:hover {
+      transform: translateY(-50%) scale(1.03);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .gbtn.left {
+      left: -10px;
+    }
+
+    .gbtn.right {
+      right: -10px;
+    }
+
+    @media (max-width:1024px) {
+      .gallery-item {
+        flex-basis: calc(50% - 10px);
+      }
+    }
+
+    @media (max-width:640px) {
+      .gallery-item {
+        flex-basis: 85%;
+      }
+
+      .gbtn.left {
+        left: 6px;
+      }
+
+      .gbtn.right {
+        right: 6px;
+      }
     }
   </style>
 
@@ -153,11 +274,15 @@
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
   <!-- HEADER -->
-  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
+    style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
+
       <a href="index.html" class="shrink-0">
-        <img class="hidden md:block h-24 md:h-28 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
-        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg" alt="Skykeen Events" />
+        <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
+          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
+          alt="Skykeen Events" />
       </a>
 
       <button id="hamburgerBtn"
@@ -175,17 +300,17 @@
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
 
-        
+
       </nav>
     </div>
 
     <!-- Mobile Overlay -->
     <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity"></div>
+      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
+    </div>
 
     <!-- Mobile Menu (anchors) -->
-    <nav id="navMenu"
-      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+    <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
              translate-x-full transition-transform duration-500 ease-in-out
@@ -197,17 +322,24 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary" href="index.html">Home</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="services.html">Services</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="event.html">Events</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="portfolio.html">Gallery</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="contact.html">Contact</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary"
+        href="index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="event.html">Events</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="portfolio.html">Gallery</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="contact.html">Contact</a>
 
     </nav>
   </header>
 
-  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer"
+    aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -230,7 +362,8 @@
             </h1>
 
             <p class="mt-4 text-black/60 max-w-[520px] leading-7">
-              We don’t just plan events — we build experiences. Flea Markets, Brand Activations, Corporate Events & Expos
+              We don’t just plan events — we build experiences. Flea Markets, Brand Activations, Corporate Events &
+              Expos
               executed with structure and strong on-ground support.
             </p>
 
@@ -281,7 +414,8 @@
               </div>
 
               <div class="mt-4">
-                <a href="#services" class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primaryDark">
+                <a href="#services"
+                  class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primaryDark">
                   View all services <i class="fa-solid fa-arrow-right"></i>
                 </a>
                 <p class="text-xs text-black/50 mt-1">
@@ -313,7 +447,8 @@
                   </div>
                 </div>
 
-                <div class="absolute -right-6 bottom-10 bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
+                <div
+                  class="absolute -right-6 bottom-10 bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
                   <div class="flex items-center gap-3">
                     <span class="w-10 h-10 rounded-xl bg-primary/10 text-primary grid place-items-center">
                       <i class="fa-solid fa-people-group"></i>
@@ -348,7 +483,8 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-store"></i>
             </div>
@@ -358,7 +494,8 @@
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-bullhorn"></i>
             </div>
@@ -368,7 +505,8 @@
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-bullseye"></i>
             </div>
@@ -378,7 +516,8 @@
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-briefcase"></i>
             </div>
@@ -388,7 +527,8 @@
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-building-columns"></i>
             </div>
@@ -398,7 +538,8 @@
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-3">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-3">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-trophy"></i>
             </div>
@@ -418,155 +559,157 @@
       </div>
     </section>
 
-<!-- EVENTS (Proper) -->
-<section class="py-16 bg-white" id="events">
-  <div class="max-w-6xl mx-auto px-3">
-    <div class="text-center mb-10 reveal">
-      <span class="inline-block text-[13px] font-semibold text-primary tracking-[.3px] mb-2">Events</span>
-      <h2 class="text-[clamp(28px,3.2vw,40px)] font-bold leading-tight">
-        Upcoming <span class="text-primary">events</span>
-      </h2>
-      <p class="mt-2 text-black/60 max-w-[720px] mx-auto">
-        Easy sections for quick viewing.
-      </p>
-    </div>
-
-    <!-- ✅ ONE LEFT + ONE RIGHT (Proper Layout) -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-      <!-- ===================== LEFT: ART EVENT ===================== -->
-      <div class="reveal">
-        <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-          <h3 class="text-xl font-semibold">🎨 Art Events</h3>
-          <a href="../art-competition.html"
-             class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
-            View details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+    <!-- EVENTS (Proper) -->
+    <section class="py-16 bg-white" id="events">
+      <div class="max-w-6xl mx-auto px-3">
+        <div class="text-center mb-10 reveal">
+          <span class="inline-block text-[13px] font-semibold text-primary tracking-[.3px] mb-2">Events</span>
+          <h2 class="text-[clamp(28px,3.2vw,40px)] font-bold leading-tight">
+            Upcoming <span class="text-primary">events</span>
+          </h2>
+          <p class="mt-2 text-black/60 max-w-[720px] mx-auto">
+            Easy sections for quick viewing.
+          </p>
         </div>
 
-        <!-- ✅ Make whole card clickable -->
-        <a href="../art-competition.html" class="block">
-          <div
-            class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
-            style="background: url('../image/education-online-class-room-student-s-things.jpg') center/cover no-repeat;"
-          >
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+        <!-- ✅ ONE LEFT + ONE RIGHT (Proper Layout) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-            <!-- Countdown chip -->
-            <div class="absolute top-5 left-5 right-5">
-              <div class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                <div class="text-white">
-                  <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
-                  <div class="text-sm font-semibold">
-                    <i class="fa-regular fa-clock mr-2"></i>
-                    <span>Art Competition</span>
+          <!-- ===================== LEFT: ART EVENT ===================== -->
+          <div class="reveal">
+            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <h3 class="text-xl font-semibold">🎨 Art Events</h3>
+              <a href="../art-competition.html"
+                class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
+                View details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <!-- ✅ Make whole card clickable -->
+            <a href="../art-competition.html" class="block">
+              <div class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
+                style="background: url('../image/education-online-class-room-student-s-things.jpg') center/cover no-repeat;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+
+                <!-- Countdown chip -->
+                <div class="absolute top-5 left-5 right-5">
+                  <div
+                    class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                    <div class="text-white">
+                      <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
+                      <div class="text-sm font-semibold">
+                        <i class="fa-regular fa-clock mr-2"></i>
+                        <span>Art Competition</span>
+                      </div>
+                    </div>
+
+                    <div class="flex gap-2 text-white" data-countdown data-target="2026-01-31T10:00:00+05:30">
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-dd>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Days</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-hh>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Hrs</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-mm>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Min</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-ss>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Sec</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="flex gap-2 text-white" data-countdown data-target="2026-01-31T10:00:00+05:30">
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-dd>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Days</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-hh>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Hrs</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-mm>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Min</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-ss>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Sec</div>
+                <!-- Bottom -->
+                <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
+                  <span class="inline-block px-4 py-1.5 bg-primary text-xs font-medium rounded-full mb-3">31 Jan
+                    2026</span>
+                  <h3 class="font-semibold text-3xl mb-1">Art Competition</h3>
+                  <p class="text-sm text-gray-300">Tap to open full event page</p>
+
+                  <!-- CTA button look (optional) -->
+                  <div
+                    class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
+                    Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Bottom -->
-            <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
-              <span class="inline-block px-4 py-1.5 bg-primary text-xs font-medium rounded-full mb-3">31 Jan 2026</span>
-              <h3 class="font-semibold text-3xl mb-1">Art Competition</h3>
-              <p class="text-sm text-gray-300">Tap to open full event page</p>
-
-              <!-- CTA button look (optional) -->
-              <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
-                Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </div>
-            </div>
+            </a>
           </div>
-        </a>
-      </div>
 
-      <!-- ===================== RIGHT: PET SHOW ===================== -->
-      <div class="reveal">
-        <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-          <h3 class="text-xl font-semibold">🐶 Pet Shows</h3>
-          <a href="../pet-carnival-woofville-registration.html"
-             class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
-            View details <i class="fa-solid fa-arrow-right"></i>
-          </a>
+          <!-- ===================== RIGHT: PET SHOW ===================== -->
+          <div class="reveal">
+            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+              <h3 class="text-xl font-semibold">🐶 Pet Shows</h3>
+              <a href="../pet-carnival-woofville-registration.html"
+                class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
+                View details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <!-- ✅ Make whole card clickable -->
+            <a href="../pet-carnival-woofville-registration.html" class="block">
+              <div class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
+                style="background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+
+                <!-- Countdown chip -->
+                <div class="absolute top-5 left-5 right-5">
+                  <div
+                    class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+                    <div class="text-white">
+                      <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
+                      <div class="text-sm font-semibold">
+                        <i class="fa-regular fa-clock mr-2"></i>
+                        <span>Pet Show</span>
+                      </div>
+                    </div>
+
+                    <!-- ✅ UPDATED DATE: March 4, 2026 -->
+                    <div class="flex gap-2 text-white" data-countdown data-target="2026-03-04T10:00:00+05:30">
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-dd>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Days</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-hh>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Hrs</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-mm>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Min</div>
+                      </div>
+                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
+                        <div class="text-2xl font-bold" data-ss>00</div>
+                        <div class="text-[11px] text-white/70 font-medium">Sec</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom -->
+                <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
+                  <span class="inline-block px-4 py-1.5 bg-white text-black text-xs font-medium rounded-full mb-3">04
+                    Mar 2026</span>
+                  <h3 class="font-semibold text-3xl mb-1">Pet Show</h3>
+                  <p class="text-sm text-gray-300">Tap to open registration page</p>
+
+                  <div
+                    class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
+                    Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
         </div>
-
-        <!-- ✅ Make whole card clickable -->
-        <a href="../pet-carnival-woofville-registration.html" class="block">
-          <div
-            class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
-            style="background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;"
-          >
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-
-            <!-- Countdown chip -->
-            <div class="absolute top-5 left-5 right-5">
-              <div class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                <div class="text-white">
-                  <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
-                  <div class="text-sm font-semibold">
-                    <i class="fa-regular fa-clock mr-2"></i>
-                    <span>Pet Show</span>
-                  </div>
-                </div>
-
-                <!-- ✅ UPDATED DATE: March 4, 2026 -->
-                <div class="flex gap-2 text-white" data-countdown data-target="2026-03-04T10:00:00+05:30">
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-dd>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Days</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-hh>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Hrs</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-mm>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Min</div>
-                  </div>
-                  <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                    <div class="text-2xl font-bold" data-ss>00</div>
-                    <div class="text-[11px] text-white/70 font-medium">Sec</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom -->
-            <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
-              <span class="inline-block px-4 py-1.5 bg-white text-black text-xs font-medium rounded-full mb-3">04 Mar 2026</span>
-              <h3 class="font-semibold text-3xl mb-1">Pet Show</h3>
-              <p class="text-sm text-gray-300">Tap to open registration page</p>
-
-              <div class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
-                Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </div>
-            </div>
-          </div>
-        </a>
       </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
     <!-- GALLERY -->
@@ -625,9 +768,12 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm reveal">
             <div class="tracking-[2px] text-primary font-bold">★★★★★</div>
-            <p class="mt-3 text-black/60 leading-7">“Super smooth execution and great crowd management. The brand activation was a big success!”</p>
+            <p class="mt-3 text-black/60 leading-7">“Super smooth execution and great crowd management. The brand
+              activation was a big success!”</p>
             <div class="mt-5 flex gap-3 items-center">
-              <div class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">A</div>
+              <div
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">A
+              </div>
               <div>
                 <strong class="block text-sm font-semibold">Ananya</strong>
                 <span class="text-sm text-black/60">Brand Manager</span>
@@ -637,9 +783,12 @@
 
           <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm reveal delay-1">
             <div class="tracking-[2px] text-primary font-bold">★★★★★</div>
-            <p class="mt-3 text-black/60 leading-7">“Loved the workshop flow. The team handled everything professionally and on time.”</p>
+            <p class="mt-3 text-black/60 leading-7">“Loved the workshop flow. The team handled everything professionally
+              and on time.”</p>
             <div class="mt-5 flex gap-3 items-center">
-              <div class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">R</div>
+              <div
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">R
+              </div>
               <div>
                 <strong class="block text-sm font-semibold">Rohit</strong>
                 <span class="text-sm text-black/60">Community Lead</span>
@@ -649,9 +798,12 @@
 
           <div class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm reveal delay-2">
             <div class="tracking-[2px] text-primary font-bold">★★★★★</div>
-            <p class="mt-3 text-black/60 leading-7">“Our flea marketing event was packed! Great planning, good vendors, and amazing energy.”</p>
+            <p class="mt-3 text-black/60 leading-7">“Our flea marketing event was packed! Great planning, good vendors,
+              and amazing energy.”</p>
             <div class="mt-5 flex gap-3 items-center">
-              <div class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">S</div>
+              <div
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">S
+              </div>
               <div>
                 <strong class="block text-sm font-semibold">Swathi</strong>
                 <span class="text-sm text-black/60">Business Owner</span>
@@ -714,7 +866,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-semibold">Your Name</label>
                   <div class="relative">
-                    <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <i
+                      class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
                     <input
                       class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="name" type="text" placeholder="John Doe" required />
@@ -724,7 +877,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-semibold">Email Address</label>
                   <div class="relative">
-                    <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <i
+                      class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
                     <input
                       class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="email" type="email" placeholder="john@example.com" required />
@@ -736,7 +890,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-semibold">Phone</label>
                   <div class="relative">
-                    <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <i
+                      class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
                     <input
                       class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required />
@@ -746,7 +901,8 @@
                 <div class="flex flex-col gap-2">
                   <label class="text-sm font-semibold">Event Type</label>
                   <div class="relative">
-                    <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                    <i
+                      class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
                     <input
                       class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
                       name="eventType" type="text" placeholder="Flea / Brand Activation / Corporate..." required />
@@ -757,7 +913,8 @@
               <div class="flex flex-col gap-2">
                 <label class="text-sm font-semibold">Message (optional)</label>
                 <div class="relative">
-                  <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+                  <i
+                    class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
                   <textarea
                     class="w-full min-h-[120px] rounded-2xl border border-gray-200 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15 resize-y"
                     name="message" placeholder="Tell us your requirement..."></textarea>
@@ -780,88 +937,93 @@
   </main>
 
   <!-- FOOTER -->
-<footer class="bg-darkText text-white/75 border-t border-white/10">
-  <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
-  <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
+  <footer class="bg-darkText text-white/75 border-t border-white/10">
+    <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
+    <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-    <!-- Brand -->
-    <div>
-      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
-      <p class="text-white/65 leading-7">
-        Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
-      </p>
+      <!-- Brand -->
+      <div>
+        <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
+          alt="Skykeen Events" />
+        <p class="text-white/65 leading-7">
+          Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
+        </p>
 
-      <div class="flex gap-3 mt-4 flex-wrap">
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-          href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-          href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-          href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
-          href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
-          <i class="fa-brands fa-linkedin-in"></i>
-        </a>
+        <div class="flex gap-3 mt-4 flex-wrap">
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
+            <i class="fa-brands fa-facebook"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+          <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+            href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
+        <ul class="grid gap-3">
+          <li><a class="hover:text-white transition" href="index.html">Home</a></li>
+          <li><a class="hover:text-white transition" href="about.html">About</a></li>
+          <li><a class="hover:text-white transition" href="services.html">Services</a></li>
+          <li><a class="hover:text-white transition" href="event.html">Events</a></li>
+          <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
+          <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- ✅ Services Column (New) -->
+      <div>
+        <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><a class="hover:text-white transition" href="flea-marketing.html">Flea Marketing</a></li>
+          <li><a class="hover:text-white transition" href="brand-activation.html">Brand Activation</a></li>
+          <li><a class="hover:text-white transition" href="offlinemarketing.html">Offline Marketing</a></li>
+          <li><a class="hover:text-white transition" href="corporateevents.html">Corporate Events</a></li>
+          <li><a class="hover:text-white transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
+          <li><a class="hover:text-white transition" href="competitions.html">Competitions</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
+        <ul class="grid gap-3 text-white/70">
+          <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
+          <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
+          <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div
+      class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+      <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a class="hover:text-white transition" href="#">Privacy</a>
+        <a class="hover:text-white transition" href="#">Terms</a>
       </div>
     </div>
-
-    <!-- Quick Links -->
-    <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
-      <ul class="grid gap-3">
-        <li><a class="hover:text-white transition" href="index.html">Home</a></li>
-        <li><a class="hover:text-white transition" href="about.html">About</a></li>
-        <li><a class="hover:text-white transition" href="services.html">Services</a></li>
-        <li><a class="hover:text-white transition" href="event.html">Events</a></li>
-        <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
-        <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- ✅ Services Column (New) -->
-    <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
-      <ul class="grid gap-3 text-white/70">
-        <li><a class="hover:text-white transition" href="flea-marketing.html">Flea Marketing</a></li>
-        <li><a class="hover:text-white transition" href="brand-activation.html">Brand Activation</a></li>
-        <li><a class="hover:text-white transition" href="offlinemarketing.html">Offline Marketing</a></li>
-        <li><a class="hover:text-white transition" href="corporateevents.html">Corporate Events</a></li>
-        <li><a class="hover:text-white transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
-        <li><a class="hover:text-white transition" href="competitions.html">Competitions</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
-      <ul class="grid gap-3 text-white/70">
-        <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
-        <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
-        <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
-    <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
-    <div class="flex gap-4">
-      <a class="hover:text-white transition" href="#">Privacy</a>
-      <a class="hover:text-white transition" href="#">Terms</a>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 
   <!-- POPUP -->
-  <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
-    <div class="bg-white w-[90%] max-w-[420px] rounded-[26px] p-7 border border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition" id="popupCard">
+  <div id="popupOverlay"
+    class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
+    <div
+      class="bg-white w-[90%] max-w-[420px] rounded-[26px] p-7 border border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
+      id="popupCard">
       <button id="popupClose"
         class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-gray-200 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
         type="button" aria-label="Close popup">
@@ -877,8 +1039,10 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-semibold">Name</label>
           <div class="relative">
-            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i
+              class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input
+              class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="name" type="text" placeholder="Your name" required>
           </div>
         </div>
@@ -886,8 +1050,10 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-semibold">Phone</label>
           <div class="relative">
-            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i
+              class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input
+              class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="phone" type="tel" placeholder="Your phone number" required>
           </div>
         </div>
@@ -895,8 +1061,10 @@
         <div class="flex flex-col gap-2">
           <label class="text-sm font-semibold">Event Type</label>
           <div class="relative">
-            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
+            <i
+              class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
+            <input
+              class="w-full h-12 rounded-2xl border border-gray-200 bg-white pl-14 pr-4 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
               name="eventType" type="text" placeholder="Flea / Brand Activation / Corporate...">
           </div>
         </div>
@@ -1216,4 +1384,5 @@
     bindFormToSheet("contactForm");
   </script>
 </body>
+
 </html>

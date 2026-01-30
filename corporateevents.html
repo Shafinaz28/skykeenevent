@@ -29,7 +29,7 @@
   </script>
 
   <style>
-    :root { --header-h: 120px; }
+    :root { --header-h: 80px; }
     body { font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
     .page-bg{
@@ -93,22 +93,25 @@ header.nav-hidden {
 
 <body class="page-bg text-darkText" style="padding-top: var(--header-h);">
 
-  <!-- HEADER -->
-  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]" style="height: var(--header-h);">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full">
+   <!-- HEADER -->
+  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
+    style="height: var(--header-h);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
+
       <a href="index.html" class="shrink-0">
-        <img class="hidden md:block h-24 md:h-28 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events" />
-        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg" alt="Skykeen Events" />
+        <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
+          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
+          alt="Skykeen Events" />
       </a>
 
-      <!-- ✅ keep hamburger visible; toggle aria-expanded -->
       <button id="hamburgerBtn"
         class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-        aria-label="Open menu" aria-expanded="false" type="button">
+        aria-label="Open menu" type="button">
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Nav (anchors) -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
@@ -116,18 +119,21 @@ header.nav-hidden {
         <a class="hover:text-primaryDark" href="event.html">Events</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
+
+
       </nav>
     </div>
 
     <!-- Mobile Overlay -->
     <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 md:hidden z-[10000] will-change-opacity"></div>
+      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
+    </div>
 
-    <!-- ✅ Mobile Menu (remove translate-x-full; CSS handles transform) -->
-    <nav id="navMenu"
-      class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+    <!-- Mobile Menu (anchors) -->
+    <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
+             translate-x-full transition-transform duration-500 ease-in-out
              md:hidden z-[10001] will-change-transform">
 
       <button id="closeMenu"
@@ -136,12 +142,19 @@ header.nav-hidden {
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary" href="index.html">Home</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="services.html">Services</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="event.html">Events</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="portfolio.html">Gallery</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5" href="contact.html">Contact</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary"
+        href="index.html">Home</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="about.html">About</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="services.html">Services</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="event.html">Events</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="portfolio.html">Gallery</a>
+      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
+        href="contact.html">Contact</a>
+
     </nav>
   </header>
 
