@@ -462,28 +462,36 @@
       reveal();
     });
 
-    // Hide navbar on scroll down, show on scroll up
-    const headerEl = document.getElementById("siteHeader");
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+  
+  const headerEl = document.getElementById("siteHeader");
+  let lastScrollY = window.scrollY;
 
-    function onScroll() {
-      const y = window.scrollY;
-      const goingDown = y > lastScrollY;
-      const nearTop = y < 80;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScroll = window.scrollY;
 
-      if (!nearTop && goingDown) headerEl.classList.add("nav-hidden");
-      else headerEl.classList.remove("nav-hidden");
-
-      lastScrollY = y;
-      ticking = false;
-    }
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
+      // Always show header near top
+      if (currentScroll < 80) {
+        headerEl.classList.remove("nav-hidden");
+        lastScrollY = currentScroll;
+        return;
       }
-    }, { passive: true });
+
+      // Scroll down → hide
+      if (currentScroll > lastScrollY) {
+        headerEl.classList.add("nav-hidden");
+      } 
+      // Scroll up → show
+      else {
+        headerEl.classList.remove("nav-hidden");
+      }
+
+      lastScrollY = currentScroll;
+    },
+    { passive: true }
+  );
+
 
     // Popup
     const popup = document.getElementById("popupOverlay");

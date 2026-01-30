@@ -404,11 +404,12 @@
     </div>
   </div>
 
-  <script>
-     // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+   <script>
+    // Footer year
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Mobile nav
+    // ✅ Mobile nav (fixed: no hamburger hide + .show classes)
     const hamburger = document.getElementById("hamburgerBtn");
     const navMenu = document.getElementById("navMenu");
     const navOverlay = document.getElementById("navOverlay");
@@ -418,25 +419,27 @@
       document.body.style.overflow = "hidden";
       navOverlay.classList.add("show");
       navMenu.classList.add("show");
-      hamburger.setAttribute("aria-expanded", "true");
+      hamburger?.setAttribute("aria-expanded", "true");
     }
-    function closeNav() {
+
+    function closeNavFn() {
       document.body.style.overflow = "";
       navOverlay.classList.remove("show");
       navMenu.classList.remove("show");
-      hamburger.setAttribute("aria-expanded", "false");
+      hamburger?.setAttribute("aria-expanded", "false");
     }
 
     hamburger?.addEventListener("click", () => {
       const isOpen = navMenu.classList.contains("show");
-      isOpen ? closeNav() : openNav();
+      isOpen ? closeNavFn() : openNav();
     });
-    closeMenu?.addEventListener("click", closeNav);
-    navOverlay?.addEventListener("click", closeNav);
-    navMenu?.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeNav(); });
 
-    // Reveal
+    closeMenu?.addEventListener("click", closeNavFn);
+    navOverlay?.addEventListener("click", closeNavFn);
+    navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeNavFn(); });
+
+    // Reveal (single)
     document.addEventListener("DOMContentLoaded", () => {
       const items = document.querySelectorAll(".reveal");
       const reveal = () => {
@@ -450,33 +453,104 @@
       reveal();
     });
 
-    // Popup (basic open/close)
+    // Hide navbar on scroll down, show on scroll up
+     
+  const headerEl = document.getElementById("siteHeader");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScroll = window.scrollY;
+
+      // Always show header near top
+      if (currentScroll < 80) {
+        headerEl.classList.remove("nav-hidden");
+        lastScrollY = currentScroll;
+        return;
+      }
+
+      // Scroll down → hide
+      if (currentScroll > lastScrollY) {
+        headerEl.classList.add("nav-hidden");
+      } 
+      // Scroll up → show
+      else {
+        headerEl.classList.remove("nav-hidden");
+      }
+
+      lastScrollY = currentScroll;
+    },
+    { passive: true }
+  );
+
+    // Popup
     const popup = document.getElementById("popupOverlay");
     const popupClose = document.getElementById("popupClose");
-    const openPopupCTA = document.getElementById("openPopupCTA");
 
     function openPopup() { popup.classList.add("show"); }
-    function closePopup() { popup.classList.remove("show"); }
+    function closePopup() {
+      popup.classList.remove("show");
+      setTimeout(openPopup, 40000);
+    }
+
+    // open popup CTA exists; others optional
+    ["openPopupHero","openPopupCard","openPopupCTA"].forEach(id => {
+      const el = document.getElementById(id);
+      el?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
+    });
 
     setTimeout(openPopup, 3000);
-    openPopupCTA?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
 
-    // SweetAlert submit (demo)
-    document.getElementById("popupForm")?.addEventListener("submit", (e) => {
-      e.preventDefault();
+    // Forms to Google Sheet
+    const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbyQFq7NwMoAzHzD65v_en_JMzV7YNRyg8C6qlmQ8xO3bUC8vrAZkM78NuAdhm6m1YHNEg/exec";
+
+    function showSwal(type, title, text) {
       Swal.fire({
-        icon: "success",
-        title: "Submitted Successfully",
-        text: "We will contact you shortly.",
+        icon: type,
+        title: title,
+        text: text,
         confirmButtonText: "OK",
         confirmButtonColor: "rgb(220 38 38)"
       });
-      e.target.reset();
-      closePopup();
-    });
+    }
 
+    function bindFormToSheet(formId, afterSuccess) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      const statusEl = form.querySelector(".form-status");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = "Sending...";
+
+        const fd = new FormData(form);
+
+        try {
+          const res = await fetch(SHEET_WEBAPP_URL, { method: "POST", body: fd });
+          const data = await res.json().catch(() => ({}));
+
+          if (data.ok) {
+            if (statusEl) statusEl.textContent = "";
+            form.reset();
+            if (typeof afterSuccess === "function") afterSuccess();
+            showSwal("success", "Submitted Successfully", "We will contact you shortly.");
+          } else {
+            if (statusEl) statusEl.textContent = "Something went wrong. Please try again.";
+            showSwal("error", "Submission Failed", "Please try again.");
+          }
+        } catch (err) {
+          if (statusEl) statusEl.textContent = "Network error. Please try again.";
+          showSwal("error", "Network Error", "Please check your internet and try again.");
+        }
+      });
+    }
+
+    bindFormToSheet("popupForm", () => closePopup());
     popup.classList.remove("show");
   </script>
 </body>

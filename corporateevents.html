@@ -74,8 +74,14 @@
     #navMenu.show{transform:translateX(0)}
 
     /* Hide header on scroll (down) */
-    header.nav-hidden { transform: translateY(-110%); }
-    header { transition: transform .35s ease; will-change: transform; }
+    header {
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+header.nav-hidden {
+  transform: translateY(-100%);
+}
 
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
@@ -462,28 +468,37 @@
       reveal();
     });
 
-    // Hide navbar on scroll down, show on scroll up
-    const headerEl = document.getElementById("siteHeader");
-    let lastScrollY = window.scrollY;
-    let ticking = false;
 
-    function onScroll() {
-      const y = window.scrollY;
-      const goingDown = y > lastScrollY;
-      const nearTop = y < 80;
+  const headerEl = document.getElementById("siteHeader");
+  let lastScrollY = window.scrollY;
 
-      if (!nearTop && goingDown) headerEl.classList.add("nav-hidden");
-      else headerEl.classList.remove("nav-hidden");
+  window.addEventListener(
+    "scroll",
+    () => {
+      const currentScroll = window.scrollY;
 
-      lastScrollY = y;
-      ticking = false;
-    }
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(onScroll);
-        ticking = true;
+      // Always show header near top
+      if (currentScroll < 80) {
+        headerEl.classList.remove("nav-hidden");
+        lastScrollY = currentScroll;
+        return;
       }
-    }, { passive: true });
+
+      // Scroll down → hide
+      if (currentScroll > lastScrollY) {
+        headerEl.classList.add("nav-hidden");
+      } 
+      // Scroll up → show
+      else {
+        headerEl.classList.remove("nav-hidden");
+      }
+
+      lastScrollY = currentScroll;
+    },
+    { passive: true }
+  );
+
+
 
     // Popup
     const popup = document.getElementById("popupOverlay");
