@@ -576,75 +576,72 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
           <!-- ===================== LEFT: ART EVENT ===================== -->
-          <div class="reveal">
-            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-              <h3 class="text-xl font-semibold">🎨 Art Events</h3>
-              <a href="../art-competition.html"
-                class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
-                View details <i class="fa-solid fa-arrow-right"></i>
-              </a>
+         <div class="reveal">
+  <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+    <h3 class="text-xl font-semibold">Art Events</h3>
+    <a href="../art-competition.html"
+      class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
+      View details <i class="fa-solid fa-arrow-right"></i>
+    </a>
+  </div>
+
+  <!-- Whole card clickable -->
+  <!-- <a href="../art-competition.html" class="block"> -->
+    <div
+      class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
+      style="background: url('../image/education-online-class-room-student-s-things.jpg') center/cover no-repeat;"
+    >
+      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
+
+      <!-- Status chip (COMPLETED - RED) -->
+      <div class="absolute top-5 left-5 right-5">
+        <div
+          class="rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between
+                 bg-primary/90 border border-white/20 backdrop-blur">
+          <div class="text-white">
+            <div class="text-xs text-white/80 font-medium uppercase tracking-widest">
+              Status
             </div>
-
-            <!-- ✅ Make whole card clickable -->
-            <a href="../art-competition.html" class="block">
-              <div class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
-                style="background: url('../image/education-online-class-room-student-s-things.jpg') center/cover no-repeat;">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-
-                <!-- Countdown chip -->
-                <div class="absolute top-5 left-5 right-5">
-                  <div
-                    class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                    <div class="text-white">
-                      <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
-                      <div class="text-sm font-semibold">
-                        <i class="fa-regular fa-clock mr-2"></i>
-                        <span>Art Competition</span>
-                      </div>
-                    </div>
-
-                    <div class="flex gap-2 text-white" data-countdown data-target="2026-01-31T10:00:00+05:30">
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-dd>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Days</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-hh>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Hrs</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-mm>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Min</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-ss>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Sec</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bottom -->
-                <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
-                  <span class="inline-block px-4 py-1.5 bg-primary text-xs font-medium rounded-full mb-3">31 Jan
-                    2026</span>
-                  <h3 class="font-semibold text-3xl mb-1">Art Competition</h3>
-                  <p class="text-sm text-gray-300">Tap to open full event page</p>
-
-                  <!-- CTA button look (optional) -->
-                  <div
-                    class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
-                    Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </div>
-                </div>
-              </div>
-            </a>
+            <div class="text-sm font-semibold">
+              <i class="fa-solid fa-circle-check mr-2"></i>
+              Completed
+            </div>
           </div>
+
+          <div class="text-white text-sm font-semibold">
+            <i class="fa-regular fa-calendar mr-2"></i>
+            31 Jan 2026
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
+        <span
+          class="inline-block px-4 py-1.5 bg-primary text-xs font-medium rounded-full mb-3">
+          Completed
+        </span>
+
+        <h3 class="font-semibold text-3xl mb-1">Art Competition</h3>
+        <p class="text-sm text-gray-300">
+          Tap to view highlights & event details
+        </p>
+
+        <div
+          class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl
+                 bg-white/10 border border-white/20 text-sm font-semibold">
+          Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
+
 
           <!-- ===================== RIGHT: PET SHOW ===================== -->
           <div class="reveal">
             <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-              <h3 class="text-xl font-semibold">🐶 Pet Shows</h3>
+              <h3 class="text-xl font-semibold">Pet Shows</h3>
               <a href="../pet-carnival-woofville-registration.html"
                 class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
                 View details <i class="fa-solid fa-arrow-right"></i>
