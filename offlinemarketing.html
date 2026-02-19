@@ -94,7 +94,7 @@
 
       <a href="index.html" class="shrink-0">
         <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
-          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+          src="image/sdc1-Picsart-AiImageEnhancer 1.png" alt="Skykeen Events"/>
         <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
           alt="Skykeen Events" />
       </a>
@@ -105,15 +105,13 @@
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- Desktop Nav (anchors) -->
+      <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
         <a class="hover:text-primaryDark" href="services.html">Services</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-
-
       </nav>
     </div>
 
@@ -122,7 +120,7 @@
       class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
     </div>
 
-    <!-- Mobile Menu (anchors) -->
+    <!-- Mobile Menu -->
     <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
@@ -141,12 +139,10 @@
         href="about.html">About</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary"
         href="services.html">Services</a>
- 
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
         href="portfolio.html">Gallery</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
         href="contact.html">Contact</a>
-
     </nav>
   </header>
 
@@ -182,6 +178,12 @@
               <a href="contact.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-primary text-white border-2 border-darkText hover:bg-white hover:text-darkText transition">
                 Plan Offline Campaign <i class="fa-solid fa-arrow-right"></i>
               </a>
+
+              <!-- Optional: opens popup -->
+              <a href="#" id="openPopupHero" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
+                Request Callback <i class="fa-solid fa-phone"></i>
+              </a>
+
               <a href="services.html" class="inline-flex items-center gap-2 py-4 px-7 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
                 Back to Services <i class="fa-solid fa-arrow-left"></i>
               </a>
@@ -224,7 +226,6 @@
 
         <div class="bg-white/80 backdrop-blur rounded-[26px] border border-black/10 p-8 reveal">
           <h3 class="text-2xl font-black">Best For</h3>
-          <!-- ✅ 2 cols on mobile -->
           <div class="mt-5 grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div class="p-5 rounded-2xl border border-black/10 bg-white">
               <i class="fa-solid fa-store text-primary text-2xl"></i>
@@ -251,6 +252,213 @@
       </div>
     </section>
 
+    <!-- ✅ OUR SERVICES (ADDED ALL SERVICES FROM YOUR IMAGE) -->
+    <section class="py-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4 flex-wrap">
+          <div class="reveal">
+            <h2 class="text-3xl font-black">Our Offline Marketing Services</h2>
+            <p class="mt-2 text-black/65 font-semibold leading-7 max-w-3xl">
+              Full on-ground promotion support — from branding to ads to activations.
+            </p>
+          </div>
+
+          <a href="#" id="openPopupCard"
+             class="reveal inline-flex items-center gap-2 py-3 px-5 rounded-xl font-black bg-white/90 border border-black/10 hover:bg-white transition">
+            Get Pricing <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="mt-7 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-taxi text-primary text-xl"></i>
+              <h4 class="font-black">Auto Branding</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Back side, top & both sides branding.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-train-subway text-primary text-xl"></i>
+              <h4 class="font-black">Metro Advertising</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">High visibility across metro audience.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-bicycle text-primary text-xl"></i>
+              <h4 class="font-black">Tricycle Advertising</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Local area promotion & branding.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-bus text-primary text-xl"></i>
+              <h4 class="font-black">Bus Advertising</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Moving ads with strong reach.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-person-shelter text-primary text-xl"></i>
+              <h4 class="font-black">Bus Shelters</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Static visibility at key stops.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-truck text-primary text-xl"></i>
+              <h4 class="font-black">Mobile Vans Advertising</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Route-based promotions & announcements.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-sign-hanging text-primary text-xl"></i>
+              <h4 class="font-black">Hoardings</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Outdoor boards for maximum impact.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-person-walking text-primary text-xl"></i>
+              <h4 class="font-black">Look Walkers</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Walking promos with placards.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-panorama text-primary text-xl"></i>
+              <h4 class="font-black">Roll Up Standees</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Ideal for events, malls & kiosks.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-tv text-primary text-xl"></i>
+              <h4 class="font-black">TV Channels Advertising</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Regional + targeted TV promotions.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-radio text-primary text-xl"></i>
+              <h4 class="font-black">Radio Promotions</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Jingles, RJ mentions & ads.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-shop text-primary text-xl"></i>
+              <h4 class="font-black">Mall Branding</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Promotions inside high-footfall malls.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-message text-primary text-xl"></i>
+              <h4 class="font-black">Bulk SMS / WhatsApp</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">SMS + WhatsApp campaigns.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-phone-volume text-primary text-xl"></i>
+              <h4 class="font-black">Voice Call Campaign</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Bulk calls for mass outreach.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-microphone-lines text-primary text-xl"></i>
+              <h4 class="font-black">Voice Message Campaign</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Recorded messages to target audience.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-print text-primary text-xl"></i>
+              <h4 class="font-black">Printing (Solvent)</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">High-quality outdoor printing.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-print text-primary text-xl"></i>
+              <h4 class="font-black">Printing (Ecosolvent)</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Eco-friendly printing solutions.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-lightbulb text-primary text-xl"></i>
+              <h4 class="font-black">Signage - LED</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">LED boards & signages.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-ban text-primary text-xl"></i>
+              <h4 class="font-black">No Parking Boards</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Custom boards for sites & businesses.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-table text-primary text-xl"></i>
+              <h4 class="font-black">Promo Tables</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Counters for lead capture & display.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-campground text-primary text-xl"></i>
+              <h4 class="font-black">Canopy Tents</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Stalls & outdoor setup support.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-building-user text-primary text-xl"></i>
+              <h4 class="font-black">Apartment Activities</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Society stalls, engagement & outreach.</p>
+          </div>
+
+          <div class="reveal bg-white/80 backdrop-blur rounded-[22px] border border-black/10 p-5">
+            <div class="flex items-center gap-3">
+              <i class="fa-solid fa-candy-cane text-primary text-xl"></i>
+              <h4 class="font-black">Lollipop Promotions</h4>
+            </div>
+            <p class="mt-2 text-sm text-black/65 font-semibold leading-6">Handouts + branding for mass reach.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- Process -->
     <section class="py-12">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -259,7 +467,6 @@
           Clear steps for smooth offline execution.
         </p>
 
-        <!-- ✅ 2 cols on mobile -->
         <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5">
           <div class="bg-white/80 backdrop-blur p-6 rounded-[22px] border border-black/10 reveal">
             <div class="w-11 h-11 rounded-2xl bg-primary text-white grid place-items-center font-black">1</div>
@@ -307,7 +514,7 @@
     </section>
   </main>
 
-  <!-- ✅ UPDATED FOOTER (fix image path + consistent) -->
+  <!-- FOOTER -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
@@ -428,7 +635,7 @@
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // ✅ Mobile nav (fixed: no hamburger hide + .show classes)
+    // Mobile nav
     const hamburger = document.getElementById("hamburgerBtn");
     const navMenu = document.getElementById("navMenu");
     const navOverlay = document.getElementById("navOverlay");
@@ -458,7 +665,7 @@
     navMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeNavFn));
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeNavFn(); });
 
-    // Reveal (single)
+    // Reveal
     document.addEventListener("DOMContentLoaded", () => {
       const items = document.querySelectorAll(".reveal");
       const reveal = () => {
@@ -472,36 +679,28 @@
       reveal();
     });
 
-  
-  const headerEl = document.getElementById("siteHeader");
-  let lastScrollY = window.scrollY;
+    // Hide header on scroll
+    const headerEl = document.getElementById("siteHeader");
+    let lastScrollY = window.scrollY;
 
-  window.addEventListener(
-    "scroll",
-    () => {
-      const currentScroll = window.scrollY;
+    window.addEventListener(
+      "scroll",
+      () => {
+        const currentScroll = window.scrollY;
 
-      // Always show header near top
-      if (currentScroll < 80) {
-        headerEl.classList.remove("nav-hidden");
+        if (currentScroll < 80) {
+          headerEl.classList.remove("nav-hidden");
+          lastScrollY = currentScroll;
+          return;
+        }
+
+        if (currentScroll > lastScrollY) headerEl.classList.add("nav-hidden");
+        else headerEl.classList.remove("nav-hidden");
+
         lastScrollY = currentScroll;
-        return;
-      }
-
-      // Scroll down → hide
-      if (currentScroll > lastScrollY) {
-        headerEl.classList.add("nav-hidden");
-      } 
-      // Scroll up → show
-      else {
-        headerEl.classList.remove("nav-hidden");
-      }
-
-      lastScrollY = currentScroll;
-    },
-    { passive: true }
-  );
-
+      },
+      { passive: true }
+    );
 
     // Popup
     const popup = document.getElementById("popupOverlay");
