@@ -21,12 +21,13 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <!-- Google Font (Single font style) -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-  <!-- SweetAlert2 (swal) -->
+  <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <style>
@@ -42,11 +43,9 @@
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
 
-    /* section offset for fixed header */
     section {
       scroll-margin-top: 140px;
     }
-
 
     /* Reveal */
     .reveal {
@@ -75,6 +74,11 @@
     .delay-4 {
       transition-delay: .40s;
     }
+
+    .font-reckless {
+      font-family: 'Reckless', 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
 
     /* Hide header on scroll (down) */
     header.nav-hidden {
@@ -107,66 +111,7 @@
       font-size: 28px;
     }
 
-    /* Countdown chips */
-    .count-chip {
-      background: rgba(255, 255, 255, .10);
-      border: 1px solid rgba(255, 255, 255, .18);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Small button spinner */
-    .btn-spinner {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-    }
-
-    /* ===== Animated shade background (subtle) ===== */
-    .shade-bg {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(220, 38, 38, 0.10), transparent 55%),
-        radial-gradient(900px 600px at 90% 20%, rgba(59, 130, 246, 0.10), transparent 55%),
-        radial-gradient(900px 700px at 50% 100%, rgba(14, 165, 233, 0.08), transparent 60%),
-        #f6f7fb;
-    }
-
-    .shade-bg::before,
-    .shade-bg::after {
-      content: "";
-      position: absolute;
-      inset: -30%;
-      z-index: -1;
-      background: conic-gradient(from 180deg at 50% 50%,
-          rgba(220, 38, 38, 0.14),
-          rgba(59, 130, 246, 0.12),
-          rgba(14, 165, 233, 0.10),
-          rgba(220, 38, 38, 0.14));
-      filter: blur(44px);
-      opacity: .55;
-      animation: spinShade 14s linear infinite;
-    }
-
-    .shade-bg::after {
-      animation-duration: 22s;
-      opacity: .35;
-    }
-
-    @keyframes spinShade {
-      0% {
-        transform: rotate(0deg) scale(1.05);
-      }
-
-      100% {
-        transform: rotate(360deg) scale(1.05);
-      }
-    }
-
-    /* ===== Gallery slider ===== */
+    /* Gallery slider */
     .gallery-wrap {
       position: relative;
     }
@@ -253,6 +198,15 @@
         right: 6px;
       }
     }
+
+    /* Small button spinner */
+    .btn-spinner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+    }
   </style>
 
   <script>
@@ -279,8 +233,8 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
 
       <a href="index.html" class="shrink-0">
-        <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
-          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+        <img class="hidden md:block h-16 md:h-20 w-auto object-contain" src="image/sdc1-Picsart-AiImageEnhancer 1.png"
+          alt="Skykeen Events" />
         <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
           alt="Skykeen Events" />
       </a>
@@ -291,16 +245,12 @@
         <i class="fa-solid fa-bars"></i>
       </button>
 
-      <!-- Desktop Nav (anchors) -->
       <nav class="hidden md:flex items-center gap-6 font-semibold">
         <a class="hover:text-primaryDark" href="index.html">Home</a>
         <a class="hover:text-primaryDark" href="about.html">About</a>
         <a class="hover:text-primaryDark" href="services.html">Services</a>
-        <a class="hover:text-primaryDark" href="event.html">Events</a>
         <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
         <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-
-
       </nav>
     </div>
 
@@ -309,7 +259,7 @@
       class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
     </div>
 
-    <!-- Mobile Menu (anchors) -->
+    <!-- Mobile Menu -->
     <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
              shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
              flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
@@ -328,13 +278,11 @@
         href="about.html">About</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
         href="services.html">Services</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="event.html">Events</a>
+      
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
         href="portfolio.html">Gallery</a>
       <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
         href="contact.html">Contact</a>
-
     </nav>
   </header>
 
@@ -343,130 +291,94 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <main id="home">
+  <main>
 
-    <!-- HERO -->
-    <section class="relative shade-bg" id="home">
-      <div class="max-w-6xl mx-auto px-3 py-10 md:py-16">
-        <div class="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 items-center">
+    <!-- ✅ HERO (Balanced Padding + Reduced Font + Final) -->
+    <!-- ✅ HERO (Centered Content + Clean + Removed Extras) -->
+    <section id="home" class="relative min-h-[88vh] lg:min-h-screen bg-[#070707] overflow-hidden flex items-center">
 
-          <!-- Left -->
-          <div class="reveal active">
-            <p class="text-xs font-semibold tracking-widest text-primary uppercase">
-              Skykeen Events • Bengaluru
-            </p>
+      <!-- Background -->
+      <div class="absolute inset-0 z-0">
+        <!-- Optional image fallback -->
+        <img src="image/herosection.jpeg" alt="Skykeen Events Hero"
+          class="absolute inset-0 w-full h-full object-cover opacity-45" />
 
-            <h1 class="mt-3 text-[clamp(2.05rem,4.3vw,3.4rem)] font-bold leading-[1.08] text-darkText">
-              Find the best <br />
-              <span class="text-primary">event solution</span> together.
-            </h1>
+        <!-- Video overlay -->
+        <video autoplay muted loop playsinline preload="metadata"
+          class="absolute inset-0 w-full h-full object-cover opacity-45">
+          <source src="image/Video.mp4" type="video/mp4" />
+        </video>
 
-            <p class="mt-4 text-black/60 max-w-[520px] leading-7">
-              We don’t just plan events — we build experiences. Flea Markets, Brand Activations, Corporate Events &
-              Expos
-              executed with structure and strong on-ground support.
-            </p>
+        <!-- Dark gradients -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20"></div>
+      </div>
 
-            <div class="mt-6 flex flex-wrap gap-4">
-              <a href="#contact"
-                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white bg-primary hover:bg-primaryDark transition shadow-[0_14px_28px_rgba(220,38,38,0.20)]">
-                Get Started <i class="fa-solid fa-arrow-right"></i>
-              </a>
+      <!-- Soft glow accents (minimal) -->
+      <div class="absolute -top-24 -left-24 w-[320px] h-[320px] bg-red-600/18 blur-[120px] rounded-full"></div>
+      <div class="absolute top-24 -right-24 w-[420px] h-[420px] bg-orange-400/10 blur-[140px] rounded-full"></div>
 
-              <a href="#gallery"
-                class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-darkText bg-white border border-gray-200 hover:border-primary hover:text-primary transition">
-                Explore Works <i class="fa-regular fa-images"></i>
-              </a>
-            </div>
+      <!-- Content (center aligned) -->
+      <div class="relative z-10 w-full">
+        <div class="max-w-3xl mx-auto px-6 text-center">
 
-            <!-- Top 4 chips -->
-            <div class="mt-8">
-              <p class="text-sm font-semibold text-black/70 mb-3">Top Services</p>
+          <!-- Badge (use h6 for semantic hierarchy, bigger) -->
+          <h6 class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full 
+             bg-white/5 border border-white/10 backdrop-blur-md 
+             mb-6 mx-auto text-white/80 font-bold 
+             tracking-[0.22em] uppercase text-xs md:text-sm">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+            </span>
+            Skykeen Events • Bengaluru
+          </h6>
 
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
-                  <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary grid place-items-center">
-                    <i class="fa-solid fa-store"></i>
-                  </span>
-                  <p class="text-xs font-semibold leading-tight">Flea Marketing</p>
-                </div>
+          <!-- Main Heading (bigger & bolder) -->
+          <h1 class="text-white font-black tracking-tight leading-[1.05]
+             text-[clamp(2.6rem,6vw,4.5rem)]">
+            Events that feel
+            <span class="block text-transparent bg-clip-text 
+               bg-gradient-to-r from-red-600 via-orange-400 to-yellow-400">
+              effortless.
+            </span>
+          </h1>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
-                  <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary grid place-items-center">
-                    <i class="fa-solid fa-bullhorn"></i>
-                  </span>
-                  <p class="text-xs font-semibold leading-tight">Brand Activation</p>
-                </div>
+          <!-- Description -->
+          <p class="mt-6 text-gray-300 text-base md:text-lg leading-relaxed max-w-xl mx-auto">
+            We plan, manage, and execute
+            <span class="text-white font-semibold">Flea Markets</span>,
+            <span class="text-white font-semibold">Brand Activations</span>, and
+            <span class="text-white font-semibold">Corporate Events</span>
+            with clean operations and high crowd energy.
+          </p>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
-                  <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary grid place-items-center">
-                    <i class="fa-solid fa-briefcase"></i>
-                  </span>
-                  <p class="text-xs font-semibold leading-tight">Corporate Events</p>
-                </div>
+          <!-- CTAs -->
+          <div class="mt-10 flex flex-wrap items-center justify-center gap-6">
+            <a href="#contact" class="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-2xl
+               font-semibold text-base text-white bg-red-600
+               hover:bg-red-700 transition
+               shadow-[0_20px_45px_rgba(220,38,38,0.35)]
+               hover:-translate-y-0.5">
+              Start Your Project →
+            </a>
 
-                <div class="bg-white border border-gray-200 rounded-xl p-3 flex items-center gap-2 shadow-sm">
-                  <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary grid place-items-center">
-                    <i class="fa-solid fa-building-columns"></i>
-                  </span>
-                  <p class="text-xs font-semibold leading-tight">Expos & Exhibitions</p>
-                </div>
-              </div>
-
-              <div class="mt-4">
-                <a href="#services"
-                  class="inline-flex items-center gap-2 font-semibold text-primary hover:text-primaryDark">
-                  View all services <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <p class="text-xs text-black/50 mt-1">
-                  (Offline Marketing • Competitions included)
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right -->
-          <div class="relative reveal delay-1">
-            <div class="absolute -top-8 right-2 w-[420px] h-[420px] rounded-full bg-primary/10 blur-[1px]"></div>
-            <div class="absolute top-10 right-10 w-[330px] h-[330px] rounded-full bg-sky-200/40"></div>
-
-            <div class="relative z-10 flex justify-center lg:justify-end">
-              <div class="relative">
-                <img src="image/herosection.jpeg" alt="Skykeen Events"
-                  class="w-[320px] md:w-[380px] h-[420px] md:h-[480px] object-cover rounded-[28px] shadow-[0_20px_60px_rgba(17,24,39,0.18)]" />
-
-                <div class="absolute -left-6 top-10 bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <span class="w-10 h-10 rounded-xl bg-primary/10 text-primary grid place-items-center">
-                      <i class="fa-solid fa-award"></i>
-                    </span>
-                    <div>
-                      <p class="text-xs font-semibold text-black/70">20K+</p>
-                      <p class="text-[11px] font-medium text-black/50">Happy Attendees</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  class="absolute -right-6 bottom-10 bg-white border border-gray-200 shadow-sm rounded-2xl px-4 py-3">
-                  <div class="flex items-center gap-3">
-                    <span class="w-10 h-10 rounded-xl bg-primary/10 text-primary grid place-items-center">
-                      <i class="fa-solid fa-people-group"></i>
-                    </span>
-                    <div>
-                      <p class="text-xs font-semibold text-black/70">On-ground</p>
-                      <p class="text-[11px] font-medium text-black/50">Full Team Support</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <a href="https://www.youtube.com/@SkykeenEvents" target="_blank"
+              class="inline-flex items-center gap-4 text-white font-semibold text-base">
+              <span class="w-14 h-14 rounded-full border border-white/20
+                 grid place-items-center hover:bg-white/10 transition">
+                ▶
+              </span>
+              Watch Showreel
+            </a>
           </div>
 
         </div>
       </div>
+
+
     </section>
+
+    <div class="h-14 md:h-20 bg-[#fafafa]"></div>
 
 
     <!-- SERVICES -->
@@ -481,10 +393,10 @@
             Clear planning, smooth operations, and engagement-focused execution.
           </p>
         </div>
-<a href="flea-marketing.html">
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal">
+          <a href="flea-marketing.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-store"></i>
             </div>
@@ -492,12 +404,10 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Vendor onboarding, stall layout, crowd flow, and end-to-end management.
             </p>
-          </div>
           </a>
 
-          <a href="brand-activation.html">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
+          <a href="brand-activation.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1 block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-bullhorn"></i>
             </div>
@@ -505,12 +415,10 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Interactive stalls, sampling, games, and engagement that creates recall.
             </p>
-          </div>
           </a>
 
-<a href="offlinemarketing.html">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
+          <a href="offlinemarketing.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2 block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-bullseye"></i>
             </div>
@@ -518,12 +426,10 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Street campaigns, promo drives, and local outreach for visibility.
             </p>
-          </div>
           </a>
 
-          <a href="corporateevents.html">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1">
+          <a href="corporateevents.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-1 block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-briefcase"></i>
             </div>
@@ -531,13 +437,10 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Launches, annual meets, team events, and internal experiences.
             </p>
-          </div>
           </a>
 
-
-          <a href="expoexhibitions.html">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2">
+          <a href="expoexhibitions.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-2 block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-building-columns"></i>
             </div>
@@ -545,12 +448,10 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Booth planning, branding, stage management, and on-ground support.
             </p>
-          </div>
           </a>
 
-          <a href="competitions.html">
-          <div
-            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-3">
+          <a href="competitions.html"
+            class="bg-white border border-gray-200 rounded-2xl p-7 shadow-sm hover:shadow-soft hover:-translate-y-1 transition reveal delay-3 block">
             <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary grid place-items-center text-lg">
               <i class="fa-solid fa-trophy"></i>
             </div>
@@ -558,9 +459,8 @@
             <p class="mt-2 text-black/60 leading-7 text-sm">
               Registrations, judges, stage flow, prizes, and audience engagement.
             </p>
-          </div>
+          </a>
         </div>
-        </a>
 
         <div class="mt-10 text-center reveal">
           <a href="#contact"
@@ -570,156 +470,6 @@
         </div>
       </div>
     </section>
-
-    <!-- EVENTS (Proper) -->
-    <!-- <section class="py-16 bg-white" id="events">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="text-center mb-10 reveal">
-          <span class="inline-block text-[13px] font-semibold text-primary tracking-[.3px] mb-2">Events</span>
-          <h2 class="text-[clamp(28px,3.2vw,40px)] font-bold leading-tight">
-            Upcoming <span class="text-primary">events</span>
-          </h2>
-          <p class="mt-2 text-black/60 max-w-[720px] mx-auto">
-            Easy sections for quick viewing.
-          </p>
-        </div>
-
-        <!-- ✅ ONE LEFT + ONE RIGHT (Proper Layout) -->
-        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-8"> -->
-
-          <!-- ===================== LEFT: ART EVENT ===================== -->
-         <!-- <div class="reveal">
-  <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-    <h3 class="text-xl font-semibold">Art Events</h3>
-    <a href=""
-      class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
-      View details <i class="fa-solid fa-arrow-right"></i>
-    </a>
-  </div> -->
-
-  <!-- Whole card clickable -->
-  <!-- <a href="../art-competition.html" class="block"> -->
-    <!-- <div
-      class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
-      style="background: url('../image/education-online-class-room-student-s-things.jpg') center/cover no-repeat;"
-    >
-      <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div> -->
-
-      <!-- Status chip (COMPLETED - RED) -->
-      <!-- <div class="absolute top-5 left-5 right-5">
-        <div
-          class="rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between
-                 bg-primary/90 border border-white/20 backdrop-blur">
-          <div class="text-white">
-            <div class="text-xs text-white/80 font-medium uppercase tracking-widest">
-              Status
-            </div>
-            <div class="text-sm font-semibold">
-              <i class="fa-solid fa-circle-check mr-2"></i>
-              Completed
-            </div>
-          </div>
-
-          <div class="text-white text-sm font-semibold">
-            <i class="fa-regular fa-calendar mr-2"></i>
-            31 Jan 2026
-          </div>
-        </div>
-      </div> -->
-
-      <!-- Bottom -->
-      <!-- <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
-        <span
-          class="inline-block px-4 py-1.5 bg-primary text-xs font-medium rounded-full mb-3">
-          Completed
-        </span>
-
-        <h3 class="font-semibold text-3xl mb-1">Art Competition</h3>
-        <p class="text-sm text-gray-300">
-          Tap to view highlights & event details
-        </p>
-
-        <div
-          class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                 bg-white/10 border border-white/20 text-sm font-semibold">
-          Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </div>
-      </div>
-    </div>
-  </a>
-</div> -->
-
-
-          <!-- ===================== RIGHT: PET SHOW ===================== -->
-          <!-- <div class="reveal">
-            <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-              <h3 class="text-xl font-semibold">Pet Shows</h3>
-              <a href="../pet-carnival-woofville-registration.html"
-                class="font-semibold text-primary hover:text-primaryDark inline-flex items-center gap-2">
-                View details <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div> -->
-
-            <!-- ✅ Make whole card clickable -->
-            <!-- <a href="../pet-carnival-woofville-registration.html" class="block">
-              <div class="relative rounded-2xl overflow-hidden border border-gray-200 cursor-pointer h-[420px] group"
-                style="background: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent"></div>
-
-                <!-- Countdown chip -->
-                <!-- <div class="absolute top-5 left-5 right-5">
-                  <div
-                    class="count-chip rounded-2xl px-4 py-3 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                    <div class="text-white">
-                      <div class="text-xs text-white/70 font-medium uppercase tracking-widest">Starts in</div>
-                      <div class="text-sm font-semibold">
-                        <i class="fa-regular fa-clock mr-2"></i>
-                        <span>Pet Show</span>
-                      </div>
-                    </div> --> -->
-
-                    <!-- ✅ UPDATED DATE: March 4, 2026 -->
-                    <!-- <div class="flex gap-2 text-white" data-countdown data-target="2026-03-04T10:00:00+05:30">
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-dd>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Days</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-hh>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Hrs</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-mm>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Min</div>
-                      </div>
-                      <div class="px-3 py-2 rounded-xl bg-white/10 border border-white/15 text-center min-w-[64px]">
-                        <div class="text-2xl font-bold" data-ss>00</div>
-                        <div class="text-[11px] text-white/70 font-medium">Sec</div>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-
-                <!-- Bottom -->
-                <!-- <div class="absolute left-0 right-0 bottom-0 p-8 text-white">
-                  <span class="inline-block px-4 py-1.5 bg-white text-black text-xs font-medium rounded-full mb-3">04
-                    Mar 2026</span>
-                  <h3 class="font-semibold text-3xl mb-1">Pet Show</h3>
-                  <p class="text-sm text-gray-300">Tap to open registration page</p>
-
-                  <div
-                    class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/10 border border-white/15 text-sm font-semibold">
-                    Open Event <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                  </div>
-                </div>
-              </div>
-            </a> -->
-          <!-- </div>
-
-        </div>
-      </div>
-    </section> -->
-
 
     <!-- GALLERY -->
     <section class="py-16 bg-gray-50" id="gallery">
@@ -742,7 +492,7 @@
               <div class="gallery-item"><img src="image/img1.jpeg" alt="Gallery 1"></div>
               <div class="gallery-item"><img src="image/img2.jpeg" alt="Gallery 2"></div>
               <div class="gallery-item"><img src="image/img3.jpeg" alt="Gallery 3"></div>
-              <div class="gallery-item"><img src="../image/flem.jpeg" alt="Gallery 4"></div>
+              <div class="gallery-item"><img src="image/flem.jpeg" alt="Gallery 4"></div>
               <div class="gallery-item"><img src="image/herosection.jpeg" alt="Gallery 5"></div>
               <div class="gallery-item"><img src="image/workshop.jpg" alt="Gallery 6"></div>
               <div class="gallery-item"><img src="image/brandcompetation.jpg" alt="Gallery 7"></div>
@@ -781,8 +531,8 @@
               activation was a big success!”</p>
             <div class="mt-5 flex gap-3 items-center">
               <div
-                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">A
-              </div>
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">
+                A</div>
               <div>
                 <strong class="block text-sm font-semibold">Ananya</strong>
                 <span class="text-sm text-black/60">Brand Manager</span>
@@ -796,8 +546,8 @@
               and on time.”</p>
             <div class="mt-5 flex gap-3 items-center">
               <div
-                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">R
-              </div>
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">
+                R</div>
               <div>
                 <strong class="block text-sm font-semibold">Rohit</strong>
                 <span class="text-sm text-black/60">Community Lead</span>
@@ -811,8 +561,8 @@
               and amazing energy.”</p>
             <div class="mt-5 flex gap-3 items-center">
               <div
-                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">S
-              </div>
+                class="w-11 h-11 rounded-2xl border border-gray-200 grid place-items-center font-semibold bg-black/5">
+                S</div>
               <div>
                 <strong class="block text-sm font-semibold">Swathi</strong>
                 <span class="text-sm text-black/60">Business Owner</span>
@@ -823,7 +573,7 @@
       </div>
     </section>
 
-    <!-- CONTACT (fixed spacing + same size) -->
+    <!-- CONTACT -->
     <section class="py-16 bg-gray-50" id="contact">
       <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
         <div class="reveal">
@@ -947,12 +697,10 @@
 
   <!-- FOOTER -->
   <footer class="bg-darkText text-white/75 border-t border-white/10">
-    <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
     <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
-      <!-- Brand -->
       <div>
-        <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png"
+        <img class="h-12 md:h-14 w-auto object-contain mb-3" src="image/sdc1-Picsart-AiImageEnhancer 2.png"
           alt="Skykeen Events" />
         <p class="text-white/65 leading-7">
           Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
@@ -978,20 +726,17 @@
         </div>
       </div>
 
-      <!-- Quick Links -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
         <ul class="grid gap-3">
           <li><a class="hover:text-white transition" href="index.html">Home</a></li>
           <li><a class="hover:text-white transition" href="about.html">About</a></li>
           <li><a class="hover:text-white transition" href="services.html">Services</a></li>
-          <li><a class="hover:text-white transition" href="event.html">Events</a></li>
           <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
           <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
         </ul>
       </div>
 
-      <!-- ✅ Services Column (New) -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
         <ul class="grid gap-3 text-white/70">
@@ -1004,7 +749,6 @@
         </ul>
       </div>
 
-      <!-- Contact -->
       <div>
         <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
         <ul class="grid gap-3 text-white/70">
@@ -1013,7 +757,6 @@
           <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
         </ul>
       </div>
-
     </div>
 
     <div
@@ -1026,10 +769,10 @@
     </div>
   </footer>
 
-
   <!-- POPUP -->
+  <!-- ✅ z-index bumped so it always appears above header -->
   <div id="popupOverlay"
-    class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
+    class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[10050]">
     <div
       class="bg-white w-[90%] max-w-[420px] rounded-[26px] p-7 border border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
       id="popupCard">
@@ -1121,25 +864,7 @@
     navOverlay.addEventListener("click", closeNavFn);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeNavFn(); });
 
-    // Close menu on link click + smooth scroll with offset (works perfect on mobile)
-    navMenu.querySelectorAll("a").forEach(a => {
-      a.addEventListener("click", (e) => {
-        const href = a.getAttribute("href") || "";
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          closeNavFn();
-          const target = document.querySelector(href);
-          if (target) {
-            const y = target.getBoundingClientRect().top + window.scrollY - 130;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        } else {
-          closeNavFn();
-        }
-      });
-    });
-
-    // Desktop anchor click offset (prevents header overlap)
+    // Smooth scroll with offset (desktop + mobile)
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener("click", (e) => {
         const href = a.getAttribute("href");
@@ -1189,12 +914,21 @@
       reveal();
     });
 
+    // ✅ Showreel button (quick placeholder)
+    const showreelBtn = document.getElementById("showreelBtn");
+    showreelBtn?.addEventListener("click", () => {
+      Swal.fire({
+        icon: "info",
+        title: "Showreel",
+        text: "Add your showreel link/video here (YouTube/Drive).",
+        confirmButtonColor: "rgb(220 38 38)"
+      });
+    });
+
     // Popup logic
     const popup = document.getElementById("popupOverlay");
     const popupCard = document.getElementById("popupCard");
     const popupClose = document.getElementById("popupClose");
-    const openPopupDesktop = document.getElementById("openPopupDesktop");
-    const openPopupMobile = document.getElementById("openPopupMobile");
 
     function openPopup() {
       popup.classList.remove("invisible", "opacity-0");
@@ -1212,51 +946,9 @@
     }
 
     setTimeout(openPopup, 3000);
-    openPopupDesktop?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
-    openPopupMobile?.addEventListener("click", (e) => { e.preventDefault(); openPopup(); });
     popupClose?.addEventListener("click", closePopup);
     popup?.addEventListener("click", (e) => { if (e.target === popup) closePopup(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePopup(); });
-
-    // Countdown
-    function pad2(n) { return String(n).padStart(2, "0"); }
-    function startCountdown(el) {
-      const targetStr = el.getAttribute("data-target");
-      const target = new Date(targetStr);
-
-      const dd = el.querySelector("[data-dd]");
-      const hh = el.querySelector("[data-hh]");
-      const mm = el.querySelector("[data-mm]");
-      const ss = el.querySelector("[data-ss]");
-
-      const tick = () => {
-        const now = new Date();
-        let diff = target - now;
-
-        if (diff <= 0) {
-          dd.textContent = "00"; hh.textContent = "00"; mm.textContent = "00"; ss.textContent = "00";
-          el.classList.add("opacity-70");
-          return;
-        }
-
-        const totalSeconds = Math.floor(diff / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const mins = Math.floor((totalSeconds % 3600) / 60);
-        const secs = totalSeconds % 60;
-
-        dd.textContent = pad2(days);
-        hh.textContent = pad2(hours);
-        mm.textContent = pad2(mins);
-        ss.textContent = pad2(secs);
-      };
-
-      tick();
-      return setInterval(tick, 1000);
-    }
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("[data-countdown]").forEach(startCountdown);
-    });
 
     // Gallery slider (auto + arrows)
     const track = document.getElementById("galleryTrack");
