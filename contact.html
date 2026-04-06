@@ -37,25 +37,42 @@
     header.nav-hidden { transform: translateY(-110%); }
     header { transition: transform .35s ease; will-change: transform; }
 
-    /* WhatsApp floating */
-    .whatsapp-float{
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 4px 10px rgba(17,24,39,0.30),
-        0 0 0 3px rgba(220,38,38,0.35);
-    }
-    .whatsapp-float i{ color:#fff; font-size:28px; }
+      /* WhatsApp floating */
+  .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  background: #094507;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  /* Premium shadow */
+  box-shadow: 
+    0 10px 25px rgba(9, 69, 7, 0.35),
+    0 0 0 4px rgba(9, 69, 7, 0.20);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  background: #063305;
+  box-shadow: 
+    0 15px 35px rgba(9, 69, 7, 0.45),
+    0 0 0 6px rgba(9, 69, 7, 0.25);
+}
+
+/* Icon */
+.whatsapp-float i {
+  color: #fff;
+  font-size: 30px;
+}
     /* Popup */
     #popupOverlay{ opacity:0; visibility:hidden; transition: .25s ease; }
     #popupOverlay.show{ opacity:1; visibility:visible; }
@@ -83,198 +100,258 @@
 
 <body class="bg-white text-darkText" style="padding-top: var(--header-h);">
 
-  <!-- HEADER -->
-  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
-    style="height: var(--header-h);">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
+<!-- HEADER -->
+<header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
+  style="height: var(--header-h);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
 
-      <a href="index.html" class="shrink-0">
-        <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
-          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
-        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
-          alt="Skykeen Events" />
-      </a>
+    <a href="index.html" class="shrink-0">
+      <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
+        src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+      <img class="block md:hidden h-16 w-auto object-contain"
+        src="image/mobile menu logo.jpeg"
+        alt="Skykeen Events" />
+    </a>
 
-      <button id="hamburgerBtn"
-        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-        aria-label="Open menu" type="button">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <button id="hamburgerBtn"
+      class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl hover:border-[#094507] hover:text-[#094507] transition-all duration-300"
+      aria-label="Open menu" type="button">
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-      <!-- Desktop Nav (anchors) -->
-      <nav class="hidden md:flex items-center gap-6 font-semibold">
-        <a class="hover:text-primaryDark" href="index.html">Home</a>
-        <a class="hover:text-primaryDark" href="about.html">About</a>
-        <a class="hover:text-primaryDark" href="services.html">Services</a>
-        <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
-        <a class="hover:text-primaryDark" href="contact.html">Contact</a>
-
-
-      </nav>
-    </div>
-
-    <!-- Mobile Overlay -->
-    <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
-    </div>
-
-    <!-- Mobile Menu (anchors) -->
-    <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
-             shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
-             flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
-             translate-x-full transition-transform duration-500 ease-in-out
-             md:hidden z-[10001] will-change-transform">
-
-      <button id="closeMenu"
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
-        aria-label="Close menu" type="button">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="index.html">Home</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="services.html">Services</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="portfolio.html">Gallery</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary"
-        href="contact.html">Contact</a>
-
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 font-semibold">
+      <a class="hover:text-[#094507] transition-all duration-300" href="index.html">Home</a>
+      <a class="hover:text-[#094507] transition-all duration-300" href="about.html">About</a>
+      <a class="hover:text-[#094507] transition-all duration-300" href="services.html">Services</a>
+      <a class="hover:text-[#094507] transition-all duration-300" href="portfolio.html">Gallery</a>
+      <a class="text-[#094507] font-bold" href="contact.html">Contact</a>
     </nav>
-  </header>
+  </div>
 
-  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+  <!-- Mobile Overlay -->
+  <div id="navOverlay"
+    class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+           shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
+           flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
+           translate-x-full transition-transform duration-500 ease-in-out
+           md:hidden z-[10001] will-change-transform">
+
+    <button id="closeMenu"
+      class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center hover:border-[#094507] hover:text-[#094507] transition-all duration-300"
+      aria-label="Close menu" type="button">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition-all duration-300"
+      href="index.html">Home</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition-all duration-300"
+      href="about.html">About</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition-all duration-300"
+      href="services.html">Services</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition-all duration-300"
+      href="portfolio.html">Gallery</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold bg-[#094507]/10 text-[#094507]"
+      href="contact.html">Contact</a>
+
+  </nav>
+</header>
+
+  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer"
+    aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
-    <section class="relative py-16 text-white text-center overflow-hidden"
-      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20" style="background:
-          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
-          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
-      </div>
+<section class="relative py-16 text-white text-center overflow-hidden"
+  style="background: linear-gradient(135deg, #094507, #063305);">
 
-      <div class="relative max-w-6xl mx-auto px-3 reveal active">
-        <h1 class="text-4xl md:text-5xl font-black">Contact Us</h1>
-        <p class="mt-3 text-white/90 font-bold">
-          Home <span class="opacity-80 mx-1">/</span> Contact Us
-        </p>
-      </div>
-    </section>
+  <!-- Glow overlay -->
+  <div class="absolute inset-0 opacity-20" style="background:
+      radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.18), transparent 60%),
+      radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.22), transparent 55%);">
+  </div>
 
-    <section class="py-14 bg-slate-50">
-      <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+  <!-- Soft green glow accents -->
+  <div class="absolute -top-20 -left-20 w-[300px] h-[300px] bg-[#094507]/30 blur-[120px] rounded-full"></div>
+  <div class="absolute top-10 -right-20 w-[350px] h-[350px] bg-[#22a11d]/20 blur-[140px] rounded-full"></div>
 
-        <div class="reveal">
-          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Get in Touch</span>
-          <h2 class="text-[40px] md:text-[48px] font-black leading-tight">
-            Talk to <span class="text-primary">Our Team</span>
-          </h2>
-          <p class="mt-3 text-black/65 font-semibold leading-7">
-            Workshops • Competitions • Brand Activation • Flea Marketing
-          </p>
+  <!-- Content -->
+  <div class="relative max-w-6xl mx-auto px-3 reveal active">
+    <h1 class="text-4xl md:text-5xl font-black">Contact Us</h1>
+    <p class="mt-3 text-white/90 font-semibold">
+      Home <span class="opacity-70 mx-1">/</span> Contact Us
+    </p>
+  </div>
+</section>
 
-          <div class="mt-8 grid gap-5">
-            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
-                <i class="fa-solid fa-envelope"></i>
-              </div>
-              <div>
-                <span class="block text-xs text-black/60 font-bold">Email</span>
-                <p class="font-black text-lg">skykeenbiz@gmail.com</p>
-              </div>
-            </div>
+ <section class="py-14 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
-            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
-                <i class="fa-solid fa-phone"></i>
-              </div>
-              <div>
-                <span class="block text-xs text-black/60 font-bold">Phone</span>
-                <p class="font-black text-lg">+91 7406238503</p>
-              </div>
-            </div>
+    <!-- LEFT -->
+    <div class="reveal">
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Get in Touch
+      </span>
 
-            <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-black/10 shadow-[0_10px_26px_rgba(0,0,0,.06)]">
-              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white grid place-items-center shadow-[0_12px_24px_rgba(220,38,38,.22)]">
-                <i class="fa-solid fa-location-dot"></i>
-              </div>
-              <div>
-                <span class="block text-xs text-black/60 font-bold">Location</span>
-                <p class="font-black text-lg">Bengaluru, India</p>
-              </div>
-            </div>
+      <h2 class="text-[40px] md:text-[48px] font-black leading-tight">
+        Talk to <span class="text-[#094507]">Our Team</span>
+      </h2>
+
+      <p class="mt-3 text-black/65 font-semibold leading-7">
+        Workshops • Competitions • Brand Activation • Flea Marketing
+      </p>
+
+      <div class="mt-8 grid gap-5">
+
+        <!-- Email -->
+        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-[#094507]/10 
+          shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] transition">
+
+          <div class="w-14 h-14 rounded-2xl bg-[#094507]/10 text-[#094507] 
+            grid place-items-center border border-[#094507]/20">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <div>
+            <span class="block text-xs text-black/60 font-bold">Email</span>
+            <p class="font-black text-lg">skykeenbiz@gmail.com</p>
           </div>
         </div>
 
-        <div class="reveal delay-2">
-          <div class="bg-white rounded-3xl border border-black/10 shadow-[0_20px_60px_rgba(17,24,39,0.12)] p-9">
-            <form id="contactForm" class="flex flex-col gap-6">
-              <input type="hidden" name="source" value="contact-page">
+        <!-- Phone -->
+        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-[#094507]/10 
+          shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] transition">
 
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex flex-col gap-2">
-                  <label class="text-sm font-black">Your Name</label>
-                  <div class="relative">
-                    <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                      name="name" type="text" placeholder="John Doe" required>
-                  </div>
-                </div>
+          <div class="w-14 h-14 rounded-2xl bg-[#094507]/10 text-[#094507] 
+            grid place-items-center border border-[#094507]/20">
+            <i class="fa-solid fa-phone"></i>
+          </div>
 
-                <div class="flex flex-col gap-2">
-                  <label class="text-sm font-black">Email Address</label>
-                  <div class="relative">
-                    <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                    <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                      name="email" type="email" placeholder="john@example.com" required>
-                  </div>
-                </div>
-              </div>
+          <div>
+            <span class="block text-xs text-black/60 font-bold">Phone</span>
+            <p class="font-black text-lg">+91 7406238503</p>
+          </div>
+        </div>
 
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-black">Phone</label>
-                <div class="relative">
-                  <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                    name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
-                </div>
-              </div>
+        <!-- Location -->
+        <div class="flex items-center gap-5 p-5 rounded-2xl bg-white border border-[#094507]/10 
+          shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] transition">
 
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-black">Event Type</label>
-                <div class="relative">
-                  <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                    name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required>
-                </div>
-              </div>
+          <div class="w-14 h-14 rounded-2xl bg-[#094507]/10 text-[#094507] 
+            grid place-items-center border border-[#094507]/20">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
 
-              <div class="flex flex-col gap-2">
-                <label class="text-sm font-black">Your Message</label>
-                <div class="relative">
-                  <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-                  <textarea class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 min-h-[140px] outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-                    name="message" placeholder="Tell us about your event..." rows="5"></textarea>
-                </div>
-              </div>
-
-              <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white
-                             bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)]
-                             hover:-translate-y-[1px] transition text-lg" type="submit">
-                Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </button>
-
-              <p class="form-status text-sm text-black/60" aria-live="polite"></p>
-            </form>
+          <div>
+            <span class="block text-xs text-black/60 font-bold">Location</span>
+            <p class="font-black text-lg">Bengaluru, India</p>
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
+
+    <!-- FORM -->
+    <div class="reveal delay-2">
+      <div class="bg-white rounded-3xl border border-[#094507]/10 
+        shadow-[0_20px_60px_rgba(9,69,7,0.12)] p-9">
+
+        <form id="contactForm" class="flex flex-col gap-6">
+          <input type="hidden" name="source" value="contact-page">
+
+          <!-- Name + Email -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-black">Your Name</label>
+              <div class="relative">
+                <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+                  grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+                <input class="w-full rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 py-3 outline-none 
+                  focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+                  name="name" type="text" placeholder="John Doe" required>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-black">Email Address</label>
+              <div class="relative">
+                <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+                  grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+                <input class="w-full rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 py-3 outline-none 
+                  focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+                  name="email" type="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Phone -->
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-black">Phone</label>
+            <div class="relative">
+              <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+                grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+              <input class="w-full rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 py-3 outline-none 
+                focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+                name="phone" type="tel" placeholder="+91 9XXXXXXXXX" required>
+            </div>
+          </div>
+
+          <!-- Event -->
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-black">Event Type</label>
+            <div class="relative">
+              <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+                grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+              <input class="w-full rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 py-3 outline-none 
+                focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+                name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing..." required>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="flex flex-col gap-2">
+            <label class="text-sm font-black">Your Message</label>
+            <div class="relative">
+              <i class="fa-solid fa-pen-to-square absolute left-3 top-4 w-9 h-9 rounded-xl 
+                grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+              <textarea class="w-full rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 py-3 min-h-[140px] 
+                outline-none focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+                name="message" placeholder="Tell us about your event..."></textarea>
+            </div>
+          </div>
+
+          <!-- Button -->
+          <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white
+            bg-[#094507] hover:bg-[#063305]
+            shadow-[0_14px_28px_rgba(9,69,7,0.35)]
+            hover:-translate-y-[1px] transition text-lg" type="submit">
+
+            Send Message <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </button>
+
+          <p class="form-status text-sm text-black/60"></p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <section class="w-full">
       <iframe class="w-full h-[450px] border-0 block" src="https://www.google.com/maps?q=Bengaluru,India&output=embed"
@@ -282,32 +359,32 @@
     </section>
   </main>
 
-   <!-- FOOTER -->
-<footer class="bg-darkText text-white/75 border-t border-white/10">
-  <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
+<!-- FOOTER -->
+<footer class="bg-[#062d05] text-white/75 border-t border-[#094507]/30">
   <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
     <!-- Brand -->
     <div>
-      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
+      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="image/sdc1-Picsart-AiImageEnhancer 2.png"
+        alt="Skykeen Events" />
       <p class="text-white/65 leading-7">
         Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
       </p>
 
       <div class="flex gap-3 mt-4 flex-wrap">
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
           <i class="fa-brands fa-facebook"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
           <i class="fa-brands fa-youtube"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
@@ -316,100 +393,133 @@
 
     <!-- Quick Links -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Quick Links</h4>
       <ul class="grid gap-3">
-        <li><a class="hover:text-white transition" href="index.html">Home</a></li>
-        <li><a class="hover:text-white transition" href="about.html">About</a></li>
-        <li><a class="hover:text-white transition" href="services.html">Services</a></li>
-        <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
-        <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="index.html">Home</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="about.html">About</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="services.html">Services</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="portfolio.html">Gallery</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="contact.html">Contact</a></li>
       </ul>
     </div>
 
-    <!-- ✅ Services Column (New) -->
+    <!-- Services -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Services</h4>
       <ul class="grid gap-3 text-white/70">
-        <li><a class="hover:text-white transition" href="flea-marketing.html">Flea Marketing</a></li>
-        <li><a class="hover:text-white transition" href="brand-activation.html">Brand Activation</a></li>
-        <li><a class="hover:text-white transition" href="offlinemarketing.html">Offline Marketing</a></li>
-        <li><a class="hover:text-white transition" href="corporateevents.html">Corporate Events</a></li>
-        <li><a class="hover:text-white transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
-        <li><a class="hover:text-white transition" href="competitions.html">Competitions</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="flea-marketing.html">Flea Marketing</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="brand-activation.html">Brand Activation</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="offlinemarketing.html">Offline Marketing</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="corporateevents.html">Corporate Events</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="competitions.html">Competitions</a></li>
       </ul>
     </div>
 
     <!-- Contact -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Contact</h4>
       <ul class="grid gap-3 text-white/70">
-        <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
-        <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
-        <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        <li><i class="fa-solid fa-envelope mr-2 text-[#7ee081]"></i> skykeenbiz@gmail.com</li>
+        <li><i class="fa-solid fa-phone mr-2 text-[#7ee081]"></i> +91 7406238503</li>
+        <li><i class="fa-solid fa-location-dot mr-2 text-[#7ee081]"></i> Bengaluru, India</li>
       </ul>
     </div>
-
   </div>
 
-  <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+  <!-- Bottom -->
+  <div
+    class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
     <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
     <div class="flex gap-4">
-      <a class="hover:text-white transition" href="#">Privacy</a>
-      <a class="hover:text-white transition" href="#">Terms</a>
+      <a class="hover:text-[#7ee081] transition" href="#">Privacy</a>
+      <a class="hover:text-[#7ee081] transition" href="#">Terms</a>
     </div>
   </div>
 </footer>
 
   <!-- Popup -->
-  <div id="popupOverlay" class="fixed inset-0 bg-black/60 flex items-center justify-center z-[9999]">
-    <div id="popupCard"
-      class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-9 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)]">
-      <button id="popupClose"
-        class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-        type="button" aria-label="Close popup">×</button>
+<div id="popupOverlay"
+  class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[10050]">
 
-      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
-      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
+  <div
+    class="relative bg-white w-[90%] max-w-[420px] rounded-[26px] p-7 border border-[#094507]/20 
+    shadow-[0_24px_60px_rgba(9,69,7,0.18)] 
+    translate-y-2 scale-[0.98] opacity-0 transition"
+    id="popupCard">
 
-      <form id="popupForm" class="mt-6 flex flex-col gap-5">
-        <input type="hidden" name="source" value="Popup Form">
+    <!-- Close -->
+    <button id="popupClose"
+      class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-[#094507]/20 
+      bg-[#094507]/5 hover:bg-[#094507]/15 hover:text-[#094507] 
+      transition inline-flex items-center justify-center text-xl"
+      type="button" aria-label="Close popup">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Name</label>
-          <div class="relative">
-            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="name" type="text" placeholder="Your name" required>
-          </div>
+    <!-- Heading -->
+    <h3 class="mt-2 text-lg font-semibold">Get a Free Callback</h3>
+    <p class="mt-1 text-black/60 text-sm">Share your details — we’ll contact you shortly.</p>
+
+    <!-- Form -->
+    <form id="popupForm" class="mt-5 flex flex-col gap-4">
+      <input type="hidden" name="source" value="Popup Form">
+
+      <!-- Name -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Name</label>
+        <div class="relative">
+          <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="name" type="text" placeholder="Your name" required>
         </div>
+      </div>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Phone</label>
-          <div class="relative">
-            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="phone" type="tel" placeholder="Your phone number" required>
-          </div>
+      <!-- Phone -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Phone</label>
+        <div class="relative">
+          <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="phone" type="tel" placeholder="Your phone number" required>
         </div>
+      </div>
 
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Event Type</label>
-          <div class="relative">
-            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
-          </div>
+      <!-- Event -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Event Type</label>
+        <div class="relative">
+          <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="eventType" type="text" placeholder="Flea / Brand Activation / Corporate...">
         </div>
+      </div>
 
-        <button class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
-          type="submit">
-          Request Callback <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </button>
+      <!-- Button -->
+      <button type="submit" data-submit-btn
+        class="w-full h-12 rounded-xl font-semibold inline-flex items-center justify-center gap-3 text-white 
+        bg-[#094507] hover:bg-[#063305]
+        shadow-[0_14px_28px_rgba(9,69,7,0.35)] 
+        hover:-translate-y-[1px] transition">
 
-        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
-      </form>
-    </div>
+        <span class="btn-text">Request Callback</span>
+        <span class="btn-icon"><i class="fa-solid fa-headset"></i></span>
+      </button>
+
+      <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+    </form>
+
   </div>
+</div>
 
   <script>
     

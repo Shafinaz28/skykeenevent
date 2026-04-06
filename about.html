@@ -32,25 +32,41 @@
     .delay-3 { transition-delay: .30s; }
     .delay-4 { transition-delay: .40s; }
 
-    /* WhatsApp floating */
-    .whatsapp-float{
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      width: 56px;
-      height: 56px;
-      border-radius: 9999px;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow:
-        0 4px 10px rgba(17,24,39,0.30),
-        0 0 0 3px rgba(220,38,38,0.35);
-    }
-    .whatsapp-float i{ color: #fff; font-size: 28px; }
+ .whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 9999px;
+  background: #094507;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  /* Premium shadow */
+  box-shadow: 
+    0 10px 25px rgba(9, 69, 7, 0.35),
+    0 0 0 4px rgba(9, 69, 7, 0.20);
+
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  background: #063305;
+  box-shadow: 
+    0 15px 35px rgba(9, 69, 7, 0.45),
+    0 0 0 6px rgba(9, 69, 7, 0.25);
+}
+
+/* Icon */
+.whatsapp-float i {
+  color: #fff;
+  font-size: 30px;
+}
     /* Marquee */
     .logo-marquee { overflow: hidden; position: relative; margin-top: 22px; }
     .logo-track{
@@ -106,357 +122,592 @@
 
  
    <!-- HEADER -->
-  <header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
-    style="height: var(--header-h);">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
+<header id="siteHeader" class="fixed top-0 left-0 w-full bg-white border-b border-black/10 z-[9999]"
+  style="height: var(--header-h);">
+  
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-full py-2">
 
-      <a href="index.html" class="shrink-0">
-        <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
-          src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
-        <img class="block md:hidden h-16 w-auto object-contain" src="image/mobile menu logo.jpeg"
-          alt="Skykeen Events" />
-      </a>
+    <!-- Logo -->
+    <a href="index.html" class="shrink-0">
+      <img class="hidden md:block h-16 md:h-20 w-auto object-contain"
+        src="image/sdc1-Picsart-AiImageEnhancer 1.png" />
+      <img class="block md:hidden h-16 w-auto object-contain"
+        src="image/mobile menu logo.jpeg"
+        alt="Skykeen Events" />
+    </a>
 
-      <button id="hamburgerBtn"
-        class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl"
-        aria-label="Open menu" type="button">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+    <!-- Hamburger -->
+    <button id="hamburgerBtn"
+      class="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-xl border border-gray-200 bg-white text-2xl hover:border-[#094507] hover:text-[#094507] transition"
+      aria-label="Open menu" type="button">
+      <i class="fa-solid fa-bars"></i>
+    </button>
 
-      <!-- Desktop Nav (anchors) -->
-      <nav class="hidden md:flex items-center gap-6 font-semibold">
-        <a class="hover:text-primaryDark" href="index.html">Home</a>
-        <a class="hover:text-primaryDark" href="about.html">About</a>
-        <a class="hover:text-primaryDark" href="services.html">Services</a>
-        <a class="hover:text-primaryDark" href="portfolio.html">Gallery</a>
-        <a class="hover:text-primaryDark" href="contact.html">Contact</a>
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 font-semibold">
 
+      <a class="relative hover:text-[#094507] transition" href="index.html">Home</a>
 
-      </nav>
-    </div>
+      <a class="relative hover:text-[#094507] transition" href="about.html">About</a>
 
-    <!-- Mobile Overlay -->
-    <div id="navOverlay"
-      class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000] will-change-opacity">
-    </div>
+      <a class="relative hover:text-[#094507] transition" href="services.html">Services</a>
 
-    <!-- Mobile Menu (anchors) -->
-    <nav id="navMenu" class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
-             shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
-             flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
-             translate-x-full transition-transform duration-500 ease-in-out
-             md:hidden z-[10001] will-change-transform">
+      <a class="relative hover:text-[#094507] transition" href="portfolio.html">Gallery</a>
 
-      <button id="closeMenu"
-        class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center"
-        aria-label="Close menu" type="button">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 "
-        href="index.html">Home</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5 text-primary"
-        href="about.html">About</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="services.html">Services</a>
-      
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="portfolio.html">Gallery</a>
-      <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-black/5"
-        href="contact.html">Contact</a>
+      <a class="relative hover:text-[#094507] transition" href="contact.html">Contact</a>
 
     </nav>
-  </header>
+  </div>
 
-  <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+  <!-- Mobile Overlay -->
+  <div id="navOverlay"
+    class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out md:hidden z-[10000]">
+  </div>
+
+  <!-- Mobile Menu -->
+  <nav id="navMenu"
+    class="fixed top-0 right-0 h-screen w-[320px] max-w-[85vw] bg-white rounded-l-2xl
+           shadow-[ -10px_0_40px_rgba(17,24,39,0.18)] border-l border-gray-100
+           flex flex-col gap-3 px-5 pt-16 pb-7 items-center text-center
+           translate-x-full transition-transform duration-500 ease-in-out
+           md:hidden z-[10001]">
+
+    <!-- Close -->
+    <button id="closeMenu"
+      class="absolute top-4 right-4 w-11 h-11 rounded-xl border border-black/10 bg-white text-xl inline-flex items-center justify-center hover:border-[#094507] hover:text-[#094507] transition"
+      aria-label="Close menu" type="button">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Links -->
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition"
+      href="index.html">Home</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold text-[#094507] bg-[#094507]/10"
+      href="about.html">About</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition"
+      href="services.html">Services</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition"
+      href="portfolio.html">Gallery</a>
+
+    <a class="w-full max-w-[260px] h-12 rounded-xl flex items-center justify-center font-semibold hover:bg-[#094507]/10 hover:text-[#094507] transition"
+      href="contact.html">Contact</a>
+
+  </nav>
+</header>
+
+   <a href="https://wa.me/917406238503" class="whatsapp-float" target="_blank" rel="noreferrer"
+    aria-label="Chat on WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <main>
-    <section class="relative py-16 text-white text-center overflow-hidden"
-      style="background: linear-gradient(135deg, rgb(220 38 38), rgb(185 28 28));">
-      <div class="absolute inset-0 opacity-20"
-        style="background:
-          radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.25), transparent 60%),
-          radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.18), transparent 55%);">
+<section class="relative py-16 text-white text-center overflow-hidden"
+  style="background: linear-gradient(135deg, #094507, #063305);">
+
+  <!-- Glow overlay -->
+  <div class="absolute inset-0 opacity-25"
+    style="background:
+      radial-gradient(900px 420px at 18% 20%, rgba(255,255,255,0.18), transparent 60%),
+      radial-gradient(900px 420px at 85% 30%, rgba(0,0,0,0.25), transparent 55%);">
+  </div>
+
+  <!-- Optional soft green glow (adds premium feel) -->
+  <div class="absolute -top-20 -left-20 w-[300px] h-[300px] bg-[#094507]/30 blur-[120px] rounded-full"></div>
+  <div class="absolute top-10 -right-20 w-[350px] h-[350px] bg-[#22a11d]/20 blur-[140px] rounded-full"></div>
+
+  <!-- Content -->
+  <div class="relative max-w-6xl mx-auto px-3 reveal active">
+    <h1 class="text-4xl md:text-5xl font-black">About Us</h1>
+
+    <p class="mt-3 text-white/90 font-semibold">
+      Home <span class="opacity-70 mx-1">/</span> About Us
+    </p>
+  </div>
+
+</section>
+
+<section class="py-16 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
+
+    <!-- Left -->
+    <div class="flex-1 reveal">
+
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Our Story
+      </span>
+
+      <h2 class="text-[42px] font-black leading-tight">
+        Founded on Creativity, <br>
+        <span class="text-[#094507]">Driven by Execution</span>
+      </h2>
+
+      <p class="mt-3 text-black/60 leading-7 max-w-[720px]">
+        Skykeen Events is a founder-led events team focused on delivering high-impact formats like workshops,
+        competitions, brand activations, and flea marketing experiences.
+      </p>
+
+      <!-- BADGES -->
+      <div class="mt-4 flex flex-wrap gap-2 reveal delay-1">
+
+        <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full 
+          bg-[#094507]/10 border border-[#094507]/20 text-sm font-bold text-[#094507]">
+          <i class="fa-solid fa-award"></i> 3+ Years of Experience
+        </span>
+
+        <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full 
+          bg-[#094507]/10 border border-[#094507]/20 text-sm font-bold text-[#094507]">
+          <i class="fa-solid fa-diagram-project"></i> End-to-End Execution
+        </span>
+
+        <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full 
+          bg-[#094507]/10 border border-[#094507]/20 text-sm font-bold text-[#094507]">
+          <i class="fa-solid fa-location-dot"></i> On-Ground Ops Team
+        </span>
+
       </div>
 
-      <div class="relative max-w-6xl mx-auto px-3 reveal active">
-        <h1 class="text-4xl md:text-5xl font-black">About Us</h1>
-        <p class="mt-3 text-white/90 font-bold">
-          Home <span class="opacity-80 mx-1">/</span> About Us
+      <!-- LIST -->
+      <ul class="mt-5 grid gap-3 font-extrabold reveal delay-2">
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Concept → Planning → Execution
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Vendor management & on-ground ops
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Creative + measurable outcomes
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Transparent timelines & reporting
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Right Cards -->
+    <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-1">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-bullseye"></i>
+        </div>
+
+        <h4 class="font-black">Mission</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Create unforgettable experiences that deliver real brand value.
         </p>
       </div>
-    </section>
 
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
-        <div class="flex-1 reveal">
-          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Story</span>
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-2">
 
-          <h2 class="text-[42px] font-black leading-tight">
-            Founded on Creativity, <br>
-            <span class="text-primary">Driven by Execution</span>
-          </h2>
-
-          <p class="mt-3 text-black/60 leading-7 max-w-[720px]">
-            Skykeen Events is a founder-led events team focused on delivering high-impact formats like workshops,
-            competitions, brand activations, and flea marketing experiences.
-          </p>
-
-          <!-- badges (no emojis) -->
-          <div class="mt-4 flex flex-wrap gap-2 reveal delay-1">
-            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
-              <i class="fa-solid fa-award text-primary"></i> 3+ Years of Experience
-            </span>
-            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
-              <i class="fa-solid fa-diagram-project text-primary"></i> End-to-End Execution
-            </span>
-            <span class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/25 text-sm font-bold">
-              <i class="fa-solid fa-location-dot text-primary"></i> On-Ground Ops Team
-            </span>
-          </div>
-
-          <ul class="mt-5 grid gap-3 font-extrabold reveal delay-2">
-            <li class="flex gap-2 items-start">
-              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span>
-              Concept → Planning → Execution
-            </li>
-            <li class="flex gap-2 items-start">
-              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span>
-              Vendor management & on-ground ops
-            </li>
-            <li class="flex gap-2 items-start">
-              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span>
-              Creative + measurable outcomes
-            </li>
-            <li class="flex gap-2 items-start">
-              <span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span>
-              Transparent timelines & reporting
-            </li>
-          </ul>
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
         </div>
 
-        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-bullseye"></i>
-            </div>
-            <h4 class="font-black">Mission</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">Create unforgettable experiences that deliver real brand value.</p>
-          </div>
+        <h4 class="font-black">Vision</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Become the most trusted team for scalable event formats.
+        </p>
+      </div>
 
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-  <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-    <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-3">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-handshake"></i>
+        </div>
+
+        <h4 class="font-black">Values</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Quality, clarity, creativity, and consistency on ground.
+        </p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-4">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-bolt"></i>
+        </div>
+
+        <h4 class="font-black">Strength</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Fast execution with a strong vendor + ops network.
+        </p>
+      </div>
+
+    </div>
   </div>
-  <h4 class="font-black">Vision</h4>
-  <p class="text-sm text-black/60 mt-1 leading-6">Become the most trusted team for scalable event formats.</p>
-</div>
+</section>
 
+<section class="py-16 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3">
+    <div class="text-center reveal">
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Our Partners
+      </span>
+      <p class="text-black/60">Real on-ground experience that turns plans into packed events.</p>
+    </div>
 
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-handshake"></i>
-            </div>
-            <h4 class="font-black">Values</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">Quality, clarity, creativity, and consistency on ground.</p>
-          </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-7">
 
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-bolt"></i>
-            </div>
-            <h4 class="font-black">Strength</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">Fast execution with a strong vendor + ops network.</p>
-          </div>
-        </div>
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-6 text-center 
+        shadow-sm hover:shadow-[0_20px_45px_rgba(9,69,7,0.14)] 
+        hover:-translate-y-1.5 transition reveal">
+        <h3 class="text-[40px] leading-none font-black text-[#094507]">
+          <span class="count" data-target="3">0</span>+
+        </h3>
+        <p class="mt-2 text-black/60 font-bold">Years in Events</p>
       </div>
-    </section>
 
-    <section class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="text-center reveal">
-          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Partners</span>
-          <p class="text-black/60">Real on-ground experience that turns plans into packed events.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-7">
-          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal">
-            <h3 class="text-[40px] leading-none font-black text-primary">
-              <span class="count" data-target="3">0</span>+
-            </h3>
-            <p class="mt-2 text-black/60 font-bold">Years in Events</p>
-          </div>
-
-          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-1">
-            <h3 class="text-[40px] leading-none font-black text-primary">
-              <span class="count" data-target="120">0</span>+
-            </h3>
-            <p class="mt-2 text-black/60 font-bold">Events Executed</p>
-          </div>
-
-          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-2">
-            <h3 class="text-[40px] leading-none font-black text-primary">
-              <span class="count" data-target="250">0</span>+
-            </h3>
-            <p class="mt-2 text-black/60 font-bold">Vendors Network</p>
-          </div>
-
-          <div class="bg-white border border-black/10 rounded-2xl p-6 text-center shadow-[0_10px_26px_rgba(17,24,39,0.06)] hover:-translate-y-1.5 transition reveal delay-3">
-            <h3 class="text-[40px] leading-none font-black text-primary">
-              <span class="count" data-target="60">0</span>+
-            </h3>
-            <p class="mt-2 text-black/60 font-bold">Brand Collaborations</p>
-          </div>
-        </div>
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-6 text-center 
+        shadow-sm hover:shadow-[0_20px_45px_rgba(9,69,7,0.14)] 
+        hover:-translate-y-1.5 transition reveal delay-1">
+        <h3 class="text-[40px] leading-none font-black text-[#094507]">
+          <span class="count" data-target="120">0</span>+
+        </h3>
+        <p class="mt-2 text-black/60 font-bold">Events Executed</p>
       </div>
-    </section>
 
-    <section class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
-        <div class="flex-1 reveal">
-          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Why Choose Us</span>
-          <h2 class="text-[42px] font-black leading-tight">
-            We Make Events <br><span class="text-primary">Unforgettable</span>
-          </h2>
-          <p class="mt-2 text-black/60 leading-7">
-            We combine creativity + strategy with flawless execution to deliver real results.
-          </p>
-
-          <ul class="mt-5 grid gap-3 font-extrabold">
-            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> End-to-end event management</li>
-            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Custom-tailored experiences</li>
-            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Real-time reporting</li>
-            <li class="flex gap-2 items-start"><span class="w-6 h-6 rounded-full border-2 border-primary text-primary inline-flex items-center justify-center text-xs mt-[2px]"><i class="fa-solid fa-check"></i></span> Dedicated support</li>
-          </ul>
-        </div>
-
-        <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-1">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-chess-king"></i>
-            </div>
-            <h4 class="font-black">Strategic Planning</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">Every event is planned with measurable objectives.</p>
-          </div>
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-2">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-            </div>
-            <h4 class="font-black">Creative Excellence</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">We push fresh concepts that stand out.</p>
-          </div>
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-3">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-people-group"></i>
-            </div>
-            <h4 class="font-black">Passionate Team</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">Dedicated professionals who make it happen.</p>
-          </div>
-          <div class="bg-white border border-black/10 rounded-2xl p-5 shadow-[0_10px_28px_rgba(17,24,39,0.08)] hover:-translate-y-1.5 hover:shadow-soft transition reveal delay-4">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primaryDark text-white inline-flex items-center justify-center font-black text-lg mb-2">
-              <i class="fa-solid fa-clipboard-check"></i>
-            </div>
-            <h4 class="font-black">Flawless Execution</h4>
-            <p class="text-sm text-black/60 mt-1 leading-6">From setup to wrap-up, we handle it all.</p>
-          </div>
-        </div>
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-6 text-center 
+        shadow-sm hover:shadow-[0_20px_45px_rgba(9,69,7,0.14)] 
+        hover:-translate-y-1.5 transition reveal delay-2">
+        <h3 class="text-[40px] leading-none font-black text-[#094507]">
+          <span class="count" data-target="250">0</span>+
+        </h3>
+        <p class="mt-2 text-black/60 font-bold">Vendors Network</p>
       </div>
-    </section>
 
-    <section class="py-16 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="text-center reveal">
-          <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Our Partners</span>
-          <h2 class="text-[38px] font-black leading-tight">Trusted by 16+ Brands</h2>
-          <p class="mt-2 text-black/60">Collaborations that move our events forward.</p>
-        </div>
-
-        <div class="logo-marquee reveal delay-1">
-          <div class="logo-track" id="logoTrack">
-            <div class="logo-item">
-              <img src="https://clubmahindra.gumlet.io/themes/prospect/assets/images/logo-new-black.svg?w=200&dpr=1.0" alt="Club Mahindra" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png" alt="Axis Bank" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://thehardcopy.co/wp-content/uploads/Zepto-Featured-Image-Option-2.png" alt="Zepto" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://zerodha.com/z-connect/wp-content/uploads/2024/01/Akshayakalpa-Logo_MGSY8_1000x562-1.jpeg" alt="Akshayakalpa" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://1000logos.net/wp-content/uploads/2022/08/Ola-Cabs-Logo.jpg" alt="Ola" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://content3.jdmagicbox.com/comp/temp/p5/0431px431.x431.230804012718.m7p5/catalogue/-21p7yanbzc.jpg" alt="Partner Brand" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nW6bHVqOEKc1xy1vE5_Udc4D_6suBRg3-g&s" alt="Partner Brand" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-            <div class="logo-item">
-              <img src="https://etimg.etb2bimg.com/photo/111112535.cms" alt="Partner Brand" class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center mt-8 reveal delay-2">
-          <a href="contact.html"
-            class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-            Work With Us <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-6 text-center 
+        shadow-sm hover:shadow-[0_20px_45px_rgba(9,69,7,0.14)] 
+        hover:-translate-y-1.5 transition reveal delay-3">
+        <h3 class="text-[40px] leading-none font-black text-[#094507]">
+          <span class="count" data-target="60">0</span>+
+        </h3>
+        <p class="mt-2 text-black/60 font-bold">Brand Collaborations</p>
       </div>
-    </section>
 
-    <section class="py-16">
-      <div class="max-w-6xl mx-auto px-3">
-        <div class="bg-black/5 border border-black/10 rounded-[22px] p-9 shadow-soft text-center md:text-left grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 items-center reveal">
-          <div>
-            <span class="inline-block text-[13px] font-extrabold text-primary tracking-[.3px] mb-2">Ready to Plan?</span>
-            <h2 class="text-3xl font-black">Let’s Build Your Next Big Event</h2>
-            <p class="mt-2 text-black/60">Tell us your requirement — we’ll share a plan and callback quickly.</p>
-          </div>
-          <div class="flex justify-center md:justify-end">
-            <a href="contact.html"
-              class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg">
-              Contact Us <i class="fa-solid fa-arrow-right"></i>
-            </a>
-          </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3 flex flex-col lg:flex-row gap-14 items-center justify-between">
+
+    <!-- Left -->
+    <div class="flex-1 reveal">
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Why Choose Us
+      </span>
+
+      <h2 class="text-[42px] font-black leading-tight">
+        We Make Events <br>
+        <span class="text-[#094507]">Unforgettable</span>
+      </h2>
+
+      <p class="mt-2 text-black/60 leading-7">
+        We combine creativity + strategy with flawless execution to deliver real results.
+      </p>
+
+      <!-- Points -->
+      <ul class="mt-5 grid gap-3 font-extrabold">
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] 
+            inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          End-to-end event management
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] 
+            inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Custom-tailored experiences
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] 
+            inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Real-time reporting
+        </li>
+
+        <li class="flex gap-2 items-start">
+          <span class="w-6 h-6 rounded-full border-2 border-[#094507] text-[#094507] 
+            inline-flex items-center justify-center text-xs mt-[2px]">
+            <i class="fa-solid fa-check"></i>
+          </span>
+          Dedicated support
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- Right Cards -->
+    <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-1">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-chess-king"></i>
         </div>
+
+        <h4 class="font-black">Strategic Planning</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Every event is planned with measurable objectives.
+        </p>
       </div>
-    </section>
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-2">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </div>
+
+        <h4 class="font-black">Creative Excellence</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          We push fresh concepts that stand out.
+        </p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-3">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-people-group"></i>
+        </div>
+
+        <h4 class="font-black">Passionate Team</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          Dedicated professionals who make it happen.
+        </p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white border border-[#094507]/10 rounded-2xl p-5 
+        shadow-sm hover:shadow-[0_20px_50px_rgba(9,69,7,0.15)] 
+        hover:-translate-y-1.5 transition reveal delay-4">
+
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#094507] to-[#063305] 
+          text-white inline-flex items-center justify-center font-black text-lg mb-2">
+          <i class="fa-solid fa-clipboard-check"></i>
+        </div>
+
+        <h4 class="font-black">Flawless Execution</h4>
+        <p class="text-sm text-black/60 mt-1 leading-6">
+          From setup to wrap-up, we handle it all.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="py-16 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3">
+
+    <!-- Heading -->
+    <div class="text-center reveal">
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Our Partners
+      </span>
+
+      <h2 class="text-[38px] font-black leading-tight">
+        Trusted by <span class="text-[#094507]">16+ Brands</span>
+      </h2>
+
+      <p class="mt-2 text-black/60">Collaborations that move our events forward.</p>
+    </div>
+
+    <!-- Logos -->
+    <div class="logo-marquee reveal delay-1">
+      <div class="logo-track" id="logoTrack">
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://clubmahindra.gumlet.io/themes/prospect/assets/images/logo-new-black.svg?w=200&dpr=1.0"
+            alt="Club Mahindra"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png"
+            alt="Axis Bank"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://thehardcopy.co/wp-content/uploads/Zepto-Featured-Image-Option-2.png"
+            alt="Zepto"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://zerodha.com/z-connect/wp-content/uploads/2024/01/Akshayakalpa-Logo_MGSY8_1000x562-1.jpeg"
+            alt="Akshayakalpa"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://1000logos.net/wp-content/uploads/2022/08/Ola-Cabs-Logo.jpg"
+            alt="Ola"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://content3.jdmagicbox.com/comp/temp/p5/0431px431.x431.230804012718.m7p5/catalogue/-21p7yanbzc.jpg"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nW6bHVqOEKc1xy1vE5_Udc4D_6suBRg3-g&s"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://etimg.etb2bimg.com/photo/111112535.cms"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-8 reveal delay-2">
+      <a href="contact.html"
+        class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white 
+        bg-[#094507] hover:bg-[#063305]
+        shadow-[0_14px_28px_rgba(9,69,7,0.35)] 
+        hover:-translate-y-[1px] transition text-lg">
+
+        Work With Us <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-16">
+  <div class="max-w-6xl mx-auto px-3">
+
+    <div class="bg-[#094507]/5 border border-[#094507]/20 rounded-[22px] p-9 
+      shadow-[0_20px_50px_rgba(9,69,7,0.12)] 
+      text-center md:text-left 
+      grid grid-cols-1 md:grid-cols-[1.3fr_0.7fr] gap-6 items-center reveal">
+
+      <!-- Left -->
+      <div>
+        <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+          Ready to Plan?
+        </span>
+
+        <h2 class="text-3xl font-black">
+          Let’s Build Your <span class="text-[#094507]">Next Big Event</span>
+        </h2>
+
+        <p class="mt-2 text-black/60">
+          Tell us your requirement — we’ll share a plan and callback quickly.
+        </p>
+      </div>
+
+      <!-- Button -->
+      <div class="flex justify-center md:justify-end">
+        <a href="contact.html"
+          class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white 
+          bg-[#094507] hover:bg-[#063305]
+          shadow-[0_14px_28px_rgba(9,69,7,0.35)] 
+          hover:-translate-y-[2px] transition text-lg">
+
+          Contact Us <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
   </main>
 
-  <!-- FOOTER -->
-<footer class="bg-darkText text-white/75 border-t border-white/10">
-  <!-- ✅ Changed md:grid-cols-3 → md:grid-cols-4 and added Services column -->
+
+<!-- FOOTER -->
+<footer class="bg-[#062d05] text-white/75 border-t border-[#094507]/30">
   <div class="max-w-6xl mx-auto px-3 py-10 grid grid-cols-1 md:grid-cols-4 gap-10">
 
     <!-- Brand -->
     <div>
-      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="../image/sdc1-Picsart-AiImageEnhancer 2.png" alt="Skykeen Events" />
+      <img class="h-12 md:h-14 w-auto object-contain mb-3" src="image/sdc1-Picsart-AiImageEnhancer 2.png"
+        alt="Skykeen Events" />
       <p class="text-white/65 leading-7">
         Flea Marketing • Brand Activation • Corporate Events • Expos • Offline Marketing • Competitions
       </p>
 
       <div class="flex gap-3 mt-4 flex-wrap">
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
           <i class="fa-brands fa-facebook"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.youtube.com/@SkykeenEvents" aria-label="YouTube">
           <i class="fa-brands fa-youtube"></i>
         </a>
-        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-primary/20 transition"
+        <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
           href="https://www.linkedin.com/company/skykeen-events" aria-label="LinkedIn">
           <i class="fa-brands fa-linkedin-in"></i>
         </a>
@@ -465,104 +716,133 @@
 
     <!-- Quick Links -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Quick Links</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Quick Links</h4>
       <ul class="grid gap-3">
-        <li><a class="hover:text-white transition" href="index.html">Home</a></li>
-        <li><a class="hover:text-white transition" href="about.html">About</a></li>
-        <li><a class="hover:text-white transition" href="services.html">Services</a></li>
-        <li><a class="hover:text-white transition" href="portfolio.html">Gallery</a></li>
-        <li><a class="hover:text-white transition" href="contact.html">Contact</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="index.html">Home</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="about.html">About</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="services.html">Services</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="portfolio.html">Gallery</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="contact.html">Contact</a></li>
       </ul>
     </div>
 
-    <!-- ✅ Services Column (New) -->
+    <!-- Services -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Services</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Services</h4>
       <ul class="grid gap-3 text-white/70">
-        <li><a class="hover:text-white transition" href="flea-marketing.html">Flea Marketing</a></li>
-        <li><a class="hover:text-white transition" href="brand-activation.html">Brand Activation</a></li>
-        <li><a class="hover:text-white transition" href="offlinemarketing.html">Offline Marketing</a></li>
-        <li><a class="hover:text-white transition" href="corporateevents.html">Corporate Events</a></li>
-        <li><a class="hover:text-white transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
-        <li><a class="hover:text-white transition" href="competitions.html">Competitions</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="flea-marketing.html">Flea Marketing</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="brand-activation.html">Brand Activation</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="offlinemarketing.html">Offline Marketing</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="corporateevents.html">Corporate Events</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="expoexhibitions.html">Expos & Exhibitions</a></li>
+        <li><a class="hover:text-[#7ee081] transition" href="competitions.html">Competitions</a></li>
       </ul>
     </div>
 
     <!-- Contact -->
     <div>
-      <h4 class="text-xs font-semibold tracking-widest uppercase text-white mb-3">Contact</h4>
+      <h4 class="text-xs font-semibold tracking-widest uppercase text-[#7ee081] mb-3">Contact</h4>
       <ul class="grid gap-3 text-white/70">
-        <li><i class="fa-solid fa-envelope mr-2 text-primary"></i> skykeenbiz@gmail.com</li>
-        <li><i class="fa-solid fa-phone mr-2 text-primary"></i> +91 7406238503</li>
-        <li><i class="fa-solid fa-location-dot mr-2 text-primary"></i> Bengaluru, India</li>
+        <li><i class="fa-solid fa-envelope mr-2 text-[#7ee081]"></i> skykeenbiz@gmail.com</li>
+        <li><i class="fa-solid fa-phone mr-2 text-[#7ee081]"></i> +91 7406238503</li>
+        <li><i class="fa-solid fa-location-dot mr-2 text-[#7ee081]"></i> Bengaluru, India</li>
       </ul>
     </div>
-
   </div>
 
-  <div class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
+  <!-- Bottom -->
+  <div
+    class="max-w-6xl mx-auto px-3 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/55">
     <p>© <span id="year"></span> Skykeen Events. All rights reserved.</p>
     <div class="flex gap-4">
-      <a class="hover:text-white transition" href="#">Privacy</a>
-      <a class="hover:text-white transition" href="#">Terms</a>
+      <a class="hover:text-[#7ee081] transition" href="#">Privacy</a>
+      <a class="hover:text-[#7ee081] transition" href="#">Terms</a>
     </div>
   </div>
 </footer>
 
   <!-- Popup -->
-  <div id="popupOverlay" class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[9999]">
-    <div class="relative bg-white w-[90%] max-w-[420px] rounded-[30px] p-7 border-2 border-primary shadow-[0_24px_60px_rgba(17,24,39,0.18)] translate-y-2 scale-[0.98] opacity-0 transition"
-      id="popupCard">
-      <button id="popupClose"
-        class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-black/10 bg-black/5 hover:bg-primary/10 hover:text-primary transition inline-flex items-center justify-center text-xl"
-        type="button" aria-label="Close popup">
-        <i class="fa-solid fa-xmark"></i>
+<div id="popupOverlay"
+  class="fixed inset-0 bg-black/60 opacity-0 invisible transition flex items-center justify-center z-[10050]">
+
+  <div
+    class="relative bg-white w-[90%] max-w-[420px] rounded-[26px] p-7 border border-[#094507]/20 
+    shadow-[0_24px_60px_rgba(9,69,7,0.18)] 
+    translate-y-2 scale-[0.98] opacity-0 transition"
+    id="popupCard">
+
+    <!-- Close -->
+    <button id="popupClose"
+      class="absolute top-3 right-3 w-11 h-11 rounded-xl border border-[#094507]/20 
+      bg-[#094507]/5 hover:bg-[#094507]/15 hover:text-[#094507] 
+      transition inline-flex items-center justify-center text-xl"
+      type="button" aria-label="Close popup">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Heading -->
+    <h3 class="mt-2 text-lg font-semibold">Get a Free Callback</h3>
+    <p class="mt-1 text-black/60 text-sm">Share your details — we’ll contact you shortly.</p>
+
+    <!-- Form -->
+    <form id="popupForm" class="mt-5 flex flex-col gap-4">
+      <input type="hidden" name="source" value="Popup Form">
+
+      <!-- Name -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Name</label>
+        <div class="relative">
+          <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="name" type="text" placeholder="Your name" required>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Phone</label>
+        <div class="relative">
+          <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="phone" type="tel" placeholder="Your phone number" required>
+        </div>
+      </div>
+
+      <!-- Event -->
+      <div class="flex flex-col gap-2">
+        <label class="text-sm font-semibold">Event Type</label>
+        <div class="relative">
+          <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl 
+            grid place-items-center text-[#094507] bg-[#094507]/10 border border-[#094507]/20"></i>
+
+          <input class="w-full h-12 rounded-2xl border border-[#094507]/20 bg-white pl-14 pr-4 outline-none 
+            focus:border-[#094507] focus:ring-4 focus:ring-[#094507]/20"
+            name="eventType" type="text" placeholder="Flea / Brand Activation / Corporate...">
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button type="submit" data-submit-btn
+        class="w-full h-12 rounded-xl font-semibold inline-flex items-center justify-center gap-3 text-white 
+        bg-[#094507] hover:bg-[#063305]
+        shadow-[0_14px_28px_rgba(9,69,7,0.35)] 
+        hover:-translate-y-[1px] transition">
+
+        <span class="btn-text">Request Callback</span>
+        <span class="btn-icon"><i class="fa-solid fa-headset"></i></span>
       </button>
 
-      <h3 class="mt-3 text-xl font-black">Get a Free Callback</h3>
-      <p class="mt-1 text-black/60">Share your details — we’ll contact you shortly.</p>
+      <p class="form-status text-sm text-black/60" aria-live="polite"></p>
+    </form>
 
-      <form id="popupForm" class="mt-4 flex flex-col gap-4">
-        <input type="hidden" name="source" value="Popup Form">
-
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Name</label>
-          <div class="relative">
-            <i class="fa-solid fa-user absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="name" type="text" placeholder="Your name" required>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Phone</label>
-          <div class="relative">
-            <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="phone" type="tel" placeholder="Your phone number" required>
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-2">
-          <label class="text-sm font-black">Event Type</label>
-          <div class="relative">
-            <i class="fa-solid fa-calendar-check absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-xl grid place-items-center text-black/60 bg-primary/10 border border-primary/20 pointer-events-none"></i>
-            <input class="w-full rounded-2xl border border-black/15 bg-white pl-14 pr-4 py-3 outline-none focus:border-primary focus:ring-4 focus:ring-primary/15"
-              name="eventType" type="text" placeholder="Workshop / Brand Activation / Flea Marketing...">
-          </div>
-        </div>
-
-        <button id="popupSubmit"
-          class="w-full py-4 rounded-xl font-black inline-flex items-center justify-center gap-3 text-white bg-gradient-to-br from-primary to-primaryDark shadow-[0_14px_28px_rgba(220,38,38,0.32)] hover:-translate-y-[1px] transition text-lg"
-          type="submit">
-          <span class="btnText">Request Callback</span>
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </button>
-
-        <p class="form-status text-sm text-black/60" aria-live="polite"></p>
-      </form>
-    </div>
   </div>
+</div>
 
   <script>
     // Footer year
