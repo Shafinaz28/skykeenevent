@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Growth League | Powered by SkyKeen Events</title>
+  <meta
+    name="description"
+    content="The Growth League by SkyKeen Events is a curated platform for business visibility, expert evaluation, recognition, networking, and growth opportunities."
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0B1730',
+            navyLight: '#13254A',
+            gold: '#C9A343',
+            goldDark: '#A57F24',
+            soft: '#F7F8FB'
+          },
+          boxShadow: {
+            soft: '0 20px 60px rgba(8,20,44,0.14)'
+          },
+          backgroundImage: {
+            heroGlow:
+              'radial-gradient(circle at top right, rgba(201,163,67,0.24), transparent 28%), radial-gradient(circle at left center, rgba(255,255,255,0.08), transparent 22%)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: #C9A343;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-slate-800 antialiased pb-20 md:pb-0">
+
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4  md:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3">
+        <img
+          src="images/tgl logo-01.png"
+          alt="TGL Logo"
+          class="h-14 w-auto object-contain"
+        />
+      </a>
+
+      <button
+        id="menuBtn"
+        class="flex h-11 w-11 items-center justify-center rounded-lg border border-gray-300 text-navy transition hover:bg-gray-50 md:hidden"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="nav-link text-sm font-semibold text-navy/80 transition hover:text-gold">About</a>
+        <a href="#services" class="nav-link text-sm font-semibold text-navy/80 transition hover:text-gold">Services</a>
+        <a href="#pricing" class="nav-link text-sm font-semibold text-navy/80 transition hover:text-gold">Pricing</a>
+        <a href="#categories" class="nav-link text-sm font-semibold text-navy/80 transition hover:text-gold">Categories</a>
+        <a href="#how-it-works" class="nav-link text-sm font-semibold text-navy/80 transition hover:text-gold">Process</a>
+           <a
+          href="https://forms.gle/Z9T9GFHHsYYmVEs8A"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-white transition hover:scale-105"
+        >
+          Apply Now
+        </a>
+      </nav>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden border-t border-gray-200 bg-white md:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col px-4 py-4">
+        <a href="#about" class="py-3 text-sm font-semibold text-navy/80">About</a>
+        <a href="#services" class="py-3 text-sm font-semibold text-navy/80">Services</a>
+        <a href="#pricing" class="py-3 text-sm font-semibold text-navy/80">Pricing</a>
+        <a href="#categories" class="py-3 text-sm font-semibold text-navy/80">Categories</a>
+        <a href="#how-it-works" class="py-3 text-sm font-semibold text-navy/80">Process</a>
+           <a
+          href="https://forms.gle/Z9T9GFHHsYYmVEs8A"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 rounded-full bg-gold px-5 py-3 text-center text-sm font-bold text-white"
+        >
+          Apply Now
+        </a>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="relative overflow-hidden bg-navy bg-heroGlow">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+    <div class="relative mx-auto grid max-w-7xl gap-10 px-4 py-14 md:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+      <div class="reveal">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="inline-flex rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-gold">
+            Powered by SkyKeen Events
+          </span>
+          <span class="inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white">
+            Season 1 — Edition 1
+          </span>
+        </div>
+
+        <h1 class="mt-5 text-4xl font-extrabold leading-tight text-white md:text-6xl">
+          Showcase Your Business.<br />
+          <span class="text-gold">Get Recognized.</span><br />
+          Grow Faster.
+        </h1>
+
+        <p class="mt-5 max-w-xl text-base leading-8 text-white/75 md:text-lg">
+          A curated platform for businesses to gain visibility, expert evaluation, recognition, networking, and growth opportunities.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3 text-xs font-semibold text-white/85 sm:text-sm">
+          <span class="rounded-full bg-white/10 px-4 py-2">10 businesses per category</span>
+          <span class="rounded-full bg-white/10 px-4 py-2">100 businesses per edition</span>
+          <span class="rounded-full bg-white/10 px-4 py-2">Early Bird ₹1,999 till end of April</span>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            href="https://forms.gle/Z9T9GFHHsYYmVEs8A"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full bg-gold px-7 py-4 text-center text-sm font-bold text-navy transition duration-300 hover:scale-[1.02]"
+          >
+            Apply Now
+          </a>
+
+          <a
+            href="#about"
+            class="rounded-full border border-white/20 px-7 py-4 text-center text-sm font-bold text-white transition duration-300 hover:bg-white/10"
+          >
+            Explore More
+          </a>
+        </div>
+      </div>
+
+      <div class="reveal flex justify-center lg:justify-end">
+        <div class="w-full max-w-lg rounded-[28px] bg-white/10 p-8 backdrop-blur">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-gold">
+            The Growth League
+          </p>
+
+          <h3 class="mt-3 text-3xl font-extrabold leading-tight text-white">
+            Why businesses join TGL
+          </h3>
+
+          <p class="mt-4 text-base leading-7 text-white/70">
+            A focused platform built for visibility, evaluation, content production, recognition, and growth.
+          </p>
+
+          <ul class="mt-8 space-y-3 text-sm text-white/90">
+            <li class="rounded-2xl bg-white/10 px-5 py-4">✔ Professional 60-second business video production</li>
+            <li class="rounded-2xl bg-white/10 px-5 py-4">✔ Instagram + YouTube visibility</li>
+            <li class="rounded-2xl bg-white/10 px-5 py-4">✔ Season 1 Directory Magazine listing</li>
+            <li class="rounded-2xl bg-white/10 px-5 py-4">✔ Grand Award Show + VC pitch opportunity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-soft py-20 lg:py-24">
+    <div class="mx-auto grid max-w-7xl gap-12 px-4 md:px-6 lg:grid-cols-2 lg:px-8">
+      <div class="reveal">
+        <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+          About SkyKeen & TGL
+        </span>
+        <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+          A growth-driven ecosystem for modern businesses
+        </h2>
+      </div>
+
+      <div class="reveal reveal-delay-1 space-y-5 text-lg leading-8 text-slate-600">
+        <p>
+          SkyKeen Events is a professional event management company focused on creating high-impact business platforms and brand experiences.
+        </p>
+        <p>
+          The Growth League (TGL) is one such initiative designed to bring together emerging and growing businesses and provide them with a stage to showcase, get evaluated, and scale.
+        </p>
+        <p>
+          TGL is not just an event — it is a growth-driven ecosystem built for businesses that want to stand out.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT IS TGL -->
+  <section class="py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div class="reveal mx-auto flex max-w-3xl flex-col items-center text-center">
+        <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+          What is TGL?
+        </span>
+        <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+          Performance-based. Structured. Built for real business potential.
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-slate-600">
+          The Growth League (TGL) is a performance-based business platform where brands are evaluated based on business clarity, growth journey, innovation, and scalability. It is not a popularity contest, but a structured platform focused on real business potential and impact.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div class="reveal rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+          <h3 class="text-xl font-bold text-navy">Business Clarity</h3>
+          <p class="mt-3 text-slate-600">Clear communication of your value, vision, and direction.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+          <h3 class="text-xl font-bold text-navy">Growth Journey</h3>
+          <p class="mt-3 text-slate-600">Your business progress, momentum, and consistency.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+          <h3 class="text-xl font-bold text-navy">Innovation</h3>
+          <p class="mt-3 text-slate-600">Unique thinking, creativity, and differentiated execution.</p>
+        </div>
+
+        <div class="reveal reveal-delay-3 rounded-3xl border border-slate-200 bg-white p-7 shadow-soft">
+          <h3 class="text-xl font-bold text-navy">Scalability</h3>
+          <p class="mt-3 text-slate-600">Potential to grow stronger and wider in the market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-navy py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-gold">
+        Our Services Through TGL
+      </span>
+
+      <h2 class="mt-5 text-3xl font-extrabold text-white md:text-5xl">
+        What we offer participating businesses
+      </h2>
+
+      <p class="mt-5 text-lg text-white/70">
+        We provide businesses with visibility, evaluation, professional video production, promotion, recognition, and meaningful networking opportunities.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
+
+      <!-- Card 1 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="presentation" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">Brand Showcase Platform</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          Present your products and services to a targeted and relevant audience.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="clipboard-check" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">Business Evaluation</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          Get reviewed by experienced professionals and industry experts.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="megaphone" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">Brand Visibility & Promotion</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          Feature your business across digital platforms and event promotions.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="users" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">Networking Opportunities</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          Connect with entrepreneurs, professionals, and decision-makers.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="video" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">60-Second Video Production</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          We professionally produce your 60-second business video.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="group rounded-3xl border border-white/10 bg-white/5 p-5 text-center text-white transition duration-300 hover:-translate-y-2 hover:border-gold/40 sm:p-8">
+        <div class="flex justify-center">
+          <div class="rounded-full bg-gold/10 p-3 transition group-hover:bg-gold/20 sm:p-4">
+            <i data-lucide="award" class="h-6 w-6 text-gold sm:h-7 sm:w-7"></i>
+          </div>
+        </div>
+        <h3 class="mt-4 text-base font-bold text-gold sm:mt-5 sm:text-xl">Recognition & Credibility</h3>
+        <p class="mt-2 text-xs text-white/70 sm:mt-3 sm:text-sm">
+          Earn official recognition and build trust in your market.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- BENEFITS -->
+  <section id="benefits" class="py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <div class="reveal">
+          <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+            What Your Business Gains
+          </span>
+          <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+            From visibility to trust to growth
+          </h2>
+          <p class="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+            TGL helps businesses move from visibility to trust and ultimately to growth.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Increased Brand Visibility</div>
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Strong Market Positioning</div>
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Access to the Right Audience</div>
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Networking with Industry Leaders</div>
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Growth & Expansion Opportunities</div>
+            <div class="rounded-2xl border border-slate-200 p-5 font-semibold text-slate-700 shadow-soft">✔ Recognition & Digital Credibility</div>
+          </div>
+        </div>
+
+        <div class="reveal rounded-[32px] bg-gradient-to-br from-navy to-navyLight p-8 shadow-soft md:p-10">
+          <p class="text-sm font-bold uppercase tracking-[0.25em] text-gold/80">Why TGL</p>
+          <h3 class="mt-4 text-3xl font-extrabold text-white">Quality over popularity</h3>
+          <p class="mt-4 text-lg leading-8 text-white/70">
+            Unlike regular exhibitions or competitions, TGL focuses on quality over popularity. We ensure structured evaluation, meaningful visibility, and real business impact.
+          </p>
+          <div class="mt-8 space-y-4">
+            <div class="rounded-2xl bg-white/10 p-4 text-white">Structured evaluation</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-white">Meaningful visibility</div>
+            <div class="rounded-2xl bg-white/10 p-4 text-white">Real business impact</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- PRICING -->
+<section id="pricing" class="bg-soft py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+    
+    <!-- Heading -->
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+        Pricing
+      </span>
+
+      <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+        Transparent registration pricing
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        Be upfront. Be ready. Secure your spot early and take advantage of the limited early bird offer.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="mt-12 grid gap-6 md:grid-cols-2">
+      
+      <!-- Standard -->
+      <div class="reveal rounded-3xl border border-slate-200 bg-white p-8 shadow-soft text-center">
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
+          Standard Registration
+        </p>
+
+        <h3 class="mt-3 text-4xl font-extrabold text-navy">₹2,499</h3>
+
+        <p class="mt-4 text-slate-600">
+          Registration fee for The Growth League — Season 1.
+        </p>
+
+        <!-- Button -->
+        <a href="https://forms.gle/Z9T9GFHHsYYmVEs8A" target="_blank"
+          class="mt-6 inline-block rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white hover:bg-navy/90 transition">
+          Apply Now
+        </a>
+      </div>
+
+      <!-- Early Bird -->
+      <div class="reveal reveal-delay-1 rounded-3xl border border-gold/30 bg-navy p-8 shadow-soft text-center">
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-gold">
+          Early Bird Offer
+        </p>
+
+        <h3 class="mt-3 text-4xl font-extrabold text-white">₹1,999</h3>
+
+        <p class="mt-4 text-white/75">
+          Limited spots only. Valid till end of April.
+        </p>
+
+        <!-- Button -->
+        <a href="https://forms.gle/Z9T9GFHHsYYmVEs8A" target="_blank"
+          class="mt-6 inline-block rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy hover:bg-gold/90 transition">
+          Apply Now
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- MAGAZINE DIRECTORY -->
+  <section class="py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+        <div class="reveal">
+          <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+            Season 1 Directory Magazine
+          </span>
+          <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+            Get listed. Get discovered. Get remembered.
+          </h2>
+          <p class="mt-5 text-lg leading-8 text-slate-600">
+            Every registered business gets featured in our Season 1 Directory Magazine, giving your brand added credibility and long-term visibility.
+          </p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-[32px] bg-white p-8 shadow-soft">
+          <h3 class="text-2xl font-bold text-navy">What you get</h3>
+          <ul class="mt-5 space-y-4 text-slate-600">
+            <li>✔ Listed in the Season 1 Directory Magazine</li>
+            <li>✔ Distributed to 500+ business owners across India</li>
+            <li>✔ Additional brand visibility beyond the event</li>
+            <li>✔ Stronger network access and credibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARD SHOW -->
+  <section class="bg-navy py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+      <div class="reveal mx-auto max-w-4xl text-center">
+        <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-gold">
+          Grand Award Show — Month 7
+        </span>
+        <h2 class="mt-5 text-3xl font-extrabold text-white md:text-5xl">
+          The biggest stage of the TGL journey
+        </h2>
+        <p class="mt-5 text-lg leading-8 text-white/70">
+          The Grand Award Show is a live event featuring networking, expo opportunities, and the official award ceremony. Winners receive a 10-minute stage to either promote their business or pitch for VC investment.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-7 text-white backdrop-blur">
+          <h3 class="text-xl font-bold text-gold">Live Networking</h3>
+          <p class="mt-3 text-white/70">Meet entrepreneurs, industry professionals, and decision-makers in one space.</p>
+        </div>
+
+        <div class="reveal reveal-delay-1 rounded-3xl border border-white/10 bg-white/5 p-7 text-white backdrop-blur">
+          <h3 class="text-xl font-bold text-gold">Expo + Award Ceremony</h3>
+          <p class="mt-3 text-white/70">Experience a high-energy business expo and recognition event built for visibility.</p>
+        </div>
+
+        <div class="reveal reveal-delay-2 rounded-3xl border border-white/10 bg-white/5 p-7 text-white backdrop-blur">
+          <h3 class="text-xl font-bold text-gold">10-Minute Winner Stage</h3>
+          <p class="mt-3 text-white/70">Winners get time on stage to promote their business or pitch for VC investment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- CATEGORIES -->
+<section id="categories" class="bg-soft py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+    
+    <!-- Heading -->
+    <div class="reveal mx-auto flex max-w-3xl flex-col items-center text-center">
+      <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+        Eligible Business Categories
+      </span>
+
+      <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+        Who can participate?
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        The Growth League is open to businesses across multiple promising categories.
+      </p>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="mt-10 grid gap-6 lg:grid-cols-2">
+      
+      <div class="reveal rounded-3xl border border-gold/20 bg-white p-7 shadow-soft">
+        <h3 class="text-xl font-bold text-navy">Eligibility Details</h3>
+        <ul class="mt-4 space-y-3 text-slate-600">
+          <li>• Open to businesses with 10 or fewer employees</li>
+          <li>• Business must be running for at least 6 months</li>
+          <li>• Currently targeting businesses in and around Bangalore</li>
+        </ul>
+      </div>
+
+      <div class="reveal reveal-delay-1 rounded-3xl border border-gold/20 bg-navy p-7 shadow-soft">
+        <h3 class="text-xl font-bold text-white">Selection Format</h3>
+        <p class="mt-4 text-white/75">
+          Only 10 businesses will be selected per category, with a total of 100 businesses per edition — making each spot focused, competitive, and exclusive.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <div class="reveal rounded-3xl bg-white p-6 shadow-soft">
+        Fashion, Apparel & Textile Businesses
+      </div>
+
+      <div class="reveal reveal-delay-1 rounded-3xl bg-white p-6 shadow-soft">
+        Food, Bakery & Beverage Businesses
+      </div>
+
+      <div class="reveal reveal-delay-2 rounded-3xl bg-white p-6 shadow-soft">
+        Handmade, Craft & Artisan Businesses
+      </div>
+
+      <div class="reveal reveal-delay-3 rounded-3xl bg-white p-6 shadow-soft">
+        Jewellery & Accessories Businesses
+      </div>
+
+      <div class="reveal rounded-3xl bg-white p-6 shadow-soft">
+        Home Decor, Lifestyle & Interior Businesses
+      </div>
+
+      <div class="reveal reveal-delay-1 rounded-3xl bg-white p-6 shadow-soft">
+        Kids Products, Toys & Parenting Brands
+      </div>
+
+      <div class="reveal reveal-delay-2 rounded-3xl bg-white p-6 shadow-soft">
+        Beauty, Personal Care & Wellness Businesses
+      </div>
+
+      <div class="reveal reveal-delay-3 rounded-3xl bg-white p-6 shadow-soft">
+        Fitness, Sports & Health Businesses
+      </div>
+
+      <div class="reveal rounded-3xl bg-white p-6 shadow-soft">
+        Business, Professional & Digital Services
+      </div>
+
+      <!-- ✅ NEW 10TH CATEGORY -->
+      <div class="reveal reveal-delay-1 rounded-3xl bg-white p-6 shadow-soft">
+        Emerging, Innovative & Unique Businesses
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+
+    <!-- Heading -->
+    <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-goldDark">
+        How It Works
+      </span>
+
+      <h2 class="mt-5 text-3xl font-extrabold text-navy md:text-5xl">
+        The full TGL journey for your business
+      </h2>
+
+      <p class="mt-5 text-lg leading-8 text-slate-600">
+        From registration to recognition, every stage is designed to give your business visibility, structure, and real growth opportunities.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3 text-center">
+
+      <!-- Step 1 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            01
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">Register your business</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          Register your business and pay the registration fee.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            02
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">Receive our shoot guide</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          Receive our shoot guide and send us your raw footage.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            03
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">We produce and post your video</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          We produce and post your 60-second video on Instagram and YouTube.
+        </p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            04
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">Public voting round</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          Public voting round begins if you make it to the finals.
+        </p>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            05
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">Season 1 Magazine listing</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          Get listed in our Season 1 Magazine and connect with our business network.
+        </p>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="rounded-3xl border border-slate-200 p-4 sm:p-6 shadow-soft">
+        <div class="mb-3 flex justify-center">
+          <div class="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-gold/10 text-lg sm:text-xl font-extrabold text-gold">
+            06
+          </div>
+        </div>
+        <h3 class="text-sm sm:text-lg font-bold text-navy">Grand Award Show</h3>
+        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-slate-600">
+          Attend the Grand Award Show, win recognition, and pitch for investment.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-20 px-4 md:px-8">
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-navy">Frequently Asked Questions</h2>
+      <p class="text-goldDark mt-3 text-base md:text-lg">
+        The Growth League — Season 1 (Powered by SkyKeen Events)
+      </p>
+    </div>
+
+    <div class="space-y-4">
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          What is The Growth League?
+          <span class="ml-4 text-2xl transition-transform duration-300 group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-4 text-slate-600 leading-relaxed">
+          The Growth League (TGL) is India’s first structured recognition league for small businesses, powered by SkyKeen Events.
+        </p>
+      </details>
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          Who can register?
+          <span class="ml-4 text-2xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-slate-600">
+          Any small business with 10 or fewer employees, operating for at least 6 months and based in or around Bangalore.
+        </p>
+      </details>
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          How much does registration cost?
+          <span class="ml-4 text-2xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-slate-600">
+          ₹2,499 standard. ₹1,999 early bird (limited period).
+        </p>
+      </details>
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          What do I get when I register?
+          <span class="ml-4 text-2xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <ul class="mt-4 text-slate-600 list-disc pl-5 space-y-2">
+          <li>60-sec business video</li>
+          <li>Instagram & YouTube promotion</li>
+          <li>Public voting exposure</li>
+          <li>Magazine listing</li>
+          <li>Networking & award opportunity</li>
+        </ul>
+      </details>
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          Who produces the video?
+          <span class="ml-4 text-2xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-slate-600">
+          SkyKeen’s in-house team handles editing and publishing.
+        </p>
+      </details>
+
+      <details class="group border border-slate-200 rounded-2xl p-5 bg-white shadow-soft">
+        <summary class="flex cursor-pointer list-none items-center justify-between font-semibold text-lg text-navy">
+          Can I register more than once?
+          <span class="ml-4 text-2xl group-open:rotate-45 transition">+</span>
+        </summary>
+        <p class="mt-4 text-slate-600">
+          No. Only one entry per business per season.
+        </p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+  <!-- CTA -->
+  <section class="bg-navy py-20 lg:py-24">
+    <div class="mx-auto max-w-4xl px-4 text-center md:px-6 lg:px-8">
+      <span class="inline-flex rounded-full bg-gold/10 px-4 py-2 text-sm font-bold text-gold">
+        Limited entries per category
+      </span>
+      <h2 class="mt-5 text-3xl font-extrabold text-white md:text-5xl">
+        Ready to take your business to the next level?
+      </h2>
+      <p class="mt-5 text-lg leading-8 text-white/70">
+        Apply now and be part of The Growth League — a structured platform for visibility, recognition, and real growth.
+      </p>
+      <a
+        href="https://forms.gle/Z9T9GFHHsYYmVEs8A"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex rounded-full bg-gold px-8 py-4 text-sm font-bold text-navy transition hover:scale-105"
+      >
+        Apply Now
+      </a>
+    </div>
+  </section>
+
+<!-- CONTACT -->
+<section class="bg-soft py-16">
+  <div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+    
+    <div class="grid gap-6 rounded-[28px] bg-white p-8 shadow-soft md:grid-cols-2">
+      
+      <!-- Email -->
+      <a href="mailto:connect@skykeen.in" 
+         class="rounded-2xl border border-slate-200 p-6 text-center text-slate-700 transition hover:border-gold hover:-translate-y-1">
+        
+        <p class="font-bold text-navy text-lg">Email Us</p>
+        <p class="mt-2">connect@skykeen.in</p>
+      </a>
+
+<div class="rounded-2xl border border-slate-200 p-6 text-center text-slate-700">
+  
+  <p class="font-bold text-navy text-lg">Follow Us</p>
+
+  <div class="mt-6 flex justify-center items-center gap-4">
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61586233419030" target="_blank"
+       class="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 text-[#1877F2] transition hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2.7V12h2.7V9.8c0-2.7 1.6-4.2 4-4.2 1.2 0 2.4.2 2.4.2v2.6h-1.4c-1.4 0-1.8.9-1.8 1.8V12h3l-.5 2.9h-2.5v7A10 10 0 0022 12z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram (GRADIENT TEXT) -->
+    <a href="https://www.instagram.com/thegrowthleague/" target="_blank"
+       class="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 transition hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f58529"/>
+            <stop offset="25%" stop-color="#dd2a7b"/>
+            <stop offset="50%" stop-color="#8134af"/>
+            <stop offset="100%" stop-color="#515bd4"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#instaGradient)" d="M7.75 2C4.574 2 2 4.574 2 7.75v8.5C2 19.426 4.574 22 7.75 22h8.5C19.426 22 22 19.426 22 16.25v-8.5C22 4.574 19.426 2 16.25 2zM12 7a5 5 0 110 10 5 5 0 010-10z"/>
+      </svg>
+    </a>
+
+    <!-- YouTube (FIXED PROPER ICON) -->
+    <a href="https://www.youtube.com/@SkykeenEvents" target="_blank"
+       class="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 transition hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24">
+        <path fill="#FF0000" d="M23.5 6.2a2.9 2.9 0 00-2-2C19.6 3.7 12 3.7 12 3.7s-7.6 0-9.5.5a2.9 2.9 0 00-2 2C0 8.1 0 12 0 12s0 3.9.5 5.8a2.9 2.9 0 002 2c1.9.5 9.5.5 9.5.5s7.6 0 9.5-.5a2.9 2.9 0 002-2C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/>
+        <path fill="#fff" d="M9.75 15.5l6-3.5-6-3.5z"/>
+      </svg>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/skykeen-events/posts/?feedView=all" target="_blank"
+       class="flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 text-[#0A66C2] transition hover:scale-110">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.6 4.6 6v6.2h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/>
+      </svg>
+    </a>
+
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-50 py-10">
+  <div class="mx-auto max-w-7xl px-4 text-center">
+
+    <!-- Logo -->
+    <div class="flex justify-center">
+      <img src="images/tgl logo-01.png" alt="TGL Logo" class="h-16 w-auto object-contain">
+    </div>
+
+    <!-- Title -->
+    <p class="mt-4 text-lg font-bold text-navy">
+      The Growth League — Season 1
+    </p>
+
+    <!-- Links -->
+    <div class="mt-4 flex justify-center gap-6 text-sm text-gray-600">
+      <a href="terms&condition.html" class="hover:text-navy transition">
+        Terms & Conditions
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <p class="mt-6 text-sm text-gray-500">
+      © 2026 The Growth League — Season 1 | Powered by SkyKeen Events
+    </p>
+
+  </div>
+</footer>
+
+<!-- ALL YOUR SECTIONS ABOVE -->
+
+<!-- APPLY BUTTON (ONLY MOBILE) -->
+<a href="https://forms.gle/Z9T9GFHHsYYmVEs8A" target="_blank"
+   class="fixed bottom-0 left-0 z-50 w-full bg-gold py-4 text-center text-sm font-bold text-navy transition md:hidden">
+  Apply Now
+</a>
+
+
+
+ <script>
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+    });
+  });
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll() {
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < windowHeight - 80) {
+        el.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  window.addEventListener("load", revealOnScroll);
+</script>
+ 
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
+</body>
+</html>
