@@ -215,6 +215,33 @@
         right: 6px;
       }
     }
+    /* Marquee */
+    .logo-marquee { overflow: hidden; position: relative; margin-top: 22px; }
+    .logo-track{
+      display: flex;
+      width: max-content;
+      animation: scrollLogos 30s linear infinite;
+      will-change: transform;
+    }
+    .logo-item{
+      min-width: 160px;
+      height: 90px;
+      margin: 0 14px;
+      background: #fff;
+      border-radius: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+      transition: transform .3s ease;
+      border: 1px solid rgba(17,24,39,0.08);
+    }
+    .logo-item:hover{ transform: scale(1.06); }
+    @keyframes scrollLogos{
+      0%{ transform: translateX(0); }
+      100%{ transform: translateX(-50%); }
+    }
+
 
     /* Small button spinner */
     .btn-spinner {
@@ -592,7 +619,7 @@
         Recent <span class="text-[#094507]">captures</span>
       </h2>
 
-      <p class="mt-2 text-black/60">Use arrows or swipe.</p>
+      
     </div>
 
     <!-- Gallery -->
@@ -608,27 +635,27 @@
         <div class="gallery-track" id="galleryTrack">
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/img1.jpeg" alt="Gallery 1">
+            <img src="artcompetition/flem.jpg" alt="Gallery 1">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/img2.jpeg" alt="Gallery 2">
+            <img src="artcompetition/art2.jpg" alt="Gallery 2">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/img3.jpeg" alt="Gallery 3">
+            <img src="artcompetition/flem3.jpg" alt="Gallery 3">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/flem.jpeg" alt="Gallery 4">
+            <img src="artcompetition/art4.jpg" alt="Gallery 4">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/herosection.jpeg" alt="Gallery 5">
+            <img src="artcompetition/flem5.jpg" alt="Gallery 5">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
-            <img src="image/workshop.jpg" alt="Gallery 6">
+            <img src="artcompetition/art6.jpg" alt="Gallery 6">
           </div>
 
           <div class="gallery-item hover:shadow-[0_10px_30px_rgba(9,69,7,0.2)]">
@@ -658,6 +685,92 @@
         hover:-translate-y-[1px] transition">
 
         Book an Event <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-16 bg-[#f6faf6]">
+  <div class="max-w-6xl mx-auto px-3">
+
+    <!-- Heading -->
+    <div class="text-center reveal">
+      <span class="inline-block text-[13px] font-extrabold text-[#094507] tracking-[.3px] mb-2">
+        Our Partners
+      </span>
+
+      <h2 class="text-[38px] font-black leading-tight">
+        Trusted by <span class="text-[#094507]">16+ Brands</span>
+      </h2>
+
+      <p class="mt-2 text-black/60">Collaborations that move our events forward.</p>
+    </div>
+
+    <!-- Logos -->
+    <div class="logo-marquee reveal delay-1">
+      <div class="logo-track" id="logoTrack">
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://clubmahindra.gumlet.io/themes/prospect/assets/images/logo-new-black.svg?w=200&dpr=1.0"
+            alt="Club Mahindra"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Axis_Bank_logo.svg/1280px-Axis_Bank_logo.svg.png"
+            alt="Axis Bank"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://thehardcopy.co/wp-content/uploads/Zepto-Featured-Image-Option-2.png"
+            alt="Zepto"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://zerodha.com/z-connect/wp-content/uploads/2024/01/Akshayakalpa-Logo_MGSY8_1000x562-1.jpeg"
+            alt="Akshayakalpa"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://1000logos.net/wp-content/uploads/2022/08/Ola-Cabs-Logo.jpg"
+            alt="Ola"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://content3.jdmagicbox.com/comp/temp/p5/0431px431.x431.230804012718.m7p5/catalogue/-21p7yanbzc.jpg"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7nW6bHVqOEKc1xy1vE5_Udc4D_6suBRg3-g&s"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+        <div class="logo-item hover:scale-105 transition">
+          <img src="https://etimg.etb2bimg.com/photo/111112535.cms"
+            alt="Partner Brand"
+            class="h-12 w-auto object-contain opacity-70 hover:opacity-100 transition duration-300">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-8 reveal delay-2">
+      <a href="contact.html"
+        class="py-4 px-8 rounded-xl font-black inline-flex items-center justify-center gap-2 text-white 
+        bg-[#094507] hover:bg-[#063305]
+        shadow-[0_14px_28px_rgba(9,69,7,0.35)] 
+        hover:-translate-y-[1px] transition text-lg">
+
+        Work With Us <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
 
@@ -926,11 +1039,11 @@
 
       <div class="flex gap-3 mt-4 flex-wrap">
         <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
-          href="https://www.instagram.com/skykeenevents?igsh=ejUyZThxdzF0dDdi" aria-label="Instagram">
+          href="https://www.instagram.com/skykeenevent/" aria-label="Instagram">
           <i class="fa-brands fa-instagram"></i>
         </a>
         <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
-          href="https://www.facebook.com/share/1DH343fCNH/?mibextid=wwXIfr" aria-label="Facebook">
+          href="https://www.facebook.com/profile.php?id=61556311778672" aria-label="Facebook">
           <i class="fa-brands fa-facebook"></i>
         </a>
         <a class="w-11 h-11 rounded-2xl border border-white/10 bg-white/5 inline-flex items-center justify-center hover:bg-[#094507] transition"
